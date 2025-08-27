@@ -1,2 +1,2 @@
-# tamootto.github.io
+# Welcome
 Bee's website
