@@ -27,5 +27,45 @@
     .art-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .art-grid img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+    a.back-link {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.5rem 1rem;
+      background: #444;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+    a.back-link:hover {
+      background: #666;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Art</h1>
+  </header>
 
+  <main>
+    <div class="art-grid">
+      <img src="https://via.placeholder.com/300x300.png?text=Art+1" alt="Art 1">
+      <img src="https://via.placeholder.com/300x300.png?text=Art+2" alt="Art 2">
+      <img src="https://via.placeholder.com/300x300.png?text=Art+3" alt="Art 3">
+      <img src="https://via.placeholder.com/300x300.png?text=Art+4" alt="Art 4">
+      <img src="https://via.placeholder.com/300x300.png?text=Art+5" alt="Art 5">
+      <img src="https://via.placeholder.com/300x300.png?text=Art+6" alt="Art 6">
+    </div>
+
+    <a class="back-link" href="index.html">← Back to Home</a>
+  </main>
+</body>
+</html>
