@@ -6,7 +6,7 @@
   <title>Isabelle Rashkin</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: "Times New Roman", Times, serif;
       margin: 0;
       padding: 0;
       background-color: #fafafa;
@@ -15,16 +15,27 @@
     }
     header {
       padding: 2rem;
-      background-color: #222;
-      color: #fff;
+      background-color: #f8c8dc; /* light pink */
+      color: #222;
     }
     header h1 {
       margin: 0.5rem 0;
     }
-    img {
+    .banner-images {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    .banner-images img {
+      max-width: 100px;
+      border-radius: 12px;
+    }
+    .banner-images img.center {
       max-width: 200px;
       border-radius: 50%;
-      margin-top: 1rem;
     }
     main {
       padding: 2rem;
@@ -48,6 +59,29 @@
     .links a:hover {
       background: #666;
     }
+    footer {
+      background-color: #222;
+      color: #fff;
+      padding: 2rem 1rem;
+      margin-top: 2rem;
+    }
+    footer h3 {
+      margin-bottom: 1rem;
+    }
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .social-links a {
+      color: #f8c8dc;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .social-links a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -55,7 +89,21 @@
     <h1>Isabelle Rashkin</h1>
     <p>Multi-disciplinary artist based in Brooklyn, NYC</p>
     <p><small>Interlochen Arts Academy 2018 / University of Wisconsin-Milwaukee 2022</small></p>
-    <img src="8DF014C2-8D93-4FFF-A6B5-4DDB2DCAFED5_1_105_c.jpeg" alt="Photo of Isabelle Rashkin">
+    
+    <div class="banner-images">
+      <!-- 3 left images -->
+      <img src="placeholder1.jpg" alt="Placeholder art">
+      <img src="placeholder2.jpg" alt="Placeholder art">
+      <img src="placeholder3.jpg" alt="Placeholder art">
+      
+      <!-- Center image -->
+      <img src="8DF014C2-8D93-4FFF-A6B5-4DDB2DCAFED5_1_105_c.jpeg" alt="Photo of Isabelle Rashkin" class="center">
+      
+      <!-- 3 right images -->
+      <img src="placeholder4.jpg" alt="Placeholder art">
+      <img src="placeholder5.jpg" alt="Placeholder art">
+      <img src="placeholder6.jpg" alt="Placeholder art">
+    </div>
   </header>
 
   <main>
@@ -67,6 +115,20 @@
       <a href="resume.html">📸 Headshot & Acting Resume</a>
     </div>
   </main>
+
+  <footer>
+    <h3>Connect with me</h3>
+    <div class="social-links">
+      <a href="https://www.instagram.com/tamoottopro/" target="_blank">Instagram (Personal)</a>
+      <a href="https://www.instagram.com/Bee_original_music/" target="_blank">Instagram (Music)</a>
+      <a href="https://x.com/tamoottopro" target="_blank">X (Twitter)</a>
+      <a href="https://www.linkedin.com/in/isabelle-rashkin-82958228/" target="_blank">LinkedIn</a>
+      <a href="mailto:ivrashkin@gmail.com">Email</a>
+      <a href="https://open.spotify.com/artist/2TRjrme5uq3GM8qMF7y0QI" target="_blank">Spotify</a>
+      <a href="https://www.youtube.com/channel/UCa9acPRSIGUmjgn54hz17eA" target="_blank">YouTube Music</a>
+      <a href="https://music.apple.com/ca/artist/isabelle-bee-rashkin/1773658949" target="_blank">Apple Music</a>
+      <a href="https://www.backstage.com/u/isabelle-rashkin/" target="_blank">Backstage</a>
+    </div>
+  </footer>
 </body>
 </html>
-
