@@ -57,12 +57,11 @@
       max-width: 80%;
       border-radius: 12px;
       margin-bottom: 1rem;
-      display: none; /* hidden until a button is clicked */
+      display: none;
       opacity: 0;
       transform: translateY(-50px);
       transition: opacity 0.5s ease, transform 0.5s ease;
     }
-    /* Slide-in + bounce animation */
     #display-image.show {
       opacity: 1;
       transform: translateY(0);
@@ -78,21 +77,23 @@
       font-size: 1.2rem;
       line-height: 1.5;
       max-width: 800px;
+      font-weight: bold;
 
-      /* Rainbow text */
-      background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+      /* Animated rainbow text with black outline */
+      background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet, red);
+      background-size: 400%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: rainbow 3s linear infinite;
+      -webkit-text-stroke: 1px black; /* black outline */
+      animation: rainbow-slide 5s linear infinite;
     }
-    @keyframes rainbow {
-      0% {background-position: 0%;}
-      100% {background-position: 100%;}
+    @keyframes rainbow-slide {
+      0% { background-position: 0%; }
+      100% { background-position: 400%; }
     }
   </style>
 </head>
 <body>
-  <!-- Navigation -->
   <nav>
     <a href="index.html">Home</a>
     <a href="art.html">Art</a>
@@ -124,14 +125,11 @@
       const image = document.getElementById("display-image");
       const message = document.getElementById("display-message");
 
-      // Reset all buttons
       const buttons = document.querySelectorAll(".fun-button");
       buttons.forEach(btn => btn.classList.remove("clicked"));
 
-      // Add clicked class to the button that was pressed
       buttonElement.classList.add("clicked");
 
-      // Set content based on button
       if (buttonNumber === 1) {
         image.src = "3B0BBFF6-186A-4E72-8AB3-D23F05194E33_4_5005_c.jpeg";
         message.textContent = "HAPPY END OF SUMMER! I hope you had a great time - I know I sure did :) I travelled to Philly, Chicago, and a bunch of random suburbs in between! Yay for adventures :)";
@@ -143,13 +141,11 @@
         message.textContent = "Love my boyfriend and hamtaro so both of these things are brought together in this image. Obviously I am Bijou. Okwee!";
       }
 
-      // Show image with slide-in + bounce animation
       image.style.display = "block";
-      image.classList.remove("show"); // reset animation
-      void image.offsetWidth; // force reflow
+      image.classList.remove("show");
+      void image.offsetWidth;
       image.classList.add("show");
     }
   </script>
 </body>
 </html>
-
