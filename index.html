@@ -44,13 +44,15 @@
       overflow: hidden;
       position: relative;
       width: 100%;
-      height: 150px; /* adjust height */
+      height: 150px;
       margin-top: 1rem;
     }
     .banner-track {
       display: flex;
-      width: calc(200%); /* ensures enough space for smooth loop */
       animation: scroll-left 30s linear infinite;
+    }
+    .banner-scroll:hover .banner-track {
+      animation-play-state: paused; /* Pause on hover */
     }
     .banner-track img {
       height: 150px;
@@ -58,19 +60,13 @@
       border-radius: 12px;
     }
     @keyframes scroll-left {
-      from {
-        transform: translateX(0);
-      }
-      to {
-        transform: translateX(-50%);
-      }
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
     }
 
     main {
       padding: 2rem;
     }
-
-    /* --- LINKS GRID --- */
     .links {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -80,7 +76,7 @@
     }
     .links a {
       display: block;
-      padding: 1rem;
+      padding: 0.75rem;
       background: #444;
       color: #fff;
       text-decoration: none;
@@ -91,7 +87,6 @@
       background: #666;
       transform: scale(1.05);
     }
-
     footer {
       background-color: #222;
       color: #fff;
@@ -133,10 +128,11 @@
     <h1>Isabelle Rashkin</h1>
     <p>Multi-disciplinary artist based in Brooklyn, NYC</p>
     <p><small>Interlochen Arts Academy 2018 / University of Wisconsin-Milwaukee 2022</small></p>
-
-    <!-- SCROLLING BANNER -->
+    
+    <!-- Scrolling banner -->
     <div class="banner-scroll">
       <div class="banner-track">
+        <!-- 7 unique photos -->
         <img src="01C2B009-C221-4F8E-AA7A-8BFAAFE619A8_1_102_a.jpeg" alt="nikon coolpix picture">
         <img src="3C84EDC8-C563-4B48-8FA3-E8EAE2FE92E4_4_5005_c.jpeg" alt="san fran day">
         <img src="674C3B6E-0C83-48E0-9B7B-E62ED565F5C0_1_105_c.jpeg" alt="senior capstone soon">
@@ -145,10 +141,14 @@
         <img src="D3CA96B0-B5A2-4E33-803A-0609213F57E3_1_201_a.jpeg" alt="performance">
         <img src="DSCF1306.JPG" alt="vanya">
 
-        <!-- duplicate for smooth loop -->
-        <img src="01C2B009-C221-4F8E-AA7A-8BFAAFE619A8_1_102_a.jpeg" alt="">
-        <img src="3C84EDC8-C563-4B48-8FA3-E8EAE2FE92E4_4_5005_c.jpeg" alt="">
-        <img src="674C3B6E-0C83-48E0-9B7B-E62ED565F5C0_1_105_c.jpeg" alt="">
+        <!-- Duplicate all 7 for seamless loop -->
+        <img src="01C2B009-C221-4F8E-AA7A-8BFAAFE619A8_1_102_a.jpeg" alt="nikon coolpix picture">
+        <img src="3C84EDC8-C563-4B48-8FA3-E8EAE2FE92E4_4_5005_c.jpeg" alt="san fran day">
+        <img src="674C3B6E-0C83-48E0-9B7B-E62ED565F5C0_1_105_c.jpeg" alt="senior capstone soon">
+        <img src="8DF014C2-8D93-4FFF-A6B5-4DDB2DCAFED5_1_105_c.jpeg" alt="Photo of Isabelle Rashkin">
+        <img src="A635B61C-0535-4ACB-A2C2-153429E073FD_1_105_c.jpeg" alt="into the woods">
+        <img src="D3CA96B0-B5A2-4E33-803A-0609213F57E3_1_201_a.jpeg" alt="performance">
+        <img src="DSCF1306.JPG" alt="vanya">
       </div>
     </div>
   </header>
