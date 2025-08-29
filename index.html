@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" href="./favicon.ico" type="image/x-icon">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Isabelle Rashkin</title>
   <style>
@@ -26,13 +25,16 @@
       margin: 0.5rem;
       text-decoration: none;
       font-weight: bold;
+      display: inline-block;
+      width: 100px; /* optional: make nav items uniform */
     }
     nav a:hover {
       text-decoration: underline;
     }
 
+    /* --- HEADER & SCROLLING BANNER --- */
     header {
-      padding: 2rem;
+      padding: 2rem 1rem;
       background-color: #f8c8dc; /* light pink */
       color: #222;
     }
@@ -40,27 +42,39 @@
       margin: 0.5rem 0;
     }
 
-    /* --- SCROLLING BANNER --- */
     .banner-wrapper {
       overflow: hidden;
+      position: relative;
       width: 100%;
       margin-top: 1rem;
-      position: relative;
+      height: 120px; /* adjust for image size */
     }
-    .banner {
+
+    .banner-track {
       display: flex;
-      flex-wrap: nowrap;
+      width: max-content;
+      animation: scroll-left 30s linear infinite;
     }
-    .banner img {
-      flex-shrink: 0;
-      width: 150px; /* larger images */
-      height: auto;
+
+    .banner-track:hover {
+      animation-play-state: paused; /* pause on hover */
+    }
+
+    .banner-track img {
+      height: 100px;
       margin: 0 10px;
       border-radius: 12px;
     }
-    .banner img.center {
-      width: 200px;
-      border-radius: 50%;
+
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); } /* adjust if needed */
+    }
+
+    @media (max-width: 768px) {
+      .banner-track {
+        animation: scroll-left 15s linear infinite; /* faster on mobile */
+      }
     }
 
     main {
@@ -71,7 +85,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
-      max-width: 600px;
+      max-width: 500px;
       margin: 2rem auto;
     }
     .links a {
@@ -113,7 +127,6 @@
   </style>
 </head>
 <body>
-
   <!-- NAV BAR -->
   <nav>
     <a href="index.html">Home</a>
@@ -125,23 +138,32 @@
     <a href="something-silly.html">Something Silly</a>
   </nav>
 
+  <!-- HEADER -->
   <header>
     <h1>Isabelle Rashkin</h1>
     <p>Multi-disciplinary artist based in Brooklyn, NYC</p>
     <p><small>Interlochen Arts Academy 2018 / University of Wisconsin-Milwaukee 2022</small></p>
 
-    <!-- Banner -->
-    <div class="banner-wrapper" id="bannerWrapper">
-      <div class="banner" id="banner1">
+    <!-- SCROLLING BANNER -->
+    <div class="banner-wrapper">
+      <div class="banner-track">
+        <!-- Repeat your images for seamless effect -->
         <img src="01C2B009-C221-4F8E-AA7A-8BFAAFE619A8_1_102_a.jpeg" alt="nikon coolpix picture">
         <img src="3C84EDC8-C563-4B48-8FA3-E8EAE2FE92E4_4_5005_c.jpeg" alt="san fran day">
         <img src="674C3B6E-0C83-48E0-9B7B-E62ED565F5C0_1_105_c.jpeg" alt="senior capstone soon">
-        <img src="8DF014C2-8D93-4FFF-A6B5-4DDB2DCAFED5_1_105_c.jpeg" alt="center photo" class="center">
+        <img src="8DF014C2-8D93-4FFF-A6B5-4DDB2DCAFED5_1_105_c.jpeg" alt="Photo of Isabelle Rashkin" class="center">
+        <img src="A635B61C-0535-4ACB-A2C2-153429E073FD_1_105_c.jpeg" alt="into the woods">
+        <img src="D3CA96B0-B5A2-4E33-803A-0609213F57E3_1_201_a.jpeg" alt="performance">
+        <img src="DSCF1306.JPG" alt="vanya">
+        <!-- repeat images again for seamless scrolling -->
+        <img src="01C2B009-C221-4F8E-AA7A-8BFAAFE619A8_1_102_a.jpeg" alt="nikon coolpix picture">
+        <img src="3C84EDC8-C563-4B48-8FA3-E8EAE2FE92E4_4_5005_c.jpeg" alt="san fran day">
+        <img src="674C3B6E-0C83-48E0-9B7B-E62ED565F5C0_1_105_c.jpeg" alt="senior capstone soon">
+        <img src="8DF014C2-8D93-4FFF-A6B5-4DDB2DCAFED5_1_105_c.jpeg" alt="Photo of Isabelle Rashkin" class="center">
         <img src="A635B61C-0535-4ACB-A2C2-153429E073FD_1_105_c.jpeg" alt="into the woods">
         <img src="D3CA96B0-B5A2-4E33-803A-0609213F57E3_1_201_a.jpeg" alt="performance">
         <img src="DSCF1306.JPG" alt="vanya">
       </div>
-      <div class="banner" id="banner2"></div>
     </div>
   </header>
 
@@ -171,29 +193,5 @@
       <a href="https://www.backstage.com/u/isabelle-rashkin/" target="_blank">Backstage</a>
     </div>
   </footer>
-
-  <script>
-    // Duplicate banner images for seamless scroll
-    const banner1 = document.getElementById('banner1');
-    const banner2 = document.getElementById('banner2');
-    banner2.innerHTML = banner1.innerHTML;
-
-    const wrapper = document.getElementById('bannerWrapper');
-    let scrollPos = 0;
-
-    function scrollBanner() {
-      scrollPos++;
-      if (scrollPos >= banner1.scrollWidth) scrollPos = 0;
-      wrapper.scrollLeft = scrollPos;
-      requestAnimationFrame(scrollBanner);
-    }
-
-    wrapper.addEventListener('mouseenter', () => cancelAnimationFrame(scrollBanner));
-    wrapper.addEventListener('mouseleave', scrollBanner);
-
-    scrollBanner();
-  </script>
-
 </body>
 </html>
-
