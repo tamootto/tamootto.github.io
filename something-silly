@@ -1,1 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Something Silly</title>
+  <style>
+    body {
+      font-family: "Times New Roman", Times, serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background-color: #fafafa;
+    }
+    nav {
+      background-color: #000;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    main {
+      padding: 2rem;
+    }
+    .fun-button {
+      padding: 1rem 2rem;
+      background-color: #ff69b4; /* hot pink */
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: 1rem;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .fun-button:hover {
+      background-color: #ff85c1;
+      transform: scale(1.1);
+    }
+    #display-image {
+      max-width: 80%;
+      margin-top: 1.5rem;
+      border-radius: 12px;
+    }
+    #display-message {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="art.html">Art</a>
+    <a href="music.html">Music</a>
+    <a href="theatre.html">Theatre</a>
+    <a href="resume.html">Resume</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="something-silly.html">Something Silly</a>
+  </nav>
+
+  <main>
+    <h1>Something Silly</h1>
+    <p>Click a button to reveal a silly message and image!</p>
+
+    <!-- Buttons -->
+    <button class="fun-button" onclick="showSilly(1)">Summer Fun</button>
+    <button class="fun-button" onclick="showSilly(2)">Workin!</button>
+    <button class="fun-button" onclick="showSilly(3)">Love is but a Game!</button>
+
+    <!-- Display Area -->
+    <div id="display-area">
+      <img id="display-image" src="" alt="" style="display:none;">
+      <p id="display-message"></p>
+    </div>
+  </main>
+
+  <script>
+    function showSilly(buttonNumber) {
+      const image = document.getElementById("display-image");
+      const message = document.getElementById("display-message");
+
+      if (buttonNumber === 1) {
+        image.src = "3B0BBFF6-186A-4E72-8AB3-D23F05194E33_4_5005_c.jpeg";
+        message.textContent = "HAPPY END OF SUMMER! I hope you had a great time - I know I sure did :) I travelled to Philly, Chicago, and a bunch of random suburbs in between! Yay for adventures :)";
+      } else if (buttonNumber === 2) {
+        image.src = "7C6987D9-EC51-4AB1-A4DF-0656C7FD3152.jpeg";
+        message.textContent = "DAMN! I am not doing well at my job right now. Everyday I am lucky to continued to be employed";
+      } else if (buttonNumber === 3) {
+        image.src = "D482C25D-69B6-4566-8029-5044390B91A0_4_5005_c.jpeg";
+        message.textContent = "Love my boyfriend and hamtaro so both of these things are brought together in this image. Obviously I am Bijou. Okwee!";
+      }
+
+      image.style.display = "block";
+    }
+  </script>
+</body>
+</html>
 
