@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Me - Isabelle Rashkin</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <style>
     body {
       font-family: "Times New Roman", Times, serif;
@@ -13,6 +13,8 @@
       background-color: #fafafa;
       color: #333;
       text-align: center;
+      position: relative;
+      overflow-x: hidden;
     }
 
     /* --- NAVBAR --- */
@@ -35,8 +37,8 @@
 
     /* --- HEADER --- */
     header {
-      padding: 2rem;
-      background-color: #f8c8dc; /* light pink */
+      padding: 2rem 1rem;
+      background-color: #f8c8dc;
       color: #222;
     }
     header h1 {
@@ -45,38 +47,62 @@
 
     main {
       padding: 2rem;
-      max-width: 600px;
-      margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
+    /* --- CONTACT FORM --- */
     form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-top: 2rem;
+      max-width: 500px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 1;
     }
-
-    input, textarea {
+    form input, form textarea, form button {
+      width: 100%;
       padding: 0.75rem;
-      border-radius: 8px;
+      margin-bottom: 1rem;
+      border-radius: 6px;
       border: 1px solid #ccc;
-      font-family: "Times New Roman", Times, serif;
+      font-family: inherit;
       font-size: 1rem;
     }
-
-    button {
-      padding: 0.75rem;
+    form button {
       background-color: #444;
       color: #fff;
       border: none;
-      border-radius: 8px;
-      font-weight: bold;
       cursor: pointer;
       transition: background 0.3s;
     }
-
-    button:hover {
+    form button:hover {
       background-color: #666;
+    }
+
+    /* --- DANCING IMAGES --- */
+    .dancer {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100px;
+      z-index: 0;
+      animation: dance 4s ease-in-out infinite alternate;
+    }
+    .left-dancer {
+      left: -120px;
+    }
+    .right-dancer {
+      right: -120px;
+      animation-delay: 2s; /* offset so they move opposite */
+    }
+
+    @keyframes dance {
+      0% { transform: translateY(-50%) translateX(0); }
+      50% { transform: translateY(-50%) translateX(50px); }
+      100% { transform: translateY(-50%) translateX(0); }
     }
 
     footer {
@@ -102,13 +128,6 @@
     .social-links a:hover {
       text-decoration: underline;
     }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      nav a {
-        width: auto;
-      }
-    }
   </style>
 </head>
 <body>
@@ -122,21 +141,23 @@
     <a href="resume.html">Resume</a>
     <a href="gallery.html">Gallery</a>
     <a href="something-silly.html">Something Silly</a>
-    <a href="contact.html">Contact Me</a>
   </nav>
 
-  <!-- HEADER -->
   <header>
     <h1>Contact Me</h1>
-    <p>If you'd like to reach me, send a message below and it will open in your email client.</p>
+    <p>Send me a message and I will get back to you!</p>
   </header>
 
+  <!-- Dancing Images -->
+  <img src="transparent dog.jpg" alt="Dog" class="dancer left-dancer">
+  <img src="flora pre transparent.avif" alt="Flora" class="dancer right-dancer">
+
   <main>
-    <form action="mailto:ivrashkin@gmail.com" method="post" enctype="text/plain">
+    <form action="mailto:ivrashkin@gmail.com" method="POST" enctype="text/plain">
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send</button>
     </form>
   </main>
 
