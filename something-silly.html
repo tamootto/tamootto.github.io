@@ -44,15 +44,50 @@
       background-color: #ff85c1;
       transform: scale(1.1);
     }
+    .fun-button.clicked {
+      background-color: #8e44ad; /* purple when clicked */
+    }
+    #display-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 2rem;
+    }
     #display-image {
       max-width: 80%;
-      margin-top: 1.5rem;
       border-radius: 12px;
+      margin-bottom: 1rem;
+      display: none; /* hidden until a button is clicked */
+      opacity: 0;
+      transform: translateY(-50px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    /* Slide-in + bounce animation */
+    #display-image.show {
+      opacity: 1;
+      transform: translateY(0);
+      animation: bounce 0.6s ease;
+    }
+    @keyframes bounce {
+      0% { transform: translateY(-50px); }
+      50% { transform: translateY(10px); }
+      70% { transform: translateY(-5px); }
+      100% { transform: translateY(0); }
     }
     #display-message {
-      margin-top: 1rem;
       font-size: 1.2rem;
       line-height: 1.5;
+      max-width: 800px;
+
+      /* Rainbow text */
+      background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rainbow 3s linear infinite;
+    }
+    @keyframes rainbow {
+      0% {background-position: 0%;}
+      100% {background-position: 100%;}
     }
   </style>
 </head>
@@ -73,22 +108,30 @@
     <p>Click a button to reveal a silly message and image!</p>
 
     <!-- Buttons -->
-    <button class="fun-button" onclick="showSilly(1)">Summer Fun</button>
-    <button class="fun-button" onclick="showSilly(2)">Workin!</button>
-    <button class="fun-button" onclick="showSilly(3)">Love is but a Game!</button>
+    <button class="fun-button" onclick="showSilly(1, this)">Summer Fun</button>
+    <button class="fun-button" onclick="showSilly(2, this)">Workin!</button>
+    <button class="fun-button" onclick="showSilly(3, this)">Love is but a Game!</button>
 
     <!-- Display Area -->
     <div id="display-area">
-      <img id="display-image" src="" alt="" style="display:none;">
+      <img id="display-image" src="" alt="">
       <p id="display-message"></p>
     </div>
   </main>
 
   <script>
-    function showSilly(buttonNumber) {
+    function showSilly(buttonNumber, buttonElement) {
       const image = document.getElementById("display-image");
       const message = document.getElementById("display-message");
 
+      // Reset all buttons
+      const buttons = document.querySelectorAll(".fun-button");
+      buttons.forEach(btn => btn.classList.remove("clicked"));
+
+      // Add clicked class to the button that was pressed
+      buttonElement.classList.add("clicked");
+
+      // Set content based on button
       if (buttonNumber === 1) {
         image.src = "3B0BBFF6-186A-4E72-8AB3-D23F05194E33_4_5005_c.jpeg";
         message.textContent = "HAPPY END OF SUMMER! I hope you had a great time - I know I sure did :) I travelled to Philly, Chicago, and a bunch of random suburbs in between! Yay for adventures :)";
@@ -100,8 +143,13 @@
         message.textContent = "Love my boyfriend and hamtaro so both of these things are brought together in this image. Obviously I am Bijou. Okwee!";
       }
 
+      // Show image with slide-in + bounce animation
       image.style.display = "block";
+      image.classList.remove("show"); // reset animation
+      void image.offsetWidth; // force reflow
+      image.classList.add("show");
     }
   </script>
 </body>
 </html>
+
