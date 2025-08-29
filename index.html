@@ -32,14 +32,14 @@
 
   header {
     padding: 2rem;
-    background-color: #f8c8dc; /* light pink */
+    background-color: #f8c8dc; 
     color: #222;
   }
   header h1 {
     margin: 0.5rem 0;
   }
 
-  /* --- SCROLLING BANNER FIXED --- */
+  /* --- SCROLLING BANNER --- */
   .banner-wrapper {
     overflow: hidden;
     width: 100%;
@@ -48,8 +48,7 @@
   }
   .banner {
     display: inline-block;
-    white-space: nowrap; /* keep images in a row */
-    animation: scroll 20s linear infinite;
+    white-space: nowrap;
   }
   .banner img {
     display: inline-block;
@@ -57,7 +56,6 @@
     height: auto;
     margin: 0 10px;
     border-radius: 12px;
-    flex: 0 0 auto; /* prevent shrinking */
     vertical-align: middle;
   }
   .banner img.center {
@@ -65,25 +63,10 @@
     border-radius: 50%;
     margin: 0 20px;
   }
-  .banner-wrapper:hover .banner {
-    animation-play-state: paused;
-  }
-
-  @keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-
-  @media (max-width: 768px) {
-    .banner {
-      animation-duration: 10s;
-    }
-  }
 
   main {
     padding: 2rem;
   }
-
   .links {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -126,6 +109,11 @@
   }
   .social-links a:hover {
     text-decoration: underline;
+  }
+
+  /* --- Animation --- */
+  .banner-wrapper:hover .banner {
+    animation-play-state: paused;
   }
 </style>
 </head>
@@ -187,11 +175,32 @@
 </footer>
 
 <script>
-  // Duplicate images dynamically for seamless scroll
   const banner = document.getElementById('banner');
+  const bannerWrapper = document.querySelector('.banner-wrapper');
+
+  // Duplicate images for seamless scrolling
   banner.innerHTML += banner.innerHTML;
+
+  // Calculate total width of banner and animate
+  function animateBanner() {
+    const totalWidth = banner.scrollWidth / 2; // width of original images
+    banner.style.animation = `scroll ${totalWidth / 50}s linear infinite`; // adjust speed (px/sec)
+  }
+
+  window.addEventListener('load', animateBanner);
+  window.addEventListener('resize', animateBanner);
+
+  // Create keyframes dynamically
+  const styleSheet = document.createElement("style");
+  styleSheet.type = "text/css";
+  styleSheet.innerHTML = `
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+  `;
+  document.head.appendChild(styleSheet);
 </script>
 
 </body>
 </html>
-
