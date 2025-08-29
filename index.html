@@ -1,206 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Isabelle Rashkin</title>
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-<style>
-  body {
-    font-family: "Times New Roman", Times, serif;
-    margin: 0;
-    padding: 0;
-    background-color: #fafafa;
-    color: #333;
-    text-align: center;
-  }
+  <meta charset="UTF-8">
+  <link rel="icon" href="./favicon.ico" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Isabelle Rashkin</title>
+  <style>
+    body {
+      font-family: "Times New Roman", Times, serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fafafa;
+      color: #333;
+      text-align: center;
+    }
 
-  nav {
-    background-color: #000;
-    padding: 1rem;
-    text-align: center;
-  }
-  nav a {
-    color: #fff;
-    margin: 0.5rem;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  nav a:hover {
-    text-decoration: underline;
-  }
+    /* --- NAVBAR --- */
+    nav {
+      background-color: #000;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav a {
+      color: #fff;
+      margin: 0.5rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
 
-  header {
-    padding: 2rem;
-    background-color: #f8c8dc; 
-    color: #222;
-  }
-  header h1 {
-    margin: 0.5rem 0;
-  }
+    header {
+      padding: 2rem;
+      background-color: #f8c8dc; /* light pink */
+      color: #222;
+    }
+    header h1 {
+      margin: 0.5rem 0;
+    }
 
-  /* --- SCROLLING BANNER --- */
-  .banner-wrapper {
-    overflow: hidden;
-    width: 100%;
-    margin-top: 1rem;
-    position: relative;
-  }
-  .banner {
-    display: inline-block;
-    white-space: nowrap;
-  }
-  .banner img {
-    display: inline-block;
-    max-width: 100px;
-    height: auto;
-    margin: 0 10px;
-    border-radius: 12px;
-    vertical-align: middle;
-  }
-  .banner img.center {
-    max-width: 200px;
-    border-radius: 50%;
-    margin: 0 20px;
-  }
+    /* --- SCROLLING BANNER --- */
+    .banner-wrapper {
+      overflow: hidden;
+      width: 100%;
+      margin-top: 1rem;
+      position: relative;
+    }
+    .banner {
+      display: flex;
+      flex-wrap: nowrap;
+    }
+    .banner img {
+      flex-shrink: 0;
+      width: 150px; /* larger images */
+      height: auto;
+      margin: 0 10px;
+      border-radius: 12px;
+    }
+    .banner img.center {
+      width: 200px;
+      border-radius: 50%;
+    }
 
-  main {
-    padding: 2rem;
-  }
-  .links {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    max-width: 600px;
-    margin: 2rem auto;
-  }
-  .links a {
-    display: block;
-    padding: 0.75rem;
-    background: #444;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: background 0.3s;
-  }
-  .links a:hover {
-    background: #666;
-  }
+    main {
+      padding: 2rem;
+    }
 
-  footer {
-    background-color: #222;
-    color: #fff;
-    padding: 2rem 1rem;
-    margin-top: 2rem;
-  }
-  footer h3 {
-    margin-bottom: 1rem;
-  }
-  .social-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-  }
-  .social-links a {
-    color: #f8c8dc;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  .social-links a:hover {
-    text-decoration: underline;
-  }
+    .links {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      max-width: 600px;
+      margin: 2rem auto;
+    }
+    .links a {
+      display: block;
+      padding: 0.75rem;
+      background: #444;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+    .links a:hover {
+      background: #666;
+    }
 
-  /* --- Animation --- */
-  .banner-wrapper:hover .banner {
-    animation-play-state: paused;
-  }
-</style>
+    footer {
+      background-color: #222;
+      color: #fff;
+      padding: 2rem 1rem;
+      margin-top: 2rem;
+    }
+    footer h3 {
+      margin-bottom: 1rem;
+    }
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .social-links a {
+      color: #f8c8dc;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .social-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="art.html">Art</a>
-  <a href="music.html">Music</a>
-  <a href="theatre.html">Theatre</a>
-  <a href="resume.html">Resume</a>
-  <a href="gallery.html">Gallery</a>
-  <a href="something-silly.html">Something Silly</a>
-</nav>
+  <!-- NAV BAR -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="art.html">Art</a>
+    <a href="music.html">Music</a>
+    <a href="theatre.html">Theatre</a>
+    <a href="resume.html">Resume</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="something-silly.html">Something Silly</a>
+  </nav>
 
-<header>
-  <h1>Isabelle Rashkin</h1>
-  <p>Multi-disciplinary artist based in Brooklyn, NYC</p>
-  <p><small>Interlochen Arts Academy 2018 / University of Wisconsin-Milwaukee 2022</small></p>
+  <header>
+    <h1>Isabelle Rashkin</h1>
+    <p>Multi-disciplinary artist based in Brooklyn, NYC</p>
+    <p><small>Interlochen Arts Academy 2018 / University of Wisconsin-Milwaukee 2022</small></p>
 
-  <div class="banner-wrapper">
-    <div class="banner" id="banner">
-      <img src="01C2B009-C221-4F8E-AA7A-8BFAAFE619A8_1_102_a.jpeg" alt="nikon coolpix picture">
-      <img src="3C84EDC8-C563-4B48-8FA3-E8EAE2FE92E4_4_5005_c.jpeg" alt="san fran day">
-      <img src="674C3B6E-0C83-48E0-9B7B-E62ED565F5C0_1_105_c.jpeg" alt="senior capstone soon">
-      <img src="8DF014C2-8D93-4FFF-A6B5-4DDB2DCAFED5_1_105_c.jpeg" alt="center photo" class="center">
-      <img src="A635B61C-0535-4ACB-A2C2-153429E073FD_1_105_c.jpeg" alt="into the woods">
-      <img src="D3CA96B0-B5A2-4E33-803A-0609213F57E3_1_201_a.jpeg" alt="performance">
-      <img src="DSCF1306.JPG" alt="vanya">
+    <!-- Banner -->
+    <div class="banner-wrapper" id="bannerWrapper">
+      <div class="banner" id="banner1">
+        <img src="01C2B009-C221-4F8E-AA7A-8BFAAFE619A8_1_102_a.jpeg" alt="nikon coolpix picture">
+        <img src="3C84EDC8-C563-4B48-8FA3-E8EAE2FE92E4_4_5005_c.jpeg" alt="san fran day">
+        <img src="674C3B6E-0C83-48E0-9B7B-E62ED565F5C0_1_105_c.jpeg" alt="senior capstone soon">
+        <img src="8DF014C2-8D93-4FFF-A6B5-4DDB2DCAFED5_1_105_c.jpeg" alt="center photo" class="center">
+        <img src="A635B61C-0535-4ACB-A2C2-153429E073FD_1_105_c.jpeg" alt="into the woods">
+        <img src="D3CA96B0-B5A2-4E33-803A-0609213F57E3_1_201_a.jpeg" alt="performance">
+        <img src="DSCF1306.JPG" alt="vanya">
+      </div>
+      <div class="banner" id="banner2"></div>
     </div>
-  </div>
-</header>
+  </header>
 
-<main>
-  <h2>Explore My Work</h2>
-  <div class="links">
-    <a href="art.html">🎨 Art</a>
-    <a href="music.html">🎵 Music</a>
-    <a href="theatre.html">🎭 Miscellania Theatre Co.</a>
-    <a href="resume.html">📸 Headshot & Acting Resume</a>
-    <a href="gallery.html">🖼️ Gallery</a>
-    <a href="something-silly.html">🦄 Something Silly</a>
-  </div>
-</main>
+  <main>
+    <h2>Explore My Work</h2>
+    <div class="links">
+      <a href="art.html">🎨 Art</a>
+      <a href="music.html">🎵 Music</a>
+      <a href="theatre.html">🎭 Miscellania Theatre Co.</a>
+      <a href="resume.html">📸 Headshot & Acting Resume</a>
+      <a href="gallery.html">🖼️ Gallery</a>
+      <a href="something-silly.html">🦄 Something Silly</a>
+    </div>
+  </main>
 
-<footer>
-  <h3>Connect with me</h3>
-  <div class="social-links">
-    <a href="https://www.instagram.com/tamoottopro/" target="_blank">Instagram (Personal)</a>
-    <a href="https://www.instagram.com/Bee_original_music/" target="_blank">Instagram (Music)</a>
-    <a href="https://x.com/tamoottopro" target="_blank">X (Twitter)</a>
-    <a href="https://www.linkedin.com/in/isabelle-rashkin-82958228/" target="_blank">LinkedIn</a>
-    <a href="mailto:ivrashkin@gmail.com">Email</a>
-    <a href="https://open.spotify.com/artist/2TRjrme5uq3GM8qMF7y0QI" target="_blank">Spotify</a>
-    <a href="https://www.youtube.com/channel/UCa9acPRSIGUmjgn54hz17eA" target="_blank">YouTube Music</a>
-    <a href="https://music.apple.com/ca/artist/isabelle-bee-rashkin/1773658949" target="_blank">Apple Music</a>
-    <a href="https://www.backstage.com/u/isabelle-rashkin/" target="_blank">Backstage</a>
-  </div>
-</footer>
+  <footer>
+    <h3>Connect with me</h3>
+    <div class="social-links">
+      <a href="https://www.instagram.com/tamoottopro/" target="_blank">Instagram (Personal)</a>
+      <a href="https://www.instagram.com/Bee_original_music/" target="_blank">Instagram (Music)</a>
+      <a href="https://x.com/tamoottopro" target="_blank">X (Twitter)</a>
+      <a href="https://www.linkedin.com/in/isabelle-rashkin-82958228/" target="_blank">LinkedIn</a>
+      <a href="mailto:ivrashkin@gmail.com">Email</a>
+      <a href="https://open.spotify.com/artist/2TRjrme5uq3GM8qMF7y0QI" target="_blank">Spotify</a>
+      <a href="https://www.youtube.com/channel/UCa9acPRSIGUmjgn54hz17eA" target="_blank">YouTube Music</a>
+      <a href="https://music.apple.com/ca/artist/isabelle-bee-rashkin/1773658949" target="_blank">Apple Music</a>
+      <a href="https://www.backstage.com/u/isabelle-rashkin/" target="_blank">Backstage</a>
+    </div>
+  </footer>
 
-<script>
-  const banner = document.getElementById('banner');
-  const bannerWrapper = document.querySelector('.banner-wrapper');
+  <script>
+    // Duplicate banner images for seamless scroll
+    const banner1 = document.getElementById('banner1');
+    const banner2 = document.getElementById('banner2');
+    banner2.innerHTML = banner1.innerHTML;
 
-  // Duplicate images for seamless scrolling
-  banner.innerHTML += banner.innerHTML;
+    const wrapper = document.getElementById('bannerWrapper');
+    let scrollPos = 0;
 
-  // Calculate total width of banner and animate
-  function animateBanner() {
-    const totalWidth = banner.scrollWidth / 2; // width of original images
-    banner.style.animation = `scroll ${totalWidth / 50}s linear infinite`; // adjust speed (px/sec)
-  }
-
-  window.addEventListener('load', animateBanner);
-  window.addEventListener('resize', animateBanner);
-
-  // Create keyframes dynamically
-  const styleSheet = document.createElement("style");
-  styleSheet.type = "text/css";
-  styleSheet.innerHTML = `
-    @keyframes scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+    function scrollBanner() {
+      scrollPos++;
+      if (scrollPos >= banner1.scrollWidth) scrollPos = 0;
+      wrapper.scrollLeft = scrollPos;
+      requestAnimationFrame(scrollBanner);
     }
-  `;
-  document.head.appendChild(styleSheet);
-</script>
+
+    wrapper.addEventListener('mouseenter', () => cancelAnimationFrame(scrollBanner));
+    wrapper.addEventListener('mouseleave', scrollBanner);
+
+    scrollBanner();
+  </script>
 
 </body>
 </html>
+
