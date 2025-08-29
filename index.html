@@ -14,7 +14,7 @@
       text-align: center;
     }
 
-    /* --- NAVBAR --- */
+    /* --- NAV BAR --- */
     nav {
       background-color: #000;
       padding: 1rem;
@@ -25,16 +25,13 @@
       margin: 0.5rem;
       text-decoration: none;
       font-weight: bold;
-      display: inline-block;
-      width: 100px; /* optional: make nav items uniform */
     }
     nav a:hover {
       text-decoration: underline;
     }
 
-    /* --- HEADER & SCROLLING BANNER --- */
     header {
-      padding: 2rem 1rem;
+      padding: 2rem;
       background-color: #f8c8dc; /* light pink */
       color: #222;
     }
@@ -42,38 +39,38 @@
       margin: 0.5rem 0;
     }
 
+    /* --- SCROLLING BANNER --- */
     .banner-wrapper {
       overflow: hidden;
-      position: relative;
       width: 100%;
       margin-top: 1rem;
-      height: 120px; /* adjust for image size */
+      position: relative;
     }
-
-    .banner-track {
+    .banner {
       display: flex;
-      width: max-content;
-      animation: scroll-left 30s linear infinite;
+      gap: 2rem;
+      animation: scroll 20s linear infinite;
     }
-
-    .banner-track:hover {
+    .banner img {
+      max-width: 100px;
+      border-radius: 12px;
+    }
+    .banner img.center {
+      max-width: 200px;
+      border-radius: 50%;
+    }
+    .banner-wrapper:hover .banner {
       animation-play-state: paused; /* pause on hover */
     }
 
-    .banner-track img {
-      height: 100px;
-      margin: 0 10px;
-      border-radius: 12px;
-    }
-
-    @keyframes scroll-left {
+    @keyframes scroll {
       0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); } /* adjust if needed */
+      100% { transform: translateX(-50%); }
     }
 
     @media (max-width: 768px) {
-      .banner-track {
-        animation: scroll-left 15s linear infinite; /* faster on mobile */
+      .banner {
+        animation-duration: 10s; /* faster scroll on mobile */
       }
     }
 
@@ -85,7 +82,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
-      max-width: 500px;
+      max-width: 600px;
       margin: 2rem auto;
     }
     .links a {
@@ -127,7 +124,7 @@
   </style>
 </head>
 <body>
-  <!-- NAV BAR -->
+
   <nav>
     <a href="index.html">Home</a>
     <a href="art.html">Art</a>
@@ -138,28 +135,18 @@
     <a href="something-silly.html">Something Silly</a>
   </nav>
 
-  <!-- HEADER -->
   <header>
     <h1>Isabelle Rashkin</h1>
     <p>Multi-disciplinary artist based in Brooklyn, NYC</p>
     <p><small>Interlochen Arts Academy 2018 / University of Wisconsin-Milwaukee 2022</small></p>
 
-    <!-- SCROLLING BANNER -->
     <div class="banner-wrapper">
-      <div class="banner-track">
-        <!-- Repeat your images for seamless effect -->
+      <div class="banner" id="banner">
+        <!-- Drop your images here once -->
         <img src="01C2B009-C221-4F8E-AA7A-8BFAAFE619A8_1_102_a.jpeg" alt="nikon coolpix picture">
         <img src="3C84EDC8-C563-4B48-8FA3-E8EAE2FE92E4_4_5005_c.jpeg" alt="san fran day">
         <img src="674C3B6E-0C83-48E0-9B7B-E62ED565F5C0_1_105_c.jpeg" alt="senior capstone soon">
-        <img src="8DF014C2-8D93-4FFF-A6B5-4DDB2DCAFED5_1_105_c.jpeg" alt="Photo of Isabelle Rashkin" class="center">
-        <img src="A635B61C-0535-4ACB-A2C2-153429E073FD_1_105_c.jpeg" alt="into the woods">
-        <img src="D3CA96B0-B5A2-4E33-803A-0609213F57E3_1_201_a.jpeg" alt="performance">
-        <img src="DSCF1306.JPG" alt="vanya">
-        <!-- repeat images again for seamless scrolling -->
-        <img src="01C2B009-C221-4F8E-AA7A-8BFAAFE619A8_1_102_a.jpeg" alt="nikon coolpix picture">
-        <img src="3C84EDC8-C563-4B48-8FA3-E8EAE2FE92E4_4_5005_c.jpeg" alt="san fran day">
-        <img src="674C3B6E-0C83-48E0-9B7B-E62ED565F5C0_1_105_c.jpeg" alt="senior capstone soon">
-        <img src="8DF014C2-8D93-4FFF-A6B5-4DDB2DCAFED5_1_105_c.jpeg" alt="Photo of Isabelle Rashkin" class="center">
+        <img src="8DF014C2-8D93-4FFF-A6B5-4DDB2DCAFED5_1_105_c.jpeg" alt="center photo" class="center">
         <img src="A635B61C-0535-4ACB-A2C2-153429E073FD_1_105_c.jpeg" alt="into the woods">
         <img src="D3CA96B0-B5A2-4E33-803A-0609213F57E3_1_201_a.jpeg" alt="performance">
         <img src="DSCF1306.JPG" alt="vanya">
@@ -193,6 +180,12 @@
       <a href="https://www.backstage.com/u/isabelle-rashkin/" target="_blank">Backstage</a>
     </div>
   </footer>
+
+  <script>
+    // Duplicate images dynamically for seamless scroll
+    const banner = document.getElementById('banner');
+    banner.innerHTML += banner.innerHTML; // duplicate all images
+  </script>
+
 </body>
 </html>
-
