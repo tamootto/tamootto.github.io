@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Isabelle Rashkin</title>
   <style>
@@ -46,20 +45,19 @@
 
     .banner-wrapper {
       overflow: hidden;
-      position: relative;
       width: 100%;
       margin-top: 1rem;
-      height: 120px; /* adjust for image size */
+      height: 120px;
     }
 
     .banner-track {
       display: flex;
       width: max-content;
-      animation: scroll-left 30s linear infinite;
+      animation: scroll 20s linear infinite;
     }
 
     .banner-track:hover {
-      animation-play-state: paused; /* pause on hover */
+      animation-play-state: paused;
     }
 
     .banner-track img {
@@ -73,14 +71,14 @@
       border-radius: 50%;
     }
 
-    @keyframes scroll-left {
+    @keyframes scroll {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
 
     @media (max-width: 768px) {
       .banner-track {
-        animation: scroll-left 15s linear infinite; /* faster on mobile */
+        animation: scroll 10s linear infinite;
       }
     }
 
@@ -153,16 +151,7 @@
 
     <!-- SCROLLING BANNER -->
     <div class="banner-wrapper">
-      <div class="banner-track">
-        <img src="01C2B009-C221-4F8E-AA7A-8BFAAFE619A8_1_102_a.jpeg" alt="nikon coolpix picture">
-        <img src="3C84EDC8-C563-4B48-8FA3-E8EAE2FE92E4_4_5005_c.jpeg" alt="san fran day">
-        <img src="674C3B6E-0C83-48E0-9B7B-E62ED565F5C0_1_105_c.jpeg" alt="senior capstone soon">
-        <img src="8DF014C2-8D93-4FFF-A6B5-4DDB2DCAFED5_1_105_c.jpeg" alt="Photo of Isabelle Rashkin" class="center">
-        <img src="A635B61C-0535-4ACB-A2C2-153429E073FD_1_105_c.jpeg" alt="into the woods">
-        <img src="D3CA96B0-B5A2-4E33-803A-0609213F57E3_1_201_a.jpeg" alt="performance">
-        <img src="DSCF1306.JPG" alt="vanya">
-
-        <!-- Repeat images for seamless scroll -->
+      <div class="banner-track" id="banner-track">
         <img src="01C2B009-C221-4F8E-AA7A-8BFAAFE619A8_1_102_a.jpeg" alt="nikon coolpix picture">
         <img src="3C84EDC8-C563-4B48-8FA3-E8EAE2FE92E4_4_5005_c.jpeg" alt="san fran day">
         <img src="674C3B6E-0C83-48E0-9B7B-E62ED565F5C0_1_105_c.jpeg" alt="senior capstone soon">
@@ -200,5 +189,11 @@
       <a href="https://www.backstage.com/u/isabelle-rashkin/" target="_blank">Backstage</a>
     </div>
   </footer>
+
+  <script>
+    const bannerTrack = document.getElementById('banner-track');
+    bannerTrack.innerHTML += bannerTrack.innerHTML; // duplicate images for seamless scroll
+  </script>
 </body>
 </html>
+
