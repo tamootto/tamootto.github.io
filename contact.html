@@ -2,20 +2,50 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Isabelle Rashkin</title>
+  <title>Contact Me - Isabelle Rashkin</title>
   <style>
     body {
       font-family: "Times New Roman", Times, serif;
       margin: 0;
       padding: 0;
-      background-color: #fafafa;
+      background: linear-gradient(135deg, #ffe6f2, #e6f7ff, #fff0e6);
       color: #333;
       text-align: center;
+      position: relative;
+      overflow-x: hidden;
     }
 
-    /* --- NAVBAR --- */
+    /* Floating pastel hearts */
+    .heart {
+      position: absolute;
+      background: pink;
+      transform: rotate(45deg);
+      animation: float linear infinite;
+      opacity: 0.6;
+    }
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      background: pink;
+      border-radius: 50%;
+    }
+    .heart::before {
+      top: -50%;
+      left: 0;
+    }
+    .heart::after {
+      left: -50%;
+      top: 0;
+    }
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(45deg); opacity: 0.6; }
+      100% { transform: translateY(-10vh) rotate(45deg); opacity: 0; }
+    }
+
+    /* Navbar */
     nav {
       background-color: #000;
       padding: 1rem;
@@ -33,76 +63,65 @@
       text-decoration: underline;
     }
 
-    /* --- HEADER --- */
-    header {
-      padding: 2rem 1rem;
-      background-color: #f8c8dc;
-      color: #222;
-    }
-    header h1 {
-      margin: 0.5rem 0;
-    }
-
-    main {
+    /* Contact form section */
+    .contact-container {
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 2rem;
-      padding: 4rem 1rem;
+      padding: 4rem 2rem;
       position: relative;
-    }
-
-    form {
-      background-color: #fff;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      width: 300px;
       z-index: 1;
     }
 
-    input, textarea {
+    .contact-form {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+    .contact-form h2 {
+      margin-bottom: 1rem;
+    }
+    .contact-form input,
+    .contact-form textarea {
       width: 100%;
       padding: 0.75rem;
-      border-radius: 6px;
+      margin-bottom: 1rem;
       border: 1px solid #ccc;
-      font-family: "Times New Roman", Times, serif;
+      border-radius: 8px;
+      font-size: 1rem;
     }
-
-    button {
-      padding: 0.75rem;
-      border-radius: 6px;
+    .contact-form button {
+      padding: 0.75rem 1.5rem;
+      background: #f8c8dc;
       border: none;
-      background-color: #444;
-      color: #fff;
-      font-weight: bold;
+      border-radius: 8px;
       cursor: pointer;
+      font-weight: bold;
       transition: background 0.3s;
     }
-    button:hover {
-      background-color: #666;
+    .contact-form button:hover {
+      background: #f5a6c6;
     }
 
-    /* --- DANCING / TILTING IMAGES --- */
-    .dancer {
-      width: 80px;
-      animation: tilt 2s ease-in-out infinite alternate;
-      transform-origin: center bottom;
+    /* Tilting images */
+    .tilt-img {
+      width: 150px;
+      animation: tilt 3s ease-in-out infinite;
     }
-    .left-dancer {
+    .tilt-img.left {
       animation-delay: 0s;
     }
-    .right-dancer {
-      animation-delay: 1s;
+    .tilt-img.right {
+      animation-delay: 1.5s;
     }
-
     @keyframes tilt {
-      0% { transform: rotate(-15deg); }
-      50% { transform: rotate(15deg); }
-      100% { transform: rotate(-15deg); }
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-10deg); }
+      75% { transform: rotate(10deg); }
     }
 
     footer {
@@ -128,20 +147,22 @@
     .social-links a:hover {
       text-decoration: underline;
     }
-
-    /* --- Responsive --- */
-    @media (max-width: 768px) {
-      main {
-        flex-direction: column;
-      }
-      .dancer {
-        width: 60px;
-      }
-    }
   </style>
 </head>
 <body>
-  <!-- NAVBAR -->
+  <!-- Floating pastel hearts -->
+  <div class="heart" style="left: 10%; width: 20px; height: 20px; animation-duration: 12s; animation-delay: 0s;"></div>
+  <div class="heart" style="left: 25%; width: 15px; height: 15px; animation-duration: 10s; animation-delay: 2s;"></div>
+  <div class="heart" style="left: 40%; width: 25px; height: 25px; animation-duration: 14s; animation-delay: 4s;"></div>
+  <div class="heart" style="left: 55%; width: 18px; height: 18px; animation-duration: 9s; animation-delay: 1s;"></div>
+  <div class="heart" style="left: 70%; width: 30px; height: 30px; animation-duration: 16s; animation-delay: 3s;"></div>
+  <div class="heart" style="left: 85%; width: 22px; height: 22px; animation-duration: 11s; animation-delay: 5s;"></div>
+  <div class="heart" style="left: 15%; width: 12px; height: 12px; animation-duration: 13s; animation-delay: 6s;"></div>
+  <div class="heart" style="left: 35%; width: 28px; height: 28px; animation-duration: 15s; animation-delay: 7s;"></div>
+  <div class="heart" style="left: 60%; width: 16px; height: 16px; animation-duration: 10s; animation-delay: 8s;"></div>
+  <div class="heart" style="left: 80%; width: 24px; height: 24px; animation-duration: 12s; animation-delay: 9s;"></div>
+
+  <!-- NAV -->
   <nav>
     <a href="index.html">Home</a>
     <a href="art.html">Art</a>
@@ -150,28 +171,27 @@
     <a href="resume.html">Resume</a>
     <a href="gallery.html">Gallery</a>
     <a href="something-silly.html">Something Silly</a>
+    <a href="contact.html">Contact</a>
   </nav>
 
-  <!-- HEADER -->
-  <header>
-    <h1>Contact Isabelle Rashkin</h1>
-    <p>I'd love to hear from you!</p>
-  </header>
+  <!-- Contact Section -->
+  <div class="contact-container">
+    <img src="transparent dog.png" alt="Dog" class="tilt-img left">
+    
+    <div class="contact-form">
+      <h2>Contact Me</h2>
+      <form action="mailto:ivrashkin@gmail.com" method="post" enctype="text/plain">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </div>
 
-  <!-- MAIN CONTACT FORM WITH DANCING IMAGES -->
-  <main>
-    <img src="transparent dog.jpg" alt="Dog" class="dancer left-dancer">
+    <img src="flora pre transparent.png" alt="Flora" class="tilt-img right">
+  </div>
 
-    <form action="mailto:ivrashkin@gmail.com" method="POST" enctype="text/plain">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send</button>
-    </form>
-
-    <img src="flora pre transparent.avif" alt="Flora" class="dancer right-dancer">
-  </main>
-
+  <!-- Footer -->
   <footer>
     <h3>Connect with me</h3>
     <div class="social-links">
@@ -188,3 +208,4 @@
   </footer>
 </body>
 </html>
+
