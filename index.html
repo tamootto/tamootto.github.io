@@ -7,7 +7,6 @@
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <style>
-    /* --- BODY --- */
     body {
       font-family: "Times New Roman", Times, serif;
       margin: 0;
@@ -15,23 +14,20 @@
       background: linear-gradient(135deg, #ffe6f2, #e6f7ff, #fff0e6);
       color: #333;
       text-align: center;
-      overflow-x: hidden;
     }
 
     /* --- NAVBAR --- */
     nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
       background-color: #000;
       padding: 1rem;
-      text-align: center;
-      z-index: 1000;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
     }
     nav a {
       color: #fff;
-      margin: 0.5rem;
+      margin: 0 0.5rem;
       text-decoration: none;
       font-weight: bold;
       display: inline-block;
@@ -45,86 +41,64 @@
     header {
       background-color: #f8c8dc;
       padding: 2rem 1rem;
-      margin-top: 80px; /* enough space for fixed navbar */
-      position: relative;
-      z-index: 10;
+      margin-top: 60px; /* space for fixed navbar */
     }
     header h1 {
       margin: 0.5rem 0;
-      font-size: 2.5rem;
     }
     header p {
-      margin: 0.5rem 0;
-    }
-    header small {
-      display: block;
-      margin-top: 0.5rem;
+      margin: 0.25rem 0;
     }
 
     /* --- BUTTON GRID --- */
     .button-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      max-width: 1000px;
-      margin: 3rem auto;
-      justify-items: center;
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      position: relative;
+      margin: 3rem 1rem;
+      gap: 2rem;
     }
 
-    /* Button container for positioning the center button */
-    .button-grid .center-btn {
-      grid-column: 2;
-      grid-row: 2;
+    .button-row {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
     }
 
-    /* Individual button styles */
-    .image-button {
+    .button-link {
       position: relative;
-      width: 150px;
-      height: 150px;
-      border: none;
-      background: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: #333;
+      transition: transform 0.3s;
     }
-    .image-button img {
-      width: 100%;
-      height: 100%;
+
+    .button-link img {
+      width: 120px;
+      height: 120px;
       object-fit: contain;
-      transition: all 0.3s ease;
+      border-radius: 12px;
+      transition: box-shadow 0.3s, transform 0.3s;
     }
-    .image-button:hover img {
-      filter: drop-shadow(0 0 20px #f8c8dc);
-      transform: scale(1.05);
+
+    .button-link:hover img {
+      box-shadow: 0 0 25px rgba(255, 182, 193, 0.8);
+      transform: scale(1.1);
     }
-    .image-button span {
-      position: absolute;
-      bottom: -25px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 1rem;
+
+    .button-link span {
+      margin-top: 0.5rem;
       font-weight: bold;
     }
 
-    /* --- MOBILE RESPONSIVE --- */
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2rem;
-      }
-      .button-grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        gap: 2rem;
-      }
-      .button-grid .center-btn {
-        grid-column: 1;
-        grid-row: auto;
-      }
+    /* Contact button larger */
+    .contact-button img {
+      width: 160px;
+      height: 160px;
     }
 
-    /* --- FOOTER --- */
     footer {
       background-color: #222;
       color: #fff;
@@ -148,6 +122,25 @@
     .social-links a:hover {
       text-decoration: underline;
     }
+
+    /* --- MOBILE FIXES --- */
+    @media (max-width: 768px) {
+      header {
+        margin-top: 80px; /* extra space so header isn't hidden by navbar */
+      }
+      .button-row {
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      .button-link img {
+        width: 100px;
+        height: 100px;
+      }
+      .contact-button img {
+        width: 140px;
+        height: 140px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -168,47 +161,53 @@
   <header>
     <h1>Isabelle Rashkin</h1>
     <p>Multi-disciplinary artist based in Brooklyn, NYC</p>
-    <small>Interlochen Arts Academy 2018 / University of Wisconsin-Milwaukee 2022</small>
+    <p><small>Interlochen Arts Academy 2018 / University of Wisconsin-Milwaukee 2022</small></p>
   </header>
 
   <!-- BUTTON GRID -->
-  <main>
-    <div class="button-grid">
-      <!-- Top Row -->
-      <button class="image-button">
+  <div class="button-grid">
+
+    <!-- Top row -->
+    <div class="button-row">
+      <a href="art.html" class="button-link">
         <img src="transparent button 2 .png" alt="Art">
         <span>Art</span>
-      </button>
-      <button class="image-button">
-        <img src="transparent button 4.png" alt="Headshot and Resume">
+      </a>
+      <a href="resume.html" class="button-link">
+        <img src="transparent button 4.png" alt="Headshot & Resume">
         <span>Headshot & Resume</span>
-      </button>
-      <button class="image-button">
+      </a>
+      <a href="theatre.html" class="button-link">
         <img src="theatre company button.png" alt="Miscellania Theatre Co">
         <span>Miscellania Theatre Co</span>
-      </button>
+      </a>
+    </div>
 
-      <!-- Center Button -->
-      <button class="image-button center-btn">
+    <!-- Middle row (contact center) -->
+    <div class="button-row">
+      <a href="contact.html" class="button-link contact-button">
         <img src="1669DA04-490D-4E7B-8905-9CE4E095EACF_1_105_c.png" alt="Contact Me">
         <span>Contact Me</span>
-      </button>
+      </a>
+    </div>
 
-      <!-- Bottom Row -->
-      <button class="image-button">
+    <!-- Bottom row -->
+    <div class="button-row">
+      <a href="gallery.html" class="button-link">
         <img src="transparent button 3.png" alt="Media Gallery">
         <span>Media Gallery</span>
-      </button>
-      <button class="image-button">
+      </a>
+      <a href="music.html" class="button-link">
         <img src="music button.png" alt="Original Music">
         <span>Original Music</span>
-      </button>
-      <button class="image-button">
+      </a>
+      <a href="something-silly.html" class="button-link">
         <img src="transparent button 5.png" alt="Something Silly">
         <span>Something Silly</span>
-      </button>
+      </a>
     </div>
-  </main>
+
+  </div>
 
   <!-- FOOTER -->
   <footer>
