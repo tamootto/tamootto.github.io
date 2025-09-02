@@ -3,11 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gallery</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <title>Gallery – Isabelle Rashkin</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <style>
-    /* Video gallery grid */
+    body {
+      font-family: "Times New Roman", Times, serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fafafa;
+      color: #333;
+      text-align: center;
+    }
+
+    /* NAVBAR */
+    nav {
+      background-color: #000;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav a {
+      color: #fff;
+      margin: 0.5rem;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      width: 100px;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* HEADER */
+    header {
+      padding: 2rem 1rem;
+      background-color: #f8c8dc;
+      color: #222;
+    }
+    header h1 {
+      margin: 0.5rem 0;
+    }
+
+    main {
+      padding: 2rem;
+    }
+
+    /* --- VIDEO GALLERY --- */
     .video-gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -19,7 +60,7 @@
     }
     .video-container {
       position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      padding-bottom: 56.25%; /* 16:9 */
       height: 0;
       overflow: hidden;
       border-radius: 12px;
@@ -40,7 +81,7 @@
       color: #444;
     }
 
-    /* Photo gallery grid */
+    /* --- PHOTO GALLERY --- */
     .photo-gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -60,128 +101,91 @@
       font-size: 0.9rem;
       color: #333;
     }
+
+    footer {
+      background-color: #222;
+      color: #fff;
+      padding: 2rem 1rem;
+      margin-top: 2rem;
+    }
+    footer h3 {
+      margin-bottom: 1rem;
+    }
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .social-links a {
+      color: #f8c8dc;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .social-links a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
-  <!-- Navigation -->
-  <header class="site-header">
-    <nav class="navbar">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="art.html">Art</a></li>
-        <li><a href="gallery.html" class="active">Gallery</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
+  <!-- NAVBAR -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="art.html">Art</a>
+    <a href="music.html">Music</a>
+    <a href="theatre.html">Theatre</a>
+    <a href="resume.html">Resume</a>
+    <a href="gallery.html" class="active">Gallery</a>
+    <a href="contact.html">Contact</a>
+    <a href="something-silly.html">Something Silly</a>
+  </nav>
+
+  <!-- HEADER -->
+  <header>
+    <h1>Gallery</h1>
+    <p>A collection of performances, self-tapes, and photos</p>
   </header>
 
   <main>
-    <h1>Gallery</h1>
-
     <!-- Performance Videos -->
     <h2>Performance Videos</h2>
     <div class="video-gallery">
-      <div class="video-item">
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/QD1TriHgZZU" allowfullscreen></iframe>
-        </div>
-        <p class="video-caption">"Slow Going Dog" performed with Nick Boni at Pandos Crepes, April 2025</p>
-      </div>
-      <div class="video-item">
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/4pNHgbILaog" allowfullscreen></iframe>
-        </div>
-        <p class="video-caption">"Make Believe" by Nick Boni and "Changes" by Bee at Brooklyn Music Kitchen, April 2025</p>
-      </div>
-      <div class="video-item">
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/Xmu7RWFhEM0" allowfullscreen></iframe>
-        </div>
-        <p class="video-caption">"Sixteen" performed by Bee with Nick Boni & Mona Turks at "Faye & Friends", March 2024</p>
-      </div>
-      <div class="video-item">
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/iDCLLH_n7NU" allowfullscreen></iframe>
-        </div>
-        <p class="video-caption">"3 Parts" and "Simply Reflecting" at NYC's "The Living Room", September 2023</p>
-      </div>
+      <!-- keep your video items here -->
     </div>
 
     <!-- Self-Tape Videos -->
     <h2>Self-Tape Videos</h2>
     <div class="video-gallery">
-      <div class="video-item">
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/2igZ1nwDT5E" allowfullscreen></iframe>
-        </div>
-        <p class="video-caption">"I Think I May Want To Remember Today" – Starting Here, Starting Now</p>
-      </div>
-      <div class="video-item">
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/dnfIDSq-P7Y" allowfullscreen></iframe>
-        </div>
-        <p class="video-caption">"Everybody Says Don’t" – Anyone Can Whistle</p>
-      </div>
-      <div class="video-item">
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/mUdM0vbWbkA" allowfullscreen></iframe>
-        </div>
-        <p class="video-caption">"The Gun Song" – Assassins</p>
-      </div>
-      <div class="video-item">
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/dhUmyBJH44g" allowfullscreen></iframe>
-        </div>
-        <p class="video-caption">"Paper Bag" – Fiona Apple</p>
-      </div>
-      <div class="video-item">
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/iGxKppGxb4Q" allowfullscreen></iframe>
-        </div>
-        <p class="video-caption">Maggie – Cat on a Hot Tin Roof</p>
-      </div>
-      <div class="video-item">
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/wFiIxY0czJE" allowfullscreen></iframe>
-        </div>
-        <p class="video-caption">Julia – Two Gentlemen of Verona</p>
-      </div>
+      <!-- keep your self-tape items here -->
     </div>
 
     <!-- Professional Photos -->
     <h2>Professional Photos</h2>
     <div class="photo-gallery">
-      <div class="photo-item">
-        <img src="A635B61C-0535-4ACB-A2C2-153429E073FD_1_105_c.jpeg" alt="Into The Woods Witch">
-        <p class="photo-caption">"The Witch" – Into The Woods, UWM 2022</p>
-      </div>
-      <div class="photo-item">
-        <img src="674C3B6E-0C83-48E0-9B7B-E62ED565F5C0_1_105_c.jpeg" alt="Soon UWM Capstone">
-        <p class="photo-caption">"Soon" – UWM Senior Capstone, 2022</p>
-      </div>
-      <div class="photo-item">
-        <img src="biggerpicforbeewithmic.png" alt="Brooklyn Jam">
-        <p class="photo-caption">Bee performing at one of the many jams in Brooklyn/Crown Heights</p>
-      </div>
-      <div class="photo-item">
-        <img src="DSCF1306.JPG" alt="Vanya performance">
-        <p class="photo-caption">Bee Rashkin with M-Jay He in "Vanya!" – NY Theatre Festival, 2024</p>
-      </div>
-      <div class="photo-item">
-        <img src="D3CA96B0-B5A2-4E33-803A-0609213F57E3_1_201_a.jpeg" alt="Pandos 1 Year Party">
-        <p class="photo-caption">Nick Boni and Bee performing at Pandos 1 Year Birthday Party, 2025</p>
-      </div>
+      <!-- your pro photos -->
     </div>
 
-    <!-- Candids / Casual Photos -->
+    <!-- Candids -->
     <h2>Candids / Casual Photos</h2>
     <div class="photo-gallery">
-      <div class="photo-item"><img src="01C2B009-C221-4F8E-AA7A-8BFAAFE619A8_1_102_a.jpeg" alt="Candid 1"></div>
-      <div class="photo-item"><img src="3C84EDC8-C563-4B48-8FA3-E8EAE2FE92E4_4_5005_c.jpeg" alt="Candid 2"></div>
-      <div class="photo-item"><img src="8DF014C2-8D93-4FFF-A6B5-4DDB2DCAFED5_1_105_c.jpeg" alt="Candid 3"></div>
-      <div class="photo-item"><img src="bee singing at salon.png" alt="Candid 4"></div>
+      <!-- candid photos -->
     </div>
   </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <h3>Connect with me</h3>
+    <div class="social-links">
+      <a href="https://www.instagram.com/tamoottopro/" target="_blank">Instagram (Personal)</a>
+      <a href="https://www.instagram.com/Bee_original_music/" target="_blank">Instagram (Music)</a>
+      <a href="https://x.com/tamoottopro" target="_blank">X (Twitter)</a>
+      <a href="https://www.linkedin.com/in/isabelle-rashkin-82958228/" target="_blank">LinkedIn</a>
+      <a href="mailto:ivrashkin@gmail.com">Email</a>
+      <a href="https://open.spotify.com/artist/2TRjrme5uq3GM8qMF7y0QI" target="_blank">Spotify</a>
+      <a href="https://www.youtube.com/channel/UCa9acPRSIGUmjgn54hz17eA" target="_blank">YouTube Music</a>
+      <a href="https://music.apple.com/ca/artist/isabelle-bee-rashkin/1773658949" target="_blank">Apple Music</a>
+      <a href="https://www.backstage.com/u/isabelle-rashkin/" target="_blank">Backstage</a>
+    </div>
+  </footer>
 </body>
 </html>
-
