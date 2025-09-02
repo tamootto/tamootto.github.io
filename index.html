@@ -5,25 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Isabelle (Bee) Rashkin</title>
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <style>
     body {
       font-family: "Times New Roman", Times, serif;
       margin: 0;
       padding: 0;
       background: linear-gradient(135deg, #ffe6f2, #e6f7ff, #fff0e6);
-      color: #333;
       text-align: center;
+      color: #333;
     }
 
-    /* NAVBAR */
+    /* --- NAVBAR --- */
     nav {
+      background-color: #000;
+      padding: 1rem;
       position: fixed;
       top: 0;
       width: 100%;
-      background-color: #000;
-      padding: 1rem;
-      text-align: center;
-      z-index: 100;
+      z-index: 10;
     }
     nav a {
       color: #fff;
@@ -37,57 +37,54 @@
       text-decoration: underline;
     }
 
-    /* HEADER */
+    /* --- HEADER --- */
     header {
       background-color: #f8c8dc;
-      padding: 3rem 1rem 2rem;
-      margin-top: 3.5rem; /* space for navbar */
+      padding: 6rem 1rem 3rem 1rem; /* top padding accounts for fixed nav */
+      margin-bottom: 2rem;
     }
     header h1 {
       margin: 0.5rem 0;
       font-size: 2.5rem;
     }
     header p {
-      margin: 0.5rem 0;
-    }
-    header small {
-      display: block;
-      margin-top: 0.5rem;
+      margin: 0.25rem 0;
     }
 
-    /* BUTTON GRID */
+    /* --- BUTTON GRID --- */
     .button-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 150px);
-      gap: 2rem;
-      justify-content: center;
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      margin: 3rem auto;
+      justify-content: center;
+      gap: 2rem;
+      max-width: 1000px;
+      margin: auto;
     }
 
-    .center-button {
-      grid-column: 2;
-      width: 150px;
-      height: 150px;
-      background: url('1669DA04-490D-4E7B-8905-9CE4E095EACF_1_105_c.png') no-repeat center/cover;
-      border-radius: 16px;
-      transition: box-shadow 0.3s;
-    }
-    .center-button:hover {
-      box-shadow: 0 0 20px #f8c8dc;
+    .button-row {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
     }
 
     .grid-button {
-      width: 120px;
-      height: 120px;
-      background-size: cover;
-      background-position: center;
-      border-radius: 16px;
-      transition: box-shadow 0.3s;
-      margin: 0 auto;
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
-    .grid-button:hover {
-      box-shadow: 0 0 20px #f8c8dc;
+
+    .grid-button img {
+      width: 150px;
+      height: 150px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .grid-button:hover img {
+      box-shadow: 0 0 20px 5px #f8c8dc;
+      transform: scale(1.05);
     }
 
     .button-caption {
@@ -95,11 +92,15 @@
       font-weight: bold;
     }
 
-    /* Footer */
+    /* --- FOOTER --- */
     footer {
       background-color: #222;
       color: #fff;
       padding: 2rem 1rem;
+      margin-top: 3rem;
+    }
+    footer h3 {
+      margin-bottom: 1rem;
     }
     .social-links {
       display: flex;
@@ -116,25 +117,26 @@
       text-decoration: underline;
     }
 
-    /* Mobile adjustments */
+    /* --- Responsive --- */
     @media (max-width: 768px) {
-      .button-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+      .button-row {
+        flex-wrap: wrap;
+        gap: 1rem;
       }
-      .center-button {
-        grid-column: 1;
+      .grid-button img {
+        width: 120px;
+        height: 120px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
+  <!-- NAVIGATION -->
   <nav>
     <a href="index.html">Home</a>
-    <a href="art.html">Art</a>
-    <a href="music.html">Music</a>
+    <a href="art.html">Original Visual Art</a>
+    <a href="music.html">Original Music</a>
     <a href="theatre.html">Miscellania Theatre Co</a>
     <a href="resume.html">Headshot & Resume</a>
     <a href="gallery.html">Media Gallery</a>
@@ -146,46 +148,64 @@
   <header>
     <h1>Isabelle Rashkin</h1>
     <p>Multi-disciplinary artist based in Brooklyn, NYC</p>
-    <small>Interlochen Arts Academy 2018 / University of Wisconsin-Milwaukee 2022</small>
+    <p><small>Interlochen Arts Academy 2018 / University of Wisconsin-Milwaukee 2022</small></p>
   </header>
 
   <!-- BUTTON GRID -->
   <div class="button-grid">
-
-    <!-- Top Row -->
-    <div>
-      <a href="art.html" class="grid-button" style="background-image:url('transparent button 2 .png');"></a>
-      <div class="button-caption">Art</div>
-    </div>
-    <div>
-      <a href="music.html" class="grid-button" style="background-image:url('music button.png');"></a>
-      <div class="button-caption">Original Music</div>
-    </div>
-    <div>
-      <a href="theatre.html" class="grid-button" style="background-image:url('theatre company button.png');"></a>
-      <div class="button-caption">Miscellania Theatre Co</div>
-    </div>
-
-    <!-- Center Row -->
-    <div>
-      <a href="contact.html" class="center-button"></a>
-      <div class="button-caption">Contact Me</div>
-    </div>
-
-    <!-- Bottom Row -->
-    <div>
-      <a href="gallery.html" class="grid-button" style="background-image:url('transparent button 3.png');"></a>
-      <div class="button-caption">Media Gallery</div>
-    </div>
-    <div>
-      <a href="resume.html" class="grid-button" style="background-image:url('transparent button 4.png');"></a>
-      <div class="button-caption">Headshot & Resume</div>
-    </div>
-    <div>
-      <a href="something-silly.html" class="grid-button" style="background-image:url('transparent button 5.png');"></a>
-      <div class="button-caption">Something Silly</div>
+    <!-- Top row -->
+    <div class="button-row">
+      <div>
+        <a href="art.html" class="grid-button">
+          <img src="transparent-button-2.png" alt="Art">
+        </a>
+        <div class="button-caption">Art</div>
+      </div>
+      <div>
+        <a href="music.html" class="grid-button">
+          <img src="music-button.png" alt="Music">
+        </a>
+        <div class="button-caption">Music</div>
+      </div>
+      <div>
+        <a href="theatre.html" class="grid-button">
+          <img src="theatre-company-button.png" alt="Theatre">
+        </a>
+        <div class="button-caption">Miscellania Theatre Co</div>
+      </div>
     </div>
 
+    <!-- Center button -->
+    <div class="button-row">
+      <div>
+        <a href="contact.html" class="grid-button">
+          <img src="1669DA04-490D-4E7B-8905-9CE4E095EACF_1_105_c.png" alt="Contact">
+        </a>
+        <div class="button-caption">Contact Me</div>
+      </div>
+    </div>
+
+    <!-- Bottom row -->
+    <div class="button-row">
+      <div>
+        <a href="resume.html" class="grid-button">
+          <img src="transparent-button-4.png" alt="Resume">
+        </a>
+        <div class="button-caption">Headshot & Resume</div>
+      </div>
+      <div>
+        <a href="gallery.html" class="grid-button">
+          <img src="transparent-button-3.png" alt="Gallery">
+        </a>
+        <div class="button-caption">Media Gallery</div>
+      </div>
+      <div>
+        <a href="something-silly.html" class="grid-button">
+          <img src="transparent-button-5.png" alt="Something Silly">
+        </a>
+        <div class="button-caption">Something Silly</div>
+      </div>
+    </div>
   </div>
 
   <!-- FOOTER -->
