@@ -35,34 +35,26 @@
       background: pink;
       border-radius: 50%;
     }
-    .heart::before {
-      top: -50%;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-    .heart::after {
-      left: -50%;
-      top: 0;
-      width: 100%;
-      height: 100%;
-    }
+    .heart::before { top: -50%; left: 0; width: 100%; height: 100%; }
+    .heart::after { left: -50%; top: 0; width: 100%; height: 100%; }
     @keyframes float {
       0% { transform: translateY(100vh) rotate(45deg); opacity: 0.6; }
       100% { transform: translateY(-10vh) rotate(45deg); opacity: 0; }
     }
 
-    /* Navbar */
+    /* --- NAVBAR (like index.html) --- */
     nav {
       background-color: #000;
       padding: 1rem;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
       text-align: center;
-      z-index: 2;
-      position: relative;
     }
     nav a {
       color: #fff;
-      margin: 0.5rem;
+      margin: 0 0.5rem;
       text-decoration: none;
       font-weight: bold;
       display: inline-block;
@@ -77,11 +69,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 1rem; /* closer spacing */
+      gap: 1rem;
       padding: 4rem 2rem;
       position: relative;
       z-index: 1;
-      flex-wrap: wrap; /* allows stacking on mobile */
+      flex-wrap: wrap;
+      margin-top: 60px; /* space for fixed navbar */
     }
 
     .contact-form {
@@ -91,11 +84,9 @@
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
       max-width: 400px;
       width: 100%;
-      margin: auto; /* even margins */
+      margin: auto;
     }
-    .contact-form h2 {
-      margin-bottom: 1rem;
-    }
+    .contact-form h2 { margin-bottom: 1rem; }
     .contact-form input,
     .contact-form textarea {
       width: 100%;
@@ -114,15 +105,13 @@
       font-weight: bold;
       transition: background 0.3s;
     }
-    .contact-form button:hover {
-      background: #f5a6c6;
-    }
+    .contact-form button:hover { background: #f5a6c6; }
 
     /* Tilting images */
     .tilt-img {
       width: 150px;
       animation: tilt 3s ease-in-out infinite;
-      margin: 0; /* hug the contact form */
+      margin: 0;
     }
     .tilt-img.left { animation-delay: 0s; }
     .tilt-img.right { animation-delay: 1.5s; }
@@ -134,13 +123,8 @@
 
     /* Mobile adjustments */
     @media (max-width: 768px) {
-      .contact-container {
-        flex-direction: column; /* stack images and form */
-      }
-      .contact-container img.tilt-img {
-        width: 120px;
-        margin-bottom: 1rem; /* spacing above/below form */
-      }
+      .contact-container { flex-direction: column; }
+      .contact-container img.tilt-img { width: 120px; margin-bottom: 1rem; }
     }
 
     /* Footer */
@@ -162,14 +146,14 @@
       text-decoration: none;
       font-weight: bold;
     }
-    .social-links a:hover {
-      text-decoration: underline;
-    }
+    .social-links a:hover { text-decoration: underline; }
+
   </style>
 </head>
 <body>
+
   <!-- Floating pastel hearts -->
-  <div class="heart" style="left: 10%; width: 20px; height: 20px; animation-duration: 12s; animation-delay: 0s;"></div>
+  <div class="heart" style="left: 10%; width: 20px; height: 20px; animation-duration: 12s;"></div>
   <div class="heart" style="left: 25%; width: 15px; height: 15px; animation-duration: 10s; animation-delay: 2s;"></div>
   <div class="heart" style="left: 40%; width: 25px; height: 25px; animation-duration: 14s; animation-delay: 4s;"></div>
   <div class="heart" style="left: 55%; width: 18px; height: 18px; animation-duration: 9s; animation-delay: 1s;"></div>
@@ -224,6 +208,7 @@
       <a href="https://www.backstage.com/u/isabelle-rashkin/" target="_blank">Backstage</a>
     </div>
   </footer>
+
 </body>
 </html>
 
