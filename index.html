@@ -12,7 +12,7 @@
       font-family: "Times New Roman", Times, serif;
       margin: 0;
       padding: 0;
-      background-color: #fafafa;
+      background: linear-gradient(180deg, #fdf1f6 0%, #f8c8dc 100%);
       color: #333;
       text-align: center;
     }
@@ -22,6 +22,10 @@
       background-color: #000;
       padding: 1rem;
       text-align: center;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
     }
     nav a {
       color: #fff;
@@ -35,9 +39,9 @@
       text-decoration: underline;
     }
 
-    /* --- HEADER & SCROLLING BANNER --- */
+    /* --- HEADER --- */
     header {
-      padding: 2rem 1rem;
+      padding: 6rem 1rem 2rem; /* extra top padding for fixed nav */
       background-color: #f8c8dc;
       color: #222;
     }
@@ -45,69 +49,85 @@
       margin: 0.5rem 0;
     }
 
+    /* --- SCROLLING BANNER --- */
     .banner-wrapper {
       overflow: hidden;
       width: 100%;
       margin-top: 1rem;
       height: 120px;
     }
-
     .banner-track {
       display: flex;
       width: max-content;
       animation: scroll 20s linear infinite;
     }
-
     .banner-track:hover {
       animation-play-state: paused;
     }
-
     .banner-track img {
       height: 100px;
       margin: 0 10px;
       border-radius: 12px;
     }
-
     .banner-track img.center {
       height: 120px;
       border-radius: 50%;
     }
-
     @keyframes scroll {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
-
     @media (max-width: 768px) {
       .banner-track {
         animation: scroll 10s linear infinite;
       }
     }
 
+    /* --- MAIN CONTENT --- */
     main {
       padding: 2rem;
     }
-
-    .links {
+    h2 {
+      margin-bottom: 2rem;
+    }
+    .button-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      max-width: 500px;
-      margin: 2rem auto;
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
     }
-    .links a {
-      display: block;
-      padding: 0.75rem;
-      background: #444;
-      color: #fff;
+    .button-grid a {
       text-decoration: none;
-      border-radius: 8px;
-      transition: background 0.3s;
+      color: #222;
+      font-weight: bold;
+      transition: transform 0.3s, filter 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    .links a:hover {
-      background: #666;
+    .button-grid img {
+      max-width: 200px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+    .button-grid a:hover img {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 12px #f8c8dc);
+    }
+    .button-grid span {
+      margin-top: 0.5rem;
+    }
+    @media (max-width: 768px) {
+      .button-grid {
+        grid-template-columns: 1fr;
+      }
+      .button-grid img {
+        max-width: 250px;
+      }
     }
 
+    /* --- FOOTER --- */
     footer {
       background-color: #222;
       color: #fff;
@@ -162,24 +182,44 @@
         <img src="A635B61C-0535-4ACB-A2C2-153429E073FD_1_105_c.jpeg" alt="into the woods">
         <img src="D3CA96B0-B5A2-4E33-803A-0609213F57E3_1_201_a.jpeg" alt="performance">
         <img src="DSCF1306.JPG" alt="vanya">
-        <img src="bee singing at salon.png" alt = "bee singing at salon">
-        <img src="biggerpicforbeewithmic.png" alt = "biggerpicforbeewithmic.png"
+        <img src="bee singing at salon.png" alt="bee singing at salon">
+        <img src="biggerpicforbeewithmic.png" alt="biggerpicforbeewithmic.png">
       </div>
     </div>
   </header>
 
+  <!-- MAIN CONTENT -->
   <main>
     <h2>Explore My Work</h2>
-    <div class="links">
-      <a href="art.html">🎨 Art 🎨</a>
-      <a href="music.html">🎵 Music</a>
-      <a href="theatre.html">🎭 Miscellania Theatre Co.</a>
-      <a href="resume.html">📸 Headshot & Acting Resume</a>
-      <a href="gallery.html">🖼️ Gallery</a>
-      <a href="something-silly.html">🦄 Something Silly</a>
+    <div class="button-grid">
+      <a href="art.html">
+        <img src="transparent button 1 (1).png" alt="Art">
+        <span>Original Visual Art</span>
+      </a>
+      <a href="resume.html">
+        <img src="transparent button 4.png" alt="Headshot & Resume">
+        <span>Headshot & Resume</span>
+      </a>
+      <a href="theatre.html">
+        <img src="theatre company button.jpg" alt="Miscellania Theatre Co">
+        <span>Miscellania Theatre Co</span>
+      </a>
+      <a href="gallery.html">
+        <img src="transparent button 3.png" alt="Media Gallery">
+        <span>Media Gallery</span>
+      </a>
+      <a href="music.html">
+        <img src="music button.png" alt="Music">
+        <span>Original Music</span>
+      </a>
+      <a href="something-silly.html">
+        <img src="transparent button 5.png" alt="Something Silly">
+        <span>Something Silly</span>
+      </a>
     </div>
   </main>
 
+  <!-- FOOTER -->
   <footer>
     <h3>Connect with me</h3>
     <div class="social-links">
