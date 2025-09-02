@@ -39,9 +39,15 @@
 
     /* --- HEADER --- */
     header {
+      position: fixed;
+      top: 60px; /* navbar height */
+      left: 0;
+      width: 100%;
       background-color: #f8c8dc;
       padding: 2rem 1rem;
-      margin-top: 60px; /* space for fixed navbar */
+      z-index: 90;
+      box-sizing: border-box;
+      text-align: center;
     }
     header h1 {
       margin: 0.5rem 0;
@@ -55,7 +61,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin: 3rem 1rem;
+      margin-top: 240px; /* push down for fixed header */
       gap: 2rem;
     }
 
@@ -123,10 +129,9 @@
       text-decoration: underline;
     }
 
-    /* --- MOBILE FIXES --- */
     @media (max-width: 768px) {
       header {
-        margin-top: 80px; /* extra space so header isn't hidden by navbar */
+        padding: 1.5rem 1rem;
       }
       .button-row {
         flex-wrap: wrap;
@@ -227,3 +232,4 @@
 
 </body>
 </html>
+
