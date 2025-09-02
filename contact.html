@@ -17,37 +17,39 @@
       overflow-x: hidden;
     }
 
-    /* --- Floating hearts in background --- */
+    /* Floating pastel hearts in background only */
     .heart {
       position: absolute;
       width: 20px;
       height: 20px;
       background: pink;
-      transform: rotate(-45deg);
-      top: 100%;
+      transform: rotate(45deg);
       animation: float linear infinite;
-      opacity: 0.7;
+      opacity: 0.6;
+      border-radius: 4px;
     }
     .heart::before,
     .heart::after {
       content: "";
       position: absolute;
-      width: 20px;
-      height: 20px;
       background: pink;
       border-radius: 50%;
     }
     .heart::before {
       top: -50%;
       left: 0;
+      width: 100%;
+      height: 100%;
     }
     .heart::after {
-      left: 50%;
+      left: -50%;
       top: 0;
+      width: 100%;
+      height: 100%;
     }
     @keyframes float {
-      0% { transform: translateY(100vh) rotate(-45deg); opacity: 0.7; }
-      100% { transform: translateY(-10vh) rotate(-45deg); opacity: 0; }
+      0% { transform: translateY(100vh) rotate(45deg); opacity: 0.6; }
+      100% { transform: translateY(-10vh) rotate(45deg); opacity: 0; }
     }
 
     /* Navbar */
@@ -55,8 +57,8 @@
       background-color: #000;
       padding: 1rem;
       text-align: center;
-      position: relative;
       z-index: 2;
+      position: relative;
     }
     nav a {
       color: #fff;
@@ -70,25 +72,26 @@
       text-decoration: underline;
     }
 
-    /* Contact section */
+    /* Contact form container */
     .contact-container {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 1rem;
+      gap: 1rem; /* closer spacing */
       padding: 4rem 2rem;
       position: relative;
       z-index: 1;
-      flex-wrap: wrap;
+      flex-wrap: wrap; /* allows stacking on mobile */
     }
+
     .contact-form {
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255, 255, 255, 0.9);
       padding: 2rem;
       border-radius: 16px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
       max-width: 400px;
       width: 100%;
-      margin: auto;
+      margin: auto; /* even margins */
     }
     .contact-form h2 {
       margin-bottom: 1rem;
@@ -119,17 +122,25 @@
     .tilt-img {
       width: 150px;
       animation: tilt 3s ease-in-out infinite;
+      margin: 0; /* hug the contact form */
     }
-    .tilt-img.left {
-      animation-delay: 0s;
-    }
-    .tilt-img.right {
-      animation-delay: 1.5s;
-    }
+    .tilt-img.left { animation-delay: 0s; }
+    .tilt-img.right { animation-delay: 1.5s; }
     @keyframes tilt {
       0%, 100% { transform: rotate(0deg); }
       25% { transform: rotate(-10deg); }
       75% { transform: rotate(10deg); }
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+      .contact-container {
+        flex-direction: column; /* stack images and form */
+      }
+      .contact-container img.tilt-img {
+        width: 120px;
+        margin-bottom: 1rem; /* spacing above/below form */
+      }
     }
 
     /* Footer */
@@ -139,9 +150,7 @@
       padding: 2rem 1rem;
       margin-top: 2rem;
     }
-    footer h3 {
-      margin-bottom: 1rem;
-    }
+    footer h3 { margin-bottom: 1rem; }
     .social-links {
       display: flex;
       flex-wrap: wrap;
@@ -156,20 +165,10 @@
     .social-links a:hover {
       text-decoration: underline;
     }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .contact-container {
-        flex-direction: column;
-      }
-      .tilt-img {
-        margin: 1rem 0;
-      }
-    }
   </style>
 </head>
 <body>
-  <!-- Floating hearts -->
+  <!-- Floating pastel hearts -->
   <div class="heart" style="left: 10%; width: 20px; height: 20px; animation-duration: 12s; animation-delay: 0s;"></div>
   <div class="heart" style="left: 25%; width: 15px; height: 15px; animation-duration: 10s; animation-delay: 2s;"></div>
   <div class="heart" style="left: 40%; width: 25px; height: 25px; animation-duration: 14s; animation-delay: 4s;"></div>
@@ -181,7 +180,7 @@
   <div class="heart" style="left: 60%; width: 16px; height: 16px; animation-duration: 10s; animation-delay: 8s;"></div>
   <div class="heart" style="left: 80%; width: 24px; height: 24px; animation-duration: 12s; animation-delay: 9s;"></div>
 
-  <!-- Navbar -->
+  <!-- NAV -->
   <nav>
     <a href="index.html">Home</a>
     <a href="art.html">Art</a>
@@ -189,8 +188,8 @@
     <a href="theatre.html">Theatre</a>
     <a href="resume.html">Resume</a>
     <a href="gallery.html">Gallery</a>
-    <a href="something-silly.html">Something Silly</a>
     <a href="contact.html">Contact</a>
+    <a href="something-silly.html">Something Silly</a>
   </nav>
 
   <!-- Contact Section -->
@@ -227,3 +226,4 @@
   </footer>
 </body>
 </html>
+
