@@ -1,233 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Isabelle (Bee) Rashkin</title>
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-  <style>
-    body {
-      font-family: "Times New Roman", Times, serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #ffe6f2, #e6f7ff, #fff0e6);
-      color: #333;
-      text-align: center;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Isabelle (Bee) Rashkin</title>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<style>
+  body {
+    font-family: "Times New Roman", Times, serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ffe6f2, #e6f7ff, #fff0e6);
+    color: #333;
+    text-align: center;
+    position: relative;
+    overflow-x: hidden;
+  }
 
-    /* --- NAVBAR --- */
-    nav {
-      background-color: #000;
-      padding: 1rem;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 100;
-    }
-    nav a {
-      color: #fff;
-      margin: 0 0.5rem;
-      text-decoration: none;
-      font-weight: bold;
-      display: inline-block;
-      width: 120px;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
+  /* --- Floating hearts --- */
+  .heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: pink;
+    transform: rotate(45deg);
+    animation: float linear infinite;
+    opacity: 0.6;
+    border-radius: 4px;
+  }
+  .heart::before,
+  .heart::after {
+    content: "";
+    position: absolute;
+    background: pink;
+    border-radius: 50%;
+  }
+  .heart::before { top: -50%; left: 0; width: 100%; height: 100%; }
+  .heart::after { left: -50%; top: 0; width: 100%; height: 100%; }
 
-    /* --- HEADER --- */
-    header {
-      background-color: #f8c8dc;
-      padding: 2rem 1rem;
-      margin-top: 60px; /* space for fixed navbar */
-    }
-    header h1 {
-      margin: 0.5rem 0;
-    }
-    header p {
-      margin: 0.25rem 0;
-    }
+  @keyframes float {
+    0% { transform: translateY(100vh) rotate(45deg); opacity: 0.6; }
+    100% { transform: translateY(-10vh) rotate(45deg); opacity: 0; }
+  }
 
-    /* --- BUTTON GRID --- */
-    .button-grid {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 3rem 1rem;
-      gap: 2rem;
-    }
+  /* --- NAVBAR --- */
+  nav {
+    background-color: #000;
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+  }
+  nav a {
+    color: #fff;
+    margin: 0 0.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    width: 120px;
+  }
+  nav a:hover { text-decoration: underline; }
 
-    .button-row {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-    }
+  /* --- HEADER --- */
+  header {
+    position: fixed;
+    top: 60px; /* navbar height */
+    left: 0;
+    width: 100%;
+    background-color: #f8c8dc;
+    padding: 2rem 1rem;
+    z-index: 90;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  header h1 { margin: 0.5rem 0; }
+  header p { margin: 0.25rem 0; }
 
-    .button-link {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-decoration: none;
-      color: #333;
-      transition: transform 0.3s;
-    }
+  /* --- BUTTON GRID --- */
+  .button-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 240px; /* push down for fixed header */
+    gap: 2rem;
+  }
+  .button-row {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+  .button-link {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.3s;
+  }
+  .button-link img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    border-radius: 12px;
+    transition: box-shadow 0.3s, transform 0.3s;
+  }
+  .button-link:hover img {
+    box-shadow: 0 0 25px rgba(255, 182, 193, 0.8);
+    transform: scale(1.1);
+  }
+  .button-link span { margin-top: 0.5rem; font-weight: bold; }
+  .contact-button img { width: 160px; height: 160px; }
 
-    .button-link img {
-      width: 120px;
-      height: 120px;
-      object-fit: contain;
-      border-radius: 12px;
-      transition: box-shadow 0.3s, transform 0.3s;
-    }
+  footer {
+    background-color: #222;
+    color: #fff;
+    padding: 2rem 1rem;
+    margin-top: 2rem;
+  }
+  footer h3 { margin-bottom: 1rem; }
+  .social-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+  .social-links a { color: #f8c8dc; text-decoration: none; font-weight: bold; }
+  .social-links a:hover { text-decoration: underline; }
 
-    .button-link:hover img {
-      box-shadow: 0 0 25px rgba(255, 182, 193, 0.8);
-      transform: scale(1.1);
-    }
+  /* --- MOBILE FIXES --- */
+  @media (max-width: 768px) {
+    nav { display: none; }
+    header { padding: 1.5rem 1rem; top: 0; }
+    .button-row { flex-wrap: wrap; gap: 1rem; }
+    .button-link img { width: 100px; height: 100px; }
+    .contact-button img { width: 140px; height: 140px; }
 
-    .button-link span {
-      margin-top: 0.5rem;
-      font-weight: bold;
-    }
-
-    /* Contact button larger */
-    .contact-button img {
-      width: 160px;
-      height: 160px;
-    }
-
-    footer {
-      background-color: #222;
-      color: #fff;
-      padding: 2rem 1rem;
-      margin-top: 2rem;
-    }
-    footer h3 {
-      margin-bottom: 1rem;
-    }
-    .social-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-    }
-    .social-links a {
-      color: #f8c8dc;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .social-links a:hover {
-      text-decoration: underline;
-    }
-
-    /* --- MOBILE FIXES --- */
-    @media (max-width: 768px) {
-      nav {
-        display: none; /* Hide navbar on mobile */
-      }
-      header {
-        margin-top: 20px; /* less top margin since navbar is hidden */
-      }
-      .button-row {
-        flex-wrap: wrap;
-        gap: 1rem;
-      }
-      .button-link img {
-        width: 100px;
-        height: 100px;
-      }
-      .contact-button img {
-        width: 140px;
-        height: 140px;
-      }
-    }
-  </style>
+    /* Scale hearts down and reposition to avoid overlap */
+    .heart { width: 12px; height: 12px; }
+  }
+</style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="art.html">Original Visual Art</a>
-    <a href="music.html">Original Music</a>
-    <a href="theatre.html">Miscellania Theatre Co</a>
-    <a href="resume.html">Headshot & Resume</a>
-    <a href="gallery.html">Media Gallery</a>
-    <a href="contact.html">Contact Me</a>
-    <a href="something-silly.html">Something Silly</a>
-  </nav>
+<!-- Floating hearts -->
+<div class="heart" style="left:5%; animation-duration:12s;"></div>
+<div class="heart" style="left:15%; animation-duration:10s;"></div>
+<div class="heart" style="left:25%; animation-duration:14s;"></div>
+<div class="heart" style="left:35%; animation-duration:9s;"></div>
+<div class="heart" style="left:45%; animation-duration:16s;"></div>
+<div class="heart" style="left:55%; animation-duration:11s;"></div>
+<div class="heart" style="left:65%; animation-duration:13s;"></div>
+<div class="heart" style="left:75%; animation-duration:15s;"></div>
+<div class="heart" style="left:85%; animation-duration:10s;"></div>
+<div class="heart" style="left:95%; animation-duration:12s;"></div>
 
-  <!-- HEADER -->
-  <header>
-    <h1>Isabelle Rashkin</h1>
-    <p>Multi-disciplinary artist based in Brooklyn, NYC</p>
-    <p><small>Interlochen Arts Academy 2018 / University of Wisconsin-Milwaukee 2022</small></p>
-  </header>
+<!-- NAVBAR -->
+<nav>
+  <a href="index.html">Home</a>
+  <a href="art.html">Original Visual Art</a>
+  <a href="music.html">Original Music</a>
+  <a href="theatre.html">Miscellania Theatre Co</a>
+  <a href="resume.html">Headshot & Resume</a>
+  <a href="gallery.html">Media Gallery</a>
+  <a href="contact.html">Contact Me</a>
+  <a href="something-silly.html">Something Silly</a>
+</nav>
 
-  <!-- BUTTON GRID -->
-  <div class="button-grid">
+<!-- HEADER -->
+<header>
+  <h1>Isabelle Rashkin</h1>
+  <p>Multi-disciplinary artist based in Brooklyn, NYC</p>
+  <p><small>Interlochen Arts Academy 2018 / University of Wisconsin-Milwaukee 2022</small></p>
+</header>
 
-    <!-- Top row -->
-    <div class="button-row">
-      <a href="art.html" class="button-link">
-        <img src="transparent button 2 .png" alt="Art">
-        <span>Art</span>
-      </a>
-      <a href="resume.html" class="button-link">
-        <img src="transparent button 4.png" alt="Headshot & Resume">
-        <span>Headshot & Resume</span>
-      </a>
-      <a href="theatre.html" class="button-link">
-        <img src="theatre company button.png" alt="Miscellania Theatre Co">
-        <span>Miscellania Theatre Co</span>
-      </a>
-    </div>
-
-    <!-- Middle row (contact center) -->
-    <div class="button-row">
-      <a href="contact.html" class="button-link contact-button">
-        <img src="1669DA04-490D-4E7B-8905-9CE4E095EACF_1_105_c.png" alt="Contact Me">
-        <span>Contact Me</span>
-      </a>
-    </div>
-
-    <!-- Bottom row -->
-    <div class="button-row">
-      <a href="gallery.html" class="button-link">
-        <img src="transparent button 3.png" alt="Media Gallery">
-        <span>Media Gallery</span>
-      </a>
-      <a href="music.html" class="button-link">
-        <img src="music button.png" alt="Original Music">
-        <span>Original Music</span>
-      </a>
-      <a href="something-silly.html" class="button-link">
-        <img src="transparent button 5.png" alt="Something Silly">
-        <span>Something Silly</span>
-      </a>
-    </div>
-
+<!-- BUTTON GRID -->
+<div class="button-grid">
+  <div class="button-row">
+    <a href="art.html" class="button-link"><img src="transparent button 2 .png" alt="Art"><span>Art</span></a>
+    <a href="resume.html" class="button-link"><img src="transparent button 4.png" alt="Headshot & Resume"><span>Headshot & Resume</span></a>
+    <a href="theatre.html" class="button-link"><img src="theatre company button.png" alt="Miscellania Theatre Co"><span>Miscellania Theatre Co</span></a>
   </div>
+  <div class="button-row">
+    <a href="contact.html" class="button-link contact-button"><img src="1669DA04-490D-4E7B-8905-9CE4E095EACF_1_105_c.png" alt="Contact Me"><span>Contact Me</span></a>
+  </div>
+  <div class="button-row">
+    <a href="gallery.html" class="button-link"><img src="transparent button 3.png" alt="Media Gallery"><span>Media Gallery</span></a>
+    <a href="music.html" class="button-link"><img src="music button.png" alt="Original Music"><span>Original Music</span></a>
+    <a href="something-silly.html" class="button-link"><img src="transparent button 5.png" alt="Something Silly"><span>Something Silly</span></a>
+  </div>
+</div>
 
-  <!-- FOOTER -->
-  <footer>
-    <h3>Connect with me</h3>
-    <div class="social-links">
-      <a href="https://www.instagram.com/tamoottopro/" target="_blank">Instagram (Personal)</a>
-      <a href="https://www.instagram.com/Bee_original_music/" target="_blank">Instagram (Music)</a>
-      <a href="https://x.com/tamoottopro" target="_blank">X (Twitter)</a>
-      <a href="https://www.linkedin.com/in/isabelle-rashkin-82958228/" target="_blank">LinkedIn</a>
-      <a href="mailto:ivrashkin@gmail.com">Email</a>
-      <a href="https://open.spotify.com/artist/2TRjrme5uq3GM8qMF7y0QI" target="_blank">Spotify</a>
-      <a href="https://www.youtube.com/channel/UCa9acPRSIGUmjgn54hz17eA" target="_blank">YouTube Music</a>
-      <a href="https://music.apple.com/ca/artist/isabelle-bee-rashkin/1773658949" target="_blank">Apple Music</a>
-      <a href="https://www.backstage.com/u/isabelle-rashkin/" target="_blank">Backstage</a>
-    </div>
-  </footer>
-
+<!-- FOOTER -->
+<footer>
+  <h3>Connect with me</h3>
+  <div class="social-links">
+    <a href="https://www.instagram.com/tamoottopro/" target="_blank">Instagram (Personal)</a>
+    <a href="https://www.instagram.com/Bee_original_music/" target="_blank">Instagram (Music)</a>
+    <a href="https://x.com/tamoottopro" target="_blank">X (Twitter)</a>
+    <a href="https://www.linkedin.com/in/isabelle-rashkin-82958228/" target="_blank">LinkedIn</a>
+    <a href="mailto:ivrashkin@gmail.com">Email</a>
+    <a href="https://open.spotify.com/artist/2TRjrme5uq3GM8qMF7y0QI" target="_blank">Spotify</a>
+    <a href="https://www.youtube.com/channel/UCa9acPRSIGUmjgn54hz17eA" target="_blank">YouTube Music</a>
+    <a href="https://music.apple.com/ca/artist/isabelle-bee-rashkin/1773658949" target="_blank">Apple Music</a>
+    <a href="https://www.backstage.com/u/isabelle-rashkin/" target="_blank">Backstage</a>
+  </div>
+</footer>
 </body>
 </html>
 
