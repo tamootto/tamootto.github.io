@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Isabelle (Bee) Rashkin</title>
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <style>
     body {
       font-family: "Times New Roman", Times, serif;
@@ -16,7 +15,7 @@
       text-align: center;
     }
 
-    /* --- NAVBAR --- */
+    /* NAVBAR */
     nav {
       position: fixed;
       top: 0;
@@ -38,11 +37,11 @@
       text-decoration: underline;
     }
 
-    /* --- HEADER --- */
+    /* HEADER */
     header {
       background-color: #f8c8dc;
       padding: 3rem 1rem 2rem;
-      margin-top: 3.5rem; /* space below fixed navbar */
+      margin-top: 3.5rem; /* space for navbar */
     }
     header h1 {
       margin: 0.5rem 0;
@@ -56,69 +55,51 @@
       margin-top: 0.5rem;
     }
 
-    /* --- BUTTON GRID SECTION --- */
-    .button-section {
-      display: flex;
+    /* BUTTON GRID */
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 150px);
+      gap: 2rem;
       justify-content: center;
       align-items: center;
-      flex-wrap: wrap;
-      max-width: 900px;
-      margin: 3rem auto 2rem;
-      position: relative;
+      margin: 3rem auto;
     }
 
     .center-button {
+      grid-column: 2;
       width: 150px;
       height: 150px;
-      margin: 0.5rem;
-      border-radius: 16px;
       background: url('1669DA04-490D-4E7B-8905-9CE4E095EACF_1_105_c.png') no-repeat center/cover;
+      border-radius: 16px;
       transition: box-shadow 0.3s;
-      z-index: 2;
     }
     .center-button:hover {
       box-shadow: 0 0 20px #f8c8dc;
     }
 
-    .curve-button {
+    .grid-button {
       width: 120px;
       height: 120px;
-      margin: 1rem;
-      border-radius: 16px;
       background-size: cover;
       background-position: center;
+      border-radius: 16px;
       transition: box-shadow 0.3s;
+      margin: 0 auto;
     }
-    .curve-button:hover {
+    .grid-button:hover {
       box-shadow: 0 0 20px #f8c8dc;
     }
 
-    /* Diamond curve layout using transform */
-    .top-left { transform: translate(-60px, -60px); }
-    .top-right { transform: translate(60px, -60px); }
-    .bottom-left { transform: translate(-60px, 60px); }
-    .bottom-right { transform: translate(60px, 60px); }
-    .far-left { transform: translate(-120px, 0); }
-    .far-right { transform: translate(120px, 0); }
-
-    /* MOBILE ADJUSTMENTS */
-    @media (max-width: 768px) {
-      .button-section {
-        flex-direction: column;
-      }
-      .curve-button, .center-button {
-        transform: translate(0,0);
-        margin: 0.5rem 0;
-      }
+    .button-caption {
+      margin-top: 0.5rem;
+      font-weight: bold;
     }
 
+    /* Footer */
     footer {
       background-color: #222;
       color: #fff;
       padding: 2rem 1rem;
-    }
-    footer h3 {
-      margin-bottom: 1rem;
     }
     .social-links {
       display: flex;
@@ -133,6 +114,17 @@
     }
     .social-links a:hover {
       text-decoration: underline;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+      .button-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .center-button {
+        grid-column: 1;
+      }
     }
   </style>
 </head>
@@ -158,15 +150,42 @@
   </header>
 
   <!-- BUTTON GRID -->
-  <div class="button-section">
-    <a href="art.html" class="curve-button top-left" style="background-image:url('transparent button 2 .png');"></a>
-    <a href="music.html" class="curve-button top-right" style="background-image:url('music button.png');"></a>
-    <a href="theatre.html" class="curve-button bottom-left" style="background-image:url('theatre company button.png');"></a>
-    <a href="gallery.html" class="curve-button bottom-right" style="background-image:url('transparent button 3.png');"></a>
-    <a href="something-silly.html" class="curve-button far-left" style="background-image:url('transparent button 5.png');"></a>
-    <a href="resume.html" class="curve-button far-right" style="background-image:url('transparent button 4.png');"></a>
+  <div class="button-grid">
 
-    <a href="contact.html" class="center-button"></a>
+    <!-- Top Row -->
+    <div>
+      <a href="art.html" class="grid-button" style="background-image:url('transparent button 2 .png');"></a>
+      <div class="button-caption">Art</div>
+    </div>
+    <div>
+      <a href="music.html" class="grid-button" style="background-image:url('music button.png');"></a>
+      <div class="button-caption">Original Music</div>
+    </div>
+    <div>
+      <a href="theatre.html" class="grid-button" style="background-image:url('theatre company button.png');"></a>
+      <div class="button-caption">Miscellania Theatre Co</div>
+    </div>
+
+    <!-- Center Row -->
+    <div>
+      <a href="contact.html" class="center-button"></a>
+      <div class="button-caption">Contact Me</div>
+    </div>
+
+    <!-- Bottom Row -->
+    <div>
+      <a href="gallery.html" class="grid-button" style="background-image:url('transparent button 3.png');"></a>
+      <div class="button-caption">Media Gallery</div>
+    </div>
+    <div>
+      <a href="resume.html" class="grid-button" style="background-image:url('transparent button 4.png');"></a>
+      <div class="button-caption">Headshot & Resume</div>
+    </div>
+    <div>
+      <a href="something-silly.html" class="grid-button" style="background-image:url('transparent button 5.png');"></a>
+      <div class="button-caption">Something Silly</div>
+    </div>
+
   </div>
 
   <!-- FOOTER -->
