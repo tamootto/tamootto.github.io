@@ -12,8 +12,8 @@
       margin: 0;
       padding: 0;
       background: linear-gradient(135deg, #ffe6f2, #e6f7ff, #fff0e6);
-      text-align: center;
       color: #333;
+      text-align: center;
     }
 
     /* --- NAVBAR --- */
@@ -23,11 +23,11 @@
       position: fixed;
       top: 0;
       width: 100%;
-      z-index: 10;
+      z-index: 100;
     }
     nav a {
       color: #fff;
-      margin: 0.5rem;
+      margin: 0 0.5rem;
       text-decoration: none;
       font-weight: bold;
       display: inline-block;
@@ -40,12 +40,11 @@
     /* --- HEADER --- */
     header {
       background-color: #f8c8dc;
-      padding: 6rem 1rem 3rem 1rem; /* top padding accounts for fixed nav */
-      margin-bottom: 2rem;
+      padding: 2rem 1rem;
+      margin-top: 60px; /* space for fixed navbar */
     }
     header h1 {
       margin: 0.5rem 0;
-      font-size: 2.5rem;
     }
     header p {
       margin: 0.25rem 0;
@@ -56,10 +55,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      margin: 3rem 1rem;
       gap: 2rem;
-      max-width: 1000px;
-      margin: auto;
     }
 
     .button-row {
@@ -68,36 +65,45 @@
       gap: 2rem;
     }
 
-    .grid-button {
+    .button-link {
       position: relative;
-      display: inline-block;
-      cursor: pointer;
-      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: #333;
+      transition: transform 0.3s;
     }
 
-    .grid-button img {
-      width: 150px;
-      height: 150px;
+    .button-link img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
       border-radius: 12px;
-      transition: all 0.3s ease;
+      transition: box-shadow 0.3s, transform 0.3s;
     }
 
-    .grid-button:hover img {
-      box-shadow: 0 0 20px 5px #f8c8dc;
-      transform: scale(1.05);
+    .button-link:hover img {
+      box-shadow: 0 0 25px rgba(255, 182, 193, 0.8);
+      transform: scale(1.1);
     }
 
-    .button-caption {
+    .button-link span {
       margin-top: 0.5rem;
       font-weight: bold;
     }
 
-    /* --- FOOTER --- */
+    /* Contact button larger */
+    .contact-button img {
+      width: 160px;
+      height: 160px;
+    }
+
     footer {
       background-color: #222;
       color: #fff;
       padding: 2rem 1rem;
-      margin-top: 3rem;
+      margin-top: 2rem;
     }
     footer h3 {
       margin-bottom: 1rem;
@@ -117,22 +123,25 @@
       text-decoration: underline;
     }
 
-    /* --- Responsive --- */
     @media (max-width: 768px) {
       .button-row {
         flex-wrap: wrap;
         gap: 1rem;
       }
-      .grid-button img {
-        width: 120px;
-        height: 120px;
+      .button-link img {
+        width: 100px;
+        height: 100px;
+      }
+      .contact-button img {
+        width: 140px;
+        height: 140px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAVIGATION -->
+  <!-- NAVBAR -->
   <nav>
     <a href="index.html">Home</a>
     <a href="art.html">Original Visual Art</a>
@@ -153,59 +162,47 @@
 
   <!-- BUTTON GRID -->
   <div class="button-grid">
+
     <!-- Top row -->
     <div class="button-row">
-      <div>
-        <a href="art.html" class="grid-button">
-          <img src="transparent-button-2.png" alt="Art">
-        </a>
-        <div class="button-caption">Art</div>
-      </div>
-      <div>
-        <a href="music.html" class="grid-button">
-          <img src="music-button.png" alt="Music">
-        </a>
-        <div class="button-caption">Music</div>
-      </div>
-      <div>
-        <a href="theatre.html" class="grid-button">
-          <img src="theatre-company-button.png" alt="Theatre">
-        </a>
-        <div class="button-caption">Miscellania Theatre Co</div>
-      </div>
+      <a href="art.html" class="button-link">
+        <img src="transparent button 2 .png" alt="Art">
+        <span>Art</span>
+      </a>
+      <a href="resume.html" class="button-link">
+        <img src="transparent button 4.png" alt="Headshot & Resume">
+        <span>Headshot & Resume</span>
+      </a>
+      <a href="theatre.html" class="button-link">
+        <img src="theatre company button.png" alt="Miscellania Theatre Co">
+        <span>Miscellania Theatre Co</span>
+      </a>
     </div>
 
-    <!-- Center button -->
+    <!-- Middle row (contact center) -->
     <div class="button-row">
-      <div>
-        <a href="contact.html" class="grid-button">
-          <img src="1669DA04-490D-4E7B-8905-9CE4E095EACF_1_105_c.png" alt="Contact">
-        </a>
-        <div class="button-caption">Contact Me</div>
-      </div>
+      <a href="contact.html" class="button-link contact-button">
+        <img src="1669DA04-490D-4E7B-8905-9CE4E095EACF_1_105_c.png" alt="Contact Me">
+        <span>Contact Me</span>
+      </a>
     </div>
 
     <!-- Bottom row -->
     <div class="button-row">
-      <div>
-        <a href="resume.html" class="grid-button">
-          <img src="transparent-button-4.png" alt="Resume">
-        </a>
-        <div class="button-caption">Headshot & Resume</div>
-      </div>
-      <div>
-        <a href="gallery.html" class="grid-button">
-          <img src="transparent-button-3.png" alt="Gallery">
-        </a>
-        <div class="button-caption">Media Gallery</div>
-      </div>
-      <div>
-        <a href="something-silly.html" class="grid-button">
-          <img src="transparent-button-5.png" alt="Something Silly">
-        </a>
-        <div class="button-caption">Something Silly</div>
-      </div>
+      <a href="gallery.html" class="button-link">
+        <img src="transparent button 3.png" alt="Media Gallery">
+        <span>Media Gallery</span>
+      </a>
+      <a href="music.html" class="button-link">
+        <img src="music button.png" alt="Original Music">
+        <span>Original Music</span>
+      </a>
+      <a href="something-silly.html" class="button-link">
+        <img src="transparent button 5.png" alt="Something Silly">
+        <span>Something Silly</span>
+      </a>
     </div>
+
   </div>
 
   <!-- FOOTER -->
