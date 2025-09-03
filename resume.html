@@ -17,7 +17,7 @@
       overflow-x: hidden;
     }
 
-    /* --- FLOATING HEARTS --- */
+    /* --- FLOATING HEARTS FROM INDEX.HTML --- */
     .heart {
       position: absolute;
       width: 20px;
@@ -84,9 +84,9 @@
       align-items: flex-start;
       gap: 2rem;
       margin-top: 240px; /* space for fixed header */
-      flex-wrap: wrap;
       position: relative;
       z-index: 1;
+      flex-wrap: wrap;
     }
 
     .resume, .headshots {
@@ -122,16 +122,14 @@
       opacity: 1;
     }
 
+    /* STACK HEADSHOTS VERTICALLY */
     .headshots {
       display: flex;
+      flex-direction: column;
       gap: 1rem;
     }
-    .headshots img {
-      width: 180px; /* larger images */
-    }
-    .resume img {
-      width: 300px; /* larger resume */
-    }
+    .headshots img { width: 180px; } /* larger images */
+    .resume img { width: 300px; } /* larger resume */
 
     /* FOOTER */
     footer {
@@ -194,7 +192,7 @@
       <a href="resume.pdf" download class="download-button">Download Resume</a>
     </div>
 
-    <!-- Headshots -->
+    <!-- Headshots stacked vertically -->
     <div class="headshots">
       <div class="headshot">
         <img src="headshot1.jpeg" alt="Headshot 1">
@@ -217,12 +215,4 @@
       <a href="https://x.com/tamoottopro" target="_blank">X (Twitter)</a>
       <a href="https://www.linkedin.com/in/isabelle-rashkin-82958228/" target="_blank">LinkedIn</a>
       <a href="mailto:ivrashkin@gmail.com">Email</a>
-      <a href="https://open.spotify.com/artist/2TRjrme5uq3GM8qMF7y0QI" target="_blank">Spotify</a>
-      <a href="https://www.youtube.com/channel/UCa9acPRSIGUmjgn54hz17eA" target="_blank">YouTube Music</a>
-      <a href="https://music.apple.com/ca/artist/isabelle-bee-rashkin/1773658949" target="_blank">Apple Music</a>
-      <a href="https://www.backstage.com/u/isabelle-rashkin/" target="_blank">Backstage</a>
-    </div>
-  </footer>
-
-</body>
-</html>
+      <a href="https://open.spotify.com
