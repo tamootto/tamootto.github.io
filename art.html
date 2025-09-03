@@ -12,16 +12,42 @@
       font-family: "Times New Roman", Times, serif;
       margin: 0;
       padding: 0;
-      background-color: #fafafa;
+      background: linear-gradient(135deg, #ffe6f2, #e6f7ff, #fff0e6); /* pastel ombre */
       color: #333;
       text-align: center;
+      overflow-x: hidden; /* prevent scrollbars from hearts */
     }
 
-    /* --- NAVBAR --- */
+    /* --- FLOATING HEARTS --- */
+    .heart {
+      position: fixed;
+      bottom: -50px;
+      font-size: 24px;
+      color: rgba(255, 105, 180, 0.6);
+      animation: floatUp 8s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-110vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    /* --- NAVBAR FIXED --- */
     nav {
       background-color: #000;
       padding: 1rem;
       text-align: center;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
     }
     nav a {
       color: #fff;
@@ -35,11 +61,14 @@
       text-decoration: underline;
     }
 
-    /* --- HEADER --- */
+    /* --- HEADER (scrolls) --- */
     header {
       padding: 2rem 1rem;
       background-color: #f8c8dc;
       color: #222;
+      margin-top: 60px; /* space for fixed navbar */
+      position: relative;
+      z-index: 10;
     }
     header h1 {
       margin: 0.5rem 0;
@@ -49,6 +78,8 @@
       padding: 2rem;
       max-width: 1200px;
       margin: auto;
+      position: relative;
+      z-index: 10;
     }
 
     h2 {
@@ -86,6 +117,8 @@
       color: #fff;
       padding: 2rem 1rem;
       margin-top: 2rem;
+      position: relative;
+      z-index: 10;
     }
     footer h3 {
       margin-bottom: 1rem;
@@ -108,7 +141,7 @@
 </head>
 <body>
 
-   <!-- NAV BAR -->
+  <!-- NAV BAR -->
   <nav>
     <a href="index.html">Home</a>
     <a href="art.html">Original Visual Art</a>
@@ -183,6 +216,25 @@
       <a href="https://www.backstage.com/u/isabelle-rashkin/" target="_blank">Backstage</a>
     </div>
   </footer>
+
+  <!-- FLOATING HEARTS SCRIPT -->
+  <script>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.textContent = "❤";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 15 + "px";
+      heart.style.animationDuration = Math.random() * 5 + 5 + "s"; 
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 10000);
+    }
+
+    setInterval(createHeart, 500);
+  </script>
 
 </body>
 </html>
