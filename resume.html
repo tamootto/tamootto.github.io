@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Headshot & Resume - Isabelle Rashkin</title>
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <style>
     body {
       font-family: "Times New Roman", Times, serif;
@@ -14,10 +13,11 @@
       background: linear-gradient(135deg, #ffe6f2, #e6f7ff, #fff0e6);
       color: #333;
       text-align: center;
+      position: relative;
       overflow-x: hidden;
     }
 
-    /* Floating Hearts */
+    /* --- FLOATING HEARTS --- */
     .heart {
       position: absolute;
       width: 20px;
@@ -27,7 +27,7 @@
       animation: float linear infinite;
       opacity: 0.6;
       border-radius: 4px;
-      z-index: 1;
+      z-index: 0;
     }
     .heart::before,
     .heart::after {
@@ -38,12 +38,13 @@
     }
     .heart::before { top: -50%; left: 0; width: 100%; height: 100%; }
     .heart::after { left: -50%; top: 0; width: 100%; height: 100%; }
+
     @keyframes float {
       0% { transform: translateY(100vh) rotate(45deg); opacity: 0.6; }
       100% { transform: translateY(-10vh) rotate(45deg); opacity: 0; }
     }
 
-    /* Navbar */
+    /* --- NAVBAR --- */
     nav {
       background-color: #000;
       padding: 1rem;
@@ -58,111 +59,114 @@
       text-decoration: none;
       font-weight: bold;
       display: inline-block;
+      width: 120px;
     }
     nav a:hover { text-decoration: underline; }
 
-    /* Main Layout */
-    main {
-      margin-top: 100px; /* space for navbar */
+    /* --- HEADER --- */
+    header {
+      position: fixed;
+      top: 60px; /* navbar height */
+      left: 0;
+      width: 100%;
+      background-color: #f8c8dc;
+      padding: 2rem 1rem;
+      z-index: 90;
+      text-align: center;
+    }
+    header h1 { margin: 0.5rem 0; }
+    header p { margin: 0.25rem 0; }
+
+    /* --- MAIN CONTENT --- */
+    .content-container {
       display: flex;
       justify-content: center;
       align-items: flex-start;
       gap: 2rem;
+      margin-top: 240px; /* space for fixed header */
       flex-wrap: wrap;
-      z-index: 10;
       position: relative;
-      padding: 1rem;
+      z-index: 1;
     }
 
-    /* Resume Box */
-    .resume-wrapper {
-      flex: 1 1 400px;
-      max-width: 500px;
-      min-width: 300px;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    .resume, .headshots {
       position: relative;
-      overflow: hidden;
-      height: 500px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      cursor: pointer;
+      transition: transform 0.3s;
     }
-    .resume-preview {
-      width: 90%;
-      height: 90%;
-      background: url('resume-preview.png') center/contain no-repeat;
-      border-radius: 8px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+
+    .resume img, .headshots img {
+      border-radius: 12px;
+      max-width: 100%;
+      height: auto;
+      display: block;
     }
-    .download-btn {
+
+    .download-button {
       position: absolute;
-      bottom: 15px;
-      right: 15px;
-      background: #f8c8dc;
-      color: #000;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 182, 193, 0.9);
       padding: 0.5rem 1rem;
       border-radius: 8px;
       font-weight: bold;
-      text-decoration: none;
       opacity: 0;
       transition: opacity 0.3s;
+      text-decoration: none;
+      color: #333;
     }
-    .resume-wrapper:hover .download-btn { opacity: 1; }
 
-    /* Headshots */
+    .resume:hover .download-button,
+    .headshots:hover .download-button {
+      opacity: 1;
+    }
+
     .headshots {
       display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      justify-content: flex-start;
-      flex: 0 0 250px;
-    }
-    .headshot-wrapper {
-      position: relative;
+      gap: 1rem;
     }
     .headshots img {
-      width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.15);
-      object-fit: cover;
-      display: block;
+      width: 180px; /* larger images */
     }
-    .headshot-wrapper .download-btn {
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      opacity: 0;
-      transition: opacity 0.3s;
+    .resume img {
+      width: 300px; /* larger resume */
     }
-    .headshot-wrapper:hover .download-btn { opacity: 1; }
 
+    /* FOOTER */
+    footer {
+      background-color: #222;
+      color: #fff;
+      padding: 2rem 1rem;
+      margin-top: 2rem;
+    }
+    .social-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+    .social-links a { color: #f8c8dc; text-decoration: none; font-weight: bold; }
+    .social-links a:hover { text-decoration: underline; }
+
+    /* --- MOBILE --- */
     @media (max-width: 768px) {
-      main {
-        flex-direction: column;
-        align-items: center;
-      }
-      .headshots {
-        width: 100%;
-        flex-direction: row;
-        flex-wrap: wrap;
-      }
-      .headshots img {
-        width: 48%;
-      }
+      .content-container { flex-direction: column; align-items: center; }
+      .headshots img { width: 140px; }
+      .resume img { width: 200px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Floating Hearts -->
-  <div class="heart" style="left: 10%; animation-duration: 12s;"></div>
-  <div class="heart" style="left: 40%; animation-duration: 14s;"></div>
-  <div class="heart" style="left: 70%; animation-duration: 16s;"></div>
-  <div class="heart" style="left: 85%; animation-duration: 18s;"></div>
+  <!-- FLOATING HEARTS -->
+  <div class="heart" style="left:10%; animation-duration:12s;"></div>
+  <div class="heart" style="left:25%; width:15px; height:15px; animation-duration:10s; animation-delay:2s;"></div>
+  <div class="heart" style="left:40%; width:25px; height:25px; animation-duration:14s; animation-delay:4s;"></div>
+  <div class="heart" style="left:55%; width:18px; height:18px; animation-duration:9s; animation-delay:1s;"></div>
+  <div class="heart" style="left:70%; width:30px; height:30px; animation-duration:16s; animation-delay:3s;"></div>
+  <div class="heart" style="left:85%; width:22px; height:22px; animation-duration:11s; animation-delay:5s;"></div>
+  <div class="heart" style="left:15%; width:12px; height:12px; animation-duration:13s; animation-delay:6s;"></div>
+  <div class="heart" style="left:35%; width:28px; height:28px; animation-duration:15s; animation-delay:7s;"></div>
+  <div class="heart" style="left:60%; width:16px; height:16px; animation-duration:10s; animation-delay:8s;"></div>
+  <div class="heart" style="left:80%; width:24px; height:24px; animation-duration:12s; animation-delay:9s;"></div>
 
-  <!-- Navbar -->
+  <!-- NAVBAR -->
   <nav>
     <a href="index.html">Home</a>
     <a href="art.html">Original Visual Art</a>
@@ -174,26 +178,51 @@
     <a href="something-silly.html">Something Silly</a>
   </nav>
 
-  <!-- Main Content -->
-  <main>
+  <!-- HEADER -->
+  <header>
+    <h1>Isabelle Rashkin</h1>
+    <p>Multi-disciplinary artist based in Brooklyn, NYC</p>
+    <p><small>Interlochen Arts Academy 2018 / University of Wisconsin-Milwaukee 2022</small></p>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <div class="content-container">
+
     <!-- Resume -->
-    <div class="resume-wrapper">
-      <div class="resume-preview"></div>
-      <a href="resume.pdf" download class="download-btn">⬇ Download Resume</a>
+    <div class="resume">
+      <img src="resume-preview.png" alt="Resume Preview">
+      <a href="resume.pdf" download class="download-button">Download Resume</a>
     </div>
 
     <!-- Headshots -->
     <div class="headshots">
-      <div class="headshot-wrapper">
+      <div class="headshot">
         <img src="headshot1.jpeg" alt="Headshot 1">
-        <a href="headshot1.jpeg" download class="download-btn">⬇ Download</a>
+        <a href="headshot1.jpeg" download class="download-button">Download</a>
       </div>
-      <div class="headshot-wrapper">
+      <div class="headshot">
         <img src="headshot2.jpg" alt="Headshot 2">
-        <a href="headshot2.jpg" download class="download-btn">⬇ Download</a>
+        <a href="headshot2.jpg" download class="download-button">Download</a>
       </div>
     </div>
-  </main>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <h3>Connect with me</h3>
+    <div class="social-links">
+      <a href="https://www.instagram.com/tamoottopro/" target="_blank">Instagram (Personal)</a>
+      <a href="https://www.instagram.com/Bee_original_music/" target="_blank">Instagram (Music)</a>
+      <a href="https://x.com/tamoottopro" target="_blank">X (Twitter)</a>
+      <a href="https://www.linkedin.com/in/isabelle-rashkin-82958228/" target="_blank">LinkedIn</a>
+      <a href="mailto:ivrashkin@gmail.com">Email</a>
+      <a href="https://open.spotify.com/artist/2TRjrme5uq3GM8qMF7y0QI" target="_blank">Spotify</a>
+      <a href="https://www.youtube.com/channel/UCa9acPRSIGUmjgn54hz17eA" target="_blank">YouTube Music</a>
+      <a href="https://music.apple.com/ca/artist/isabelle-bee-rashkin/1773658949" target="_blank">Apple Music</a>
+      <a href="https://www.backstage.com/u/isabelle-rashkin/" target="_blank">Backstage</a>
+    </div>
+  </footer>
 
 </body>
 </html>
