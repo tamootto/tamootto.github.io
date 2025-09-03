@@ -1,165 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Art – Isabelle Rashkin</title>
-  <!-- Favicon -->
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-  <style>
-    body {
-      font-family: "Times New Roman", Times, serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #ffe6f2, #e6f7ff, #fff0e6);
-      color: #333;
-      text-align: center;
-      position: relative;
-      overflow-x: hidden;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Art – Isabelle Rashkin</title>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<style>
+  body {
+    font-family: "Times New Roman", Times, serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ffe6f2, #e6f7ff, #fff0e6);
+    color: #333;
+    text-align: center;
+    position: relative;
+    overflow-x: hidden;
+  }
 
-    /* Floating pastel hearts */
-    .heart {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: pink;
-      transform: rotate(45deg);
-      animation: float linear infinite;
-      opacity: 0.6;
-      border-radius: 4px;
-      z-index: 0;
-    }
-    .heart::before,
-    .heart::after {
-      content: "";
-      position: absolute;
-      background: pink;
-      border-radius: 50%;
-    }
-    .heart::before {
-      top: -50%;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-    .heart::after {
-      left: -50%;
-      top: 0;
-      width: 100%;
-      height: 100%;
-    }
-    @keyframes float {
-      0% { transform: translateY(100vh) rotate(45deg); opacity: 0.6; }
-      100% { transform: translateY(-10vh) rotate(45deg); opacity: 0; }
-    }
+  /* --- Floating hearts --- */
+  .heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: pink;
+    transform: rotate(45deg);
+    animation: float linear infinite;
+    opacity: 0.6;
+    border-radius: 4px;
+  }
+  .heart::before,
+  .heart::after {
+    content: "";
+    position: absolute;
+    background: pink;
+    border-radius: 50%;
+  }
+  .heart::before { top: -50%; left: 0; width: 100%; height: 100%; }
+  .heart::after { left: -50%; top: 0; width: 100%; height: 100%; }
 
-    /* --- NAVBAR --- */
-    nav {
-      background-color: #000;
-      padding: 1rem;
-      text-align: center;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 100;
-    }
-    nav a {
-      color: #fff;
-      margin: 0.5rem;
-      text-decoration: none;
-      font-weight: bold;
-      display: inline-block;
-      width: 120px;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
+  @keyframes float {
+    0% { transform: translateY(100vh) rotate(45deg); opacity: 0.6; }
+    100% { transform: translateY(-10vh) rotate(45deg); opacity: 0; }
+  }
 
-    /* --- HEADER --- */
-    header {
-      padding: 2rem 1rem;
-      background-color: #f8c8dc;
-      color: #222;
-      margin-top: 60px; /* space for fixed navbar */
-    }
-    header h1 {
-      margin: 0.5rem 0;
-    }
-    header h2 {
-      margin: 0.25rem 0;
-      font-weight: normal;
-      color: #555;
-    }
+  /* --- NAVBAR --- */
+  nav {
+    background-color: #000;
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+  }
+  nav a {
+    color: #fff;
+    margin: 0 0.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    width: 120px;
+  }
+  nav a:hover { text-decoration: underline; }
 
-    main {
-      padding: 2rem;
-      max-width: 1200px;
-      margin: auto;
-      position: relative;
-      z-index: 1; /* make sure content is above hearts */
-    }
+  /* --- HEADER --- */
+  header {
+    background-color: #f8c8dc;
+    padding: 2rem 1rem;
+    margin-top: 60px; /* space below fixed navbar */
+  }
+  header h1 { margin: 0.5rem 0; }
+  header p.subtitle { margin: 0.25rem 0; font-style: italic; color: #555; }
 
+  main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .art-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .art-grid img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  a.back-link {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.5rem 1rem;
+    background: #444;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+  }
+  a.back-link:hover { background: #666; }
+
+  footer {
+    background-color: #222;
+    color: #fff;
+    padding: 2rem 1rem;
+    margin-top: 2rem;
+  }
+  footer h3 { margin-bottom: 1rem; }
+  .social-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .social-links a {
+    color: #f8c8dc;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .social-links a:hover { text-decoration: underline; }
+
+  /* MOBILE FIXES */
+  @media (max-width: 768px) {
     .art-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 2rem;
+      grid-template-columns: 1fr;
     }
-    .art-grid img {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-    }
-
-    a.back-link {
-      display: inline-block;
-      margin-top: 2rem;
-      padding: 0.5rem 1rem;
-      background: #444;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 8px;
-    }
-    a.back-link:hover {
-      background: #666;
-    }
-
-    footer {
-      background-color: #222;
-      color: #fff;
-      padding: 2rem 1rem;
-      margin-top: 2rem;
-    }
-    footer h3 {
-      margin-bottom: 1rem;
-    }
-    .social-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-    }
-    .social-links a {
-      color: #f8c8dc;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .social-links a:hover {
-      text-decoration: underline;
-    }
-  </style>
+    .heart { width: 12px; height: 12px; }
+  }
+</style>
 </head>
 <body>
 
   <!-- Floating hearts -->
-  <div class="heart" style="left:10%; animation-duration:12s;"></div>
-  <div class="heart" style="left:25%; width:15px; height:15px; animation-duration:10s;"></div>
-  <div class="heart" style="left:40%; width:25px; height:25px; animation-duration:14s;"></div>
-  <div class="heart" style="left:55%; width:18px; height:18px; animation-duration:9s;"></div>
-  <div class="heart" style="left:70%; width:30px; height:30px; animation-duration:16s;"></div>
-  <div class="heart" style="left:85%; width:22px; height:22px; animation-duration:11s;"></div>
+  <div class="heart" style="left:5%; animation-duration:12s;"></div>
+  <div class="heart" style="left:15%; animation-duration:10s;"></div>
+  <div class="heart" style="left:25%; animation-duration:14s;"></div>
+  <div class="heart" style="left:35%; animation-duration:9s;"></div>
+  <div class="heart" style="left:45%; animation-duration:16s;"></div>
+  <div class="heart" style="left:55%; animation-duration:11s;"></div>
+  <div class="heart" style="left:65%; animation-duration:13s;"></div>
+  <div class="heart" style="left:75%; animation-duration:15s;"></div>
+  <div class="heart" style="left:85%; animation-duration:10s;"></div>
+  <div class="heart" style="left:95%; animation-duration:12s;"></div>
 
   <!-- NAVBAR -->
   <nav>
@@ -167,7 +154,7 @@
     <a href="art.html">Original Visual Art</a>
     <a href="music.html">Original Music</a>
     <a href="theatre.html">Miscellania Theatre Co</a>
-    <a href="resume.html">Headshot&Resume</a>
+    <a href="resume.html">Headshot & Resume</a>
     <a href="gallery.html">Gallery</a>
     <a href="contact.html">Contact Me</a>
     <a href="something-silly.html">Something Silly</a>
@@ -176,11 +163,10 @@
   <!-- HEADER -->
   <header>
     <h1>Art</h1>
-    <h2>Original Visual Art, Collages, Sketches & Comics</h2>
+    <p class="subtitle">A collection of visual works, collages, sketches, and comics</p>
   </header>
 
   <main>
-    <!-- Original Album Art -->
     <h2>Original Album Art</h2>
     <div class="art-grid">
       <img src="F0A78B68-9CAF-4446-BF2E-4BBF18751F23_1_105_c.jpeg" alt="Original Album Art 1">
@@ -188,32 +174,20 @@
       <img src="4E4CEDE8-E668-49C7-83B8-5ACF24F2ED0A_1_105_c.jpeg" alt="Original Album Art 3">
     </div>
 
-    <!-- Collages -->
     <h2>Collages</h2>
     <div class="art-grid">
       <img src="A951481F-0317-4A62-AB38-5976B39D418D_1_201_a.jpeg" alt="Collage 1">
       <img src="8401AE1F-A725-49E1-8ECD-FFD4B68A0194_1_105_c.jpeg" alt="Collage 2">
       <img src="4C160E30-125A-4908-B512-ECD4B966E8E9_1_105_c.jpeg" alt="Collage 3">
-      <img src="4E008473-EC24-4013-A508-26C9311642A7_1_105_c.jpeg" alt="Collage 4">
-      <img src="5F43C427-7551-42D2-85A1-2537C053DDE0_1_105_c.jpeg" alt="Collage 5">
-      <img src="70B5AFC0-804F-473E-91BB-A0244C1933F6_1_105_c.jpeg" alt="Collage 6">
-      <img src="A74906F9-A0F8-4D0E-96FC-09B767FB40BA_1_105_c.jpeg" alt="Collage 7">
-      <img src="C2541CAD-FC82-4E07-B1A1-D013F928398A_1_105_c.jpeg" alt="Collage 8">
-      <img src="E687AB11-A75D-4B95-BC8A-2DA376222B9D_1_105_c.jpeg" alt="Collage 9">
-      <img src="E842A9C3-0DE4-4317-974E-98E605802E47_1_105_c.jpeg" alt="Collage 10">
     </div>
 
-    <!-- Sketches -->
     <h2>Sketches</h2>
     <div class="art-grid">
       <img src="405AC77B-9723-42A1-BF30-B4FE83B2C05F_1_201_a.jpeg" alt="Sketch 1">
       <img src="45369F27-1DEE-4FAF-A33F-AE5A745D8A7D_1_105_c.jpeg" alt="Sketch 2">
       <img src="4DF2F47E-E321-4E94-8221-0BF2A0CD2C31_1_105_c.jpeg" alt="Sketch 3">
-      <img src="CD0DBCFF-DFEA-4AA7-B56C-457188234C58_1_201_a.jpeg" alt="Sketch 4">
-      <img src="ED269686-E0E4-452E-A370-5608BBB4180F_1_105_c.jpeg" alt="Sketch 5">
     </div>
 
-    <!-- Comics -->
     <h2>Comics</h2>
     <div class="art-grid">
       <img src="AD56AB8C-7486-4079-97FA-043BD4F4F4E0_1_201_a.jpeg" alt="Comic 1">
@@ -237,6 +211,5 @@
       <a href="https://www.backstage.com/u/isabelle-rashkin/" target="_blank">Backstage</a>
     </div>
   </footer>
-
 </body>
 </html>
