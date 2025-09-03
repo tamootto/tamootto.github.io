@@ -27,7 +27,7 @@
     animation: float linear infinite;
     opacity: 0.6;
     border-radius: 4px;
-    z-index: 0; /* behind content */
+    z-index: 0;
   }
   .heart::before,
   .heart::after {
@@ -65,14 +65,15 @@
 
   /* --- HEADER --- */
   header {
-    position: relative;       /* scrolls with page */
-    top: 0;
-    padding: 2rem 1rem;       /* same as index.html */
+    position: fixed;       /* same as index.html */
+    top: 60px;             /* below navbar */
+    left: 0;
+    width: 100%;
+    padding: 1rem 1rem;    /* match index.html */
     background-color: #f8c8dc;
     z-index: 90;
-    text-align: center;
     box-sizing: border-box;
-    margin-top: 60px;         /* space for fixed navbar */
+    text-align: center;
   }
   header h1 { margin: 0.5rem 0; }
   header p { margin: 0.25rem 0; }
@@ -84,7 +85,7 @@
     justify-content: center;
     align-items: flex-start;
     gap: 3rem;
-    margin-top: 20px; /* space after header */
+    margin-top: 120px; /* push down below fixed navbar + header */
     flex-wrap: wrap;
     position: relative;
     z-index: 1;
@@ -129,8 +130,8 @@
     flex-direction: column;
     gap: 1rem;
   }
-  .headshots img { width: 220px; } /* larger headshots */
-  .resume img { width: 400px; } /* larger resume */
+  .headshots img { width: 220px; }
+  .resume img { width: 400px; }
 
   /* FOOTER */
   footer {
