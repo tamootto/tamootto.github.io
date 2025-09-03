@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Art – Isabelle Rashkin</title>
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 <style>
   body {
     font-family: "Times New Roman", Times, serif;
@@ -27,6 +28,7 @@
     animation: float linear infinite;
     opacity: 0.6;
     border-radius: 4px;
+    z-index: 1; /* behind content */
   }
   .heart::before,
   .heart::after {
@@ -50,7 +52,7 @@
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 100; /* above hearts */
   }
   nav a {
     color: #fff;
@@ -64,20 +66,24 @@
 
   /* --- HEADER --- */
   header {
-    background-color: #f8c8dc;
     padding: 2rem 1rem;
-    margin-top: 60px; /* space below fixed navbar */
+    background-color: #f8c8dc;
+    position: relative; /* scrolls with page */
+    z-index: 10; /* above hearts */
   }
   header h1 { margin: 0.5rem 0; }
-  header p.subtitle { margin: 0.25rem 0; font-style: italic; color: #555; }
+  header p { margin: 0.25rem 0; }
+  header h2 { margin-top: 0.5rem; font-weight: normal; color: #555; }
 
   main {
     padding: 2rem;
     max-width: 1200px;
     margin: auto;
+    position: relative;
+    z-index: 10; /* above hearts */
   }
 
-  h2 {
+  h2.section-title {
     margin-top: 2rem;
     margin-bottom: 1rem;
   }
@@ -110,22 +116,15 @@
     color: #fff;
     padding: 2rem 1rem;
     margin-top: 2rem;
+    position: relative;
+    z-index: 10; /* above hearts */
   }
   footer h3 { margin-bottom: 1rem; }
-  .social-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-  }
-  .social-links a {
-    color: #f8c8dc;
-    text-decoration: none;
-    font-weight: bold;
-  }
+  .social-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+  .social-links a { color: #f8c8dc; text-decoration: none; font-weight: bold; }
   .social-links a:hover { text-decoration: underline; }
 
-  /* MOBILE FIXES */
+  /* --- MOBILE --- */
   @media (max-width: 768px) {
     .art-grid {
       grid-template-columns: 1fr;
@@ -136,80 +135,67 @@
 </head>
 <body>
 
-  <!-- Floating hearts -->
-  <div class="heart" style="left:5%; animation-duration:12s;"></div>
-  <div class="heart" style="left:15%; animation-duration:10s;"></div>
-  <div class="heart" style="left:25%; animation-duration:14s;"></div>
-  <div class="heart" style="left:35%; animation-duration:9s;"></div>
-  <div class="heart" style="left:45%; animation-duration:16s;"></div>
-  <div class="heart" style="left:55%; animation-duration:11s;"></div>
-  <div class="heart" style="left:65%; animation-duration:13s;"></div>
-  <div class="heart" style="left:75%; animation-duration:15s;"></div>
-  <div class="heart" style="left:85%; animation-duration:10s;"></div>
-  <div class="heart" style="left:95%; animation-duration:12s;"></div>
+<!-- Floating hearts -->
+<div class="heart" style="left:5%; animation-duration:12s;"></div>
+<div class="heart" style="left:15%; animation-duration:10s;"></div>
+<div class="heart" style="left:25%; animation-duration:14s;"></div>
+<div class="heart" style="left:35%; animation-duration:9s;"></div>
+<div class="heart" style="left:45%; animation-duration:16s;"></div>
+<div class="heart" style="left:55%; animation-duration:11s;"></div>
+<div class="heart" style="left:65%; animation-duration:13s;"></div>
+<div class="heart" style="left:75%; animation-duration:15s;"></div>
+<div class="heart" style="left:85%; animation-duration:10s;"></div>
+<div class="heart" style="left:95%; animation-duration:12s;"></div>
 
-  <!-- NAVBAR -->
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="art.html">Original Visual Art</a>
-    <a href="music.html">Original Music</a>
-    <a href="theatre.html">Miscellania Theatre Co</a>
-    <a href="resume.html">Headshot & Resume</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="contact.html">Contact Me</a>
-    <a href="something-silly.html">Something Silly</a>
-  </nav>
+<!-- NAVBAR -->
+<nav>
+  <a href="index.html">Home</a>
+  <a href="art.html">Original Visual Art</a>
+  <a href="music.html">Original Music</a>
+  <a href="theatre.html">Miscellania Theatre Co</a>
+  <a href="resume.html">Headshot & Resume</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="contact.html">Contact Me</a>
+  <a href="something-silly.html">Something Silly</a>
+</nav>
 
-  <!-- HEADER -->
-  <header>
-    <h1>Art</h1>
-    <p class="subtitle">A collection of visual works, collages, sketches, and comics</p>
-  </header>
+<!-- HEADER -->
+<header>
+  <h1>Art – Isabelle Rashkin</h1>
+  <h2>Your subtitle here</h2>
+</header>
 
-  <main>
-    <h2>Original Album Art</h2>
-    <div class="art-grid">
-      <img src="F0A78B68-9CAF-4446-BF2E-4BBF18751F23_1_105_c.jpeg" alt="Original Album Art 1">
-      <img src="DD0883EA-DAE6-430B-A287-1C4B031671E0_1_105_c.jpeg" alt="Original Album Art 2">
-      <img src="4E4CEDE8-E668-49C7-83B8-5ACF24F2ED0A_1_105_c.jpeg" alt="Original Album Art 3">
-    </div>
+<main>
+  <h2 class="section-title">Original Album Art</h2>
+  <div class="art-grid">
+    <img src="F0A78B68-9CAF-4446-BF2E-4BBF18751F23_1_105_c.jpeg" alt="Original Album Art 1">
+    <img src="DD0883EA-DAE6-430B-A287-1C4B031671E0_1_105_c.jpeg" alt="Original Album Art 2">
+    <img src="4E4CEDE8-E668-49C7-83B8-5ACF24F2ED0A_1_105_c.jpeg" alt="Original Album Art 3">
+  </div>
 
-    <h2>Collages</h2>
-    <div class="art-grid">
-      <img src="A951481F-0317-4A62-AB38-5976B39D418D_1_201_a.jpeg" alt="Collage 1">
-      <img src="8401AE1F-A725-49E1-8ECD-FFD4B68A0194_1_105_c.jpeg" alt="Collage 2">
-      <img src="4C160E30-125A-4908-B512-ECD4B966E8E9_1_105_c.jpeg" alt="Collage 3">
-    </div>
+  <h2 class="section-title">Collages</h2>
+  <div class="art-grid">
+    <img src="A951481F-0317-4A62-AB38-5976B39D418D_1_201_a.jpeg" alt="Collage 1">
+    <img src="8401AE1F-A725-49E1-8ECD-FFD4B68A0194_1_105_c.jpeg" alt="Collage 2">
+    <img src="4C160E30-125A-4908-B512-ECD4B966E8E9_1_105_c.jpeg" alt="Collage 3">
+  </div>
 
-    <h2>Sketches</h2>
-    <div class="art-grid">
-      <img src="405AC77B-9723-42A1-BF30-B4FE83B2C05F_1_201_a.jpeg" alt="Sketch 1">
-      <img src="45369F27-1DEE-4FAF-A33F-AE5A745D8A7D_1_105_c.jpeg" alt="Sketch 2">
-      <img src="4DF2F47E-E321-4E94-8221-0BF2A0CD2C31_1_105_c.jpeg" alt="Sketch 3">
-    </div>
+  <a class="back-link" href="index.html">← Back to Home</a>
+</main>
 
-    <h2>Comics</h2>
-    <div class="art-grid">
-      <img src="AD56AB8C-7486-4079-97FA-043BD4F4F4E0_1_201_a.jpeg" alt="Comic 1">
-      <img src="7C809C9A-0FC2-4D79-A253-810E8BBFC2C1_1_105_c.jpeg" alt="Comic 2">
-    </div>
-
-    <a class="back-link" href="index.html">← Back to Home</a>
-  </main>
-
-  <footer>
-    <h3>Connect with me</h3>
-    <div class="social-links">
-      <a href="https://www.instagram.com/tamoottopro/" target="_blank">Instagram (Personal)</a>
-      <a href="https://www.instagram.com/Bee_original_music/" target="_blank">Instagram (Music)</a>
-      <a href="https://x.com/tamoottopro" target="_blank">X (Twitter)</a>
-      <a href="https://www.linkedin.com/in/isabelle-rashkin-82958228/" target="_blank">LinkedIn</a>
-      <a href="mailto:ivrashkin@gmail.com">Email</a>
-      <a href="https://open.spotify.com/artist/2TRjrme5uq3GM8qMF7y0QI" target="_blank">Spotify</a>
-      <a href="https://www.youtube.com/channel/UCa9acPRSIGUmjgn54hz17eA" target="_blank">YouTube Music</a>
-      <a href="https://music.apple.com/ca/artist/isabelle-bee-rashkin/1773658949" target="_blank">Apple Music</a>
-      <a href="https://www.backstage.com/u/isabelle-rashkin/" target="_blank">Backstage</a>
-    </div>
-  </footer>
+<footer>
+  <h3>Connect with me</h3>
+  <div class="social-links">
+    <a href="https://www.instagram.com/tamoottopro/" target="_blank">Instagram (Personal)</a>
+    <a href="https://www.instagram.com/Bee_original_music/" target="_blank">Instagram (Music)</a>
+    <a href="https://x.com/tamoottopro" target="_blank">X (Twitter)</a>
+    <a href="https://www.linkedin.com/in/isabelle-rashkin-82958228/" target="_blank">LinkedIn</a>
+    <a href="mailto:ivrashkin@gmail.com">Email</a>
+    <a href="https://open.spotify.com/artist/2TRjrme5uq3GM8qMF7y0QI" target="_blank">Spotify</a>
+    <a href="https://www.youtube.com/channel/UCa9acPRSIGUmjgn54hz17eA" target="_blank">YouTube Music</a>
+    <a href="https://music.apple.com/ca/artist/isabelle-bee-rashkin/1773658949" target="_blank">Apple Music</a>
+    <a href="https://www.backstage.com/u/isabelle-rashkin/" target="_blank">Backstage</a>
+  </div>
+</footer>
 </body>
 </html>
