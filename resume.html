@@ -65,13 +65,14 @@
 
   /* --- HEADER --- */
   header {
-    position: sticky;       /* STICKY fixes the overlap */
-    top: 60px;              /* below navbar height */
-    padding: 1rem 1rem;     /* same thickness as index.html */
+    position: relative;       /* scrolls with page */
+    top: 0;
+    padding: 2rem 1rem;       /* same as index.html */
     background-color: #f8c8dc;
-    z-index: 90;            /* above hearts, below navbar */
+    z-index: 90;
     text-align: center;
     box-sizing: border-box;
+    margin-top: 60px;         /* space for fixed navbar */
   }
   header h1 { margin: 0.5rem 0; }
   header p { margin: 0.25rem 0; }
