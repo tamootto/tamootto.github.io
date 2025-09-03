@@ -65,15 +65,12 @@
 
   /* --- HEADER --- */
   header {
-    position: fixed;       /* same as index.html */
-    top: 60px;             /* below navbar */
-    left: 0;
-    width: 100%;
-    padding: 1rem 1rem;    /* match index.html */
+    margin-top: 60px;        /* offset for navbar */
     background-color: #f8c8dc;
-    z-index: 90;
-    box-sizing: border-box;
+    padding: 1rem 1rem;      /* same as index.html */
     text-align: center;
+    z-index: 1;
+    position: relative;
   }
   header h1 { margin: 0.5rem 0; }
   header p { margin: 0.25rem 0; }
@@ -85,7 +82,7 @@
     justify-content: center;
     align-items: flex-start;
     gap: 3rem;
-    margin-top: 120px; /* push down below fixed navbar + header */
+    margin-top: 40px; /* space below header */
     flex-wrap: wrap;
     position: relative;
     z-index: 1;
@@ -229,3 +226,4 @@
 
 </body>
 </html>
+>
