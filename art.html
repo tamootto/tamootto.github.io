@@ -66,15 +66,16 @@
 
   /* --- HEADER --- */
   header {
-    position: relative; /* scrolls with page */
-    z-index: 10; /* above hearts */
+    position: relative; /* scrolls naturally */
+    z-index: 10; /* above hearts, below navbar */
     background-color: #f8c8dc;
-    padding: 2rem 1rem; /* same thickness as index.html */
-    margin-top: 60px; /* space for fixed navbar */
+    padding: 1rem 1rem; /* same thickness as index.html */
     text-align: center;
+    box-sizing: border-box;
+    margin-top: 60px; /* push below fixed navbar */
   }
   header h1 { margin: 0.5rem 0; }
-  header h2 { margin-top: 0.5rem; font-weight: normal; color: #555; }
+  header h2 { margin-top: 0.25rem; font-weight: normal; color: #555; }
 
   main {
     padding: 2rem;
@@ -215,5 +216,7 @@
     <a href="https://www.backstage.com/u/isabelle-rashkin/" target="_blank">Backstage</a>
   </div>
 </footer>
+
 </body>
 </html>
+
