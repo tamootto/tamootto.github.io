@@ -1,3 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Headshot & Resume - Isabelle Rashkin</title>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+<!-- GLightbox CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/css/glightbox.min.css" integrity="sha512-hJ2Kv3VpNFrt/6w9yuh0qN7j3Y1EkhH/dwb1uXUqM0MlQUFVHroGbG6qPKgXx+q6EFO5XUejXrKNXbhvXvlpZA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+  body {
+    font-family: "Times New Roman", Times, serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ffe6f2, #e6f7ff, #fff0e6);
+    color: #333;
+    text-align: center;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* --- FLOATING HEARTS --- */
+  .heart { position: absolute; width: 20px; height: 20px; background: pink; transform: rotate(45deg); animation: float linear infinite; opacity: 0.6; border-radius: 4px; z-index: 0; }
+  .heart::before, .heart::after { content: ""; position: absolute; background: pink; border-radius: 50%; }
+  .heart::before { top: -50%; left: 0; width: 100%; height: 100%; }
+  .heart::after { left: -50%; top: 0; width: 100%; height: 100%; }
+  @keyframes float { 0% { transform: translateY(100vh) rotate(45deg); opacity: 0.6; } 100% { transform: translateY(-10vh) rotate(45deg); opacity: 0; } }
+
+  /* --- NAVBAR (Desktop identical to original) --- */
+  nav { background-color: #000; padding: 1rem; position: fixed; top: 0; width: 100%; z-index: 1000; }
+  nav a { color: #fff; margin: 0 0.5rem; text-decoration: none; font-weight: bold; display: inline-block; width: 120px; }
+  nav a:hover { text-decoration: underline; }
+
+  /* Hamburger (mobile) */
+  .menu-toggle { display: none; font-size: 1.8rem; color: #fff; cursor: pointer; background: none; border: none; position: absolute; right: 1rem; top: 0.75rem; z-index: 2000; }
+
+  /* --- HEADER --- */
+  header { margin-top: 60px; background-color: #f8c8dc; padding: 1rem; text-align: center; position: relative; z-index: 1; }
+  header h1 { margin: 0.5rem 0; }
+  header p { margin: 0.25rem 0; }
+  header small { color: #555; }
+
+  /* --- MAIN CONTENT --- */
+  .content-container { display: flex; justify-content: center; align-items: flex-start; gap: 3rem; margin-top: 40px; flex-wrap: wrap; position: relative; z-index: 1; }
+  .resume, .headshot { position: relative; cursor: pointer; transition: transform 0.3s; }
+  .resume img { border-radius: 12px; display: block; max-width: 100%; height: auto; width: 400px; }
+  .headshot img { border-radius: 12px; display: block; max-width: 100%; height: auto; width: 220px; }
+  .download-button { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background: rgba(255, 182, 193, 0.9); padding: 0.5rem 1rem; border-radius: 8px; font-weight: bold; opacity: 0; transition: opacity 0.3s; text-decoration: none; color: #333; }
+  .resume:hover .download-button, .headshot:hover .download-button { opacity: 1; }
+  .headshots { display: flex; flex-direction: column; gap: 1rem; }
+
+  /* --- FOOTER --- */
+  footer { background-color: #222; color: #fff; padding: 2rem 1rem; margin-top: 2rem; position: relative; z-index: 10; }
+  .social-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+  .social-links a { color: #f8c8dc; text-decoration: none; font-weight: bold; }
+  .social-links a:hover { text-decoration: underline; }
+
+  /* --- MOBILE --- */
+  @media (max-width: 768px) {
+    .content-container { flex-direction: column; align-items: center; }
+    .headshot img { width: 160px; }
+    .resume img { width: 280px; }
+    .heart { width: 12px; height: 12px; }
+
+    nav a { display: block; width: 100%; padding: 0.75rem 0; margin: 0; text-align: center; }
+    .menu-toggle { display: block; }
+    nav .nav-links { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; flex-direction: column; background: #000; position: absolute; top: 100%; left: 0; width: 100%; }
+    nav .nav-links.show { max-height: 500px; transition: max-height 0.3s ease-in; }
+  }
+</style>
+</head>
+<body>
+
+<!-- FLOATING HEARTS -->
+<div class="heart" style="left:10%; animation-duration:12s;"></div>
+<div class="heart" style="left:25%; width:15px; height:15px; animation-duration:10s; animation-delay:2s;"></div>
+<div class="heart" style="left:40%; width:25px; height:25px; animation-duration:14s; animation-delay:4s;"></div>
+<div class="heart" style="left:55%; width:18px; height:18px; animation-duration:9s; animation-delay:1s;"></div>
+<div class="heart" style="left:70%; width:30px; height:30px; animation-duration:16s; animation-delay:3s;"></div>
+<div class="heart" style="left:85%; width:22px; height:22px; animation-duration:11s; animation-delay:5s;"></div>
+<div class="heart" style="left:15%; width:12px; height:12px; animation-duration:13s; animation-delay:6s;"></div>
+<div class="heart" style="left:35%; width:28px; height:28px; animation-duration:15s; animation-delay:7s;"></div>
+<div class="heart" style="left:60%; width:16px; height:16px; animation-duration:10s; animation-delay:8s;"></div>
+<div class="heart" style="left:80%; width:24px; height:24px; animation-duration:12s; animation-delay:9s;"></div>
+
+<!-- NAVBAR -->
+<nav>
+  <button class="menu-toggle" id="menu-toggle">☰</button>
+  <div class="nav-links" id="nav-links">
+    <a href="index.html">Home</a>
+    <a href="art.html">Original Visual Art</a>
+    <a href="music.html">Original Music</a>
+    <a href="theatre.html">Miscellania Theatre Co</a>
+    <a href="resume.html">Headshot & Resume</a>
+    <a href="gallery.html">Media Gallery</a>
+    <a href="contact.html">Contact Me</a>
+    <a href="something-silly.html">Something Silly</a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header>
+  <h1>Isabelle Rashkin</h1>
+  <p>Multi-disciplinary artist based in Brooklyn, NYC</p>
+  <p><small>Interlochen Arts Academy 2018 / University of Wisconsin-Milwaukee 2022</small></p>
+</header>
+
+<!-- MAIN CONTENT -->
+<div class="content-container">
+  <div class="resume">
+    <a href="resume-preview.png" class="glightbox-gallery" data-title="Resume">
+      <img src="resume-preview.png" alt="Resume Preview">
+    </a>
+    <a href="resume.pdf" download class="download-button">Download Resume</a>
+  </div>
+
+  <div class="headshots">
+    <div class="headshot">
+      <a href="headshot1.jpeg" class="glightbox-gallery" data-title="Headshot 1">
+        <img src="headshot1.jpeg" alt="Headshot 1">
+      </a>
+      <a href="headshot1.jpeg" download class="download-button">Download</a>
+    </div>
+    <div class="headshot">
+      <a href="headshot2.jpg" class="glightbox-gallery" data-title="Headshot 2">
+        <img src="headshot2.jpg" alt="Headshot 2">
+      </a>
+      <a href="headshot2.jpg" download class="download-button">Download</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <h3>Connect with me</h3>
+  <div class="social-links">
+    <a href="https://www.instagram.com/tamoottopro/" target="_blank">Instagram (Personal)</a>
+    <a href="https://www.instagram.com/Bee_original_music/" target="_blank">Instagram (Music)</a>
+    <a href="https://x.com/tamoottopro" target="_blank">X (Twitter)</a>
+    <a href="https://www.linkedin.com/in/isabelle-rashkin-82958228/" target="_blank">LinkedIn</a>
+    <a href="mailto:ivrashkin@gmail.com">Email</a>
+    <a href="https://open.spotify.com/artist/2TRjrme5uq3GM8qMF7y0QI" target="_blank">Spotify</a>
+    <a href="https://www.youtube.com/channel/UCa9acPRSIGUmjgn54hz17eA" target="_blank">YouTube Music</a>
+    <a href="https://music.apple.com/ca/artist/isabelle-bee-rashkin/1773658949" target="_blank">Apple Music</a>
+    <
     <a href="https://www.backstage.com/u/isabelle-rashkin/" target="_blank">Backstage</a>
   </div>
 </footer>
@@ -31,3 +178,4 @@
 
 </body>
 </html>
+
