@@ -64,19 +64,21 @@
   }
   nav a:hover { text-decoration: underline; }
 
-  /* --- HEADER --- */
+  /* --- HEADER (scrolling, same as resume.html) --- */
   header {
     position: relative; /* scrolls naturally */
-    z-index: 10; /* above hearts, below navbar */
     background-color: #f8c8dc;
     padding: 1rem 1rem; /* same thickness as index.html */
     text-align: center;
     box-sizing: border-box;
     margin-top: 60px; /* push below fixed navbar */
+    z-index: 10; /* above hearts */
   }
   header h1 { margin: 0.5rem 0; }
-  header h2 { margin-top: 0.25rem; font-weight: normal; color: #555; }
+  header p { margin: 0.25rem 0; }
+  header small { color: #555; }
 
+  /* --- MAIN CONTENT --- */
   main {
     padding: 2rem;
     max-width: 1200px;
@@ -113,6 +115,7 @@
   }
   a.back-link:hover { background: #666; }
 
+  /* --- FOOTER --- */
   footer {
     background-color: #222;
     color: #fff;
@@ -161,10 +164,11 @@
   <a href="something-silly.html">Something Silly</a>
 </nav>
 
-<!-- HEADER -->
+<!-- HEADER (scrolling banner like resume.html) -->
 <header>
-  <h1>Art – Isabelle Rashkin</h1>
-  <h2>Your subtitle here</h2>
+  <h1>Isabelle Rashkin</h1>
+  <p>Multi-disciplinary artist based in Brooklyn, NYC</p>
+  <p><small>Interlochen Arts Academy 2018 / University of Wisconsin-Milwaukee 2022</small></p>
 </header>
 
 <main>
@@ -219,4 +223,5 @@
 
 </body>
 </html>
+
 
