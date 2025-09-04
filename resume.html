@@ -47,42 +47,21 @@
     100% { transform: translateY(-20vh) rotate(45deg); opacity: 0; }
   }
 
- <!-- Navbar -->
-<nav>
-  <button class="menu-toggle" id="menu-toggle">☰</button>
-  <div class="nav-links" id="nav-links">
-    <a href="index.html">Home</a>
-    <a href="art.html">Original Visual Art</a>
-    <a href="music.html">Original Music</a>
-    <a href="theatre.html">Miscellania Theatre Co</a>
-    <a href="resume.html">Headshot & Resume</a>
-    <a href="gallery.html">Media Gallery</a>
-    <a href="contact.html">Contact Me</a>
-    <a href="something-silly.html">Something Silly</a>
-  </div>
-</nav>
-
-<style>
-/* Desktop Navbar identical to gallery.html */
-@media (min-width: 769px) {
+  /* Navbar */
   nav {
-    padding: 1.5rem 0; /* match gallery.html thickness */
+    background-color: #000;
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
   }
-  .nav-links {
-    display: flex !important;
-    justify-content: center;
-    gap: 1rem; /* same spacing as gallery.html */
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
   }
-  .nav-links a {
-    display: inline-block;
-    width: auto; /* remove fixed width */
-    padding: 0.5rem 1rem;
-    margin: 0 0.25rem;
-  }
-  .menu-toggle { display: none; } /* hide hamburger on desktop */
-}
-</style>
-
+  nav a:hover { text-decoration: underline; }
 
   /* Hamburger */
   .menu-toggle {
@@ -99,8 +78,9 @@
   }
   .nav-links { display: flex; justify-content: center; flex-wrap: wrap; }
 
+  /* Mobile Styles */
   @media (max-width: 768px) {
-    nav { padding: 1.5rem 1rem; } /* Thicker black bar */
+    nav { padding: 1.5rem 1rem; }
     nav a { display: block; width: 100%; padding: 0.75rem 0; margin: 0; text-align: center; }
     .menu-toggle { display: block; }
     .nav-links {
@@ -117,6 +97,25 @@
     .nav-links.show { max-height: 500px; transition: max-height 0.3s ease-in; }
   }
 
+  /* Desktop Navbar identical to gallery.html */
+  @media (min-width: 769px) {
+    nav {
+      padding: 1.5rem 0; /* match gallery.html thickness */
+    }
+    .nav-links {
+      display: flex !important;
+      justify-content: center;
+      gap: 1rem; /* same spacing as gallery.html */
+    }
+    .nav-links a {
+      display: inline-block;
+      width: auto;
+      padding: 0.5rem 1rem;
+      margin: 0 0.25rem;
+    }
+    .menu-toggle { display: none; }
+  }
+
   /* Header */
   header {
     position: relative;
@@ -124,7 +123,7 @@
     padding: 1rem;
     text-align: center;
     box-sizing: border-box;
-    margin-top: 60px; /* below navbar */
+    margin-top: 60px;
     z-index: 10;
   }
   header h1 { margin: 0.5rem 0; }
@@ -279,3 +278,4 @@
 
 </body>
 </html>
+
