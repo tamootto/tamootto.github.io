@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gallery – Isabelle Rashkin</title>
+<title>Media Gallery – Isabelle Rashkin</title>
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
@@ -91,11 +91,6 @@
     z-index: 10;
   }
 
-  h2.section-title {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-  }
-
   /* --- VIDEO GALLERY --- */
   .video-gallery {
     display: grid;
@@ -108,7 +103,7 @@
   }
   .video-container {
     position: relative;
-    padding-bottom: 56.25%;
+    padding-bottom: 56.25%; /* 16:9 */
     height: 0;
     overflow: hidden;
     border-radius: 12px;
@@ -137,13 +132,19 @@
     margin: 2rem 0;
   }
   .photo-item {
-    position: relative;
     text-align: center;
+    position: relative;
   }
   .photo-item img {
     width: 100%;
     border-radius: 12px;
     display: block;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+  .photo-caption {
+    margin-top: 6px;
+    font-size: 0.9rem;
+    color: #333;
   }
   .download-button {
     position: absolute;
@@ -178,9 +179,9 @@
 
   /* --- MOBILE --- */
   @media (max-width: 768px) {
-    .video-gallery { grid-template-columns: 1fr; }
-    .photo-gallery { grid-template-columns: 1fr; }
+    .video-gallery, .photo-gallery { grid-template-columns: 1fr; }
     .heart { width: 12px; height: 12px; }
+    nav a { width: auto; }
   }
 </style>
 </head>
@@ -210,15 +211,16 @@
   <a href="something-silly.html">Something Silly</a>
 </nav>
 
-<!-- Header -->
+<!-- Header (from art.html) -->
 <header>
-  <h1>Gallery</h1>
-  <p>A collection of performances, self-tapes, and photos</p>
+  <h1>Isabelle Rashkin</h1>
+  <p>Multi-disciplinary artist based in Brooklyn, NYC</p>
+  <p><small>Interlochen Arts Academy 2018 / University of Wisconsin-Milwaukee 2022</small></p>
 </header>
 
 <main>
   <!-- Performance Videos -->
-  <h2 class="section-title">Performance Videos</h2>
+  <h2>Performance Videos</h2>
   <div class="video-gallery">
     <div class="video-item">
       <div class="video-container">
@@ -247,7 +249,7 @@
   </div>
 
   <!-- Self-Tape Videos -->
-  <h2 class="section-title">Self-Tape Videos</h2>
+  <h2>Self-Tape Videos</h2>
   <div class="video-gallery">
     <div class="video-item">
       <div class="video-container">
@@ -288,7 +290,7 @@
   </div>
 
   <!-- Professional Photos -->
-  <h2 class="section-title">Professional Photos</h2>
+  <h2>Professional Photos</h2>
   <div class="photo-gallery">
     <div class="photo-item">
       <a href="A635B61C-0535-4ACB-A2C2-153429E073FD_1_105_c.jpeg" class="glightbox" data-gallery="photos">
@@ -318,19 +320,10 @@
       <a href="DSCF1306.JPG" download class="download-button">Download</a>
       <p class="photo-caption">Bee Rashkin with M-Jay He in <i>Vanya!</i> at New York Theatre Festival (2024)</p>
     </div>
-    <div class="photo-item">
-      <a href="D3CA96B0-B5A2-4E33-803A-0609213F57
-    <div class="photo-item">
-      <a href="D3CA96B0-B5A2-4E33-803A-0609213F57E3_1_201_a.jpeg" class="glightbox" data-gallery="photos">
-        <img src="D3CA96B0-B5A2-4E33-803A-0609213F57E3_1_201_a.jpeg" alt="Pandos Birthday Party">
-      </a>
-      <a href="D3CA96B0-B5A2-4E33-803A-0609213F57E3_1_201_a.jpeg" download class="download-button">Download</a>
-      <p class="photo-caption">Nick Boni and Bee performing at Pandos 1 Year Birthday Party (2025)</p>
-    </div>
   </div>
 
-  <!-- Candids / Casual Photos -->
-  <h2 class="section-title">Candids / Casual Photos</h2>
+  <!-- Candids -->
+  <h2>Candids / Casual Photos</h2>
   <div class="photo-gallery">
     <div class="photo-item">
       <a href="01C2B009-C221-4F8E-AA7A-8BFAAFE619A8_1_102_a.jpeg" class="glightbox" data-gallery="photos">
@@ -359,7 +352,6 @@
   </div>
 </main>
 
-<!-- Footer -->
 <footer>
   <h3>Connect with me</h3>
   <div class="social-links">
@@ -386,5 +378,3 @@
 
 </body>
 </html>
-
-
