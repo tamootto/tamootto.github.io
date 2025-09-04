@@ -7,6 +7,9 @@
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
+<!-- GLightbox CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+
 <style>
   body {
     font-family: "Times New Roman", Times, serif;
@@ -21,7 +24,7 @@
 
   /* --- Floating hearts --- */
   .heart {
-    position: fixed;
+    position: absolute;
     width: 20px;
     height: 20px;
     background: pink;
@@ -43,7 +46,7 @@
 
   @keyframes float {
     0% { transform: translateY(100vh) rotate(45deg); opacity: 0.6; }
-    100% { transform: translateY(-20vh) rotate(45deg); opacity: 0; }
+    100% { transform: translateY(-10vh) rotate(45deg); opacity: 0; }
   }
 
   /* --- NAVBAR --- */
@@ -69,16 +72,22 @@
   header {
     position: relative;
     background-color: #f8c8dc;
-    padding: 1rem;
+    padding: 2rem 1rem;
     text-align: center;
     box-sizing: border-box;
     margin-top: 60px; /* below navbar */
     z-index: 10;
   }
-  header h1 { margin: 0.5rem 0; }
-  header p { margin: 0.25rem 0; }
-  header small { color: #555; }
+  header h1 { 
+    margin: 0.5rem 0; 
+    font-size: 2.5rem;
+  }
+  header p { 
+    margin: 0.25rem 0; 
+    font-size: 1.1rem;
+  }
 
+  /* --- MAIN CONTENT --- */
   main {
     padding: 2rem;
     max-width: 1200px;
@@ -87,7 +96,7 @@
     z-index: 10;
   }
 
-  h2 {
+  h2.section-title {
     margin-top: 2rem;
     margin-bottom: 1rem;
   }
@@ -104,7 +113,7 @@
   }
   .video-container {
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 */
+    padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
     border-radius: 12px;
@@ -139,6 +148,7 @@
     width: 100%;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    cursor: pointer;
   }
   .photo-caption {
     margin-top: 6px;
@@ -146,6 +156,19 @@
     color: #333;
   }
 
+  /* --- BACK LINK --- */
+  a.back-link {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.5rem 1rem;
+    background: #444;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+  }
+  a.back-link:hover { background: #666; }
+
+  /* --- FOOTER --- */
   footer {
     background-color: #222;
     color: #fff;
@@ -155,19 +178,11 @@
     z-index: 10;
   }
   footer h3 { margin-bottom: 1rem; }
-  .social-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-  }
-  .social-links a {
-    color: #f8c8dc;
-    text-decoration: none;
-    font-weight: bold;
-  }
+  .social-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+  .social-links a { color: #f8c8dc; text-decoration: none; font-weight: bold; }
   .social-links a:hover { text-decoration: underline; }
 
+  /* --- MOBILE --- */
   @media (max-width: 768px) {
     .video-gallery, .photo-gallery { grid-template-columns: 1fr; }
     .heart { width: 12px; height: 12px; }
@@ -188,7 +203,7 @@
 <div class="heart" style="left:85%; animation-duration:10s;"></div>
 <div class="heart" style="left:95%; animation-duration:12s;"></div>
 
-<!-- NAVBAR -->
+<!-- Navbar -->
 <nav>
   <a href="index.html">Home</a>
   <a href="art.html">Original Visual Art</a>
@@ -200,7 +215,7 @@
   <a href="something-silly.html">Something Silly</a>
 </nav>
 
-<!-- HEADER -->
+<!-- Header -->
 <header>
   <h1>Gallery</h1>
   <p>A collection of performances, self-tapes, and photos</p>
@@ -208,7 +223,7 @@
 
 <main>
   <!-- Performance Videos -->
-  <h2>Performance Videos</h2>
+  <h2 class="section-title">Performance Videos</h2>
   <div class="video-gallery">
     <div class="video-item">
       <div class="video-container">
@@ -220,7 +235,7 @@
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/4pNHgbILaog" allowfullscreen></iframe>
       </div>
-      <p class="video-caption">"Make Believe" (Nick Boni) &amp; "Changes" (Bee) at Brooklyn Music Kitchen (April 2025)</p>
+      <p class="video-caption">"Make Believe" & "Changes" at Brooklyn Music Kitchen (April 2025)</p>
     </div>
     <div class="video-item">
       <div class="video-container">
@@ -237,7 +252,7 @@
   </div>
 
   <!-- Self-Tape Videos -->
-  <h2>Self-Tape Videos</h2>
+  <h2 class="section-title">Self-Tape Videos</h2>
   <div class="video-gallery">
     <div class="video-item">
       <div class="video-container">
@@ -277,38 +292,67 @@
     </div>
   </div>
 
-  <!-- Photos -->
-  <h2>Professional Photos</h2>
+  <!-- Professional Photos -->
+  <h2 class="section-title">Professional Photos</h2>
   <div class="photo-gallery">
     <div class="photo-item">
-      <img src="A635B61C-0535-4ACB-A2C2-153429E073FD_1_105_c.jpeg" alt="Into The Woods">
+      <a href="A635B61C-0535-4ACB-A2C2-153429E073FD_1_105_c.jpeg" class="glightbox">
+        <img src="A635B61C-0535-4ACB-A2C2-153429E073FD_1_105_c.jpeg" alt="Into The Woods">
+      </a>
       <p class="photo-caption">"The Witch" – <i>Into The Woods</i>, University of Wisconsin Milwaukee (2022)</p>
     </div>
     <div class="photo-item">
-      <img src="674C3B6E-0C83-48E0-9B7B-E62ED565F5C0_1_105_c.jpeg" alt="Soon performance">
+      <a href="674C3B6E-0C83-48E0-9B7B-E62ED565F5C0_1_105_c.jpeg" class="glightbox">
+        <img src="674C3B6E-0C83-48E0-9B7B-E62ED565F5C0_1_105_c.jpeg" alt="Soon performance">
+      </a>
       <p class="photo-caption">"Soon" performed at UWM's Senior Capstone (2022)</p>
     </div>
     <div class="photo-item">
-      <img src="biggerpicforbeewithmic.png" alt="Bee performing in Brooklyn">
+      <a href="biggerpicforbeewithmic.png" class="glightbox">
+        <img src="biggerpicforbeewithmic.png" alt="Bee performing in Brooklyn">
+      </a>
       <p class="photo-caption">Bee performing at one of the many "jams" in Brooklyn/Crown Heights area</p>
     </div>
     <div class="photo-item">
-      <img src="DSCF1306.JPG" alt="Vanya! performance">
+      <a href="DSCF1306.JPG" class="glightbox">
+        <img src="DSCF1306.JPG" alt="Vanya! performance">
+      </a>
       <p class="photo-caption">Bee Rashkin with M-Jay He in <i>Vanya!</i> at New York Theatre Festival (2024)</p>
     </div>
     <div class="photo-item">
-      <img src="D3CA96B0-B5A2-4E33-803A-0609213F57E3_1_201_a.jpeg" alt="Pandos Birthday Party">
+      <a href="D3CA96B0-B5A2-4E33-803A-0609213F57E3_1_201_a.jpeg" class="glightbox">
+        <img src="D3CA96B0-B5A2-4E33-803A-0609213F57E3_1_201_a.jpeg" alt="Pandos Birthday Party">
+      </a>
       <p class="photo-caption">Nick Boni and Bee performing at Pandos 1 Year Birthday Party (2025)</p>
     </div>
   </div>
 
-  <h2>Candids / Casual Photos</h2>
+  <!-- Candids -->
+  <h2 class="section-title">Candids / Casual Photos</h2>
   <div class="photo-gallery">
-    <div class="photo-item"><img src="01C2B009-C221-4F8E-AA7A-8BFAAFE619A8_1_102_a.jpeg" alt="Candid 1"></div>
-    <div class="photo-item"><img src="3C84EDC8-C563-4B48-8FA3-E8EAE2FE92E4_4_5005_c.jpeg" alt="Candid 2"></div>
-    <div class="photo-item"><img src="8DF014C2-8D93-4FFF-A6B5-4DDB2DCAFED5_1_105_c.jpeg" alt="Candid 3"></div>
-    <div class="photo-item"><img src="bee singing at salon.png" alt="Bee singing at salon"></div>
+    <div class="photo-item">
+      <a href="01C2B009-C221-4F8E-AA7A-8BFAAFE619A8_1_102_a.jpeg" class="glightbox">
+        <img src="01C2B009-C221-4F8E-AA7A-8BFAAFE619A8_1_102_a.jpeg" alt="Candid 1">
+      </a>
+    </div>
+    <div class="photo-item">
+      <a href="3C84EDC8-C563-4B48-8FA3-E8EAE2FE92E4_4_5005_c.jpeg" class="glightbox">
+        <img src="3C84EDC8-C563-4B48-8FA3-E8EAE2FE92E4_4_5005_c.jpeg" alt="Candid 2">
+      </a>
+    </div>
+    <div class="photo-item">
+      <a href="8DF014C2-8D93-4FFF-A6B5-4DDB2DCAFED5_1_105_c.jpeg" class="glightbox">
+        <img src="8DF014C2-8D93-4FFF-A6B5-4DDB2DCAFED5_1_105_c.jpeg" alt="Candid 3">
+      </a>
+    </div>
+    <div class="photo-item">
+      <a href="bee singing at salon.png" class="glightbox">
+        <img src="bee singing at salon.png" alt="Bee singing at salon">
+      </a>
+    </div>
   </div>
+
+  <a class="back-link" href="index.html">← Back to Home</a>
 </main>
 
 <footer>
@@ -326,5 +370,12 @@
   </div>
 </footer>
 
+<!-- GLightbox JS -->
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+<script>
+  const lightbox = GLightbox({ selector: '.glightbox' });
+</script>
+
 </body>
 </html>
+
