@@ -15,6 +15,7 @@
     text-align: center;
     position: relative;
     overflow-x: hidden;
+    padding-top: 70px; /* ✅ keeps header visible under nav */
   }
 
   /* --- Floating hearts --- */
@@ -52,25 +53,71 @@
     top: 0;
     width: 100%;
     z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  nav .nav-links {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
   }
   nav a {
     color: #fff;
-    margin: 0 0.5rem;
     text-decoration: none;
     font-weight: bold;
     display: inline-block;
     width: 120px;
+    text-align: center;
   }
   nav a:hover { text-decoration: underline; }
 
+  /* --- MOBILE NAV --- */
+  .menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    color: #fff;
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+
+  @media (max-width: 768px) {
+    body { padding-top: 100px; } /* ✅ extra room if nav is taller */
+    nav {
+      justify-content: space-between;
+    }
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      background: #000;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      padding: 1rem 0;
+    }
+    .nav-links.show {
+      display: flex;
+    }
+    .menu-toggle {
+      display: block;
+    }
+    nav a {
+      width: auto;
+      padding: 0.75rem 0;
+    }
+  }
+
   /* --- HEADER --- */
   header {
-    margin-top: 60px;        /* offset for navbar */
     background-color: #f8c8dc;
-    padding: 1rem 1rem;      /* same as index.html */
+    padding: 1rem 1rem;
     text-align: center;
     z-index: 1;
     position: relative;
+    margin-top: 0; /* ✅ no hardcoded offset */
   }
   header h1 { margin: 0.5rem 0; }
   header p { margin: 0.25rem 0; }
@@ -82,7 +129,7 @@
     justify-content: center;
     align-items: flex-start;
     gap: 3rem;
-    margin-top: 40px; /* space below header */
+    margin-top: 40px;
     flex-wrap: wrap;
     position: relative;
     z-index: 1;
@@ -128,7 +175,7 @@
     gap: 1rem;
   }
   .headshot {
-    position: relative; /* each headshot is its own container */
+    position: relative;
     cursor: pointer;
     transition: transform 0.3s;
   }
@@ -152,14 +199,6 @@
   .social-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
   .social-links a { color: #f8c8dc; text-decoration: none; font-weight: bold; }
   .social-links a:hover { text-decoration: underline; }
-
-  /* --- MOBILE --- */
-  @media (max-width: 768px) {
-    .content-container { flex-direction: column; align-items: center; }
-    .headshot img { width: 160px; }
-    .resume img { width: 280px; }
-    .heart { width: 12px; height: 12px; }
-  }
 </style>
 </head>
 <body>
@@ -178,14 +217,19 @@
 
 <!-- NAVBAR -->
 <nav>
-  <a href="index.html">Home</a>
-  <a href="art.html">Original Visual Art</a>
-  <a href="music.html">Original Music</a>
-  <a href="theatre.html">Miscellania Theatre Co</a>
-  <a href="resume.html">Headshot & Resume</a>
-  <a href="gallery.html">Media Gallery</a>
-  <a href="contact.html">Contact Me</a>
-  <a href="something-silly.html">Something Silly</a>
+  <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+    ☰
+  </button>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="art.html">Original Visual Art</a>
+    <a href="music.html">Original Music</a>
+    <a href="theatre.html">Miscellania Theatre Co</a>
+    <a href="resume.html">Headshot & Resume</a>
+    <a href="gallery.html">Media Gallery</a>
+    <a href="contact.html">Contact Me</a>
+    <a href="something-silly.html">Something Silly</a>
+  </div>
 </nav>
 
 <!-- HEADER -->
@@ -236,3 +280,4 @@
 
 </body>
 </html>
+
