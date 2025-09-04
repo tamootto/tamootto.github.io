@@ -52,7 +52,7 @@
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 1000; /* make sure it stays on top */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -117,7 +117,7 @@
     text-align: center;
     z-index: 1;
     position: relative;
-    margin-top: 0; /* ✅ no hardcoded offset */
+    margin-top: 0;
   }
   header h1 { margin: 0.5rem 0; }
   header p { margin: 0.25rem 0; }
@@ -217,10 +217,8 @@
 
 <!-- NAVBAR -->
 <nav>
-  <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">
-    ☰
-  </button>
-  <div class="nav-links">
+  <button class="menu-toggle" id="menu-toggle">☰</button>
+  <div class="nav-links" id="nav-links">
     <a href="index.html">Home</a>
     <a href="art.html">Original Visual Art</a>
     <a href="music.html">Original Music</a>
@@ -277,6 +275,23 @@
     <a href="https://www.backstage.com/u/isabelle-rashkin/" target="_blank">Backstage</a>
   </div>
 </footer>
+
+<!-- JS for mobile nav -->
+<script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const navLinks = document.getElementById("nav-links");
+
+  menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+  });
+
+  // ✅ Close menu when a link is clicked
+  document.querySelectorAll("#nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("show");
+    });
+  });
+</script>
 
 </body>
 </html>
