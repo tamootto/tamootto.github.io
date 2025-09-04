@@ -15,10 +15,9 @@
     text-align: center;
     position: relative;
     overflow-x: hidden;
-    padding-top: 70px; /* ✅ keeps header visible under nav */
   }
 
-  /* --- Floating hearts --- */
+  /* --- FLOATING HEARTS --- */
   .heart {
     position: absolute;
     width: 20px;
@@ -52,14 +51,13 @@
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1000; /* make sure it stays on top */
+    z-index: 1000;
     display: flex;
-    justify-content: center;
+    justify-content: center; /* desktop: centered links */
     align-items: center;
   }
   nav .nav-links {
     display: flex;
-    flex-wrap: nowrap;
     gap: 0.5rem;
   }
   nav a {
@@ -72,7 +70,7 @@
   }
   nav a:hover { text-decoration: underline; }
 
-  /* --- MOBILE NAV --- */
+  /* Hamburger button */
   .menu-toggle {
     display: none;
     font-size: 1.8rem;
@@ -80,44 +78,17 @@
     cursor: pointer;
     background: none;
     border: none;
-  }
-
-  @media (max-width: 768px) {
-    body { padding-top: 100px; } /* ✅ extra room if nav is taller */
-    nav {
-      justify-content: space-between;
-    }
-    .nav-links {
-      display: none;
-      flex-direction: column;
-      background: #000;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      text-align: center;
-      padding: 1rem 0;
-    }
-    .nav-links.show {
-      display: flex;
-    }
-    .menu-toggle {
-      display: block;
-    }
-    nav a {
-      width: auto;
-      padding: 0.75rem 0;
-    }
+    z-index: 2000; /* always on top */
   }
 
   /* --- HEADER --- */
   header {
+    margin-top: 60px; /* offset for fixed navbar, same as original desktop */
     background-color: #f8c8dc;
-    padding: 1rem 1rem;
+    padding: 1rem;
     text-align: center;
-    z-index: 1;
     position: relative;
-    margin-top: 0;
+    z-index: 1;
   }
   header h1 { margin: 0.5rem 0; }
   header p { margin: 0.25rem 0; }
@@ -162,13 +133,11 @@
     text-decoration: none;
     color: #333;
   }
-
   .resume:hover .download-button,
   .headshot:hover .download-button {
     opacity: 1;
   }
 
-  /* STACK HEADSHOTS VERTICALLY */
   .headshots {
     display: flex;
     flex-direction: column;
@@ -187,7 +156,7 @@
     width: 220px;
   }
 
-  /* FOOTER */
+  /* --- FOOTER --- */
   footer {
     background-color: #222;
     color: #fff;
@@ -199,6 +168,37 @@
   .social-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
   .social-links a { color: #f8c8dc; text-decoration: none; font-weight: bold; }
   .social-links a:hover { text-decoration: underline; }
+
+  /* --- MOBILE STYLES --- */
+  @media (max-width: 768px) {
+    body { padding-top: 100px; }
+    nav {
+      justify-content: space-between; /* hamburger left, links right */
+      padding: 0.75rem 1rem;
+    }
+    .menu-toggle { display: block; }
+
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      flex-direction: column;
+      background: #000;
+      text-align: center;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+    .nav-links.show {
+      max-height: 500px;
+      transition: max-height 0.3s ease-in;
+    }
+    nav a {
+      width: 100%;
+      padding: 0.75rem 0;
+    }
+  }
 </style>
 </head>
 <body>
@@ -239,14 +239,11 @@
 
 <!-- MAIN CONTENT -->
 <div class="content-container">
-
-  <!-- Resume -->
   <div class="resume">
     <img src="resume-preview.png" alt="Resume Preview">
     <a href="resume.pdf" download class="download-button">Download Resume</a>
   </div>
 
-  <!-- Headshots stacked vertically -->
   <div class="headshots">
     <div class="headshot">
       <img src="headshot1.jpeg" alt="Headshot 1">
@@ -257,7 +254,6 @@
       <a href="headshot2.jpg" download class="download-button">Download</a>
     </div>
   </div>
-
 </div>
 
 <!-- FOOTER -->
@@ -285,7 +281,7 @@
     navLinks.classList.toggle("show");
   });
 
-  // ✅ Close menu when a link is clicked
+  // Close mobile menu when a link is clicked
   document.querySelectorAll("#nav-links a").forEach(link => {
     link.addEventListener("click", () => {
       navLinks.classList.remove("show");
