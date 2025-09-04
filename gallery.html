@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gallery – Isabelle Rashkin</title>
+<title>Media Gallery – Isabelle Rashkin</title>
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
@@ -91,7 +91,7 @@
     z-index: 10;
   }
 
-  h2 {
+  h2.section-title {
     margin-top: 2rem;
     margin-bottom: 1rem;
   }
@@ -138,18 +138,12 @@
   }
   .photo-item {
     position: relative;
-    text-align: center;
   }
   .photo-item img {
     width: 100%;
     border-radius: 12px;
     display: block;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  }
-  .photo-caption {
-    margin-top: 6px;
-    font-size: 0.9rem;
-    color: #333;
   }
   .download-button {
     position: absolute;
@@ -160,13 +154,17 @@
     padding: 0.5rem 1rem;
     border-radius: 8px;
     font-weight: bold;
-    text-decoration: none;
-    color: #333;
     opacity: 0;
     transition: opacity 0.3s;
+    text-decoration: none;
+    color: #333;
+    z-index: 5;
   }
-  .photo-item:hover .download-button {
-    opacity: 1;
+  .photo-item:hover .download-button { opacity: 1; }
+  .photo-caption {
+    margin-top: 6px;
+    font-size: 0.9rem;
+    color: #333;
   }
 
   a.back-link {
@@ -194,12 +192,10 @@
   .social-links a { color: #f8c8dc; text-decoration: none; font-weight: bold; }
   .social-links a:hover { text-decoration: underline; }
 
-  /* MOBILE */
+  /* --- MOBILE --- */
   @media (max-width: 768px) {
-    .video-gallery { grid-template-columns: 1fr; }
-    .photo-gallery { grid-template-columns: 1fr; }
     .heart { width: 12px; height: 12px; }
-    nav a { width: auto; margin: 0 0.25rem; }
+    .video-gallery, .photo-gallery { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -238,7 +234,7 @@
 
 <main>
   <!-- Performance Videos -->
-  <h2>Performance Videos</h2>
+  <h2 class="section-title">Performance Videos</h2>
   <div class="video-gallery">
     <div class="video-item">
       <div class="video-container">
@@ -250,24 +246,24 @@
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/4pNHgbILaog" allowfullscreen></iframe>
       </div>
-      <p class="video-caption">"Make Believe" & "Changes" at Brooklyn Music Kitchen (April 2025)</p>
+      <p class="video-caption">"Make Believe" (Nick Boni) &amp; "Changes" (Bee) at Brooklyn Music Kitchen (April 2025)</p>
     </div>
     <div class="video-item">
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/Xmu7RWFhEM0" allowfullscreen></iframe>
       </div>
-      <p class="video-caption">"Sixteen" – with Nick Boni, Mona Turks at "Faye & Friends" (March 2024)</p>
+      <p class="video-caption">"Sixteen" – with Nick Boni, Mona Turks at "Faye &amp; Friends" (March 2024)</p>
     </div>
     <div class="video-item">
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/iDCLLH_n7NU" allowfullscreen></iframe>
       </div>
-      <p class="video-caption">"3 Parts" & "Simply Reflecting" – The Living Room NYC (September 2023)</p>
+      <p class="video-caption">"3 Parts" &amp; "Simply Reflecting" – The Living Room NYC (September 2023)</p>
     </div>
   </div>
 
   <!-- Self-Tape Videos -->
-  <h2>Self-Tape Videos</h2>
+  <h2 class="section-title">Self-Tape Videos</h2>
   <div class="video-gallery">
     <div class="video-item">
       <div class="video-container">
@@ -308,7 +304,7 @@
   </div>
 
   <!-- Professional Photos -->
-  <h2>Professional Photos</h2>
+  <h2 class="section-title">Professional Photos</h2>
   <div class="photo-gallery">
     <div class="photo-item">
       <a href="A635B61C-0535-4ACB-A2C2-153429E073FD_1_105_c.jpeg" class="glightbox" data-gallery="photos">
@@ -319,16 +315,35 @@
     </div>
     <div class="photo-item">
       <a href="674C3B6E-0C83-48E0-9B7B-E62ED565F5C0_1_105_c.jpeg" class="glightbox" data-gallery="photos">
-        <img src="674C3B6E-0C83-48E0-9B7B-E62ED565F5C0_1_105_c.jpeg" alt="Soon performance">
-      </a>
-      <a href="674C3B6E-0C83-48E0-9B7B-E62ED565F5C0_1_105_c.jpeg" download class="download-button">Download</a>
+        <img src="674C3B6E-0C83-48E0-9B7B-E62ED565F5C0_1_105_c.jpeg" alt="Soon
       <p class="photo-caption">"Soon" performed at UWM's Senior Capstone (2022)</p>
+      <a href="674C3B6E-0C83-48E0-9B7B-E62ED565F5C0_1_105_c.jpeg" download class="download-button">Download</a>
     </div>
-    <!-- Add remaining professional photos in same format -->
+    <div class="photo-item">
+      <a href="biggerpicforbeewithmic.png" class="glightbox" data-gallery="photos">
+        <img src="biggerpicforbeewithmic.png" alt="Bee performing in Brooklyn">
+      </a>
+      <a href="biggerpicforbeewithmic.png" download class="download-button">Download</a>
+      <p class="photo-caption">Bee performing at one of the many "jams" in Brooklyn/Crown Heights area</p>
+    </div>
+    <div class="photo-item">
+      <a href="DSCF1306.JPG" class="glightbox" data-gallery="photos">
+        <img src="DSCF1306.JPG" alt="Vanya! performance">
+      </a>
+      <a href="DSCF1306.JPG" download class="download-button">Download</a>
+      <p class="photo-caption">Bee Rashkin with M-Jay He in <i>Vanya!</i> at New York Theatre Festival (2024)</p>
+    </div>
+    <div class="photo-item">
+      <a href="D3CA96B0-B5A2-4E33-803A-0609213F57E3_1_201_a.jpeg" class="glightbox" data-gallery="photos">
+        <img src="D3CA96B0-B5A2-4E33-803A-0609213F57E3_1_201_a.jpeg" alt="Pandos Birthday Party">
+      </a>
+      <a href="D3CA96B0-B5A2-4E33-803A-0609213F57E3_1_201_a.jpeg" download class="download-button">Download</a>
+      <p class="photo-caption">Nick Boni and Bee performing at Pandos 1 Year Birthday Party (2025)</p>
+    </div>
   </div>
 
   <!-- Candids / Casual Photos -->
-  <h2>Candids / Casual Photos</h2>
+  <h2 class="section-title">Candids / Casual Photos</h2>
   <div class="photo-gallery">
     <div class="photo-item">
       <a href="01C2B009-C221-4F8E-AA7A-8BFAAFE619A8_1_102_a.jpeg" class="glightbox" data-gallery="photos">
@@ -385,4 +400,3 @@
 
 </body>
 </html>
-
