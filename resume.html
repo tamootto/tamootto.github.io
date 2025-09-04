@@ -109,6 +109,7 @@
 
 <!-- MAIN CONTENT -->
 <div class="content-container">
+  <!-- Resume -->
   <div class="resume">
     <a href="resume-preview.png" class="glightbox" data-glightbox="group: gallery" data-title="Resume">
       <img src="resume-preview.png" alt="Resume Preview">
@@ -116,6 +117,7 @@
     <a href="resume.pdf" download class="download-button">Download Resume</a>
   </div>
 
+  <!-- Headshots -->
   <div class="headshots">
     <div class="headshot">
       <a href="headshot1.jpeg" class="glightbox" data-glightbox="group: gallery" data-title="Headshot 1">
@@ -151,7 +153,12 @@
 <!-- GLightbox JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/js/glightbox.min.js" integrity="sha512-5c3Ym9xH9vAgmsxBHZcVZmhG0hnrtG59b89XWz89mz68x0OaQZ0f7CEeXptQ4Of5Qo6xOZH40G+Trk+XvE94mw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-  const lightbox = GLightbox({ selector: '.glightbox', loop: true });
+  const lightbox = GLightbox({
+    selector: '.glightbox',
+    loop: true,
+    touchNavigation: true,
+    keyboardNavigation: true
+  });
 </script>
 
 <!-- JS for mobile nav -->
@@ -172,4 +179,3 @@
 
 </body>
 </html>
-
