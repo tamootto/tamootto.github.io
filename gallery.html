@@ -55,7 +55,15 @@
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
   nav a {
     color: #fff;
@@ -66,6 +74,47 @@
     width: 120px;
   }
   nav a:hover { text-decoration: underline; }
+
+  /* Hamburger */
+  .menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    color: #fff;
+    cursor: pointer;
+    background: none;
+    border: none;
+    position: absolute;
+    right: 1rem;
+    top: 0.75rem;
+    z-index: 2000;
+  }
+
+  @media (max-width: 768px) {
+    nav { justify-content: flex-start; }
+    .menu-toggle { display: block; }
+    .nav-links {
+      flex-direction: column;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+      background: #000;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+    }
+    .nav-links.show {
+      max-height: 500px;
+      transition: max-height 0.3s ease-in;
+    }
+    nav a {
+      display: block;
+      width: 100%;
+      padding: 0.75rem 0;
+      margin: 0;
+      text-align: center;
+    }
+  }
 
   /* Header */
   header {
@@ -200,14 +249,17 @@
 
 <!-- Navbar -->
 <nav>
-  <a href="index.html">Home</a>
-  <a href="art.html">Original Visual Art</a>
-  <a href="music.html">Original Music</a>
-  <a href="theatre.html">Miscellania Theatre Co</a>
-  <a href="resume.html">Headshot & Resume</a>
-  <a href="gallery.html">Media Gallery</a>
-  <a href="contact.html">Contact Me</a>
-  <a href="something-silly.html">Something Silly</a>
+  <button class="menu-toggle" id="menu-toggle">&#9776;</button>
+  <div class="nav-links" id="nav-links">
+    <a href="index.html">Home</a>
+    <a href="art.html">Original Visual Art</a>
+    <a href="music.html">Original Music</a>
+    <a href="theatre.html">Miscellania Theatre Co</a>
+    <a href="resume.html">Headshot & Resume</a>
+    <a href="gallery.html">Media Gallery</a>
+    <a href="contact.html">Contact Me</a>
+    <a href="something-silly.html">Something Silly</a>
+  </div>
 </nav>
 
 <!-- Header -->
@@ -344,44 +396,84 @@
       <a href="3C84EDC8-C563-4B48-8FA3-E8EAE2FE92E4_4_5005_c.jpeg" download class="download-button">Download</a>
     </div>
     <div class="photo-item">
-      <a href="8DF014C2-8D93-4FFF-A6B5-4DDB2DCAFED5_1_105_c.jpeg" class="glightbox" data-gallery="photos">
-        <img src="8DF014C2-8D93-4FFF-A6B5-4DDB2DCAFED5_1_105_c.jpeg" alt="Candid 3">
+      <a href="83C53A60-679A-46B6-B16C-4AB978180E26_1_105_c.jpeg" class="glightbox" data-gallery="photos">
+        <img src="83C53A60-679A-46B6-B16C-4AB978180E26_1_105_c.jpeg" alt="Candid 3">
       </a>
-      <a href="8DF014C2-8D93-4FFF-A6B5-4DDB2DCAFED5_1_105_c.jpeg" download class="download-button">Download</a>
+      <a href="83C53A60-679A-46B6-B16C-4AB978180E26_1_105_c.jpeg" download class="download-button">Download</a>
     </div>
     <div class="photo-item">
-      <a href="bee singing at salon.png" class="glightbox" data-gallery="photos">
-        <img src="bee singing at salon.png" alt="Bee singing at salon">
+      <a href="IMG_3269.jpeg" class="glightbox" data-gallery="photos">
+        <img src="IMG_3269.jpeg" alt="Candid 4">
       </a>
-      <a href="bee singing at salon.png" download class="download-button">Download</a>
+      <a href="IMG_3269.jpeg" download class="download-button">Download</a>
+    </div>
+    <div class="photo-item">
+      <a href="IMG_7691.jpeg" class="glightbox" data-gallery="photos">
+        <img src="IMG_7691.jpeg" alt="Candid 5">
+      </a>
+      <a href="IMG_7691.jpeg" download class="download-button">Download</a>
+    </div>
+    <div class="photo-item">
+      <a href="IMG_7921.jpeg" class="glightbox" data-gallery="photos">
+        <img src="IMG_7921.jpeg" alt="Candid 6">
+      </a>
+      <a href="IMG_7921.jpeg" download class="download-button">Download</a>
+    </div>
+    <div class="photo-item">
+      <a href="IMG_8504.jpeg" class="glightbox" data-gallery="photos">
+        <img src="IMG_8504.jpeg" alt="Candid 7">
+      </a>
+      <a href="IMG_8504.jpeg" download class="download-button">Download</a>
+    </div>
+    <div class="photo-item">
+      <a href="IMG_8510.jpeg" class="glightbox" data-gallery="photos">
+        <img src="IMG_8510.jpeg" alt="Candid 8">
+      </a>
+      <a href="IMG_8510.jpeg" download class="download-button">Download</a>
+    </div>
+    <div class="photo-item">
+      <a href="IMG_8515.jpeg" class="glightbox" data-gallery="photos">
+        <img src="IMG_8515.jpeg" alt="Candid 9">
+      </a>
+      <a href="IMG_8515.jpeg" download class="download-button">Download</a>
     </div>
   </div>
 
-  <a class="back-link" href="index.html">← Back to Home</a>
+  <a href="index.html" class="back-link">← Back to Home</a>
 </main>
 
 <footer>
-  <h3>Connect with me</h3>
+  <h3>Connect with Me</h3>
   <div class="social-links">
-    <a href="https://www.instagram.com/tamoottopro/" target="_blank">Instagram (Personal)</a>
-    <a href="https://www.instagram.com/Bee_original_music/" target="_blank">Instagram (Music)</a>
-    <a href="https://x.com/tamoottopro" target="_blank">X (Twitter)</a>
-    <a href="https://www.linkedin.com/in/isabelle-rashkin-82958228/" target="_blank">LinkedIn</a>
-    <a href="mailto:ivrashkin@gmail.com">Email</a>
-    <a href="https://open.spotify.com/artist/2TRjrme5uq3GM8qMF7y0QI" target="_blank">Spotify</a>
-    <a href="https://www.youtube.com/channel/UCa9acPRSIGUmjgn54hz17eA" target="_blank">YouTube Music</a>
-    <a href="https://music.apple.com/ca/artist/isabelle-bee-rashkin/1773658949" target="_blank">Apple Music</a>
-    <a href="https://www.backstage.com/u/isabelle-rashkin/" target="_blank">Backstage</a>
+    <a href="https://www.instagram.com/izzirashkin/" target="_blank">Instagram</a>
+    <a href="https://www.youtube.com/@isabellerashkin" target="_blank">YouTube</a>
+    <a href="https://soundcloud.com/izzirashkin" target="_blank">SoundCloud</a>
+    <a href="mailto:isabellerashkin@gmail.com">Email</a>
   </div>
 </footer>
 
 <!-- GLightbox JS -->
 <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
 <script>
-  const lightbox = GLightbox({
-    selector: '.glightbox',
-    loop: true
-  });
+  const lightbox = GLightbox({ selector: ".glightbox" });
+</script>
+
+<!-- Mobile nav JS -->
+<script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const navLinks = document.getElementById("nav-links");
+
+  if(menuToggle && navLinks){
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+
+    document.querySelectorAll("#nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("show");
+      });
+    });
+  }
 </script>
 
 </body>
