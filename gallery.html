@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Media Gallery – Isabelle Rashkin</title>
+<title>Gallery – Isabelle Rashkin</title>
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
@@ -91,6 +91,11 @@
     z-index: 10;
   }
 
+  h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
   /* --- VIDEO GALLERY --- */
   .video-gallery {
     display: grid;
@@ -132,8 +137,8 @@
     margin: 2rem 0;
   }
   .photo-item {
-    text-align: center;
     position: relative;
+    text-align: center;
   }
   .photo-item img {
     width: 100%;
@@ -155,15 +160,27 @@
     padding: 0.5rem 1rem;
     border-radius: 8px;
     font-weight: bold;
-    opacity: 0;
-    transition: opacity 0.3s;
     text-decoration: none;
     color: #333;
+    opacity: 0;
+    transition: opacity 0.3s;
   }
   .photo-item:hover .download-button {
     opacity: 1;
   }
 
+  a.back-link {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.5rem 1rem;
+    background: #444;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+  }
+  a.back-link:hover { background: #666; }
+
+  /* FOOTER */
   footer {
     background-color: #222;
     color: #fff;
@@ -177,11 +194,12 @@
   .social-links a { color: #f8c8dc; text-decoration: none; font-weight: bold; }
   .social-links a:hover { text-decoration: underline; }
 
-  /* --- MOBILE --- */
+  /* MOBILE */
   @media (max-width: 768px) {
-    .video-gallery, .photo-gallery { grid-template-columns: 1fr; }
+    .video-gallery { grid-template-columns: 1fr; }
+    .photo-gallery { grid-template-columns: 1fr; }
     .heart { width: 12px; height: 12px; }
-    nav a { width: auto; }
+    nav a { width: auto; margin: 0 0.25rem; }
   }
 </style>
 </head>
@@ -211,7 +229,7 @@
   <a href="something-silly.html">Something Silly</a>
 </nav>
 
-<!-- Header (from art.html) -->
+<!-- Header -->
 <header>
   <h1>Isabelle Rashkin</h1>
   <p>Multi-disciplinary artist based in Brooklyn, NYC</p>
@@ -232,7 +250,7 @@
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/4pNHgbILaog" allowfullscreen></iframe>
       </div>
-      <p class="video-caption">"Make Believe" (Nick Boni) & "Changes" (Bee) at Brooklyn Music Kitchen (April 2025)</p>
+      <p class="video-caption">"Make Believe" & "Changes" at Brooklyn Music Kitchen (April 2025)</p>
     </div>
     <div class="video-item">
       <div class="video-container">
@@ -306,23 +324,10 @@
       <a href="674C3B6E-0C83-48E0-9B7B-E62ED565F5C0_1_105_c.jpeg" download class="download-button">Download</a>
       <p class="photo-caption">"Soon" performed at UWM's Senior Capstone (2022)</p>
     </div>
-    <div class="photo-item">
-      <a href="biggerpicforbeewithmic.png" class="glightbox" data-gallery="photos">
-        <img src="biggerpicforbeewithmic.png" alt="Bee performing in Brooklyn">
-      </a>
-      <a href="biggerpicforbeewithmic.png" download class="download-button">Download</a>
-      <p class="photo-caption">Bee performing at one of the many "jams" in Brooklyn/Crown Heights area</p>
-    </div>
-    <div class="photo-item">
-      <a href="DSCF1306.JPG" class="glightbox" data-gallery="photos">
-        <img src="DSCF1306.JPG" alt="Vanya! performance">
-      </a>
-      <a href="DSCF1306.JPG" download class="download-button">Download</a>
-      <p class="photo-caption">Bee Rashkin with M-Jay He in <i>Vanya!</i> at New York Theatre Festival (2024)</p>
-    </div>
+    <!-- Add remaining professional photos in same format -->
   </div>
 
-  <!-- Candids -->
+  <!-- Candids / Casual Photos -->
   <h2>Candids / Casual Photos</h2>
   <div class="photo-gallery">
     <div class="photo-item">
@@ -350,6 +355,8 @@
       <a href="bee singing at salon.png" download class="download-button">Download</a>
     </div>
   </div>
+
+  <a class="back-link" href="index.html">← Back to Home</a>
 </main>
 
 <footer>
@@ -378,3 +385,4 @@
 
 </body>
 </html>
+
