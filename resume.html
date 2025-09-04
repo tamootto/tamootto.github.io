@@ -110,7 +110,7 @@
 <!-- MAIN CONTENT -->
 <div class="content-container">
   <div class="resume">
-    <a href="resume-preview.png" class="glightbox-gallery" data-title="Resume">
+    <a href="resume-preview.png" class="glightbox" data-glightbox="group: gallery" data-title="Resume">
       <img src="resume-preview.png" alt="Resume Preview">
     </a>
     <a href="resume.pdf" download class="download-button">Download Resume</a>
@@ -118,13 +118,13 @@
 
   <div class="headshots">
     <div class="headshot">
-      <a href="headshot1.jpeg" class="glightbox-gallery" data-title="Headshot 1">
+      <a href="headshot1.jpeg" class="glightbox" data-glightbox="group: gallery" data-title="Headshot 1">
         <img src="headshot1.jpeg" alt="Headshot 1">
       </a>
       <a href="headshot1.jpeg" download class="download-button">Download</a>
     </div>
     <div class="headshot">
-      <a href="headshot2.jpg" class="glightbox-gallery" data-title="Headshot 2">
+      <a href="headshot2.jpg" class="glightbox" data-glightbox="group: gallery" data-title="Headshot 2">
         <img src="headshot2.jpg" alt="Headshot 2">
       </a>
       <a href="headshot2.jpg" download class="download-button">Download</a>
@@ -144,20 +144,14 @@
     <a href="https://open.spotify.com/artist/2TRjrme5uq3GM8qMF7y0QI" target="_blank">Spotify</a>
     <a href="https://www.youtube.com/channel/UCa9acPRSIGUmjgn54hz17eA" target="_blank">YouTube Music</a>
     <a href="https://music.apple.com/ca/artist/isabelle-bee-rashkin/1773658949" target="_blank">Apple Music</a>
-    <
     <a href="https://www.backstage.com/u/isabelle-rashkin/" target="_blank">Backstage</a>
   </div>
 </footer>
 
 <!-- GLightbox JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/js/glightbox.min.js" integrity="sha512-5c3Ym9xH9vAgmsxBHZcVZmhG0hnrtG59b89XWz89mz68x0OaQZ0f7CEeXptQ4Of5Qo6xOZH40G+Trk+XvE94mw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-<!-- JS for GLightbox gallery -->
 <script>
-  const lightbox = GLightbox({
-    selector: '.glightbox-gallery',
-    loop: true
-  });
+  const lightbox = GLightbox({ selector: '.glightbox', loop: true });
 </script>
 
 <!-- JS for mobile nav -->
