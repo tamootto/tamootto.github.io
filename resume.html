@@ -111,7 +111,7 @@
 <div class="content-container">
   <!-- Resume -->
   <div class="resume">
-    <a href="resume-preview.png" class="glightbox" data-glightbox="group: gallery" data-title="Resume">
+    <a href="resume-preview.png" class="glightbox" data-gallery="gallery" data-title="Resume">
       <img src="resume-preview.png" alt="Resume Preview">
     </a>
     <a href="resume.pdf" download class="download-button">Download Resume</a>
@@ -120,13 +120,13 @@
   <!-- Headshots -->
   <div class="headshots">
     <div class="headshot">
-      <a href="headshot1.jpeg" class="glightbox" data-glightbox="group: gallery" data-title="Headshot 1">
+      <a href="headshot1.jpeg" class="glightbox" data-gallery="gallery" data-title="Headshot 1">
         <img src="headshot1.jpeg" alt="Headshot 1">
       </a>
       <a href="headshot1.jpeg" download class="download-button">Download</a>
     </div>
     <div class="headshot">
-      <a href="headshot2.jpg" class="glightbox" data-glightbox="group: gallery" data-title="Headshot 2">
+      <a href="headshot2.jpg" class="glightbox" data-gallery="gallery" data-title="Headshot 2">
         <img src="headshot2.jpg" alt="Headshot 2">
       </a>
       <a href="headshot2.jpg" download class="download-button">Download</a>
@@ -157,7 +157,8 @@
     selector: '.glightbox',
     loop: true,
     touchNavigation: true,
-    keyboardNavigation: true
+    keyboardNavigation: true,
+    closeOnOutsideClick: true
   });
 </script>
 
@@ -179,4 +180,3 @@
 
 </body>
 </html>
-
