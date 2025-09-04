@@ -1,222 +1,289 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Music – Isabelle Rashkin</title>
-  <!-- Favicon -->
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-  <style>
-    body {
-      font-family: "Times New Roman", Times, serif;
-      margin: 0;
-      padding: 0;
-      background-color: #fafafa;
-      color: #333;
-      text-align: center;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Music – Isabelle Rashkin</title>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
-    /* --- NAVBAR --- */
-    nav {
-      background-color: #000;
-      padding: 1rem;
-      text-align: center;
-    }
-    nav a {
-      color: #fff;
-      margin: 0.5rem;
-      text-decoration: none;
-      font-weight: bold;
-      display: inline-block;
-      width: 120px;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
+<style>
+  body {
+    font-family: "Times New Roman", Times, serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ffe6f2, #e6f7ff, #fff0e6);
+    color: #333;
+    text-align: center;
+    position: relative;
+    overflow-x: hidden;
+  }
 
-    /* --- HEADER --- */
-    header {
-      padding: 2rem 1rem;
-      background-color: #f8c8dc;
-      color: #222;
-    }
-    header h1 {
-      margin: 0.5rem 0;
-    }
-    header p {
-      max-width: 800px;
-      margin: 10px auto 0;
-      line-height: 1.6;
-    }
+  /* --- Floating hearts --- */
+  .heart {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: pink;
+    transform: rotate(45deg);
+    animation: float linear infinite;
+    opacity: 0.6;
+    border-radius: 4px;
+    z-index: 1;
+  }
+  .heart::before,
+  .heart::after {
+    content: "";
+    position: absolute;
+    background: pink;
+    border-radius: 50%;
+  }
+  .heart::before { top: -50%; left: 0; width: 100%; height: 100%; }
+  .heart::after { left: -50%; top: 0; width: 100%; height: 100%; }
 
-    main {
-      padding: 2rem;
-      max-width: 900px;
-      margin: auto;
-    }
+  @keyframes float {
+    0% { transform: translateY(100vh) rotate(45deg); opacity: 0.6; }
+    100% { transform: translateY(-20vh) rotate(45deg); opacity: 0; }
+  }
 
-    section h2 {
-      font-size: 2em;
-      margin-bottom: 20px;
-      border-bottom: 2px solid #f8c8dc;
-      padding-bottom: 10px;
-    }
+  /* --- NAVBAR --- */
+  nav {
+    background-color: #000;
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+  }
+  nav a {
+    color: #fff;
+    margin: 0 0.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    width: 120px;
+  }
+  nav a:hover { text-decoration: underline; }
 
-    .album {
-      margin-bottom: 50px;
-      text-align: center;
-    }
-    .album img {
-      max-width: 300px;
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    .album h3 {
-      margin: 15px 0 10px;
-      font-size: 1.5em;
-    }
-    .album p {
-      max-width: 700px;
-      margin: 0 auto 15px;
-      line-height: 1.5;
-    }
+  /* --- HEADER --- */
+  header {
+    position: relative;
+    background-color: #f8c8dc;
+    padding: 1rem;
+    text-align: center;
+    margin-top: 60px; /* below navbar */
+    z-index: 10;
+  }
+  header h1 { margin: 0.5rem 0; }
+  header p { margin: 0.25rem 0; }
+  header small { color: #555; }
+
+  /* --- MAIN CONTENT --- */
+  main {
+    padding: 2rem;
+    max-width: 900px;
+    margin: auto;
+    position: relative;
+    z-index: 10;
+  }
+
+  /* --- ABOUT MY MUSIC SECTION --- */
+  .about-music {
+    padding: 2rem;
+    margin-bottom: 3rem;
+    text-align: left;
+    background: rgba(255, 182, 193, 0.2);
+    border-radius: 12px;
+  }
+  .about-music h3 {
+    margin-top: 0;
+    color: #222;
+  }
+  .about-music p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  /* --- ALBUMS (stacked cards) --- */
+  .album {
+    margin-bottom: 50px;
+    text-align: center;
+  }
+  .album img {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-bottom: 15px;
+  }
+  .album h3 {
+    margin: 15px 0 10px;
+    font-size: 1.5em;
+  }
+  .album p {
+    max-width: 700px;
+    margin: 0 auto 15px;
+    line-height: 1.5;
+  }
+  .album iframe {
+    width: 100%;
+    max-width: 560px;
+    height: 315px;
+    border: none;
+  }
+
+  /* --- FOOTER --- */
+  footer {
+    background-color: #222;
+    color: #fff;
+    padding: 2rem 1rem;
+    margin-top: 2rem;
+    position: relative;
+    z-index: 10;
+  }
+  footer h3 { margin-bottom: 1rem; }
+  .social-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .social-links a {
+    color: #f8c8dc;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .social-links a:hover { text-decoration: underline; }
+
+  /* --- MOBILE --- */
+  @media (max-width: 768px) {
     .album iframe {
-      width: 100%;
-      max-width: 560px;
-      height: 315px;
-      border: none;
+      height: 200px;
     }
-
-    footer {
-      background-color: #222;
-      color: #fff;
-      padding: 2rem 1rem;
-      margin-top: 2rem;
-    }
-    footer h3 {
-      margin-bottom: 1rem;
-    }
-    .social-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-    }
-    .social-links a {
-      color: #f8c8dc;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .social-links a:hover {
-      text-decoration: underline;
-    }
-  </style>
+    .heart { width: 12px; height: 12px; }
+  }
+</style>
 </head>
 <body>
 
-   <!-- NAV BAR -->
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="art.html">Original Visual Art</a>
-    <a href="music.html">Original Music</a>
-    <a href="theatre.html">Miscellania Theatre Co</a>
-    <a href="resume.html">Headshot&Resume</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="contact.html">Contact Me</a>
-    <a href="something-silly.html">Something Silly</a>
-  </nav>
+<!-- Floating hearts -->
+<div class="heart" style="left:5%; animation-duration:12s;"></div>
+<div class="heart" style="left:15%; animation-duration:10s;"></div>
+<div class="heart" style="left:25%; animation-duration:14s;"></div>
+<div class="heart" style="left:35%; animation-duration:9s;"></div>
+<div class="heart" style="left:45%; animation-duration:16s;"></div>
+<div class="heart" style="left:55%; animation-duration:11s;"></div>
+<div class="heart" style="left:65%; animation-duration:13s;"></div>
+<div class="heart" style="left:75%; animation-duration:15s;"></div>
+<div class="heart" style="left:85%; animation-duration:10s;"></div>
+<div class="heart" style="left:95%; animation-duration:12s;"></div>
 
-  <!-- HEADER -->
-  <header>
-    <h1>My Music</h1>
-    <p>
-      My original music is predominately recorded in Garageband, with use of ukulele, guitar, keyboard, drums, and upright bass. 
-      I've been lucky to collaborate with amazing artists throughout my time composing that have all brought these projects to life, 
-      and I would not be able to fully realize these pieces without them.
-    </p>
-    <p>
-      Major inspirations include: They Might Be Giants, Garfunkel and Oates, Anaïs Mitchell, Fiona Apple, Jeanine Tesori, Mitski, Talking Heads, and of course the late great Stephen Sondheim.
-    </p>
-  </header>
+<!-- NAVBAR -->
+<nav>
+  <a href="index.html">Home</a>
+  <a href="art.html">Original Visual Art</a>
+  <a href="music.html">Original Music</a>
+  <a href="theatre.html">Miscellania Theatre Co</a>
+  <a href="resume.html">Headshot & Resume</a>
+  <a href="gallery.html">Media Gallery</a>
+  <a href="contact.html">Contact Me</a>
+  <a href="something-silly.html">Something Silly</a>
+</nav>
 
-  <main>
-    <!-- Current Releases -->
-    <section>
-      <h2>Current Releases</h2>
+<!-- HEADER -->
+<header>
+  <h1>Isabelle Rashkin</h1>
+  <p>Multi-disciplinary artist based in Brooklyn, NYC</p>
+  <p><small>Interlochen Arts Academy 2018 / University of Wisconsin-Milwaukee 2022</small></p>
+</header>
 
-      <div class="album">
-        <img src="DD0883EA-DAE6-430B-A287-1C4B031671E0_1_105_c.jpeg" alt="Songs About Write Now Album Art">
-        <h3>Songs About Write Now</h3>
-        <p>This was my most recent project and my first full length album. After the three previous musical projects being produced by Mona Turks, this was my first self produced project in 5 years. This album combines ukulele, synths, pedals, and upright bass to bring together my emotional narrative of what it feels like to write music. This was also my first album to be available on all streaming platforms.</p>
-        <iframe src="https://www.youtube.com/embed/videoseries?list=OLAK5uy_nsVK2X8ChNX-EZG-TmIFprsSGxmqE0SRY" allowfullscreen></iframe>
-      </div>
+<main>
 
-      <div class="album">
-        <img src="4E4CEDE8-E668-49C7-83B8-5ACF24F2ED0A_1_105_c.jpeg" alt="Work Single Art">
-        <h3>Work</h3>
-        <p>Work is a comedy single featuring Chase Gilbertson. When I go to work each day there is one thing that I do (NOTE: I do not steal from my job).</p>
-        <iframe src="https://www.youtube.com/embed/_kPvEN4edck" allowfullscreen></iframe>
-      </div>
+  <!-- ABOUT MY MUSIC -->
+  <div class="about-music">
+    <h3>Musical Style & Process</h3>
+    <p>My original music is predominately recorded in Garageband, with use of ukulele, guitar, keyboard, drums, and upright bass. I've been lucky to collaborate with amazing artists throughout my time composing that have all brought these projects to life, and I would not be able to fully realize these pieces without them.</p>
 
-      <div class="album">
-        <img src="F0A78B68-9CAF-4446-BF2E-4BBF18751F23_1_105_c.jpeg" alt="People in My House Album Art">
-        <h3>People in My House</h3>
-        <p>Produced by Nicholas Boni in his home studio, this is one of the few pieces of music I have felt passionately should not have backup vocals.</p>
-        <iframe src="https://www.youtube.com/embed/videoseries?list=OLAK5uy_nS4IG-XhOXuRnGVTuMY5JSdfAY6VM1emA" allowfullscreen></iframe>
-      </div>
-    </section>
+    <h3>Inspirations</h3>
+    <p>Major inspirations include: They Might Be Giants, Garfunkel and Oates, Anaïs Mitchell, Fiona Apple, Jeanine Tesori, Mitski, Talking Heads, and of course the late great Stephen Sondheim.</p>
+  </div>
 
-    <!-- EPs and Early Projects -->
-    <section>
-      <h2>EPs and Early Projects</h2>
+  <!-- CURRENT RELEASES -->
+  <section>
+    <h2>Current Releases</h2>
 
-      <div class="album">
-        <img src="7DC6F01E-982D-448A-8449-375F237583DD.png" alt="Variations on a Theme Album Art">
-        <h3>Variations on a Theme</h3>
-        <p>This is my first ever original music project made in 2020. "Variations on a Theme" referring to both the song form and lyrical content of this short EP. A few of these songs would go onto become inspiration for my first musical "The Woman Her Husband and Herself".</p>
-        <iframe src="https://www.youtube.com/embed/videoseries?list=PLdMXTOOk5zlCFpqubLs5iYZ1kVqazfiwz" allowfullscreen></iframe>
-      </div>
-
-      <div class="album">
-        <img src="C9C59554-C392-46F6-AA96-3819DD0F383F.jpeg" alt="Impulses and Premeditations Album Art">
-        <h3>Impulses and Premeditations</h3>
-        <p>Shortly following "Variations on a Theme" I would dive into impulses and premeditations. Adding one more track to the list, this album explores themes of aging, fidelity, and anger. Two more songs for this album would be used for TWHH&HS.</p>
-        <iframe src="https://www.youtube.com/embed/videoseries?list=PLdMXTOOk5zlBd4wf3rB3uCO8D7dZfoHM7" allowfullscreen></iframe>
-      </div>
-
-      <div class="album">
-        <img src="59134B55-9FD7-48F4-975D-6B3CC366158F.png" alt="Songs of Spring Album Art">
-        <h3>Songs of Spring</h3>
-        <p>This was the final album project on the way to writing "The Woman, Her Husband and Herself". This has the most tracks that went into the final musical and was also a large jump in style for the album art.</p>
-        <iframe src="https://www.youtube.com/embed/videoseries?list=PLdMXTOOk5zlBtVs2wJjfTiKKikhREAR9W" allowfullscreen></iframe>
-      </div>
-
-      <div class="album">
-        <img src="E3FCE664-A80B-4184-BE2F-47C0987C8795_1_105_c.jpeg" alt="The Woman Her Husband and Herself Album Art">
-        <h3>The Woman Her Husband and Herself</h3>
-        <p>You guessed it! Here is the original cast album for "The Woman, Her Husband, and Herself". This musical was produced in a friend's home in Milwaukee Wisconsin July 2021. Starring Elena Benhke, Chase Gilbertson, and Dan Persino. The musical follows a woman being followed by herself, as her husband tries to help.</p>
-        <iframe src="https://www.youtube.com/embed/videoseries?list=PLdMXTOOk5zlA7tOSY4UZOd7M5Q8Y0nAyw" allowfullscreen></iframe>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <h3>Connect with me</h3>
-    <div class="social-links">
-      <a href="https://www.instagram.com/tamoottopro/" target="_blank">Instagram (Personal)</a>
-      <a href="https://www.instagram.com/Bee_original_music/" target="_blank">Instagram (Music)</a>
-      <a href="https://x.com/tamoottopro" target="_blank">X (Twitter)</a>
-      <a href="https://www.linkedin.com/in/isabelle-rashkin-82958228/" target="_blank">LinkedIn</a>
-      <a href="mailto:ivrashkin@gmail.com">Email</a>
-      <a href="https://open.spotify.com/artist/2TRjrme5uq3GM8qMF7y0QI" target="_blank">Spotify</a>
-      <a href="https://www.youtube.com/channel/UCa9acPRSIGUmjgn54hz17eA" target="_blank">YouTube Music</a>
-      <a href="https://music.apple.com/ca/artist/isabelle-bee-rashkin/1773658949" target="_blank">Apple Music</a>
-      <a href="https://www.backstage.com/u/isabelle-rashkin/" target="_blank">Backstage</a>
+    <div class="album">
+      <img src="DD0883EA-DAE6-430B-A287-1C4B031671E0_1_105_c.jpeg" alt="Songs About Write Now Album Art">
+      <h3>Songs About Write Now</h3>
+      <p>This was my most recent project and my first full-length album. After the three previous musical projects being produced by Mona Turks, this was my first self-produced project in 5 years. This album combines ukulele, synths, pedals, and upright bass to bring together my emotional narrative of what it feels like to write music. This was also my first album to be available on all streaming platforms.</p>
+      <iframe src="https://www.youtube.com/embed/videoseries?list=OLAK5uy_nsVK2X8ChNX-EZG-TmIFprsSGxmqE0SRY" allowfullscreen></iframe>
     </div>
-  </footer>
+
+    <div class="album">
+      <img src="4E4CEDE8-E668-49C7-83B8-5ACF24F2ED0A_1_105_c.jpeg" alt="Work Single Art">
+      <h3>Work</h3>
+      <p>Work is a comedy single featuring Chase Gilbertson. When I go to work each day there is one thing that I do (NOTE: I do not steal from my job).</p>
+      <iframe src="https://www.youtube.com/embed/_kPvEN4edck" allowfullscreen></iframe>
+    </div>
+
+    <div class="album">
+      <img src="F0A78B68-9CAF-4446-BF2E-4BBF18751F23_1_105_c.jpeg" alt="People in My House Album Art">
+      <h3>People in My House</h3>
+      <p>Produced by Nicholas Boni in his home studio, this is one of the few pieces of music I have felt passionately should not have backup vocals.</p>
+      <iframe src="https://www.youtube.com/embed/videoseries?list=OLAK5uy_nS4IG-XhOXuRnGVTuMY5JSdfAY6VM1emA" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <!-- EPs AND EARLY PROJECTS -->
+  <section>
+    <h2>EPs and Early Projects</h2>
+
+    <div class="album">
+      <img src="7DC6F01E-982D-448A-8449-375F237583DD.png" alt="Variations on a Theme Album Art">
+      <h3>Variations on a Theme</h3>
+      <p>This is my first ever original music project made in 2020. "Variations on a Theme" referring to both the song form and lyrical content of this short EP. A few of these songs would go onto become inspiration for my first musical "The Woman Her Husband and Herself".</p>
+      <iframe src="https://www.youtube.com/embed/videoseries?list=PLdMXTOOk5zlCFpqubLs5iYZ1kVqazfiwz" allowfullscreen></iframe>
+    </div>
+
+    <div class="album">
+      <img src="C9C59554-C392-46F6-AA96-3819DD0F383F.jpeg" alt="Impulses and Premeditations Album Art">
+      <h3>Impulses and Premeditations</h3>
+      <p>Shortly following "Variations on a Theme" I would dive into impulses and premeditations. Adding one more track to the list, this album explores themes of aging, fidelity, and anger. Two more songs for this album would be used for TWHH&HS.</p>
+      <iframe src="https://www.youtube.com/embed/videoseries?list=PLdMXTOOk5zlBd4wf3rB3uCO8D7dZfoHM7" allowfullscreen></iframe>
+    </div>
+
+    <div class="album">
+      <img src="59134B55-9FD7-48F4-975D-6B3CC366158F.png" alt="Songs of Spring Album Art">
+      <h3>Songs of Spring</h3>
+      <p>This was the final album project on the way to writing "The Woman, Her Husband and Herself". This has the most tracks that went into the final musical and was also a large jump in style for the album art.</p>
+      <iframe src="https://www.youtube.com/embed/videoseries?list=PLdMXTOOk5zlBtVs2wJjfTiKKikhREAR9W" allowfullscreen></iframe>
+    </div>
+
+    <div class="album">
+      <img src="E3FCE664-A80B-4184-BE2F-47C0987C8795_1_105_c.jpeg" alt="The Woman Her Husband and Herself Album Art">
+      <h3>The Woman Her Husband and Herself</h3>
+      <p>You guessed it! Here is the original cast album for "The Woman, Her Husband, and Herself". This musical was produced in a friend's home in Milwaukee Wisconsin July 2021. Starring Elena Benhke, Chase Gilbertson, and Dan Persino. The musical follows a woman being followed by herself, as her husband tries to help.</p>
+      <iframe src="https://www.youtube.com/embed/videoseries?list=PLdMXTOOk5zlA7tOSY4UZOd7M5Q8Y0nAyw" allowfullscreen></iframe>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <h3>Connect with me</h3>
+  <div class="social-links">
+    <a href="https://www.instagram.com/tamoottopro/" target="_blank">Instagram (Personal)</a>
+    <a href="https://www.instagram.com/Bee_original_music/" target="_blank">Instagram (Music)</a>
+    <a href="https://x.com/tamoottopro" target="_blank">X (Twitter)</a>
+    <a href="https://www.linkedin.com/in/isabelle-rashkin-82958228/" target="_blank">LinkedIn</a>
+    <a href="mailto:ivrashkin@gmail.com">Email</a>
+    <a href="https://open.spotify.com/artist/2TRjrme5uq3GM8qMF7y0QI" target="_blank">Spotify</a>
+    <a href="https://www.youtube.com/channel/UCa9acPRSIGUmjgn54hz17eA" target="_blank">YouTube Music</a>
+    <a href="https://music.apple.com/ca/artist/isabelle-bee-rashkin/1773658949" target="_blank">Apple Music</a>
+    <a href="https://www.backstage.com/u/isabelle-rashkin/" target="_blank">Backstage</a>
+  </div>
+</footer>
 
 </body>
 </html>
