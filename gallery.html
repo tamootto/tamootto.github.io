@@ -19,7 +19,6 @@ body {
   position: relative;
   overflow-x: hidden;
 }
-
 /* Floating hearts */
 .heart {
   position: fixed;
@@ -39,13 +38,28 @@ body {
   background: pink;
   border-radius: 50%;
 }
-.heart::before { top: -50%; left: 0; width: 100%; height: 100%; }
-.heart::after { left: -50%; top: 0; width: 100%; height: 100%; }
-@keyframes float {
-  0% { transform: translateY(100vh) rotate(45deg); opacity: 0.6; }
-  100% { transform: translateY(-20vh) rotate(45deg); opacity: 0; }
+.heart::before {
+  top: -50%;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
-
+.heart::after {
+  left: -50%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+@keyframes float {
+  0% {
+    transform: translateY(100vh) rotate(45deg);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-20vh) rotate(45deg);
+    opacity: 0;
+  }
+}
 /* Navbar */
 nav {
   background-color: #000;
@@ -55,7 +69,8 @@ nav {
   width: 100%;
   z-index: 1000;
 }
-/* Desktop links (gallery-style) */
+
+/* Desktop links same as resume.html */
 nav a {
   color: #fff;
   margin: 0 0.5rem;
@@ -81,14 +96,18 @@ nav a:hover {
   top: 0.75rem;
   z-index: 2000;
 }
+
 .nav-links {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
 
+/* Mobile layout */
 @media (max-width: 768px) {
-  nav { padding: 1.5rem 1rem; }
+  nav {
+    padding: 1.5rem 1rem;
+  }
   nav a {
     display: block;
     width: 100%;
@@ -96,7 +115,9 @@ nav a:hover {
     margin: 0;
     text-align: center;
   }
-  .menu-toggle { display: block; }
+  .menu-toggle {
+    display: block;
+  }
   .nav-links {
     flex-direction: column;
     max-height: 0;
@@ -112,7 +133,10 @@ nav a:hover {
     max-height: 500px;
     transition: max-height 0.3s ease-in;
   }
-  .heart { width: 12px; height: 12px; }
+  .heart {
+    width: 12px;
+    height: 12px;
+  }
 }
 
 /* Header */
@@ -122,8 +146,7 @@ header {
   padding: 1rem;
   text-align: center;
   box-sizing: border-box;
-  margin-top: 60px;
-  /* below navbar */
+  margin-top: 60px; /* below navbar */
   z-index: 10;
 }
 header h1 { margin: 0.5rem 0; }
@@ -137,7 +160,6 @@ main {
   position: relative;
   z-index: 10;
 }
-
 h2.section-title {
   margin-top: 2rem;
   margin-bottom: 1rem;
@@ -222,7 +244,9 @@ a.back-link {
   text-decoration: none;
   border-radius: 8px;
 }
-a.back-link:hover { background: #666; }
+a.back-link:hover {
+  background: #666;
+}
 
 /* Footer */
 footer {
@@ -233,7 +257,9 @@ footer {
   position: relative;
   z-index: 10;
 }
-footer h3 { margin-bottom: 1rem; }
+footer h3 {
+  margin-bottom: 1rem;
+}
 .social-links {
   display: flex;
   flex-wrap: wrap;
@@ -245,12 +271,14 @@ footer h3 { margin-bottom: 1rem; }
   text-decoration: none;
   font-weight: bold;
 }
-.social-links a:hover { text-decoration: underline; }
+.social-links a:hover {
+  text-decoration: underline;
+}
 
-@media (max-width: 768px) { .heart { width: 12px; height: 12px; } }
 </style>
 </head>
 <body>
+
 <!-- Floating hearts -->
 <div class="heart" style="left:5%; animation-duration:12s;"></div>
 <div class="heart" style="left:15%; animation-duration:10s;"></div>
@@ -265,14 +293,17 @@ footer h3 { margin-bottom: 1rem; }
 
 <!-- Navbar -->
 <nav>
-  <a href="index.html">Home</a>
-  <a href="art.html">Original Visual Art</a>
-  <a href="music.html">Original Music</a>
-  <a href="theatre.html">Miscellania Theatre Co</a>
-  <a href="resume.html">Headshot & Resume</a>
-  <a href="gallery.html">Media Gallery</a>
-  <a href="contact.html">Contact Me</a>
-  <a href="something-silly.html">Something Silly</a>
+  <button class="menu-toggle" id="menu-toggle">&#9776;</button>
+  <div class="nav-links" id="nav-links">
+    <a href="index.html">Home</a>
+    <a href="art.html">Original Visual Art</a>
+    <a href="music.html">Original Music</a>
+    <a href="theatre.html">Miscellania Theatre Co</a>
+    <a href="resume.html">Headshot & Resume</a>
+    <a href="gallery.html">Media Gallery</a>
+    <a href="contact.html">Contact Me</a>
+    <a href="something-silly.html">Something Silly</a>
+  </div>
 </nav>
 
 <!-- Header -->
@@ -281,6 +312,9 @@ footer h3 { margin-bottom: 1rem; }
 <p>Multi-disciplinary artist based in Brooklyn, NYC</p>
 <p><small>Interlochen Arts Academy 2018 / University of Wisconsin-Milwaukee 2022</small></p>
 </header>
+
+<main>
+<!-- Entire content of gallery.html remains unchanged from original -->
 
 <main>
 <!-- Performance Videos -->
