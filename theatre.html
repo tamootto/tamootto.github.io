@@ -126,37 +126,49 @@
     z-index: 10;
   }
 
-  /* Theatre project styling */
+  /* Theatre project layout */
   .theatre-project {
     margin-bottom: 4rem;
-    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
   }
-  .theatre-project iframe {
+  .video-container {
+    flex: 1 1 350px;
+    max-width: 500px;
+  }
+  .video-container iframe {
     width: 100%;
-    max-width: 560px;
-    height: 315px;
+    height: 280px;
     border: none;
-    margin-bottom: 1rem;
   }
-  .theatre-project h3 { margin: 15px 0 10px; font-size: 1.6em; }
-  .theatre-project p { max-width: 800px; margin: 0 auto 1.5rem; line-height: 1.5; }
-
-  /* Photo gallery */
+  .description-container {
+    flex: 1 1 350px;
+    max-width: 650px;
+    display: flex;
+    flex-direction: column;
+  }
   .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-    margin-top: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    margin-bottom: 1rem;
   }
   .gallery img {
     width: 100%;
     height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    transition: transform 0.2s ease;
     cursor: pointer;
+    transition: transform 0.2s ease;
   }
   .gallery img:hover { transform: scale(1.05); }
+
+  .description-container p {
+    line-height: 1.5;
+    text-align: left;
+  }
 
   footer {
     background-color: #222;
@@ -172,7 +184,11 @@
   .social-links a:hover { text-decoration: underline; }
 
   @media (max-width: 768px) {
-    .theatre-project iframe { height: 200px; }
+    .theatre-project {
+      flex-direction: column;
+      align-items: center;
+    }
+    .video-container iframe { height: 200px; }
   }
 </style>
 </head>
@@ -215,33 +231,41 @@
 
   <!-- THEATRE PROJECT 1 -->
   <div class="theatre-project">
-    <h3>The Woman, Her Husband and Herself</h3>
-    <iframe src="https://www.youtube.com/embed/HB6Hs0pKRzU" allowfullscreen></iframe>
-    <p>The Woman Her Husband and Herself follows the tale of a woman who is now being followed by herself. A figment of her imagination, and a manifestation of all her shortcomings. The woman now needs to determine what is real between herself and her husband.</p>
-    <p>This production was staged in Milwaukee Wisconsin July 2021. After taking a year to write it, I gathered all the best performers I knew - my friends! We met for over 3 months learning the music, blocking, then finally deciding we wanted to show it off to our peers and colleagues. The result is the footage above, we had 3 performances and an "invited dress" (which is silly for a house musical) but through this experience we paved the way for us to do it again.</p>
-    <div class="gallery">
-      <a href="TWHHHS1.png" class="glightbox" data-title="The cover art designed by Grant Vanlanduyt."><img src="TWHHHS1.png" alt="TWHHHS 1"></a>
-      <a href="TWHHHS2.png" class="glightbox" data-title="The actors posing for reference for the cover art."><img src="TWHHHS2.png" alt="TWHHHS 2"></a>
-      <a href="TWHHHS3.png" class="glightbox" data-title="Chase Gilbertson and Elena Behnke as 'The Woman' and 'Herself'"><img src="TWHHHS3.png" alt="TWHHHS 3"></a>
-      <a href="TWHHHS4.png" class="glightbox" data-title="Cast Picture, From left to right, top to bottom: McKenna Dodson, Isabelle Rashkin, Mona Turks, Chase Gilbertson, Daniel Persino, Elena Behnke. (Not pictured: Carly Coldren, Stage Manager)"><img src="TWHHHS4.png" alt="TWHHHS 4"></a>
-      <a href="TWHHHS5.png" class="glightbox" data-title="Rehearsal for The Woman, Her Husband, and Herself."><img src="TWHHHS5.png" alt="TWHHHS 5"></a>
-      <a href="TWHHHS6.png" class="glightbox" data-title="Since this production was staged in a home, this was our seat chart from the stage perspective."><img src="TWHHHS6.png" alt="TWHHHS 6"></a>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/HB6Hs0pKRzU" allowfullscreen></iframe>
+    </div>
+    <div class="description-container">
+      <div class="gallery">
+        <a href="TWHHHS1.png" class="glightbox" data-title="The cover art designed by Grant Vanlanduyt."><img src="TWHHHS1.png" alt="TWHHHS 1"></a>
+        <a href="TWHHHS2.png" class="glightbox" data-title="The actors posing for reference for the cover art."><img src="TWHHHS2.png" alt="TWHHHS 2"></a>
+        <a href="TWHHHS3.png" class="glightbox" data-title="Chase Gilbertson and Elena Behnke as 'The Woman' and 'Herself'"><img src="TWHHHS3.png" alt="TWHHHS 3"></a>
+        <a href="TWHHHS4.png" class="glightbox" data-title="Cast Picture, From left to right, top to bottom: McKenna Dodson, Isabelle Rashkin, Mona Turks, Chase Gilbertson, Daniel Persino, Elena Behnke. (Not pictured: Carly Coldren, Stage Manager)"><img src="TWHHHS4.png" alt="TWHHHS 4"></a>
+        <a href="TWHHHS5.png" class="glightbox" data-title="Rehearsal for The Woman, Her Husband, and Herself."><img src="TWHHHS5.png" alt="TWHHHS 5"></a>
+        <a href="TWHHHS6.png" class="glightbox" data-title="Since this production was staged in a home, this was our seat chart from the stage perspective."><img src="TWHHHS6.png" alt="TWHHHS 6"></a>
+      </div>
+      <h3>The Woman, Her Husband and Herself</h3>
+      <p>The Woman Her Husband and Herself follows the tale of a woman who is now being followed by herself. A figment of her imagination, and a manifestation of all her shortcomings. The woman now needs to determine what is real between herself and her husband.</p>
+      <p>This production was staged in Milwaukee Wisconsin July 2021. After taking a year to write it, I gathered all the best performers I knew - my friends! We met for over 3 months learning the music, blocking, then finally deciding we wanted to show it off to our peers and colleagues. The result is the footage above, we had 3 performances and an "invited dress" (which is silly for a house musical) but through this experience we paved the way for us to do it again.</p>
     </div>
   </div>
 
   <!-- THEATRE PROJECT 2 -->
   <div class="theatre-project">
-    <h3>Warning Sign: An Original Time Capsule Musical</h3>
-    <iframe src="https://www.youtube.com/embed/NLR2iAidzqw" allowfullscreen></iframe>
-    <p>Warning Sign: An Original Time Capsule Musical tells the interweaving paths of four friends all connected by a time capsule. An allegory for climate change, when the time capsule ejects from the ground (and is rejected by the earth) the group take sides on whether or not to finally open what's inside.</p>
-    <p>This production was staged in Milwaukee Wisconsin at The Brumder Mansion in August 2022. This musical was created on a much shorter timeline with more direct editing and scene writing help from Mona Turks. The goal of this production was to create a musical on a more structured timeline, and put it up with the same or more production elements than previously utilized. The Brumder mansion is a landmark of Milwaukee Wisconsin with a less-than-conventional stage set up. Nonetheless we brought it to life.</p>
-    <p><em>Note: we taped this production so many times, and we were unable to have a singular recording where a phone did NOT go off in the audience. Maybe that is the real warning sign.</em></p>
-    <div class="gallery">
-      <a href="warning sign1.png" class="glightbox" data-title="The cover art designed by Grant Vanlanduyt."><img src="warning sign1.png" alt="Warning Sign 1"></a>
-      <a href="warning sign2.png" class="glightbox" data-title="Brooke Wallo as 'Bridget' in the foreground; Elena Behnke and Dan Persino in the background."><img src="warning sign2.png" alt="Warning Sign 2"></a>
-      <a href="warning sign3.png" class="glightbox" data-title="Elena Behnke (Elise), Chase Gilbertson (Carter), Daniel Persino (Decker), Brooke Wallo (Bridget)."><img src="warning sign3.png" alt="Warning Sign 3"></a>
-      <a href="warning sign4.png" class="glightbox" data-title="Another cast shot of Elise, Carter, Decker, and Bridget."><img src="warning sign4.png" alt="Warning Sign 4"></a>
-      <a href="warning sign5.png" class="glightbox" data-title="From left to right, top to bottom: Aiden Carl Black, Mona Turks, Isabelle Rashkin, McKenna Dodson, Brooke Wallo, Chase Gilbertson, Elena Behnke, Dan Persino."><img src="warning sign5.png" alt="Warning Sign 5"></a>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/NLR2iAidzqw" allowfullscreen></iframe>
+    </div>
+    <div class="description-container">
+      <div class="gallery">
+        <a href="warning sign1.png" class="glightbox" data-title="The cover art designed by Grant Vanlanduyt."><img src="warning sign1.png" alt="Warning Sign 1"></a>
+        <a href="warning sign2.png" class="glightbox" data-title="Brooke Wallo as 'Bridget' in the foreground; Elena Behnke and Dan Persino in the background."><img src="warning sign2.png" alt="Warning Sign 2"></a>
+        <a href="warning sign3.png" class="glightbox" data-title="Elena Behnke (Elise), Chase Gilbertson (Carter), Daniel Persino (Decker), Brooke Wallo (Bridget)."><img src="warning sign3.png" alt="Warning Sign 3"></a>
+        <a href="warning sign4.png" class="glightbox" data-title="Another cast shot of Elise, Carter, Decker, and Bridget."><img src="warning sign4.png" alt="Warning Sign 4"></a>
+        <a href="warning sign5.png" class="glightbox" data-title="From left to right, top to bottom: Aiden Carl Black, Mona Turks, Isabelle Rashkin, McKenna Dodson, Brooke Wallo, Chase Gilbertson, Elena Behnke, Dan Persino."><img src="warning sign5.png" alt="Warning Sign 5"></a>
+      </div>
+      <h3>Warning Sign: An Original Time Capsule Musical</h3>
+      <p>Warning Sign: An Original Time Capsule Musical tells the interweaving paths of four friends all connected by a time capsule. An allegory for climate change, when the time capsule ejects from the ground (and is rejected by the earth) the group take sides on whether or not to finally open what's inside.</p>
+      <p>This production was staged in Milwaukee Wisconsin at The Brumder Mansion in August 2022. This musical was created on a much shorter timeline with more direct editing and scene writing help from Mona Turks. The goal of this production was to create a musical on a more structured timeline, and put it up with the same or more production elements than previously utilized. The Brumder mansion is a landmark of Milwaukee Wisconsin with a less-than-conventional stage set up. Nonetheless we brought it to life.</p>
+      <p><em>Note: we taped this production so many times, and we were unable to have a singular recording where a phone did NOT go off in the audience. Maybe that is the real warning sign.</em></p>
     </div>
   </div>
 
