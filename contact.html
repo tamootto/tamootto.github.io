@@ -51,8 +51,11 @@
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 1000;
+    text-align: center;
   }
+  /* Desktop links */
+  .nav-links { display: inline-block; }
   nav a {
     color: #fff;
     margin: 0 0.5rem;
@@ -60,8 +63,43 @@
     font-weight: bold;
     display: inline-block;
     width: 120px;
+    text-align: center;
   }
   nav a:hover { text-decoration: underline; }
+
+  /* Hamburger (mobile) */
+  .menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    color: #fff;
+    cursor: pointer;
+    background: none;
+    border: none;
+    position: absolute;
+    right: 1rem;
+    top: 0.75rem;
+    z-index: 2000;
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 1.5rem 1rem; }
+    nav a { display: block; width: 100%; padding: 0.75rem 0; margin: 0; text-align: center; }
+    .menu-toggle { display: block; }
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+      background: #000;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+    }
+    .nav-links.show { max-height: 500px; transition: max-height 0.3s ease-in; }
+    .heart { width: 12px; height: 12px; }
+  }
 
   /* Header */
   header {
@@ -70,7 +108,7 @@
     padding: 1rem;
     text-align: center;
     box-sizing: border-box;
-    margin-top: 60px; /* below navbar */
+    margin-top: 60px;
     z-index: 10;
   }
   header h1 { margin: 0.5rem 0; }
@@ -152,11 +190,6 @@
   .social-links a { color: #f8c8dc; text-decoration: none; font-weight: bold; }
   .social-links a:hover { text-decoration: underline; }
 
-  /* Mobile adjustments */
-  @media (max-width: 768px) {
-    .contact-container { flex-direction: column; }
-    .tilt-img { width: 120px; margin-bottom: 1rem; }
-  }
 </style>
 </head>
 <body>
@@ -175,14 +208,17 @@
 
 <!-- Navbar -->
 <nav>
-  <a href="index.html">Home</a>
-  <a href="art.html">Original Visual Art</a>
-  <a href="music.html">Original Music</a>
-  <a href="theatre.html">Miscellania Theatre Co</a>
-  <a href="resume.html">Headshot & Resume</a>
-  <a href="gallery.html">Media Gallery</a>
-  <a href="contact.html">Contact Me</a>
-  <a href="something-silly.html">Something Silly</a>
+  <button class="menu-toggle" id="menu-toggle">&#9776;</button>
+  <div class="nav-links" id="nav-links">
+    <a href="index.html">Home</a>
+    <a href="art.html">Original Visual Art</a>
+    <a href="music.html">Original Music</a>
+    <a href="theatre.html">Miscellania Theatre Co</a>
+    <a href="resume.html">Headshot & Resume</a>
+    <a href="gallery.html">Media Gallery</a>
+    <a href="contact.html">Contact Me</a>
+    <a href="something-silly.html">Something Silly</a>
+  </div>
 </nav>
 
 <!-- Header -->
@@ -224,6 +260,23 @@
     <a href="https://www.backstage.com/u/isabelle-rashkin/" target="_blank">Backstage</a>
   </div>
 </footer>
+
+<!-- Mobile nav JS -->
+<script>
+const menuToggle = document.getElementById("menu-toggle");
+const navLinks = document.getElementById("nav-links");
+
+if(menuToggle && navLinks){
+  menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+  });
+  document.querySelectorAll("#nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("show");
+    });
+  });
+}
+</script>
 
 </body>
 </html>
