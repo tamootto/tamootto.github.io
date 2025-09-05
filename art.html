@@ -56,7 +56,7 @@
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 1000;
   }
   nav a {
     color: #fff;
@@ -67,6 +67,21 @@
     width: 120px;
   }
   nav a:hover { text-decoration: underline; }
+
+  /* Hamburger menu */
+  .menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    color: #fff;
+    cursor: pointer;
+    background: none;
+    border: none;
+    position: absolute;
+    right: 1rem;
+    top: 0.75rem;
+    z-index: 2000;
+  }
+  .nav-links { display: flex; justify-content: center; flex-wrap: wrap; }
 
   /* --- HEADER --- */
   header {
@@ -162,6 +177,21 @@
   @media (max-width: 768px) {
     .art-grid { grid-template-columns: 1fr; }
     .heart { width: 12px; height: 12px; }
+
+    nav a { display: block; width: 100%; padding: 0.75rem 0; margin: 0; text-align: center; }
+    .menu-toggle { display: block; }
+    .nav-links {
+      flex-direction: column;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+      background: #000;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+    }
+    .nav-links.show { max-height: 500px; transition: max-height 0.3s ease-in; }
   }
 </style>
 </head>
@@ -181,14 +211,17 @@
 
 <!-- Navbar -->
 <nav>
-  <a href="index.html">Home</a>
-  <a href="art.html">Original Visual Art</a>
-  <a href="music.html">Original Music</a>
-  <a href="theatre.html">Miscellania Theatre Co</a>
-  <a href="resume.html">Headshot & Resume</a>
-  <a href="gallery.html">Media Gallery</a>
-  <a href="contact.html">Contact Me</a>
-  <a href="something-silly.html">Something Silly</a>
+  <button class="menu-toggle" id="menu-toggle">&#9776;</button>
+  <div class="nav-links" id="nav-links">
+    <a href="index.html">Home</a>
+    <a href="art.html">Original Visual Art</a>
+    <a href="music.html">Original Music</a>
+    <a href="theatre.html">Miscellania Theatre Co</a>
+    <a href="resume.html">Headshot & Resume</a>
+    <a href="gallery.html">Media Gallery</a>
+    <a href="contact.html">Contact Me</a>
+    <a href="something-silly.html">Something Silly</a>
+  </div>
 </nav>
 
 <!-- Header -->
@@ -355,5 +388,24 @@
   });
 </script>
 
+<!-- Mobile nav JS -->
+<script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const navLinks = document.getElementById("nav-links");
+
+  if(menuToggle && navLinks){
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+
+    document.querySelectorAll("#nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("show");
+      });
+    });
+  }
+</script>
+
 </body>
 </html>
+
