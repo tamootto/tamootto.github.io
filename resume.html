@@ -55,8 +55,10 @@
     top: 0;
     width: 100%;
     z-index: 1000;
+    text-align: center;
   }
-  /* Desktop links (gallery-style) */
+  /* Desktop links */
+  .nav-links { display: inline-block; }
   nav a {
     color: #fff;
     margin: 0 0.5rem;
@@ -64,6 +66,7 @@
     font-weight: bold;
     display: inline-block;
     width: 120px;
+    text-align: center;
   }
   nav a:hover { text-decoration: underline; }
 
@@ -80,13 +83,13 @@
     top: 0.75rem;
     z-index: 2000;
   }
-  .nav-links { display: flex; justify-content: center; flex-wrap: wrap; }
 
   @media (max-width: 768px) {
     nav { padding: 1.5rem 1rem; }
     nav a { display: block; width: 100%; padding: 0.75rem 0; margin: 0; text-align: center; }
     .menu-toggle { display: block; }
     .nav-links {
+      display: flex;
       flex-direction: column;
       max-height: 0;
       overflow: hidden;
@@ -170,14 +173,17 @@
 
 <!-- Navbar -->
 <nav>
-  <a href="index.html">Home</a>
-  <a href="art.html">Original Visual Art</a>
-  <a href="music.html">Original Music</a>
-  <a href="theatre.html">Miscellania Theatre Co</a>
-  <a href="resume.html">Headshot & Resume</a>
-  <a href="gallery.html">Media Gallery</a>
-  <a href="contact.html">Contact Me</a>
-  <a href="something-silly.html">Something Silly</a>
+  <button class="menu-toggle" id="menu-toggle">&#9776;</button>
+  <div class="nav-links" id="nav-links">
+    <a href="index.html">Home</a>
+    <a href="art.html">Original Visual Art</a>
+    <a href="music.html">Original Music</a>
+    <a href="theatre.html">Miscellania Theatre Co</a>
+    <a href="resume.html">Headshot & Resume</a>
+    <a href="gallery.html">Media Gallery</a>
+    <a href="contact.html">Contact Me</a>
+    <a href="something-silly.html">Something Silly</a>
+  </div>
 </nav>
 
 <!-- Header -->
@@ -243,20 +249,19 @@
 
 <!-- Mobile nav JS -->
 <script>
-  const menuToggle = document.getElementById("menu-toggle");
-  const navLinks = document.getElementById("nav-links");
+const menuToggle = document.getElementById("menu-toggle");
+const navLinks = document.getElementById("nav-links");
 
-  if(menuToggle && navLinks){
-    menuToggle.addEventListener("click", () => {
-      navLinks.classList.toggle("show");
+if(menuToggle && navLinks){
+  menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+  });
+  document.querySelectorAll("#nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("show");
     });
-
-    document.querySelectorAll("#nav-links a").forEach(link => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("show");
-      });
-    });
-  }
+  });
+}
 </script>
 
 </body>
