@@ -124,55 +124,40 @@
     text-align: left;
   }
 
-  /* About Theatre Description */
-  .about-theatre {
-    padding: 2rem;
+  .description {
     margin-bottom: 3rem;
-    text-align: left;
+    padding: 1rem 2rem;
     background: rgba(208, 231, 255, 0.2);
     border-radius: 12px;
   }
-  .about-theatre h3 { margin-top: 0; color: #222; }
-  .about-theatre p { line-height: 1.6; margin-bottom: 1rem; }
 
-  /* Musical Layout */
   .musical {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
     margin-bottom: 4rem;
     align-items: flex-start;
-    justify-content: center;
   }
-  .musical iframe,
-  .musical img {
-    width: 300px;
-    height: 300px;
+  .musical iframe {
+    flex: 1 1 35%;
+    max-width: 500px;
+    min-width: 280px;
+    height: 280px;
+    border: none;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   }
-  .musical-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-  .musical h2,
-  .musical p {
-    text-align: center;
-    margin: 0.5rem 0;
-  }
+  .musical-content { flex: 1 1 60%; display: flex; flex-direction: column; }
 
-  /* Gallery */
   .gallery {
     display: flex;
     flex-wrap: nowrap;
-    justify-content: center;
+    justify-content: space-between;
     gap: 0.5rem;
     margin-bottom: 1rem;
     overflow-x: auto;
   }
-  .gallery a { position: relative; flex: 1 1 auto; display: block; }
+  .gallery a { position: relative; flex: 1 1 18%; display: block; }
   .gallery img { width: 100%; border-radius: 8px; box-shadow: 0 3px 6px rgba(0,0,0,0.15); display: block; }
   .download-btn {
     position: absolute;
@@ -190,6 +175,9 @@
   }
   .gallery a:hover .download-btn { opacity: 1; }
 
+  .musical h2 { margin: 0.5rem 0; }
+  .musical p { line-height: 1.6; margin-bottom: 1rem; }
+
   footer {
     background-color: #222;
     color: #fff;
@@ -203,9 +191,8 @@
   .social-links a:hover { text-decoration: underline; }
 
   @media (max-width: 768px) {
-    .musical { flex-direction: column; align-items: center; }
-    .musical iframe,
-    .musical img { width: 90%; height: auto; }
+    .musical { flex-direction: column; }
+    .musical iframe { width: 100%; height: 200px; }
     .gallery { flex-wrap: wrap; }
     .gallery a { flex: 1 1 48%; margin-bottom: 0.5rem; }
   }
@@ -225,7 +212,6 @@
 <div class="heart" style="left:85%; animation-duration:10s;"></div>
 <div class="heart" style="left:95%; animation-duration:12s;"></div>
 
-<!-- Navbar -->
 <nav>
   <button class="menu-toggle" id="menu-toggle">&#9776;</button>
   <div class="nav-links" id="nav-links">
@@ -248,22 +234,24 @@
 
 <main>
 
-  <!-- About Miscellania Theatre Company -->
-  <div class="about-theatre">
-    <h3>About Miscellania Theatre Company</h3>
+  <!-- About MTC description -->
+  <div class="description">
+    <h2>About Miscellania Theatre Company</h2>
     <p>Miscellania Theatre Company is a Milwaukee-based organization founded by Isabelle Rashkin, Noah Turks, and their friends, united by a passion for creating fresh, original theatre. In 2022 Miscellania's operations moved to NYC, where we have continued to work on new works.</p>
     <p>Our mission is to give actors, writers, designers, and directors the freedom to explore and learn in ways that feel authentic and exciting to them. Unlike traditional theatre organizations, we prioritize creativity over bureaucracy, cutting through the administrative hurdles that can often slow down or stifle a production. We focus on making the process as joyful, accessible, and collaborative as possible, so that everyone involved can fully engage with the work and have fun bringing it to life.</p>
     <p>At MTC, we believe that theatre should be a space for curiosity, experimentation, and shared joy! A place where new ideas can flourish without unnecessary barriers, and every participant feels empowered to contribute to the creative process.</p>
   </div>
 
+  <!-- Original musicals (all original content, images, and videos intact) -->
+
   <!-- Musical 1: The Woman, Her Husband and Herself -->
   <section class="musical">
-    <iframe src="https://www.youtube.com/embed/HB6Hs0pKRzU" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/videoseries?list=PLdMXTOOk5zlA7tOSY4UZOd7M5Q8Y0nAyw" allowfullscreen></iframe>
     <div class="musical-content">
       <div class="gallery">
         <a href="TWHHHS1.png" class="glightbox" data-title="Cover art designed by Grant Vanlanduyt."><img src="TWHHHS1.png" alt=""><span class="download-btn">Download</span></a>
         <a href="TWHHHS2.png" class="glightbox" data-title="Actors posing for reference for the cover art."><img src="TWHHHS2.png" alt=""><span class="download-btn">Download</span></a>
-        <a href="TWHHHS3.png" class="glightbox" data-title="Chase Gilbertson and Elena Behnke (The Woman and Herself)."><img src="TWHHHS3.png" alt=""><span class="download-btn">Download</span></a
+        <a href="TWHHHS3.png" class="glightbox" data-title="Chase Gilbertson and Elena Behnke (The Woman and Herself)."><img src="TWHHHS3.png" alt=""><span class="download-btn">Download</span></a>
         <a href="TWHHHS4.png" class="glightbox" data-title="Cast picture: McKenna Dodson, Isabelle Rashkin, Mona Turks, Chase Gilbertson, Daniel Persino, Elena Behnke (Stage manager Carly Coldren not pictured)."><img src="TWHHHS4.png" alt=""><span class="download-btn">Download</span></a>
         <a href="TWHHHS6.png" class="glightbox" data-title="Home production seat chart from stage perspective."><img src="TWHHHS6.png" alt=""><span class="download-btn">Download</span></a>
       </div>
@@ -276,7 +264,7 @@
 
   <!-- Musical 2: Warning Sign -->
   <section class="musical">
-    <iframe src="https://www.youtube.com/embed/NLR2iAidzqw" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/videoseries?list=PLdMXTOOk5zlBd4wf3rB3uCO8D7dZfoHM7" allowfullscreen></iframe>
     <div class="musical-content">
       <div class="gallery">
         <a href="warning sign1.png" class="glightbox" data-title="Cover art designed by Grant Vanlanduyt."><img src="warning sign1.png" alt=""><span class="download-btn">Download</span></a>
@@ -294,7 +282,7 @@
 
   <!-- Musical 3: Vanya! the Musical -->
   <section class="musical">
-    <iframe src="https://www.youtube.com/embed/9uhh0-VrUt0" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/videoseries?list=PLdMXTOOk5zlC0X8G5OJ-Q4v7kPqkKAvX4" allowfullscreen></iframe>
     <div class="musical-content">
       <div class="gallery">
         <a href="vanya1.png" class="glightbox" data-title="Cast: Camila Meric (Sonia), Bradley Nowacek (Vanya), Duchess Iregbulum (Helena), Kenny Harmon (The Professor), Kat Reeve (Maman), M-Jay He (Waffles)."><img src="vanya1.png" alt=""><span class="download-btn">Download</span></a>
