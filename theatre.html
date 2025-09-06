@@ -124,12 +124,14 @@
     text-align: left;
   }
 
+  /* Updated description styling to match Music page */
   .description {
+    text-align: left;
     margin-bottom: 3rem;
-    padding: 1rem 2rem;
-    background: rgba(208, 231, 255, 0.2);
-    border-radius: 12px;
+    line-height: 1.6;
   }
+  .description h2 { margin-top: 0; }
+  .description p { margin-bottom: 1rem; }
 
   .musical {
     display: flex;
@@ -234,105 +236,93 @@
 
 <main>
 
-  <!-- About MTC description -->
-  <div class="description">
-    <h2>About Miscellania Theatre Company</h2>
-    <p>Miscellania Theatre Company is a Milwaukee-based organization founded by Isabelle Rashkin, Noah Turks, and their friends, united by a passion for creating fresh, original theatre. In 2022 Miscellania's operations moved to NYC, where we have continued to work on new works.</p>
-    <p>Our mission is to give actors, writers, designers, and directors the freedom to explore and learn in ways that feel authentic and exciting to them. Unlike traditional theatre organizations, we prioritize creativity over bureaucracy, cutting through the administrative hurdles that can often slow down or stifle a production. We focus on making the process as joyful, accessible, and collaborative as possible, so that everyone involved can fully engage with the work and have fun bringing it to life.</p>
-    <p>At MTC, we believe that theatre should be a space for curiosity, experimentation, and shared joy! A place where new ideas can flourish without unnecessary barriers, and every participant feels empowered to contribute to the creative process.</p>
+<!-- About MTC description -->
+<div class="description">
+  <h2>About Miscellania Theatre Company</h2>
+  <p>Miscellania Theatre Company is a Milwaukee-based organization founded by Isabelle Rashkin, Mona Turks, and friends, united by a passion for creating fresh, original theatre. In 2022 Miscellania's operations moved to NYC, where we have continued to work on new work.</p>
+  <p>Our mission is to give actors, writers, designers, and directors the freedom to explore and learn in ways that feel authentic and exciting to them. Unlike traditional theatre organizations, we prioritize creativity over bureaucracy, cutting through the administrative hurdles that can often slow down or stifle a production. We focus on making the process as joyful, accessible, and collaborative as possible, so that everyone involved can fully engage with the work and have fun bringing it to life.</p>
+  <p>At MTC, we believe that theatre should be a space for curiosity, experimentation, and shared joy! A place where new ideas can flourish without unnecessary barriers, and every participant feels empowered to contribute to the creative process.</p>
+</div>
+
+<!-- Musical 1: The Woman, Her Husband and Herself -->
+<section class="musical">
+  <iframe src="https://www.youtube.com/embed/videoseries?list=PLdMXTOOk5zlA7tOSY4UZOd7M5Q8Y0nAyw" allowfullscreen></iframe>
+  <div class="musical-content">
+    <div class="gallery">
+      <a href="TWHHHS1.png" class="glightbox" data-title="Cover art designed by Grant Vanlanduyt."><img src="TWHHHS1.png" alt=""><span class="download-btn">Download</span></a>
+      <a href="TWHHHS2.png" class="glightbox" data-title="Actors posing for reference for the cover art."><img src="TWHHHS2.png" alt=""><span class="download-btn">Download</span></a>
+      <a href="TWHHHS3.png" class="glightbox" data-title="Chase Gilbertson and Elena Behnke (The Woman and Herself)."><img src="TWHHHS3.png" alt=""><span class="download-btn">Download</span></a>
+      <a href="TWHHHS4.png" class="glightbox" data-title="Cast picture: McKenna Dodson, Isabelle Rashkin, Mona Turks, Chase Gilbertson, Daniel Persino, Elena Behnke (Stage manager Carly Coldren not pictured)."><img src="TWHHHS4.png" alt=""><span class="download-btn">Download</span></a>
+      <a href="TWHHHS6.png" class="glightbox" data-title="Home production seat chart from stage perspective."><img src="TWHHHS6.png" alt=""><span class="download-btn">Download</span></a>
+    </div>
+    <h2>The Woman, Her Husband and Herself</h2>
+    <p><em>Written by Isabelle Rashkin</em></p>
+    <p>The Woman, Her Husband and Herself follows the tale of a woman who is now being followed by herself (a figment of her imagination and a manifestation of all her shortcomings). The woman must determine what is real between herself and her husband.</p>
+    <p>This production was staged in Milwaukee, Wisconsin, July 2021. After taking a year to write it, I gathered all the best performers I knew — my friends! We met for over 3 months learning the music and blocking, then finally performed for peers and colleagues. We had 3 performances and an "invited dress" — a silly house musical tradition — which paved the way for future productions.</p>
   </div>
+</section>
 
-  <!-- Original musicals (all original content, images, and videos intact) -->
-
-  <!-- Musical 1: The Woman, Her Husband and Herself -->
-  <section class="musical">
-    <iframe src="https://www.youtube.com/embed/videoseries?list=PLdMXTOOk5zlA7tOSY4UZOd7M5Q8Y0nAyw" allowfullscreen></iframe>
-    <div class="musical-content">
-      <div class="gallery">
-        <a href="TWHHHS1.png" class="glightbox" data-title="Cover art designed by Grant Vanlanduyt."><img src="TWHHHS1.png" alt=""><span class="download-btn">Download</span></a>
-        <a href="TWHHHS2.png" class="glightbox" data-title="Actors posing for reference for the cover art."><img src="TWHHHS2.png" alt=""><span class="download-btn">Download</span></a>
-        <a href="TWHHHS3.png" class="glightbox" data-title="Chase Gilbertson and Elena Behnke (The Woman and Herself)."><img src="TWHHHS3.png" alt=""><span class="download-btn">Download</span></a>
-        <a href="TWHHHS4.png" class="glightbox" data-title="Cast picture: McKenna Dodson, Isabelle Rashkin, Mona Turks, Chase Gilbertson, Daniel Persino, Elena Behnke (Stage manager Carly Coldren not pictured)."><img src="TWHHHS4.png" alt=""><span class="download-btn">Download</span></a>
-        <a href="TWHHHS6.png" class="glightbox" data-title="Home production seat chart from stage perspective."><img src="TWHHHS6.png" alt=""><span class="download-btn">Download</span></a>
-      </div>
-      <h2>The Woman, Her Husband and Herself</h2>
-      <p><em>Written by Isabelle Rashkin</em></p>
-      <p>The Woman, Her Husband and Herself follows the tale of a woman who is now being followed by herself (a figment of her imagination and a manifestation of all her shortcomings). The woman must determine what is real between herself and her husband.</p>
-      <p>This production was staged in Milwaukee, Wisconsin, July 2021. After taking a year to write it, I gathered all the best performers I knew — my friends! We met for over 3 months learning the music and blocking, then finally performed for peers and colleagues. We had 3 performances and an "invited dress" — a silly house musical tradition — which paved the way for future productions.</p>
+<!-- Musical 2: Warning Sign -->
+<section class="musical">
+  <iframe src="https://www.youtube.com/embed/videoseries?list=PLdMXTOOk5zlBd4wf3rB3uCO8D7dZfoHM7" allowfullscreen></iframe>
+  <div class="musical-content">
+    <div class="gallery">
+      <a href="warning sign1.png" class="glightbox" data-title="Cover art designed by Grant Vanlanduyt."><img src="warning sign1.png" alt=""><span class="download-btn">Download</span></a>
+      <a href="warning sign2.png" class="glightbox" data-title="Brooke Wallo (Bridget) in the foreground; Elena Behnke and Dan Persino in the background."><img src="warning sign2.png" alt=""><span class="download-btn">Download</span></a>
+      <a href="warning sign3.png" class="glightbox" data-title="Elena Behnke (Elise), Chase Gilbertson (Carter), Daniel Persino (Decker), Brooke Wallo (Bridget)."><img src="warning sign3.png" alt=""><span class="download-btn">Download</span></a>
+      <a href="warning sign4.png" class="glightbox" data-title="Elena Behnke (Elise), Chase Gilbertson (Carter), Daniel Persino (Decker), Brooke Wallo (Bridget)."><img src="warning sign4.png" alt=""><span class="download-btn">Download</span></a>
+      <a href="warning sign5.png" class="glightbox" data-title="Cast: Aiden Carl Black, Mona Turks, Isabelle Rashkin, McKenna Dodson, Brooke Wallo, Chase Gilbertson, Elena Behnke, Dan Persino."><img src="warning sign5.png" alt=""><span class="download-btn">Download</span></a>
     </div>
-  </section>
-
-  <!-- Musical 2: Warning Sign -->
-  <section class="musical">
-    <iframe src="https://www.youtube.com/embed/videoseries?list=PLdMXTOOk5zlBd4wf3rB3uCO8D7dZfoHM7" allowfullscreen></iframe>
-    <div class="musical-content">
-      <div class="gallery">
-        <a href="warning sign1.png" class="glightbox" data-title="Cover art designed by Grant Vanlanduyt."><img src="warning sign1.png" alt=""><span class="download-btn">Download</span></a>
-        <a href="warning sign2.png" class="glightbox" data-title="Brooke Wallo (Bridget) in the foreground; Elena Behnke and Dan Persino in the background."><img src="warning sign2.png" alt=""><span class="download-btn">Download</span></a>
-        <a href="warning sign3.png" class="glightbox" data-title="Elena Behnke (Elise), Chase Gilbertson (Carter), Daniel Persino (Decker), Brooke Wallo (Bridget)."><img src="warning sign3.png" alt=""><span class="download-btn">Download</span></a>
-        <a href="warning sign4.png" class="glightbox" data-title="Elena Behnke (Elise), Chase Gilbertson (Carter), Daniel Persino (Decker), Brooke Wallo (Bridget)."><img src="warning sign4.png" alt=""><span class="download-btn">Download</span></a>
-        <a href="warning sign5.png" class="glightbox" data-title="Cast: Aiden Carl Black, Mona Turks, Isabelle Rashkin, McKenna Dodson, Brooke Wallo, Chase Gilbertson, Elena Behnke, Dan Persino."><img src="warning sign5.png" alt=""><span class="download-btn">Download</span></a>
-      </div>
-      <h2>Warning Sign: An Original Time Capsule Musical</h2>
-      <p><em>Music and Lyrics by Isabelle Rashkin, Book by Mona Turks</em></p>
-      <p>Warning Sign tells the interweaving paths of four friends connected by a time capsule. When the capsule ejects from the ground, the group must decide whether to open it — an allegory for climate change.</p>
-      <p>This production was staged in Milwaukee, Wisconsin, at The Brumder Mansion, August 2022. Created on a shorter timeline, we included the same or more production elements than before. Due to the venue's unconventional stage setup, creative adjustments were necessary, but the musical came to life beautifully.</p>
-    </div>
-  </section>
+    <h2>Warning Sign: An Original Time Capsule Musical</h2>
+    <p><em>Music and Lyrics by Isabelle Rashkin, Book by Mona Turks</em></p>
+    <p>Warning Sign tells the interweaving paths of four friends connected by a time capsule. When the capsule ejects from the ground, the group must decide whether to open it — an allegory for climate change.</p>
+    <p>This production was staged in Milwaukee, Wisconsin, at The Brumder Mansion, August 2022. Created on a shorter timeline, we included the same or more production elements than before. Due to the venue's unconventional stage setup, creative adjustments were necessary, but the musical came to life beautifully.</p>
+  </div>
+</section>
 
 <!-- Musical 3: Vanya! the Musical -->
-  <section class="musical">
-    <iframe src="https://www.youtube.com/embed/9uhh0-VrUt0" allowfullscreen></iframe>
-    <div class="musical-content">
-      <div class="gallery">
-        <a href="vanya1.png" class="glightbox" data-title="Cast: Camila Meric (Sonia), Bradley Nowacek (Vanya), Duchess Iregbulum (Helena), Kenny Harmon (The Professor), Kat Reeve (Maman), M-Jay He (Waffles)."><img src="vanya1.png" alt=""><span class="download-btn">Download</span></a>
-        <a href="vanya2.png" class="glightbox" data-title="Cast: Camila Meric (Sonia), Bradley Nowacek (Vanya), Duchess Iregbulum (Helena), Kenny Harmon (The Professor), Kat Reeve (Maman), M-Jay He (Waffles)."><img src="vanya2.png" alt=""><span class="download-btn">Download</span></a>
-        <a href="vanya3.png" class="glightbox" data-title="M-Jay He (Waffles) and Isabelle Rashkin (Nanny)."><img src="vanya3.png" alt=""><span class="download-btn">Download</span></a>
-        <a href="vanya4.png" class="glightbox" data-title="Cast: M-Jay He (Waffles), Duchess Iregbulum (Helena), Kenny Hartman (The Professor), Bradley Nowacek (Vanya), Kat Reeve (Maman)."><img src="vanya4.png" alt=""><span class="download-btn">Download</span></a>
-        <a href="vanya5.png" class="glightbox" data-title="Shane Pruitt (The Doctor) and Bradley Nowacek (Vanya)."><img src="vanya5.png" alt=""><span class="download-btn">Download</span></a>
-      </div>
-      <h2>Vanya! the Musical</h2>
-      <p><em>Written by Yoav Bar and Diana Ivanova — Directed by Isabelle Rashkin</em></p>
-      <p>Vanya is a musical adaptation of Chekov's "Uncle Vanya". Produced for the 2024 New York Theatre Festival, it won "Best Musical". The story focuses on love and time, with a rapid production turnaround of 3.5 weeks.</p>
+<section class="musical">
+  <iframe src="https://www.youtube.com/embed/9uhh0-VrUt0" allowfullscreen></iframe>
+  <div class="musical-content">
+    <div class="gallery">
+      <a href="vanya1.png" class="glightbox" data-title="Cast: Camila Meric (Sonia), Bradley Nowacek (Vanya), Duchess Iregbulum (Helena), Kenny Harmon (The Professor), Kat Reeve (Maman), M-Jay He (Waffles)."><img src="vanya1.png" alt=""><span class="download-btn">Download</span></a>
+      <a href="vanya2.png" class="glightbox" data-title="Cast: Camila Meric (Sonia), Bradley Nowacek (Vanya), Duchess Iregbulum (Helena), Kenny Harmon (The Professor), Kat Reeve (Maman), M-Jay He (Waffles)."><img src="vanya2.png" alt=""><span class="download-btn">Download</span></a>
+      <a href="vanya3.png" class="glightbox" data-title="M-Jay He (Waffles) and Isabelle Rashkin (Nanny)."><img src="vanya3.png" alt=""><span class="download-btn">Download</span></a>
+      <a href="vanya4.png" class="glightbox" data-title="Cast: M-Jay He (Waffles), Duchess Iregbulum (Helena), Kenny Hartman (The Professor), Bradley Nowacek (Vanya), Kat Reeve (Maman)."><img src="vanya4.png" alt=""><span class="download-btn">Download</span></a>
+      <a href="vanya5.png" class="glightbox" data-title="Shane Pruitt (The Doctor) and Bradley Nowacek (Vanya)."><img src="vanya5.png" alt=""><span class="download-btn">Download</span></a>
     </div>
-  </section>
+    <h2>Vanya! the Musical</h2>
+    <p><em>Book and Music by Isabelle Rashkin</em></p>
+    <p>Vanya is a musical adaptation of the classic Chekov play "Uncle Vanya". This truncated version was written and produced for the 2024 New York Theatre Festival. Focusing on the main themes of love and and time, this product won "Best Musical" in the NYTF awards later in the summer</p>
+    <p>I was brought onto this production for playing "Nanny" and through a rapdid fire change of events I became responsible for directing and producing the production. I felt an innate responsibility to my peers and cast mates to create a production that we could be proud of putting our time into. The turn around time from bringing me onto director and opening night was roughly 3.5 weeks. It was not on purpose that the third musical produced by Miscellania was on the tightest timeline we had ever worked on.</p>
+  </div>
+</section>
 
 </main>
 
 <footer>
-  <h3>Connect with me</h3>
+  <h3>Connect with Me</h3>
   <div class="social-links">
-    <a href="https://www.instagram.com/tamoottopro/" target="_blank">Instagram (Personal)</a>
-    <a href="https://www.instagram.com/Bee_original_music/" target="_blank">Instagram (Music)</a>
-    <a href="https://x.com/tamoottopro" target="_blank">X (Twitter)</a>
-    <a href="https://www.linkedin.com/in/isabelle-rashkin-82958228/" target="_blank">LinkedIn</a>
-    <a href="mailto:ivrashkin@gmail.com">Email</a>
-    <a href="https://open.spotify.com/artist/2TRjrme5uq3GM8qMF7y0QI" target="_blank">Spotify</a>
-    <a href="https://www.youtube.com/channel/UCa9acPRSIGUmjgn54hz17eA" target="_blank">YouTube Music</a>
-    <a href="https://music.apple.com/ca/artist/isabelle-bee-rashkin/1773658949" target="_blank">Apple Music</a>
-    <a href="https://www.backstage.com/u/isabelle-rashkin/" target="_blank">Backstage</a>
+    <a href="https://www.instagram.com">Instagram</a>
+    <a href="https://www.linkedin.com">LinkedIn</a>
+    <a href="https://www.youtube.com">YouTube</a>
+    <a href="mailto:example@example.com">Email</a>
   </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
 <script>
-const lightbox = GLightbox({});
-document.getElementById("menu-toggle").addEventListener("click", () => {
-  document.getElementById("nav-links").classList.toggle("show");
-});
+  const lightbox = GLightbox({ selector: '.glightbox' });
 
-// Make download buttons download the image
-document.querySelectorAll('.download-btn').forEach(btn => {
-  btn.addEventListener('click', e => {
-    e.preventDefault();
-    const img = btn.parentElement.querySelector('img');
-    const link = document.createElement('a');
-    link.href = img.src;
-    link.download = img.src.split('/').pop();
-    link.click();
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
   });
-});
 </script>
+
+</body>
+</html>
 
 </body>
 </html>
