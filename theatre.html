@@ -149,11 +149,18 @@
     display: flex;
     flex-direction: column;
   }
+
+  /* Gallery: single row of 5 images */
   .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
     gap: 0.75rem;
     margin-bottom: 1rem;
+    overflow-x: auto;
+  }
+  .gallery a {
+    flex: 0 0 19%; /* 5 images per row with spacing */
   }
   .gallery a img {
     width: 100%;
@@ -162,6 +169,7 @@
     transition: transform 0.2s;
   }
   .gallery a img:hover { transform: scale(1.05); }
+
   .musical h2 { margin: 0.5rem 0; }
   .musical p { line-height: 1.6; margin-bottom: 1rem; }
 
@@ -274,7 +282,7 @@
       <h2>Vanya! the Musical</h2>
       <p><em>Written by Yoav Bar and Diana Ivanova — Directed by Isabelle Rashkin</em></p>
       <p>Vanya is a musical adaptation of the classic Chekov play "Uncle Vanya". This truncated version was written and produced for the 2024 New York Theatre Festival. Focusing on the main themes of love and and time, this product won "Best Musical" in the NYTF awards later in the summer.</p>
-      <p>I was brought onto this production for playing "Nanny" and through a rapdi fire change of events I became responsible for directing and producing the production. I felt an innate responsibility to my peers and cast mates to create a production that we could be proud of putting our time into. The turn around time from bringing me onto director and opening night was roughly 3.5 weeks. It was not on purpose that the third musical produced by Miscellania was on the tightest timeline we had ever worked on.</p>
+      <p>I was brought onto this production for playing "Nanny" and through a rapid fire change of events I became responsible for directing and producing the production. I felt an innate responsibility to my peers and cast mates to create a production that we could be proud of putting our time into. The turn around time from bringing me onto director and opening night was roughly 3.5 weeks. It was not on purpose that the third musical produced by Miscellania was on the tightest timeline we had ever worked on.</p>
     </div>
   </section>
 
