@@ -1,286 +1,309 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Theatre – Isabelle Rashkin</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theatre – Isabelle Rashkin</title>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #dbeafe, #fce7f3);
-      overflow-x: hidden;
-    }
+<!-- GLightbox CSS -->
+<link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet">
 
-    /* Floating pastel hearts */
-    .heart {
-      position: fixed;
-      top: -10px;
-      color: rgba(255, 182, 193, 0.6);
-      font-size: 20px;
-      animation: fall linear infinite;
-      z-index: 0;
-    }
-    @keyframes fall {
-      to {
-        transform: translateY(105vh);
-      }
-    }
+<style>
+  body {
+    font-family: "Times New Roman", Times, serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ffe6f2, #e6f7ff 40%, #d0e7ff 70%, #fff0e6);
+    color: #333;
+    text-align: center;
+    position: relative;
+    overflow-x: hidden;
+  }
 
-    header {
-      background-color: black;
-      color: white;
-      padding: 1rem;
-      text-align: center;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-    }
-    nav .nav-links {
-      display: flex;
-      gap: 1rem;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav .menu-toggle {
-      display: none;
-      position: absolute;
-      left: 1rem;
-      background: none;
-      border: none;
-      color: white;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
+  /* Floating hearts */
+  .heart {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: pink;
+    transform: rotate(45deg);
+    animation: float linear infinite;
+    opacity: 0.6;
+    border-radius: 4px;
+    z-index: 1;
+  }
+  .heart::before,
+  .heart::after {
+    content: "";
+    position: absolute;
+    background: pink;
+    border-radius: 50%;
+  }
+  .heart::before { top: -50%; left: 0; width: 100%; height: 100%; }
+  .heart::after { left: -50%; top: 0; width: 100%; height: 100%; }
+  @keyframes float {
+    0% { transform: translateY(100vh) rotate(45deg); opacity: 0.6; }
+    100% { transform: translateY(-20vh) rotate(45deg); opacity: 0; }
+  }
 
-    @media (max-width: 768px) {
-      nav .menu-toggle { display: block; }
-      nav .nav-links {
-        display: none;
-        flex-direction: column;
-        background-color: black;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        padding: 1rem;
-      }
-      nav .nav-links.show { display: flex; }
-    }
+  /* Navbar */
+  nav {
+    background-color: #000;
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    text-align: center;
+  }
+  .nav-links { display: inline-block; }
+  nav a {
+    color: #fff;
+    margin: 0 0.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    width: 120px;
+    text-align: center;
+  }
+  nav a:hover { text-decoration: underline; }
 
-    main {
-      padding: 7rem 2rem 2rem;
-      max-width: 1200px;
-      margin: auto;
-      position: relative;
-      z-index: 1;
-    }
-    section.musical {
-      margin-bottom: 4rem;
-    }
-    section.musical h2 {
-      margin-bottom: 1rem;
-      text-align: center;
-      color: #333;
-    }
+  /* Hamburger (mobile) */
+  .menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    color: #fff;
+    cursor: pointer;
+    background: none;
+    border: none;
+    position: absolute;
+    right: 1rem;
+    top: 0.75rem;
+    z-index: 2000;
+  }
 
-    .musical-content {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-    }
-    .video-container {
-      flex: 1 1 35%;
-    }
-    .video-container iframe {
-      width: 100%;
-      height: 315px;
-      border: none;
-    }
-    .text-container {
-      flex: 1 1 60%;
+  @media (max-width: 768px) {
+    nav { padding: 1.5rem 1rem; }
+    nav a { display: block; width: 100%; padding: 0.75rem 0; margin: 0; text-align: center; }
+    .menu-toggle { display: block; }
+    .nav-links {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-      gap: 0.5rem;
-    }
-    .gallery img {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+      background: #000;
+      position: absolute;
+      top: 100%;
+      left: 0;
       width: 100%;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: transform 0.2s;
     }
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-    .description {
-      font-size: 1rem;
-      line-height: 1.5;
-      color: #444;
-    }
+    .nav-links.show { max-height: 500px; transition: max-height 0.3s ease-in; }
+    .heart { width: 12px; height: 12px; }
+  }
 
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background-color: black;
-      color: white;
-    }
-    footer .socials a {
-      margin: 0 0.5rem;
-      color: white;
-      text-decoration: none;
-    }
-  </style>
+  /* Header */
+  header {
+    position: relative;
+    background-color: #f8c8dc;
+    padding: 1rem;
+    text-align: center;
+    box-sizing: border-box;
+    margin-top: 60px;
+    z-index: 10;
+  }
+  header h1 { margin: 0.5rem 0; }
+  header p { margin: 0.25rem 0; }
+  header small { color: #555; }
+
+  main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: auto;
+    position: relative;
+    z-index: 10;
+    text-align: left;
+  }
+
+  /* Musical layout */
+  .musical {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    align-items: flex-start;
+  }
+  .musical iframe {
+    flex: 1 1 35%;
+    max-width: 500px;
+    min-width: 280px;
+    height: 280px;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  .musical-content {
+    flex: 1 1 60%;
+    display: flex;
+    flex-direction: column;
+  }
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .gallery a img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+    transition: transform 0.2s;
+  }
+  .gallery a img:hover { transform: scale(1.05); }
+  .musical h2 { margin: 0.5rem 0; }
+  .musical p { line-height: 1.6; margin-bottom: 1rem; }
+
+  footer {
+    background-color: #222;
+    color: #fff;
+    padding: 2rem 1rem;
+    margin-top: 2rem;
+    position: relative;
+    z-index: 10;
+    text-align: center;
+  }
+  footer h3 { margin-bottom: 1rem; }
+  .social-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+  .social-links a { color: #f8c8dc; text-decoration: none; font-weight: bold; }
+  .social-links a:hover { text-decoration: underline; }
+
+  @media (max-width: 768px) {
+    .musical { flex-direction: column; }
+    .musical iframe { width: 100%; height: 200px; }
+  }
+</style>
 </head>
 <body>
-  <!-- Floating hearts -->
-  <script>
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.textContent = "♥";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
-      heart.style.fontSize = (Math.random() * 10 + 15) + "px";
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 5000);
-    }
-    setInterval(createHeart, 500);
-  </script>
 
-  <header>
-    <nav>
-      <button class="menu-toggle" id="menu-toggle">&#9776;</button>
-      <div class="nav-links" id="nav-links">
-        <a href="index.html">Home</a>
-        <a href="music.html">Music</a>
-        <a href="art.html">Art</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="resume.html">Resume</a>
-        <a href="theatre.html">Theatre</a>
-        <a href="contact.html">Contact</a>
+<!-- Floating hearts -->
+<div class="heart" style="left:5%; animation-duration:12s;"></div>
+<div class="heart" style="left:15%; animation-duration:10s;"></div>
+<div class="heart" style="left:25%; animation-duration:14s;"></div>
+<div class="heart" style="left:35%; animation-duration:9s;"></div>
+<div class="heart" style="left:45%; animation-duration:16s;"></div>
+<div class="heart" style="left:55%; animation-duration:11s;"></div>
+<div class="heart" style="left:65%; animation-duration:13s;"></div>
+<div class="heart" style="left:75%; animation-duration:15s;"></div>
+<div class="heart" style="left:85%; animation-duration:10s;"></div>
+<div class="heart" style="left:95%; animation-duration:12s;"></div>
+
+<!-- Navbar -->
+<nav>
+  <button class="menu-toggle" id="menu-toggle">&#9776;</button>
+  <div class="nav-links" id="nav-links">
+    <a href="index.html">Home</a>
+    <a href="art.html">Original Visual Art</a>
+    <a href="music.html">Original Music</a>
+    <a href="theatre.html">Miscellania Theatre Co</a>
+    <a href="resume.html">Headshot & Resume</a>
+    <a href="gallery.html">Media Gallery</a>
+    <a href="contact.html">Contact Me</a>
+    <a href="something-silly.html">Something Silly</a>
+  </div>
+</nav>
+
+<!-- Header -->
+<header>
+  <h1>Isabelle Rashkin</h1>
+  <p>Multi-disciplinary artist based in Brooklyn, NYC</p>
+  <p><small>Interlochen Arts Academy 2018 / University of Wisconsin-Milwaukee 2022</small></p>
+</header>
+
+<main>
+
+  <!-- Musical 1 -->
+  <section class="musical">
+    <iframe src="https://www.youtube.com/embed/HB6Hs0pKRzU" allowfullscreen></iframe>
+    <div class="musical-content">
+      <div class="gallery">
+        <a href="TWHHHS1.png" class="glightbox" data-title="The cover art designed by Grant Vanlanduyt."><img src="TWHHHS1.png" alt=""></a>
+        <a href="TWHHHS2.png" class="glightbox" data-title="The actors posing for reference for the cover art."><img src="TWHHHS2.png" alt=""></a>
+        <a href="TWHHHS3.png" class="glightbox" data-title="Chase Gilbertson and Elena Behnke as 'The Woman' and 'Herself'"><img src="TWHHHS3.png" alt=""></a>
+        <a href="TWHHHS4.png" class="glightbox" data-title="Cast Picture, From left to right, top to bottom: McKenna Dodson, Isabelle Rashkin, Mona Turks, Chase Gilbertson, Daniel Persino, Elena Behnke. (Not pictured: Stage manager Carly Coldren)"><img src="TWHHHS4.png" alt=""></a>
+    
+        <a href="TWHHHS6.png" class="glightbox" data-title="Since this production was staged in a home, this was our seat chart from the stage perspective."><img src="TWHHHS6.png" alt=""></a>
       </div>
-    </nav>
-  </header>
-
-  <main>
-    <!-- Musical 1 -->
-    <section class="musical">
       <h2>The Woman, Her Husband and Herself</h2>
-      <div class="musical-content">
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/HB6Hs0pKRzU" allowfullscreen></iframe>
-        </div>
-        <div class="text-container">
-          <div class="gallery">
-            <a href="TWHHHS1.png" class="glightbox" data-title="The cover art designed by Grant Vanlanduyt."><img src="TWHHHS1.png" alt=""></a>
-            <a href="TWHHHS2.png" class="glightbox" data-title="The actors posing for reference for the cover art."><img src="TWHHHS2.png" alt=""></a>
-            <a href="TWHHHS3.png" class="glightbox" data-title="Chase Gilbertson and Elena Behnke as 'The Woman' and 'Herself'"><img src="TWHHHS3.png" alt=""></a>
-            <a href="TWHHHS4.png" class="glightbox" data-title="Cast Picture"><img src="TWHHHS4.png" alt=""></a>
-            <a href="TWHHHS5.png" class="glightbox" data-title="Rehearsal for The Woman, Her Husband, and Herself."><img src="TWHHHS5.png" alt=""></a>
-            <a href="TWHHHS6.png" class="glightbox" data-title="Seat chart from the stage perspective."><img src="TWHHHS6.png" alt=""></a>
-          </div>
-          <div class="description">
-            <p><strong>Written by Isabelle Rashkin</strong></p>
-            <p>The Woman Her Husband and Herself follows the tale of a woman who is now being followed by herself...</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Musical 2 -->
-    <section class="musical">
-      <h2>Warning Sign: An Original Time Capsule Musical</h2>
-      <div class="musical-content">
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/NLR2iAidzqw" allowfullscreen></iframe>
-        </div>
-        <div class="text-container">
-          <div class="gallery">
-            <a href="warning sign1.png" class="glightbox" data-title="The cover art designed by Grant Vanlanduyt."><img src="warning sign1.png" alt=""></a>
-            <a href="warning sign2.png" class="glightbox" data-title="Brooke Wallo as Bridget..."><img src="warning sign2.png" alt=""></a>
-            <a href="warning sign3.png" class="glightbox" data-title="Elena Behnke (Elise)..."><img src="warning sign3.png" alt=""></a>
-            <a href="warning sign 4.png" class="glightbox" data-title="Cast group"><img src="warning sign 4.png" alt=""></a>
-            <a href="warning sign5.png" class="glightbox" data-title="Full cast photo"><img src="warning sign5.png" alt=""></a>
-          </div>
-          <div class="description">
-            <p><strong>Music and Lyrics by Isabelle Rashkin, Book by Mona Turks</strong></p>
-            <p>Warning Sign: An Original Time Capsule Musical tells the interweaving paths of four friends...</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Musical 3 -->
-    <section class="musical">
-      <h2>Vanya! the Musical</h2>
-      <div class="musical-content">
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/9uhh0-VrUt0" allowfullscreen></iframe>
-        </div>
-        <div class="text-container">
-          <div class="gallery">
-            <a href="vanya1.png" class="glightbox" data-title="Cast (pictured left to right)..."><img src="vanya1.png" alt=""></a>
-            <a href="vanya2.png" class="glightbox" data-title="Cast pictured again"><img src="vanya2.png" alt=""></a>
-            <a href="vanya3.png" class="glightbox" data-title="M-Jay He as Waffles and Isabelle Rashkin as Nanny"><img src="vanya3.png" alt=""></a>
-            <a href="vanya4.png" class="glightbox" data-title="Another cast photo"><img src="vanya4.png" alt=""></a>
-            <a href="vanya5.png" class="glightbox" data-title="Shane Pruitt as Doctor and Bradley Nowacek as Vanya"><img src="vanya5.png" alt=""></a>
-          </div>
-          <div class="description">
-            <p><strong>Written by Yoav Bar and Diana Ivanova</strong><br>
-               <strong>Directed by Isabelle Rashkin</strong></p>
-            <p>Vanya is a musical adaptation of the classic Chekov play "Uncle Vanya"...</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="socials">
-      <a href="https://x.com/tamoottopro" target="_blank">X (Twitter)</a>
-      <a href="https://www.linkedin.com/in/isabelle-rashkin-82958228/" target="_blank">LinkedIn</a>
-      <a href="mailto:ivrashkin@gmail.com">Email</a>
-      <a href="https://open.spotify.com/artist/2TRjrme5uq3GM8qMF7y0QI" target="_blank">Spotify</a>
-      <a href="https://www.youtube.com/channel/UCa9acPRSIGUmjgn54hz17eA" target="_blank">YouTube Music</a>
-      <a href="https://music.apple.com/ca/artist/isabelle-bee-rashkin/1773658949" target="_blank">Apple Music</a>
-      <a href="https://www.backstage.com/u/isabelle-rashkin/" target="_blank">Backstage</a>
+      <p><em>Written by Isabelle Rashkin</em></p>
+      <p>The Woman Her Husband and Herself follows the tale of a woman who is now being followed by herself. A figment of her imagination, and a manifestation of all her shortcomings. The woman now needs to determine what is real between herself and her husband.</p>
+      <p>This production was staged in Milwaukee Wisconsin July 2021. After taking a year to write it, I gathered all the best performers I knew - my friends! We met for over 3 months learning the music, blocking, then finally deciding we wanted to show it off to our peers and colleagues. The result is the footage above, we had 3 performances and an "invited dress" (which is silly for a house musical) but through this experience we paved the way for us to do it again.</p>
     </div>
-  </footer>
+  </section>
 
-  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
-  <script>
-    const lightbox = GLightbox({ selector: '.glightbox' });
+  <!-- Musical 2 -->
+  <section class="musical">
+    <iframe src="https://www.youtube.com/embed/NLR2iAidzqw" allowfullscreen></iframe>
+    <div class="musical-content">
+      <div class="gallery">
+        <a href="warning sign1.png" class="glightbox" data-title="The cover art designed by Grant Vanlanduyt."><img src="warning sign1.png" alt=""></a>
+        <a href="warning sign2.png" class="glightbox" data-title="Brooke Wallo as 'Bridget' in the foreground Elena Behnke and Dan Persino in the background"><img src="warning sign2.png" alt=""></a>
+        <a href="warning sign3.png" class="glightbox" data-title="Elena Behnke (Elise) Chase Gilbertson (Carter) Daniel Persino (Decker) Brooke Wallo (Bridget)"><img src="warning sign3.png" alt=""></a>
+        <a href="warning sign4.png" class="glightbox" data-title="Elena Behnke (Elise) Chase Gilbertson (Carter) Daniel Persino (Decker) Brooke Wallo (Bridget)"><img src="warning sign4.png" alt=""></a>
+        <a href="warning sign5.png" class="glightbox" data-title="From left to right, top to bottom: Aiden Carl Black, Mona Turks, Isabelle Rashkin, McKenna Dodson, Brooke Wallo, Chase Gilbertson, Elena Behnke, Dan Persino"><img src="warning sign5.png" alt=""></a>
+      </div>
+      <h2>Warning Sign: An Original Time Capsule Musical</h2>
+      <p><em>Music and Lyrics by Isabelle Rashkin, Book by Mona Turks</em></p>
+      <p>Warning Sign: An Original Time Capsule Musical tells the interweaving paths of four friends all connected by a time capsule. An allegory for climate change, when the time capsule ejects from the ground (and is rejected by the earth) the group take sides on whether or not to finally open what's inside.</p>
+      <p>This production was staged in Milwaukee Wisconsin at The Brumder Mansion in August 2022. This musical was created on a much shorter timeline with more direct editing and scene writing help from Mona Turks. The goal of this production was to create a musical on a more structured timeline, and put it up with the same or more production elements than previously utilized. The Brumder mansion is a landmark of Milwaukee Wisconsin with a less-than-conventional stage set up. None the less we brought it to life.</p>
+      <p>Note: we taped this production so many times, and we were unable to have a singular recording where a phone did NOT go off in the audience. Maybe that is the real warning sign.</p>
+    </div>
+  </section>
 
-    const menuToggle = document.getElementById("menu-toggle");
-    const navLinks = document.getElementById("nav-links");
-    menuToggle.addEventListener("click", () => {
-      navLinks.classList.toggle("show");
-    });
-    document.querySelectorAll("#nav-links a").forEach(link => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("show");
-      });
-    });
-  </script>
+  <!-- Musical 3 -->
+  <section class="musical">
+    <iframe src="https://www.youtube.com/embed/9uhh0-VrUt0" allowfullscreen></iframe>
+    <div class="musical-content">
+      <div class="gallery">
+        <a href="vanya1.png" class="glightbox" data-title="Cast (pictured left to right) Camila Meric as 'Sonia', Bradley Nowacek as 'Vanya' Duchess Iregbulum as 'Helena' Kenny Harmon as 'The Professor' Kat Reeve as 'Maman' and M-Jay He as 'Waffles'"><img src="vanya1.png" alt=""></a>
+        <a href="vanya2.png" class="glightbox" data-title="Cast pictured (left to right) Camila Meric as 'Sonia', Bradley Nowacek as 'Vanya' Duchess Iregbulum as 'Helena' Kenny Harmon as 'The Professor' Kat Reeve as 'Maman' and M-Jay He as 'Waffles'"><img src="vanya2.png" alt=""></a>
+        <a href="vanya3.png" class="glightbox" data-title="M-Jay He as 'Waffles' and Isabelle Rashkin as 'Nanny'"><img src="vanya3.png" alt=""></a>
+        <a href="vanya4.png" class="glightbox" data-title="Cast (pictured left to right) M-Jay He as 'Waffles' Duchess Iregbulum as 'Helena' Kenny Hartman as 'The Professor' Bradley Nowacek as 'Vanya' and Kat Reeve as 'Maman'"><img src="vanya4.png" alt=""></a>
+        <a href="vanya5.png" class="glightbox" data-title="Shane Pruitt as 'The Doctor' and Bradley Nowacek as 'Vanya'"><img src="vanya5.png" alt=""></a>
+      </div>
+      <h2>Vanya! the Musical</h2>
+      <p><em>Written by Yoav Bar and Diana Ivanova — Directed by Isabelle Rashkin</em></p>
+      <p>Vanya is a musical adaptation of the classic Chekov play "Uncle Vanya". This truncated version was written and produced for the 2024 New York Theatre Festival. Focusing on the main themes of love and and time, this product won "Best Musical" in the NYTF awards later in the summer.</p>
+      <p>I was brought onto this production for playing "Nanny" and through a rapdi fire change of events I became responsible for directing and producing the production. I felt an innate responsibility to my peers and cast mates to create a production that we could be proud of putting our time into. The turn around time from bringing me onto director and opening night was roughly 3.5 weeks. It was not on purpose that the third musical produced by Miscellania was on the tightest timeline we had ever worked on.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <h3>Connect with me</h3>
+  <div class="social-links">
+    <a href="https://www.instagram.com/tamoottopro/" target="_blank">Instagram (Personal)</a>
+    <a href="https://www.instagram.com/Bee_original_music/" target="_blank">Instagram (Music)</a>
+    <a href="https://x.com/tamoottopro" target="_blank">X (Twitter)</a>
+    <a href="https://www.linkedin.com/in/isabelle-rashkin-82958228/" target="_blank">LinkedIn</a>
+    <a href="mailto:ivrashkin@gmail.com">Email</a>
+    <a href="https://open.spotify.com/artist/2TRjrme5uq3GM8qMF7y0QI" target="_blank">Spotify</a>
+    <a href="https://www.youtube.com/channel/UCa9acPRSIGUmjgn54hz17eA" target="_blank">YouTube Music</a>
+    <a href="https://music.apple.com/ca/artist/isabelle-bee-rashkin/1773658949" target="_blank">Apple Music</a>
+    <a href="https://www.backstage.com/u/isabelle-rashkin/" target="_blank">Backstage</a>
+  </div>
+</footer>
+
+<!-- GLightbox Script -->
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+<script>
+  const lightbox = GLightbox({});
+  document.getElementById("menu-toggle").addEventListener("click", () => {
+    document.getElementById("nav-links").classList.toggle("show");
+  });
+</script>
 </body>
 </html>
 
