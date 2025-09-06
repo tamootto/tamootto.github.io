@@ -70,7 +70,6 @@
   }
   nav a:hover { text-decoration: underline; }
 
-  /* Hamburger (mobile) */
   .menu-toggle {
     display: none;
     font-size: 1.8rem;
@@ -126,7 +125,6 @@
     z-index: 10;
   }
 
-  /* About music */
   .about-music {
     padding: 2rem;
     margin-bottom: 3rem;
@@ -137,76 +135,40 @@
   .about-music h3 { margin-top: 0; color: #222; }
   .about-music p { line-height: 1.6; margin-bottom: 1rem; }
 
-  /* Album layout (rectangular) */
+  /* Album layout */
   .album-container {
     display: flex;
-    flex-direction: row;
-    gap: 2rem;
+    flex-direction: column;
+    gap: 1rem;
     margin-bottom: 50px;
-    align-items: flex-start;
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
   }
 
-  .album-media {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .album-media img {
-    max-width: 350px;
-    width: 100%;
-    border-radius: 8px;
-  }
-
-  .album-media iframe {
-    width: 100%;
-    max-width: 300px;
-    height: 170px;
-    border: none;
-    border-radius: 4px;
-  }
-
-  .album-description {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
+  .album-description { text-align: left; }
   .album-description h3 {
     margin-top: 0;
     font-size: 1.6em;
     color: #222;
   }
+  .album-description p { line-height: 1.5; margin-top: 0.5rem; }
 
-  .album-description p {
-    line-height: 1.5;
-    margin-top: 0.5rem;
+  .album-media-row {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: flex-start;
   }
+  .album-media-row img { max-width: 350px; width: 100%; border-radius: 8px; }
+  .album-media-row iframe { width: 100%; max-width: 300px; height: 170px; border: none; border-radius: 4px; }
 
   @media (max-width: 1024px) {
-    .album-container {
-      flex-direction: column;
-      align-items: center;
-    }
-    .album-description {
-      text-align: center;
-      margin-top: 1rem;
-    }
-    .album-media img {
-      max-width: 90%;
-    }
-    .album-media iframe {
-      max-width: 90%;
-      height: 200px;
-    }
+    .album-media-row { flex-direction: column; align-items: center; }
+    .album-media-row img, .album-media-row iframe { max-width: 90%; height: auto; }
+    .album-description { text-align: center; }
   }
 
-  /* Footer */
   footer {
     background-color: #222;
     color: #fff;
@@ -219,7 +181,6 @@
   .social-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
   .social-links a { color: #f8c8dc; text-decoration: none; font-weight: bold; }
   .social-links a:hover { text-decoration: underline; }
-
 </style>
 </head>
 <body>
@@ -260,101 +221,102 @@
 
 <main>
 
-  <!-- ABOUT MY MUSIC -->
-  <div class="about-music">
-    <h3>Musical Style & Process</h3>
-    <p>Music has always been my way of exploring stories and emotions that words alone can’t fully express. I typically start with a single spark—a melody, a chord progression, or even a fleeting lyric—and gradually build the piece in GarageBand using ukulele, guitar, keyboard, drums, and upright bass. Each instrument adds its own color and texture, creating a layered sound that evolves naturally as I compose. Collaboration is central to my process: I’ve been fortunate to work with talented musicians whose creativity, energy, and perspective transform initial ideas into fully realized songs. In every project, it’s this dialogue between instruments, voices, and imagination that brings the music to life. </p>
-    <h3>Inspirations</h3>
-    <p>My musical voice is shaped by artists who blend storytelling, humor, and emotional depth in innovative ways. I draw inspiration from the inventive wit of They Might Be Giants, the clever intimacy of Garfunkel and Oates, and the narrative sophistication of Anaïs Mitchell. I’m inspired by the emotional honesty of Fiona Apple, the theatrical brilliance of Jeanine Tesori, and the introspective intensity of Mitski. The rhythmic ingenuity of Talking Heads and the legendary craftsmanship of Stephen Sondheim continue to influence how I approach melody, lyric, and character in my music. Together, these influences guide me as I create songs that are both heartfelt and playful, personal and expansive.</p>
+<!-- ABOUT MY MUSIC -->
+<div class="about-music">
+  <h3>Musical Style & Process</h3>
+  <p>Music has always been my way of exploring stories and emotions that words alone can’t fully express. I typically start with a single spark—a melody, a chord progression, or even a fleeting lyric—and gradually build the piece in GarageBand using ukulele, guitar, keyboard, drums, and upright bass. Each instrument adds its own color and texture, creating a layered sound that evolves naturally as I compose. Collaboration is central to my process: I’ve been fortunate to work with talented musicians whose creativity, energy, and perspective transform initial ideas into fully realized songs. In every project, it’s this dialogue between instruments, voices, and imagination that brings the music to life.</p>
+  <h3>Inspirations</h3>
+  <p>My musical voice is shaped by artists who blend storytelling, humor, and emotional depth in innovative ways. I draw inspiration from the inventive wit of They Might Be Giants, the clever intimacy of Garfunkel and Oates, and the narrative sophistication of Anaïs Mitchell. I’m inspired by the emotional honesty of Fiona Apple, the theatrical brilliance of Jeanine Tesori, and the introspective intensity of Mitski. The rhythmic ingenuity of Talking Heads and the legendary craftsmanship of Stephen Sondheim continue to influence how I approach melody, lyric, and character in my music. Together, these influences guide me as I create songs that are both heartfelt and playful, personal and expansive.</p>
+</div>
+
+<!-- CURRENT RELEASES -->
+<section>
+<h2>Current Releases</h2>
+
+<div class="album-container">
+  <div class="album-description">
+    <h3>Songs About Write Now</h3>
+    <p>This was my most recent project and my first full-length album. After the three previous musical projects being produced by Mona Turks, this was my first self-produced project in 5 years. This album combines ukulele, synths, pedals, and upright bass to bring together my emotional narrative of what it feels like to write music. This was also my first album to be available on all streaming platforms.</p>
   </div>
+  <div class="album-media-row">
+    <img src="DD0883EA-DAE6-430B-A287-1C4B031671E0_1_105_c.jpeg" alt="Songs About Write Now Album Art">
+    <iframe src="https://www.youtube.com/embed/videoseries?list=OLAK5uy_nsVK2X8ChNX-EZG-TmIFprsSGxmqE0SRY" allowfullscreen></iframe>
+  </div>
+</div>
 
-  <!-- CURRENT RELEASES -->
-  <section>
-    <h2>Current Releases</h2>
+<div class="album-container">
+  <div class="album-description">
+    <h3>Work</h3>
+    <p>Work is a comedy single featuring Chase Gilbertson. When I go to work each day there is one thing that I do (NOTE: I do not steal from my job).</p>
+  </div>
+  <div class="album-media-row">
+    <img src="4E4CEDE8-E668-49C7-83B8-5ACF24F2ED0A_1_105_c.jpeg" alt="Work Single Art">
+    <iframe src="https://www.youtube.com/embed/_kPvEN4edck" allowfullscreen></iframe>
+  </div>
+</div>
 
-    <div class="album-container">
-      <div class="album-media">
-        <img src="DD0883EA-DAE6-430B-A287-1C4B031671E0_1_105_c.jpeg" alt="Songs About Write Now Album Art">
-        <iframe src="https://www.youtube.com/embed/videoseries?list=OLAK5uy_nsVK2X8ChNX-EZG-TmIFprsSGxmqE0SRY" allowfullscreen></iframe>
-      </div>
-      <div class="album-description">
-        <h3>Songs About Write Now</h3>
-        <p>This was my most recent project and my first full-length album. After the three previous musical projects being produced by Mona Turks, this was my first self-produced project in 5 years. This album combines ukulele, synths, pedals, and upright bass to bring together my emotional narrative of what it feels like to write music. This was also my first album to be available on all streaming platforms.</p>
-      </div>
-    </div>
+<div class="album-container">
+  <div class="album-description">
+    <h3>People in My House</h3>
+    <p>Produced by Nicholas Boni in his home studio, this is one of the few pieces of music I have felt passionately should not have backup vocals.</p>
+  </div>
+  <div class="album-media-row">
+    <img src="F0A78B68-9CAF-4446-BF2E-4BBF18751F23_1_105_c.jpeg" alt="People in My House Album Art">
+    <iframe src="https://www.youtube.com/embed/videoseries?list=OLAK5uy_nS4IG-XhOXuRnGVTuMY5JSdfAY6VM1emA" allowfullscreen></iframe>
+  </div>
+</div>
 
-    <div class="album-container">
-      <div class="album-media">
-        <img src="4E4CEDE8-E668-49C7-83B8-5ACF24F2ED0A_1_105_c.jpeg" alt="Work Single Art">
-        <iframe src="https://www.youtube.com/embed/_kPvEN4edck" allowfullscreen></iframe>
-      </div>
-      <div class="album-description">
-        <h3>Work</h3>
-        <p>Work is a comedy single featuring Chase Gilbertson. When I go to work each day there is one thing that I do (NOTE: I do not steal from my job).</p>
-      </div>
-    </div>
+</section>
 
-    <div class="album-container">
-      <div class="album-media">
-        <img src="F0A78B68-9CAF-4446-BF2E-4BBF18751F23_1_105_c.jpeg" alt="People in My House Album Art">
-        <iframe src="https://www.youtube.com/embed/videoseries?list=OLAK5uy_nS4IG-XhOXuRnGVTuMY5JSdfAY6VM1emA" allowfullscreen></iframe>
-      </div>
-      <div class="album-description">
-        <h3>People in My House</h3>
-        <p>Produced by Nicholas Boni in his home studio, this is one of the few pieces of music I have felt passionately should not have backup vocals.</p>
-      </div>
-    </div>
-  </section>
+<!-- EPs AND EARLY PROJECTS -->
+<section>
+<h2>EPs and Early Projects</h2>
 
-  <!-- EPs AND EARLY PROJECTS -->
-  <section>
-    <h2>EPs and Early Projects</h2>
+<div class="album-container">
+  <div class="album-description">
+    <h3>Variations on a Theme</h3>
+    <p>This is my first ever original music project made in 2020. "Variations on a Theme" referring to both the song form and lyrical content of this short EP. A few of these songs would go onto become inspiration for my first musical "The Woman Her Husband and Herself".</p>
+  </div>
+  <div class="album-media-row">
+    <img src="7DC6F01E-982D-448A-8449-375F237583DD.png" alt="Variations on a Theme Album Art">
+    <iframe src="https://www.youtube.com/embed/videoseries?list=PLdMXTOOk5zlCFpqubLs5iYZ1kVqazfiwz" allowfullscreen></iframe>
+  </div>
+</div>
 
-    <div class="album-container">
-      <div class="album-media">
-        <img src="7DC6F01E-982D-448A-8449-375F237583DD.png" alt="Variations on a Theme Album Art">
-        <iframe src="https://www.youtube.com/embed/videoseries?list=PLdMXTOOk5zlCFpqubLs5iYZ1kVqazfiwz" allowfullscreen></iframe>
-      </div>
-      <div class="album-description">
-        <h3>Variations on a Theme</h3>
-        <p>This is my first ever original music project made in 2020. "Variations on a Theme" referring to both the song form and lyrical content of this short EP. A few of these songs would go onto become inspiration for my first musical "The Woman Her Husband and Herself".</p>
-      </div>
-    </div>
+<div class="album-container">
+  <div class="album-description">
+    <h3>Impulses and Premeditations</h3>
+    <p>Shortly following "Variations on a Theme" I would dive into impulses and premeditations. Adding one more track to the list, this album explores themes of aging, fidelity, and anger. Two more songs for this album would be used for TWHH&HS.</p>
+  </div>
+  <div class="album-media-row">
+    <img src="C9C59554-C392-46F6-AA96-3819DD0F383F.jpeg" alt="Impulses and Premeditations Album Art">
+    <iframe src="https://www.youtube.com/embed/videoseries?list=PLdMXTOOk5zlBd4wf3rB3uCO8D7dZfoHM7" allowfullscreen></iframe>
+  </div>
+</div>
 
-    <div class="album-container">
-      <div class="album-media">
-        <img src="C9C59554-C392-46F6-AA96-3819DD0F383F.jpeg" alt="Impulses and Premeditations Album Art">
-        <iframe src="https://www.youtube.com/embed/videoseries?list=PLdMXTOOk5zlBd4wf3rB3uCO8D7dZfoHM7" allowfullscreen></iframe>
-      </div>
-      <div class="album-description">
-        <h3>Impulses and Premeditations</h3>
-        <p>Shortly following "Variations on a Theme" I would dive into impulses and premeditations. Adding one more track to the list, this album explores themes of aging, fidelity, and anger. Two more songs for this album would be used for TWHH&HS.</p>
-      </div>
-    </div>
+<div class="album-container">
+  <div class="album-description">
+    <h3>Songs of Spring</h3>
+    <p>This was the final album project on the way to writing "The Woman, Her Husband and Herself". This has the most tracks that went into the final musical and was also a large jump in style for the album art.</p>
+  </div>
+  <div class="album-media-row">
+    <img src="59134B55-9FD7-48F4-975D-6B3CC366158F.png" alt="Songs of Spring Album Art">
+    <iframe src="https://www.youtube.com/embed/videoseries?list=PLdMXTOOk5zlBtVs2wJjfTiKKikhREAR9W" allowfullscreen></iframe>
+  </div>
+</div>
 
-    <div class="album-container">
-      <div class="album-media">
-        <img src="59134B55-9FD7-48F4-975D-6B3CC366158F.png" alt="Songs of Spring Album Art">
-        <iframe src="https://www.youtube.com/embed/videoseries?list=PLdMXTOOk5zlBtVs2wJjfTiKKikhREAR9W" allowfullscreen></iframe>
-      </div>
-      <div class="album-description">
-        <h3>Songs of Spring</h3>
-        <p>This was the final album project on the way to writing "The Woman, Her Husband and Herself". This has the most tracks that went into the final musical and was also a large jump in style for the album art.</p>
-      </div>
-    </div>
+<div class="album-container">
+  <div class="album-description">
+    <h3>The Woman Her Husband and Herself</h3>
+    <p>You guessed it! Here is the original cast album for "The Woman, Her Husband, and Herself". This musical was produced in a friend's home in Milwaukee Wisconsin July 2021. Starring Elena Benhke, Chase Gilbertson, and Dan Persino. The musical follows a woman being followed by herself, as her husband tries to help.</p>
+  </div>
+  <div class="album-media-row">
+    <img src="E3FCE664-A80B-4184-BE2F-47C0987C8795_1_105_c.jpeg" alt="The Woman Her Husband and Herself Album Art">
+    <iframe src="https://www.youtube.com/embed/videoseries?list=PLdMXTOOk5zlA7tOSY4UZOd7M5Q8Y0nAyw" allowfullscreen></iframe>
+  </div>
+</div>
 
-    <div class="album-container">
-      <div class="album-media">
-        <img src="E3FCE664-A80B-4184-BE2F-47C0987C8795_1_105_c.jpeg" alt="The Woman Her Husband and Herself Album Art">
-        <iframe src="https://www.youtube.com/embed/videoseries?list=PLdMXTOOk5zlA7tOSY4UZOd7M5Q8Y0nAyw" allowfullscreen></iframe>
-      </div>
-      <div class="album-description">
-        <h3>The Woman Her Husband and Herself</h3>
-        <p>You guessed it! Here is the original cast album for "The Woman, Her Husband, and Herself". This musical was produced in a friend's home in Milwaukee Wisconsin July 2021. Starring Elena Benhke, Chase Gilbertson, and Dan Persino. The musical follows a woman being followed by herself, as her husband tries to help.</p>
-      </div>
-    </div>
-
-  </section>
+</section>
 
 </main>
 
@@ -389,19 +351,13 @@
 <script>
 const menuToggle = document.getElementById("menu-toggle");
 const navLinks = document.getElementById("nav-links");
-
 if(menuToggle && navLinks){
-  menuToggle.addEventListener("click", () => {
-    navLinks.classList.toggle("show");
-  });
+  menuToggle.addEventListener("click", () => { navLinks.classList.toggle("show"); });
   document.querySelectorAll("#nav-links a").forEach(link => {
-    link.addEventListener("click", () => {
-      navLinks.classList.remove("show");
-    });
+    link.addEventListener("click", () => { navLinks.classList.remove("show"); });
   });
 }
 </script>
 
 </body>
 </html>
-
