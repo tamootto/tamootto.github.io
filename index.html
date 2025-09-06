@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Isabelle (Bee) Rashkin</title>
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
 <style>
   body {
     font-family: "Times New Roman", Times, serif;
@@ -19,7 +21,7 @@
 
   /* --- Floating hearts --- */
   .heart {
-    position: absolute;
+    position: fixed;
     width: 20px;
     height: 20px;
     background: pink;
@@ -27,6 +29,7 @@
     animation: float linear infinite;
     opacity: 0.6;
     border-radius: 4px;
+    z-index: 1;
   }
   .heart::before,
   .heart::after {
@@ -37,10 +40,9 @@
   }
   .heart::before { top: -50%; left: 0; width: 100%; height: 100%; }
   .heart::after { left: -50%; top: 0; width: 100%; height: 100%; }
-
   @keyframes float {
     0% { transform: translateY(100vh) rotate(45deg); opacity: 0.6; }
-    100% { transform: translateY(-10vh) rotate(45deg); opacity: 0; }
+    100% { transform: translateY(-20vh) rotate(45deg); opacity: 0; }
   }
 
   /* --- NAVBAR --- */
@@ -50,8 +52,10 @@
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 1000;
+    text-align: center;
   }
+  .nav-links { display: inline-block; }
   nav a {
     color: #fff;
     margin: 0 0.5rem;
@@ -59,30 +63,64 @@
     font-weight: bold;
     display: inline-block;
     width: 120px;
+    text-align: center;
   }
   nav a:hover { text-decoration: underline; }
 
+  /* Hamburger (mobile) */
+  .menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    color: #fff;
+    cursor: pointer;
+    background: none;
+    border: none;
+    position: absolute;
+    right: 1rem;
+    top: 0.75rem;
+    z-index: 2000;
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 1.5rem 1rem; }
+    nav a { display: block; width: 100%; padding: 0.75rem 0; margin: 0; text-align: center; }
+    .menu-toggle { display: block; }
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+      background: #000;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+    }
+    .nav-links.show { max-height: 500px; transition: max-height 0.3s ease-in; }
+    .heart { width: 12px; height: 12px; }
+  }
+
   /* --- HEADER --- */
   header {
-    position: fixed;
-    top: 60px; /* navbar height */
-    left: 0;
-    width: 100%;
+    position: relative;
     background-color: #f8c8dc;
-    padding: 1rem 1rem;
-    z-index: 90;
-    box-sizing: border-box;
+    padding: 1rem;
     text-align: center;
+    box-sizing: border-box;
+    margin-top: 60px;
+    z-index: 10;
   }
   header h1 { margin: 0.5rem 0; }
   header p { margin: 0.25rem 0; }
+  header small { color: #555; }
 
   /* --- BUTTON GRID --- */
   .button-grid {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 240px; /* push down for fixed header */
+    margin-top: 20px;
     gap: 2rem;
   }
   .button-row {
@@ -113,6 +151,7 @@
   .button-link span { margin-top: 0.5rem; font-weight: bold; }
   .contact-button img { width: 160px; height: 160px; }
 
+  /* --- FOOTER --- */
   footer {
     background-color: #222;
     color: #fff;
@@ -124,17 +163,6 @@
   .social-links a { color: #f8c8dc; text-decoration: none; font-weight: bold; }
   .social-links a:hover { text-decoration: underline; }
 
-  /* --- MOBILE FIXES --- */
-  @media (max-width: 768px) {
-    nav { display: none; }
-    header { padding: 1.5rem 1rem; top: 0; }
-    .button-row { flex-wrap: wrap; gap: 1rem; }
-    .button-link img { width: 100px; height: 100px; }
-    .contact-button img { width: 140px; height: 140px; }
-
-    /* Scale hearts down and reposition to avoid overlap */
-    .heart { width: 12px; height: 12px; }
-  }
 </style>
 </head>
 <body>
@@ -151,26 +179,29 @@
 <div class="heart" style="left:85%; animation-duration:10s;"></div>
 <div class="heart" style="left:95%; animation-duration:12s;"></div>
 
-<!-- NAVBAR -->
+<!-- Navbar -->
 <nav>
-  <a href="index.html">Home</a>
-  <a href="art.html">Original Visual Art</a>
-  <a href="music.html">Original Music</a>
-  <a href="theatre.html">Miscellania Theatre Co</a>
-  <a href="resume.html">Headshot & Resume</a>
-  <a href="gallery.html">Media Gallery</a>
-  <a href="contact.html">Contact Me</a>
-  <a href="something-silly.html">Something Silly</a>
+  <button class="menu-toggle" id="menu-toggle">&#9776;</button>
+  <div class="nav-links" id="nav-links">
+    <a href="index.html">Home</a>
+    <a href="art.html">Original Visual Art</a>
+    <a href="music.html">Original Music</a>
+    <a href="theatre.html">Miscellania Theatre Co</a>
+    <a href="resume.html">Headshot & Resume</a>
+    <a href="gallery.html">Media Gallery</a>
+    <a href="contact.html">Contact Me</a>
+    <a href="something-silly.html">Something Silly</a>
+  </div>
 </nav>
 
-<!-- HEADER -->
+<!-- Header -->
 <header>
   <h1>Isabelle Rashkin</h1>
   <p>Multi-disciplinary artist based in Brooklyn, NYC</p>
   <p><small>Interlochen Arts Academy 2018 / University of Wisconsin-Milwaukee 2022</small></p>
 </header>
 
-<!-- BUTTON GRID -->
+<!-- Button Grid -->
 <div class="button-grid">
   <div class="button-row">
     <a href="art.html" class="button-link"><img src="transparent button 2 .png" alt="Art"><span>Art</span></a>
@@ -187,7 +218,7 @@
   </div>
 </div>
 
-<!-- FOOTER -->
+<!-- Footer -->
 <footer>
   <h3>Connect with me</h3>
   <div class="social-links">
@@ -202,6 +233,24 @@
     <a href="https://www.backstage.com/u/isabelle-rashkin/" target="_blank">Backstage</a>
   </div>
 </footer>
+
+<!-- Mobile nav JS -->
+<script>
+const menuToggle = document.getElementById("menu-toggle");
+const navLinks = document.getElementById("nav-links");
+
+if(menuToggle && navLinks){
+  menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+  });
+  document.querySelectorAll("#nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("show");
+    });
+  });
+}
+</script>
+
 </body>
 </html>
 
