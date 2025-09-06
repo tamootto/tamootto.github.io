@@ -7,199 +7,149 @@
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
-<!-- GLightbox CSS -->
-<link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet">
-
 <style>
-  body {
-    font-family: "Times New Roman", Times, serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #ffe6f2, #e6f7ff 40%, #d0e7ff 70%, #fff0e6);
-    color: #333;
-    text-align: center;
-    position: relative;
-    overflow-x: hidden;
-  }
+body {
+  font-family: "Times New Roman", Times, serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #ffe6f2, #e6f7ff 40%, #d0e7ff 70%, #fff0e6);
+  color: #333;
+  text-align: center;
+  overflow-x: hidden;
+}
 
-  /* Floating hearts */
-  .heart {
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    background: pink;
-    transform: rotate(45deg);
-    animation: float linear infinite;
-    opacity: 0.6;
-    border-radius: 4px;
-    z-index: 1;
-  }
-  .heart::before,
-  .heart::after {
-    content: "";
-    position: absolute;
-    background: pink;
-    border-radius: 50%;
-  }
-  .heart::before { top: -50%; left: 0; width: 100%; height: 100%; }
-  .heart::after { left: -50%; top: 0; width: 100%; height: 100%; }
-  @keyframes float {
-    0% { transform: translateY(100vh) rotate(45deg); opacity: 0.6; }
-    100% { transform: translateY(-20vh) rotate(45deg); opacity: 0; }
-  }
+/* Navbar */
+nav {
+  background-color: #000;
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  text-align: center;
+}
+.nav-links { display: inline-block; }
+nav a {
+  color: #fff;
+  margin: 0 0.5rem;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  width: 120px;
+  text-align: center;
+}
+nav a:hover { text-decoration: underline; }
 
-  /* Navbar */
-  nav {
-    background-color: #000;
-    padding: 1rem;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    text-align: center;
-  }
-  .nav-links { display: inline-block; }
-  nav a {
-    color: #fff;
-    margin: 0 0.5rem;
-    text-decoration: none;
-    font-weight: bold;
-    display: inline-block;
-    width: 120px;
-    text-align: center;
-  }
-  nav a:hover { text-decoration: underline; }
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  color: #fff;
+  cursor: pointer;
+  background: none;
+  border: none;
+  position: absolute;
+  right: 1rem;
+  top: 0.75rem;
+  z-index: 2000;
+}
 
-  .menu-toggle {
-    display: none;
-    font-size: 1.8rem;
-    color: #fff;
-    cursor: pointer;
-    background: none;
-    border: none;
-    position: absolute;
-    right: 1rem;
-    top: 0.75rem;
-    z-index: 2000;
-  }
-
-  @media (max-width: 768px) {
-    nav { padding: 1.5rem 1rem; }
-    nav a { display: block; width: 100%; padding: 0.75rem 0; margin: 0; text-align: center; }
-    .menu-toggle { display: block; }
-    .nav-links {
-      display: flex;
-      flex-direction: column;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease-out;
-      background: #000;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-    }
-    .nav-links.show { max-height: 500px; transition: max-height 0.3s ease-in; }
-    .heart { width: 12px; height: 12px; }
-  }
-
-  /* Header */
-  header {
-    position: relative;
-    background-color: #f8c8dc;
-    padding: 1rem;
-    text-align: center;
-    box-sizing: border-box;
-    margin-top: 60px;
-    z-index: 10;
-  }
-  header h1 { margin: 0.5rem 0; }
-  header p { margin: 0.25rem 0; }
-  header small { color: #555; }
-
-  main {
-    padding: 2rem;
-    max-width: 1200px;
-    margin: auto;
-    position: relative;
-    z-index: 10;
-  }
-
-  .about-music {
-    padding: 2rem;
-    margin-bottom: 3rem;
-    text-align: left;
-    background: rgba(208, 231, 255, 0.2);
-    border-radius: 12px;
-  }
-  .about-music h3 { margin-top: 0; color: #222; }
-  .about-music p { line-height: 1.6; margin-bottom: 1rem; }
-
-  /* Album layout */
-  .album-container {
+@media (max-width: 768px) {
+  nav { padding: 1.5rem 1rem; }
+  nav a { display: block; width: 100%; padding: 0.75rem 0; margin: 0; text-align: center; }
+  .menu-toggle { display: block; }
+  .nav-links {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 70px;
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 20px;
-    border-radius: 12px;
-    background: rgba(255,255,255,0.6);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background: #000;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
   }
+  .nav-links.show { max-height: 500px; transition: max-height 0.3s ease-in; }
+}
 
-  .album-description { text-align: left; }
-  .album-description h3 {
-    margin-top: 0;
-    font-size: 1.6em;
-    color: #222;
-  }
-  .album-description p { line-height: 1.5; margin-top: 0.5rem; }
+/* Header */
+header {
+  position: relative;
+  background-color: #f8c8dc;
+  padding: 1rem;
+  text-align: center;
+  margin-top: 60px;
+}
+header h1 { margin: 0.5rem 0; }
+header p { margin: 0.25rem 0; }
+header small { color: #555; }
 
-  .album-media-row {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    align-items: flex-start;
-    justify-content: center;
-  }
-  .album-media-row img { max-width: 400px; width: 100%; border-radius: 8px; }
-  .album-media-row iframe { width: 100%; max-width: 360px; height: 200px; border: none; border-radius: 4px; }
+main {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
 
-  @media (max-width: 1024px) {
-    .album-media-row { flex-direction: column; align-items: center; }
-    .album-media-row img, .album-media-row iframe { max-width: 90%; height: auto; }
-    .album-description { text-align: center; }
-  }
+/* About Music */
+.about-music {
+  text-align: left;
+  margin-bottom: 3rem;
+}
+.about-music h3 { margin-top: 0; }
+.about-music p { line-height: 1.6; }
 
-  footer {
-    background-color: #222;
-    color: #fff;
-    padding: 2rem 1rem;
-    margin-top: 2rem;
-    position: relative;
-    z-index: 10;
-  }
-  footer h3 { margin-bottom: 1rem; }
-  .social-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
-  .social-links a { color: #f8c8dc; text-decoration: none; font-weight: bold; }
-  .social-links a:hover { text-decoration: underline; }
+/* Albums Layout */
+.album {
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+.album-description {
+  margin-bottom: 20px;
+  text-align: left;
+}
+.album-description h3 { margin: 0 0 10px; font-size: 1.6em; }
+.album-description p { margin: 0; line-height: 1.5; }
+
+.album-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.album-row img, .album-row iframe {
+  display: block;
+  max-height: 300px;
+  width: auto;
+  border-radius: 5px;
+}
+
+.album-row iframe {
+  max-width: 360px;
+}
+
+@media (max-width: 1024px) {
+  .album-row { flex-direction: column; align-items: center; }
+  .album-row img, .album-row iframe { max-width: 90%; height: auto; }
+  .album-description { text-align: center; }
+}
+
+/* Footer */
+footer {
+  background-color: #222;
+  color: #fff;
+  padding: 2rem 1rem;
+}
+footer h3 { margin-bottom: 1rem; }
+.social-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+.social-links a { color: #f8c8dc; text-decoration: none; font-weight: bold; }
+.social-links a:hover { text-decoration: underline; }
+
 </style>
 </head>
 <body>
-
-<!-- Floating hearts -->
-<div class="heart" style="left:5%; animation-duration:12s;"></div>
-<div class="heart" style="left:15%; animation-duration:10s;"></div>
-<div class="heart" style="left:25%; animation-duration:14s;"></div>
-<div class="heart" style="left:35%; animation-duration:9s;"></div>
-<div class="heart" style="left:45%; animation-duration:16s;"></div>
-<div class="heart" style="left:55%; animation-duration:11s;"></div>
-<div class="heart" style="left:65%; animation-duration:13s;"></div>
-<div class="heart" style="left:75%; animation-duration:15s;"></div>
-<div class="heart" style="left:85%; animation-duration:10s;"></div>
-<div class="heart" style="left:95%; animation-duration:12s;"></div>
 
 <!-- Navbar -->
 <nav>
@@ -216,7 +166,6 @@
   </div>
 </nav>
 
-<!-- Header -->
 <header>
   <h1>Isabelle Rashkin</h1>
   <p>Multi-disciplinary artist based in Brooklyn, NYC</p>
@@ -225,92 +174,86 @@
 
 <main>
 
-<!-- ABOUT MY MUSIC -->
 <div class="about-music">
   <h3>Musical Style & Process</h3>
-  <p>Music has always been my way of exploring stories and emotions that words alone can’t fully express. I typically start with a single spark—a melody, a chord progression, or even a fleeting lyric—and gradually build the piece in GarageBand using ukulele, guitar, keyboard, drums, and upright bass. Each instrument adds its own color and texture, creating a layered sound that evolves naturally as I compose. Collaboration is central to my process: I’ve been fortunate to work with talented musicians whose creativity, energy, and perspective transform initial ideas into fully realized songs. In every project, it’s this dialogue between instruments, voices, and imagination that brings the music to life.</p>
+  <p>Music has always been my way of exploring stories and emotions that words alone can’t fully express. I typically start with a single spark—a melody, a chord progression, or even a fleeting lyric—and gradually build the piece in GarageBand using ukulele, guitar, keyboard, drums, and upright bass. Collaboration is central to my process: working with talented musicians transforms initial ideas into fully realized songs.</p>
   <h3>Inspirations</h3>
-  <p>My musical voice is shaped by artists who blend storytelling, humor, and emotional depth in innovative ways. I draw inspiration from the inventive wit of They Might Be Giants, the clever intimacy of Garfunkel and Oates, and the narrative sophistication of Anaïs Mitchell. I’m inspired by the emotional honesty of Fiona Apple, the theatrical brilliance of Jeanine Tesori, and the introspective intensity of Mitski. The rhythmic ingenuity of Talking Heads and the legendary craftsmanship of Stephen Sondheim continue to influence how I approach melody, lyric, and character in my music. Together, these influences guide me as I create songs that are both heartfelt and playful, personal and expansive.</p>
+  <p>My musical voice is shaped by artists who blend storytelling, humor, and emotional depth. Influences include They Might Be Giants, Garfunkel and Oates, Anaïs Mitchell, Fiona Apple, Jeanine Tesori, Mitski, Talking Heads, and Stephen Sondheim.</p>
 </div>
 
 <!-- Albums Section -->
-<section>
-<h2>Current Releases</h2>
-
-<div class="album-container">
+<div class="album">
   <div class="album-description">
     <h3>Songs About Write Now</h3>
-    <p>This was my most recent project and my first full-length album. After the three previous musical projects being produced by Mona Turks, this was my first self-produced project in 5 years. This album combines ukulele, synths, pedals, and upright bass to bring together my emotional narrative of what it feels like to write music. This was also my first album to be available on all streaming platforms.</p>
+    <p>First self-produced full-length album combining ukulele, synths, pedals, and upright bass. Available on all streaming platforms.</p>
   </div>
-  <div class="album-media-row">
+  <div class="album-row">
     <img src="DD0883EA-DAE6-430B-A287-1C4B031671E0_1_105_c.jpeg" alt="Songs About Write Now Album Art">
     <iframe src="https://www.youtube.com/embed/videoseries?list=OLAK5uy_nsVK2X8ChNX-EZG-TmIFprsSGxmqE0SRY" allowfullscreen></iframe>
   </div>
 </div>
 
-<div class="album-container">
+<div class="album">
   <div class="album-description">
     <h3>Work</h3>
-    <p>Work is a comedy single featuring Chase Gilbertson. When I go to work each day there is one thing that I do (NOTE: I do not steal from my job).</p>
+    <p>Comedy single featuring Chase Gilbertson.</p>
   </div>
-  <div class="album-media-row">
+  <div class="album-row">
     <img src="4E4CEDE8-E668-49C7-83B8-5ACF24F2ED0A_1_105_c.jpeg" alt="Work Single Art">
     <iframe src="https://www.youtube.com/embed/_kPvEN4edck" allowfullscreen></iframe>
   </div>
 </div>
 
-<div class="album-container">
+<div class="album">
   <div class="album-description">
     <h3>People in My House</h3>
-    <p>Produced by Nicholas Boni in his home studio, this is one of the few pieces of music I have felt passionately should not have backup vocals.</p>
+    <p>Produced by Nicholas Boni. One of the few pieces without backup vocals.</p>
   </div>
-  <div class="album-media-row">
+  <div class="album-row">
     <img src="F0A78B68-9CAF-4446-BF2E-4BBF18751F23_1_105_c.jpeg" alt="People in My House Album Art">
     <iframe src="https://www.youtube.com/embed/videoseries?list=OLAK5uy_nS4IG-XhOXuRnGVTuMY5JSdfAY6VM1emA" allowfullscreen></iframe>
   </div>
 </div>
 
-<h2>EPs and Early Projects</h2>
-
-<div class="album-container">
+<div class="album">
   <div class="album-description">
     <h3>Variations on a Theme</h3>
-    <p>This is my first ever original music project made in 2020. "Variations on a Theme" referring to both the song form and lyrical content of this short EP. A few of these songs would go onto become inspiration for my first musical "The Woman Her Husband and Herself".</p>
+    <p>First original music project in 2020. Songs inspired later musical "The Woman Her Husband and Herself".</p>
   </div>
-  <div class="album-media-row">
+  <div class="album-row">
     <img src="7DC6F01E-982D-448A-8449-375F237583DD.png" alt="Variations on a Theme Album Art">
     <iframe src="https://www.youtube.com/embed/videoseries?list=PLdMXTOOk5zlCFpqubLs5iYZ1kVqazfiwz" allowfullscreen></iframe>
   </div>
 </div>
 
-<div class="album-container">
+<div class="album">
   <div class="album-description">
     <h3>Impulses and Premeditations</h3>
-    <p>Shortly following "Variations on a Theme" I would dive into impulses and premeditations. Adding one more track to the list, this album explores themes of aging, fidelity, and anger. Two more songs for this album would be used for TWHH&HS.</p>
+    <p>Explores themes of aging, fidelity, and anger. Two songs used for TWHH&HS.</p>
   </div>
-  <div class="album-media-row">
+  <div class="album-row">
     <img src="C9C59554-C392-46F6-AA96-3819DD0F383F.jpeg" alt="Impulses and Premeditations Album Art">
     <iframe src="https://www.youtube.com/embed/videoseries?list=PLdMXTOOk5zlBd4wf3rB3uCO8D7dZfoHM7" allowfullscreen></iframe>
   </div>
 </div>
 
-<div class="album-container">
+<div class="album">
   <div class="album-description">
     <h3>Songs of Spring</h3>
-    <p>This was the final album project on the way to writing "The Woman, Her Husband and Herself". This has the most tracks that went into the final musical and was also a large jump in style for the album art.</p>
+    <p>Final album project leading to "The Woman, Her Husband and Herself". Most tracks carried over to the musical.</p>
   </div>
-  <div class="album-media-row">
+  <div class="album-row">
     <img src="59134B55-9FD7-48F4-975D-6B3CC366158F.png" alt="Songs of Spring Album Art">
     <iframe src="https://www.youtube.com/embed/videoseries?list=PLdMXTOOk5zlBtVs2wJjfTiKKikhREAR9W" allowfullscreen></iframe>
   </div>
 </div>
 
-<div class="album-container">
+<div class="album">
   <div class="album-description">
     <h3>The Woman Her Husband and Herself</h3>
-    <p>You guessed it! Here is the original cast album for "The Woman, Her Husband, and Herself". This musical was produced in a friend's home in Milwaukee Wisconsin July 2021. Starring Elena Benhke, Chase Gilbertson, and Dan Persino. The musical follows a woman being followed by herself, as her husband tries to help.</p>
+    <p>Original cast album for the musical produced in Milwaukee, July 2021. Starring Elena Benhke, Chase Gilbertson, and Dan Persino.</p>
   </div>
-  <div class="album-media-row">
+  <div class="album-row">
     <img src="E3FCE664-A80B-4184-BE2F-47C0987C8795_1_105_c.jpeg" alt="The Woman Her Husband and Herself Album Art">
     <iframe src="https://www.youtube.com/embed/videoseries?list=PLdMXTOOk5zlA7tOSY4UZOd7M5Q8Y0nAyw" allowfullscreen></iframe>
   </div>
@@ -319,33 +262,20 @@
 </main>
 
 <footer>
-  <h3>Connect with me</h3>
-  <div class="social-links">
-    <a href="https://www.instagram.com/tamoottopro/" target="_blank">Instagram (Personal)</a>
-    <a href="https://www.instagram.com/Bee_original_music/" target="_blank">Instagram (Music)</a>
-    <a href="https://x.com/tamoottopro" target="_blank">X (Twitter)</a>
-    <a href="https://www.linkedin.com/in/isabelle-rashkin-82958228/" target="_blank">LinkedIn</a>
-    <a href="mailto:ivrashkin@gmail.com">Email</a>
-    <a href="https://open.spotify.com/artist/2TRjrme5uq3GM8qMF7y0QI" target="_blank">Spotify</a>
-    <a href="https://www.youtube.com/channel/UCa9acPRSIGUmjgn54hz17eA" target="_blank">YouTube Music</a>
-    <a href="https://music.apple.com/ca/artist/isabelle-bee-rashkin/1773658949" target="_blank">Apple Music</a>
-    <a href="https://www.backstage.com/u/isabelle-rashkin/" target="_blank">Backstage</a>
-  </div>
+<h3>Connect with me</h3>
+<div class="social-links">
+  <a href="https://www.instagram.com/tamoottopro/" target="_blank">Instagram (Personal)</a>
+  <a href="https://www.instagram.com/Bee_original_music/" target="_blank">Instagram (Music)</a>
+  <a href="https://x.com/tamoottopro" target="_blank">X (Twitter)</a>
+  <a href="https://www.linkedin.com/in/isabelle-rashkin-82958228/" target="_blank">LinkedIn</a>
+  <a href="mailto:ivrashkin@gmail.com">Email</a>
+  <a href="https://open.spotify.com/artist/2TRjrme5uq3GM8qMF7y0QI" target="_blank">Spotify</a>
+  <a href="https://www.youtube.com/channel/UCa9acPRSIGUmjgn54hz17eA" target="_blank">YouTube Music</a>
+  <a href="https://music.apple.com/ca/artist/isabelle-bee-rashkin/1773658949" target="_blank">Apple Music</a>
+  <a href="https://www.backstage.com/u/isabelle-rashkin/" target="_blank">Backstage</a>
+</div>
 </footer>
 
-<!-- GLightbox JS -->
-<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
-<script>
-  const lightbox = GLightbox({
-    selector: '.glightbox',
-    loop: true,
-    keyboardNavigation: true,
-    closeOnOutsideClick: true,
-    touchNavigation: true
-  });
-</script>
-
-<!-- Mobile nav JS -->
 <script>
 const menuToggle = document.getElementById("menu-toggle");
 const navLinks = document.getElementById("nav-links");
@@ -359,3 +289,4 @@ if(menuToggle && navLinks){
 
 </body>
 </html>
+
