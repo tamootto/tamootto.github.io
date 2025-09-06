@@ -126,7 +126,7 @@
     z-index: 10;
   }
 
-  /* Music content styling */
+  /* About music */
   .about-music {
     padding: 2rem;
     margin-bottom: 3rem;
@@ -137,58 +137,76 @@
   .about-music h3 { margin-top: 0; color: #222; }
   .about-music p { line-height: 1.6; margin-bottom: 1rem; }
 
-  /* Album layout */
+  /* Album layout (rectangular) */
   .album-container {
     display: flex;
-    align-items: flex-start;
-    gap: 1.5rem;
+    flex-direction: row;
+    gap: 2rem;
     margin-bottom: 50px;
-    text-align: left;
+    align-items: flex-start;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
   }
+
   .album-media {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
-  }
-  .album-media img {
-    max-width: 300px;
-    width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-  .album-media iframe {
-    width: 100%;
-    max-width: 560px;
-    height: 315px;
-    border: none;
-  }
-  .album-description {
-    flex: 1;
-  }
-  .album-description h3 {
-    margin-top: 0;
-    font-size: 1.5em;
-    color: #222;
-  }
-  .album-description p {
-    line-height: 1.5;
-    margin-bottom: 1rem;
+    gap: 1rem;
   }
 
-  @media (max-width: 768px) {
+  .album-media img {
+    max-width: 350px;
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  .album-media iframe {
+    width: 100%;
+    max-width: 300px;
+    height: 170px;
+    border: none;
+    border-radius: 4px;
+  }
+
+  .album-description {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .album-description h3 {
+    margin-top: 0;
+    font-size: 1.6em;
+    color: #222;
+  }
+
+  .album-description p {
+    line-height: 1.5;
+    margin-top: 0.5rem;
+  }
+
+  @media (max-width: 1024px) {
     .album-container {
       flex-direction: column;
       align-items: center;
     }
     .album-description {
       text-align: center;
+      margin-top: 1rem;
+    }
+    .album-media img {
+      max-width: 90%;
     }
     .album-media iframe {
+      max-width: 90%;
       height: 200px;
     }
   }
 
+  /* Footer */
   footer {
     background-color: #222;
     color: #fff;
@@ -201,6 +219,7 @@
   .social-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
   .social-links a { color: #f8c8dc; text-decoration: none; font-weight: bold; }
   .social-links a:hover { text-decoration: underline; }
+
 </style>
 </head>
 <body>
@@ -334,6 +353,7 @@
         <p>You guessed it! Here is the original cast album for "The Woman, Her Husband, and Herself". This musical was produced in a friend's home in Milwaukee Wisconsin July 2021. Starring Elena Benhke, Chase Gilbertson, and Dan Persino. The musical follows a woman being followed by herself, as her husband tries to help.</p>
       </div>
     </div>
+
   </section>
 
 </main>
@@ -368,7 +388,6 @@
 <!-- Mobile nav JS -->
 <script>
 const menuToggle = document.getElementById("menu-toggle");
-const navLinks = document
 const navLinks = document.getElementById("nav-links");
 
 if(menuToggle && navLinks){
@@ -385,5 +404,4 @@ if(menuToggle && navLinks){
 
 </body>
 </html>
-
 
