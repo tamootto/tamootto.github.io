@@ -262,14 +262,15 @@ if(menuToggle && navLinks){
   });
 }
 
-// Show silly content
+// Show silly content when button is clicked
 const clickMeButton = document.getElementById("click-me-button");
 const sillyContent = document.getElementById("silly-content");
-clickMeButton.addEventListener("click", () => {
-  sillyContent.style.display = "block";
-  clickMeButton.style.display = "none";
 
-  // Animate text after showing content
+clickMeButton.addEventListener("click", () => {
+  sillyContent.style.display = "block"; // reveal content
+  clickMeButton.style.display = "none"; // hide button
+
+  // Animate text
   const text = "WELCOMMEE TO MY WEBSITTTEEEE";
   const animatedText = document.getElementById("animated-text");
   let i = 0;
