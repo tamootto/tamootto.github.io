@@ -131,10 +131,17 @@ main {
   cursor: pointer;
 }
 #click-me-button {
-  width: 300px; /* adjust as needed */
+  width: 300px;
   height: 120px;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 12px;
+  background: url('transparent button 5.png') no-repeat center;
+  background-size: 110% 110%; /* slightly larger image */
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: black;
   transition: transform 0.3s, box-shadow 0.3s;
 }
 #click-me-text {
