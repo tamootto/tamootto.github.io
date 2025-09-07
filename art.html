@@ -140,7 +140,11 @@
   }
 
   .art-item {
-    position: relative;
+  display: flex;
+  flex-direction: column;   /* stack image + button vertically */
+  align-items: center;      /* center horizontally */
+  position: relative;       /* needed for hover effect */
+  }
   }
   .art-item img {
     width: 100%;
@@ -155,19 +159,16 @@
     padding: 0 2rem;          /* optional, like main */
     line-height: 1.6;
   }
-  .download-button {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(255, 182, 193, 0.9);
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    font-weight: bold;
-    opacity: 0;
-    transition: opacity 0.3s;
-    text-decoration: none;
-    color: #333;
+ .download-button {
+  margin-top: 0.5rem;        /* space below image */
+  background: rgba(255, 182, 193, 0.9);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+  opacity: 0;                 /* hidden by default */
+  transition: opacity 0.3s;
   }
   .art-item:hover .download-button { opacity: 1; }
 
