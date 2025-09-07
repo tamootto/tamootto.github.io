@@ -125,16 +125,37 @@ main {
 }
 
 /* ================= CLICK ME BUTTON ================= */
-#click-me-button {
-  cursor: pointer;
-  box-shadow: 0 0 20px pink;
-  border-radius: 12px;
-  transition: transform 0.3s;
-  width: 200px;
-  height: auto;
+#click-me-wrapper {
   display: inline-block;
+  position: relative;
+  cursor: pointer;
 }
-#click-me-button:hover { transform: scale(1.05); }
+#click-me-button {
+  width: 200px; /* adjust as needed */
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+#click-me-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: pink;
+  font-weight: bold;
+  font-size: 1.2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+#click-me-wrapper:hover #click-me-text {
+  opacity: 1;
+}
+#click-me-wrapper:hover #click-me-button {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px pink;
+}
 
 /* ================= SILLY CONTENT ================= */
 #animated-text {
@@ -224,7 +245,10 @@ footer .social-links a:hover { text-decoration: underline; }
 <main>
   <!-- Click Me Button -->
   <div id="button-container">
-    <img src="transparent button 5.png" id="click-me-button" alt="Click Me">
+    <div id="click-me-wrapper">
+      <img src="transparent button 5.png" id="click-me-button" alt="Click Me">
+      <span id="click-me-text">Click Me</span>
+    </div>
   </div>
 
   <!-- Hidden Content -->
@@ -266,12 +290,12 @@ if(menuToggle && navLinks){
 }
 
 // Show silly content when button is clicked
-const clickMeButton = document.getElementById("click-me-button");
+const clickMeWrapper = document.getElementById("click-me-wrapper");
 const sillyContent = document.getElementById("silly-content");
 
-clickMeButton.addEventListener("click", () => {
+clickMeWrapper.addEventListener("click", () => {
   sillyContent.style.display = "block"; // reveal content
-  clickMeButton.style.display = "none"; // hide button
+  clickMeWrapper.style.display = "none"; // hide button
 
   // Animate text
   const text = "WELCOMMEE TO MY WEBSITTTEEEE";
@@ -290,3 +314,4 @@ clickMeButton.addEventListener("click", () => {
 
 </body>
 </html>
+
