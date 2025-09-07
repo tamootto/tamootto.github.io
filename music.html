@@ -16,45 +16,6 @@ body {
   color: #333;
   text-align: center;
   overflow-x: hidden;
-
- /* Floating hearts */
-.heart {
-  position: fixed;
-  width: 20px;
-  height: 20px;
-  background: pink;
-  transform: rotate(45deg);
-  animation: float linear infinite;
-  opacity: 0.6;
-  border-radius: 4px;
-  z-index: 50; /* above footer (10) but below albums/main content */
-}
-.heart::before, .heart::after {
-  content: "";
-  position: absolute;
-  background: pink;
-  border-radius: 50%;
-}
-.heart::before { top: -50%; left: 0; width: 100%; height: 100%; }
-.heart::after { left: -50%; top: 0; width: 100%; height: 100%; }
-
-@keyframes float {
-  0% { transform: translateY(100vh) rotate(45deg); opacity: 0.6; }
-  100% { transform: translateY(-20vh) rotate(45deg); opacity: 0; }
-}
-
-/* Make main content above hearts */
-main, .album-row, .album-description {
-  position: relative;
-  z-index: 100; /* above hearts */
-}
-
-/* Footer below hearts */
-footer {
-  position: relative;
-  z-index: 10;
-}
-
 }
 
 /* Navbar */
@@ -172,8 +133,51 @@ main {
   border-radius: 5px;
 }
 
-.album-row iframe {
+..album-row iframe {
   max-width: 360px; /* maintains aspect ratio but aligns height */
+}
+
+/* Floating hearts */
+.heart {
+  position: fixed;
+  bottom: -30px;   /* start below the viewport */
+  width: 20px;
+  height: 20px;
+  background: pink;
+  transform: rotate(45deg);
+  animation: float linear infinite;
+  opacity: 0.6;
+  border-radius: 4px;
+  z-index: 500; /* below nav (1000) but above footer */
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  background: pink;
+  border-radius: 50%;
+}
+.heart::before { top: -50%; left: 0; width: 100%; height: 100%; }
+.heart::after  { left: -50%; top: 0; width: 100%; height: 100%; }
+
+@keyframes float {
+  0%   { transform: translateY(0) rotate(45deg); opacity: 0.6; }
+  100% { transform: translateY(-110vh) rotate(45deg); opacity: 0; }
+}
+
+/* Keep main content above hearts */
+header, main {
+  position: relative;
+  z-index: 600;
+}
+
+/* Keep footer under hearts */
+footer {
+  position: relative;
+  z-index: 400;
+
+
 }
 
 @media (max-width: 1024px) {
@@ -195,7 +199,7 @@ footer h3 { margin-bottom: 1rem; }
 </style>
 </head>
 <body>
-
+    
 <!-- Floating hearts -->
 <div class="heart" style="left:5%; animation-duration:12s;"></div>
 <div class="heart" style="left:15%; animation-duration:10s;"></div>
@@ -207,6 +211,7 @@ footer h3 { margin-bottom: 1rem; }
 <div class="heart" style="left:75%; animation-duration:15s;"></div>
 <div class="heart" style="left:85%; animation-duration:10s;"></div>
 <div class="heart" style="left:95%; animation-duration:12s;"></div>
+
 
 <!-- Navbar -->
 <nav>
@@ -242,7 +247,7 @@ footer h3 { margin-bottom: 1rem; }
 <div class="album">
   <div class="album-description">
     <h3>Songs About Write Now</h3>
-    <p>his was my most recent project and my first full-length album. After the three previous musical projects being produced by Mona Turks, this was my first self-produced project in 5 years. This album combines ukulele, synths, pedals, and upright bass to bring together my emotional narrative of what it feels like to write music. This was also my first album to be available on all streaming platforms.</p>
+    <p>Tthe three previous musical projects being produced by Mona Turks, this was my first self-produced project in 5 years. This album combines ukulele, synths, pedals, and upright bass to bring together my emotional narrative of what it feels like to write music. This was also my first album to be available on all streaming platforms.</p>
   </div>
   <div class="album-row">
     <img src="DD0883EA-DAE6-430B-A287-1C4B031671E0_1_105_c.jpeg" alt="Songs About Write Now Album Art">
@@ -345,5 +350,6 @@ if(menuToggle && navLinks){
 </script>
 
 </body>
-</html>
 
+
+</html>
