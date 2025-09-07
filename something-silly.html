@@ -7,111 +7,179 @@
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
 <style>
-  body {
-    font-family: "Times New Roman", Times, serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #ffe6f2, #e6f7ff, #fff0e6);
-    color: #333;
-    text-align: center;
-    position: relative;
-    overflow-x: hidden;
-  }
+/* ================= BODY & LAYOUT ================= */
+body {
+  font-family: "Times New Roman", Times, serif;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #ffe6f2, #e6f7ff, #fff0e6);
+  color: #333;
+  text-align: center;
+  overflow-x: hidden;
+  position: relative;
+}
 
-  /* Floating hearts */
-  .heart { position: fixed; width: 20px; height: 20px; background: pink; transform: rotate(45deg); animation: float linear infinite; opacity: 0.6; border-radius: 4px; z-index: 11; }
-  .heart::before, .heart::after { content: ""; position: absolute; background: pink; border-radius: 50%; }
-  .heart::before { top: -50%; left: 0; width: 100%; height: 100%; }
-  .heart::after { left: -50%; top: 0; width: 100%; height: 100%; }
-  @keyframes float { 0% { transform: translateY(100vh) rotate(45deg); opacity: 0.6; } 100% { transform: translateY(-20vh) rotate(45deg); opacity: 0; } }
+/* ================= FLOATING HEARTS ================= */
+.heart {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background: pink;
+  transform: rotate(45deg);
+  animation: float linear infinite;
+  opacity: 0.6;
+  border-radius: 4px;
+  z-index: 11;
+}
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  background: pink;
+  border-radius: 50%;
+}
+.heart::before { top: -50%; left: 0; width: 100%; height: 100%; }
+.heart::after { left: -50%; top: 0; width: 100%; height: 100%; }
+@keyframes float {
+  0% { transform: translateY(100vh) rotate(45deg); opacity: 0.6; }
+  100% { transform: translateY(-20vh) rotate(45deg); opacity: 0; }
+}
 
-  /* Navbar */
-  nav { background-color: #000; padding: 1rem; position: fixed; top: 0; width: 100%; z-index: 1000; text-align: center; }
-  .nav-links { display: inline-block; }
-  nav a { color: #fff; margin: 0 0.5rem; text-decoration: none; font-weight: bold; display: inline-block; width: 120px; text-align: center; }
-  nav a:hover { text-decoration: underline; }
-  .menu-toggle { display: none; font-size: 1.8rem; color: #fff; cursor: pointer; background: none; border: none; position: absolute; right: 1rem; top: 0.75rem; z-index: 2000; }
-  @media (max-width: 768px) {
-    nav { padding: 1.5rem 1rem; }
-    nav a { display: block; width: 100%; padding: 0.75rem 0; margin: 0; text-align: center; }
-    .menu-toggle { display: block; }
-    .nav-links { display: flex; flex-direction: column; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; background: #000; position: absolute; top: 100%; left: 0; width: 100%; }
-    .nav-links.show { max-height: 500px; transition: max-height 0.3s ease-in; }
-    .heart { width: 12px; height: 12px; }
-  }
-
-  header { position: relative; background-color: #f8c8dc; padding: 1rem; text-align: center; box-sizing: border-box; margin-top: 60px; z-index: 10; }
-  header h1 { margin: 0.5rem 0; }
-  header p { margin: 0.25rem 0; }
-  header small { color: #555; }
-
-  /* Silly page specific */
-  .animated-text {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #ff69b4;
-    margin: 2rem 0;
-    display: inline-block;
+/* ================= NAVBAR ================= */
+nav {
+  background-color: #000;
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  text-align: center;
+}
+.nav-links { display: inline-block; }
+nav a {
+  color: #fff;
+  margin: 0 0.5rem;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  width: 120px;
+  text-align: center;
+}
+nav a:hover { text-decoration: underline; }
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  color: #fff;
+  cursor: pointer;
+  background: none;
+  border: none;
+  position: absolute;
+  right: 1rem;
+  top: 0.75rem;
+  z-index: 2000;
+}
+@media (max-width: 768px) {
+  nav { padding: 1.5rem 1rem; }
+  nav a { display: block; width: 100%; padding: 0.75rem 0; margin: 0; text-align: center; }
+  .menu-toggle { display: block; }
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    max-height: 0;
     overflow: hidden;
-    white-space: normal;
-    word-spacing: 0.5rem;
-    letter-spacing: 0.05rem;
-    line-height: 1.2;
-    max-width: 90%;
-    text-align: center;
+    transition: max-height 0.3s ease-out;
+    background: #000;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
   }
-  .animated-text span {
-    display: inline-block;
-    opacity: 0;
-    transform: translateY(-20px);
-    animation: letterAppear 0.4s forwards;
-  }
-  @keyframes letterAppear { to { opacity: 1; transform: translateY(0); } }
+  .nav-links.show { max-height: 500px; transition: max-height 0.3s ease-in; }
+  .heart { width: 12px; height: 12px; }
+}
 
-  @media (max-width: 480px) {
-    .animated-text { font-size: 1.8rem; word-spacing: 0.3rem; letter-spacing: 0.03rem; }
-  }
+/* ================= HEADER ================= */
+header {
+  position: relative;
+  background-color: #f8c8dc;
+  padding: 1rem;
+  text-align: center;
+  box-sizing: border-box;
+  margin-top: 60px;
+  z-index: 10;
+}
+header h1 { margin: 0.5rem 0; }
+header p { margin: 0.25rem 0; }
+header small { color: #555; }
 
-  .silly-image { max-width: 100%; border-radius: 12px; margin: 2rem 0; }
+/* ================= MAIN CONTENT ================= */
+main {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+  position: relative;
+  z-index: 20;
+}
 
-  .guestbook { margin-top: 3rem; text-align: center; }
-  .guestbook-input-container { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
-  .guestbook input { padding: 0.5rem; border-radius: 5px; border: 1px solid #ccc; flex: 1 1 200px; }
-  .guestbook button { padding: 0.5rem 1rem; border-radius: 5px; border: none; background: #ffb6c1; color: #333; font-weight: bold; cursor: pointer; transition: 0.3s; }
-  .guestbook button:hover { box-shadow: 0 0 15px #ff69b4; }
+/* ================= CLICK ME BUTTON ================= */
+#click-me-button {
+  cursor: pointer;
+  box-shadow: 0 0 20px pink;
+  border-radius: 12px;
+  transition: transform 0.3s;
+}
+#click-me-button:hover { transform: scale(1.05); }
 
-  .guestbook-messages { 
-    background: #fff;
-    color: #000;
-    display: flex; 
-    flex-wrap: wrap; 
-    justify-content: center; 
-    gap: 1rem; 
-    min-height: 200px; 
-    padding: 1rem; 
-    border-radius: 12px; 
-    opacity: 0; 
-    transition: opacity 1s ease; 
-  }
-  .guestbook-messages .message { 
-    background: #ff69b4;
-    color: #000;
-    padding: 0.5rem 1rem; 
-    border-radius: 8px; 
-    min-width: 100px; 
-    max-width: 200px; 
-    word-wrap: break-word; 
-  }
-  .guestbook-messages .message small { display: block; margin-top: 4px; font-size: 0.7rem; color: #555; }
+/* ================= SILLY CONTENT ================= */
+#animated-text {
+  font-size: 2rem;
+  margin: 1rem 0;
+  letter-spacing: 0.15em;
+  word-spacing: 0.5em;
+  line-height: 1.4;
+}
+@media (max-width: 768px) {
+  #animated-text { font-size: 1.5rem; letter-spacing: 0.12em; word-spacing: 0.3em; }
+}
+#silly-content img.silly-image {
+  max-width: 100%;
+  border-radius: 12px;
+  margin-top: 1rem;
+}
 
-  .fade-in { animation: fadeIn 1s forwards; }
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+/* ================= GUESTBOOK ================= */
+#guestbook-container {
+  max-width: 800px;
+  margin: 2rem auto 0 auto;
+  background: white;
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: left;
+}
 
-  footer { background-color: #222; color: #fff; padding: 2rem 1rem; margin-top: 2rem; position: relative; z-index: 10; }
-  footer h3 { margin-bottom: 1rem; }
-  .social-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
-  .social-links a { color: #f8c8dc; text-decoration: none; font-weight: bold; }
-  .social-links a:hover { text-decoration: underline; }
+/* ================= FOOTER ================= */
+footer {
+  background-color: #222;
+  color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+footer h3 { margin-bottom: 1rem; }
+footer .social-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem; /* spacing between links */
+}
+footer .social-links a {
+  color: #f8c8dc; /* pink links */
+  text-decoration: none;
+  font-weight: bold;
+}
+footer .social-links a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
@@ -143,30 +211,31 @@
   </div>
 </nav>
 
+<!-- Header -->
 <header>
   <h1>Isabelle Rashkin</h1>
   <p>Multi-disciplinary artist based in Brooklyn, NYC</p>
   <p><small>Interlochen Arts Academy 2018 / University of Wisconsin-Milwaukee 2022</small></p>
 </header>
 
-<!-- Click-to-reveal button -->
-<div id="click-button-container" style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%); z-index:2000;">
-  <button id="click-button" style="background: url('transparent button 5.png') no-repeat center/contain; border:none; width:200px; height:80px; cursor:pointer; color:#fff; font-weight:bold; font-size:1.2rem; text-shadow: 0 0 5px #ff69b4;">Click Me</button>
-</div>
+<main>
+  <!-- Click Me Button -->
+  <div id="button-container">
+    <img src="5.png" id="click-me-button" alt="Click Me">
+  </div>
 
-<main id="main-content" style="display:none;">
-  <div class="animated-text" id="animated-text"></div>
-  <img src="websitee is live.png" alt="Something Silly" class="silly-image">
-
-  <div class="guestbook">
-    <div class="guestbook-input-container">
-      <input type="text" id="guestbook-input" placeholder="Write a message...">
-      <button id="guestbook-submit">Post</button>
+  <!-- Hidden Content -->
+  <div id="silly-content" style="display:none;">
+    <h2 id="animated-text"></h2>
+    <img src="websitee is live.png" alt="Website is Live" class="silly-image">
+    <div id="guestbook-container">
+      <!-- Bravenet Guestbook -->
+      <script src="https://apps.bravenet.com/go.js?service=guestbook;id=1;usernum=1972844540" type="text/javascript" charset="utf-8"></script>
     </div>
-    <div class="guestbook-messages" id="guestbook-messages"></div>
   </div>
 </main>
 
+<!-- Footer -->
 <footer>
   <h3>Connect with me</h3>
   <div class="social-links">
@@ -183,68 +252,37 @@
 </footer>
 
 <script>
-// Navbar mobile toggle
+// Mobile nav
 const menuToggle = document.getElementById("menu-toggle");
 const navLinks = document.getElementById("nav-links");
 if(menuToggle && navLinks){
   menuToggle.addEventListener("click", () => { navLinks.classList.toggle("show"); });
-  document.querySelectorAll("#nav-links a").forEach(link => { link.addEventListener("click", () => navLinks.classList.remove("show")); });
-}
-
-// Click-to-reveal main content
-const clickButton = document.getElementById("click-button");
-const mainContent = document.getElementById("main-content");
-const animatedTextContainer = document.getElementById("animated-text");
-
-clickButton.addEventListener("click", () => {
-  document.getElementById("click-button-container").style.display = "none";
-  mainContent.style.display = "block";
-  mainContent.classList.add("fade-in");
-
-  // Animate text letter by letter
-  const text = "WELCOMMEE TO MY WEBSITTTEEEE";
-  text.split("").forEach((char, i) => {
-    const span = document.createElement("span");
-    span.textContent = char;
-    span.style.animationDelay = `${i * 0.08}s`;
-    animatedTextContainer.appendChild(span);
+  document.querySelectorAll("#nav-links a").forEach(link => { 
+    link.addEventListener("click", () => { navLinks.classList.remove("show"); }); 
   });
-
-  // Fade in guestbook messages container
-  document.getElementById("guestbook-messages").style.opacity = 1;
-});
-
-// Guestbook logic with timestamps
-const input = document.getElementById("guestbook-input");
-const submit = document.getElementById("guestbook-submit");
-const messagesDiv = document.getElementById("guestbook-messages");
-
-function loadMessages() {
-  const messages = JSON.parse(localStorage.getItem("guestbook") || "[]");
-  messagesDiv.innerHTML = messages.map(msgObj => `
-    <div class="message">
-      <div>${msgObj.text}</div>
-      <small>${msgObj.time}</small>
-    </div>
-  `).join("");
 }
 
-submit.addEventListener("click", () => {
-  const text = input.value.trim();
-  if(text){
-    const messages = JSON.parse(localStorage.getItem("guestbook") || "[]");
-    const now = new Date();
-    const timestamp = now.toLocaleString();
-    messages.push({ text, time: timestamp });
-    localStorage.setItem("guestbook", JSON.stringify(messages));
-    loadMessages();
-    input.value = "";
-  }
-});
+// Show silly content
+const clickMeButton = document.getElementById("click-me-button");
+const sillyContent = document.getElementById("silly-content");
+clickMeButton.addEventListener("click", () => {
+  sillyContent.style.display = "block";
+  clickMeButton.style.display = "none";
 
-loadMessages();
+  // Animate text after showing content
+  const text = "WELCOMMEE TO MY WEBSITTTEEEE";
+  const animatedText = document.getElementById("animated-text");
+  let i = 0;
+  function animateLetters() {
+    if(i < text.length) {
+      animatedText.innerHTML += text[i];
+      i++;
+      setTimeout(animateLetters, 150);
+    }
+  }
+  animateLetters();
+});
 </script>
 
 </body>
 </html>
-
