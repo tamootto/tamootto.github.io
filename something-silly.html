@@ -244,12 +244,39 @@ footer .social-links a:hover { text-decoration: underline; }
 
 <main>
   <!-- Click Me Button -->
-  <div id="button-container">
-    <div id="click-me-wrapper">
-      <img src="transparent button 5.png" id="click-me-button" alt="Click Me">
-      <span id="click-me-text">Click Me</span>
+<div id="button-container">
+  <div id="click-me-wrapper">
+    <div id="click-me-button">
+      Click Me
     </div>
   </div>
+</div>
+
+<style>
+#click-me-wrapper {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+#click-me-button {
+  width: 200px;
+  height: 80px; /* adjust as needed */
+  background: url('transparent button 5.png') no-repeat center/contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: black; /* changed to black */
+  border-radius: 12px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+#click-me-wrapper:hover #click-me-button {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px pink;
+}
+</style>
+
 
   <!-- Hidden Content -->
   <div id="silly-content" style="display:none;">
