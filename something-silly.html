@@ -1,152 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Something Silly</title>
-  <style>
-    body {
-      font-family: "Times New Roman", Times, serif;
-      text-align: center;
-      margin: 0;
-      padding: 0;
-      background-color: #fafafa;
-    }
-    nav {
-      background-color: #000;
-      padding: 1rem;
-      text-align: center;
-    }
-    nav a {
-      color: #fff;
-      margin: 0 1rem;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    main {
-      padding: 2rem;
-    }
-    .fun-button {
-      padding: 1rem 2rem;
-      background-color: #ff69b4; /* hot pink */
-      color: white;
-      border: none;
-      border-radius: 12px;
-      font-size: 1rem;
-      cursor: pointer;
-      margin: 1rem;
-      transition: transform 0.2s, background 0.2s;
-    }
-    .fun-button:hover {
-      background-color: #ff85c1;
-      transform: scale(1.1);
-    }
-    .fun-button.clicked {
-      background-color: #8e44ad; /* purple when clicked */
-    }
-    #display-area {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 2rem;
-    }
-    #display-image {
-      max-width: 80%;
-      border-radius: 12px;
-      margin-bottom: 1rem;
-      display: none;
-      opacity: 0;
-      transform: translateY(-50px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-    #display-image.show {
-      opacity: 1;
-      transform: translateY(0);
-      animation: bounce 0.6s ease;
-    }
-    @keyframes bounce {
-      0% { transform: translateY(-50px); }
-      50% { transform: translateY(10px); }
-      70% { transform: translateY(-5px); }
-      100% { transform: translateY(0); }
-    }
-    #display-message {
-      font-size: 1.2rem;
-      line-height: 1.5;
-      max-width: 800px;
-      font-weight: bold;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Something Silly - Isabelle Rashkin</title>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
 
-      /* Animated rainbow text with black outline */
-      background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet, red);
-      background-size: 400%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      -webkit-text-stroke: 1px black; /* black outline */
-      animation: rainbow-slide 5s linear infinite;
-    }
-    @keyframes rainbow-slide {
-      0% { background-position: 0%; }
-      100% { background-position: 400%; }
-    }
-  </style>
+<style>
+  body {
+    font-family: "Times New Roman", Times, serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ffe6f2, #e6f7ff, #fff0e6);
+    color: #333;
+    text-align: center;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Floating hearts */
+  .heart { position: fixed; width: 20px; height: 20px; background: pink; transform: rotate(45deg); animation: float linear infinite; opacity: 0.6; border-radius: 4px; z-index: 11; }
+  .heart::before, .heart::after { content: ""; position: absolute; background: pink; border-radius: 50%; }
+  .heart::before { top: -50%; left: 0; width: 100%; height: 100%; }
+  .heart::after { left: -50%; top: 0; width: 100%; height: 100%; }
+  @keyframes float { 0% { transform: translateY(100vh) rotate(45deg); opacity: 0.6; } 100% { transform: translateY(-20vh) rotate(45deg); opacity: 0; } }
+
+  /* Navbar */
+  nav { background-color: #000; padding: 1rem; position: fixed; top: 0; width: 100%; z-index: 1000; text-align: center; }
+  .nav-links { display: inline-block; }
+  nav a { color: #fff; margin: 0 0.5rem; text-decoration: none; font-weight: bold; display: inline-block; width: 120px; text-align: center; }
+  nav a:hover { text-decoration: underline; }
+  .menu-toggle { display: none; font-size: 1.8rem; color: #fff; cursor: pointer; background: none; border: none; position: absolute; right: 1rem; top: 0.75rem; z-index: 2000; }
+  @media (max-width: 768px) {
+    nav { padding: 1.5rem 1rem; }
+    nav a { display: block; width: 100%; padding: 0.75rem 0; margin: 0; text-align: center; }
+    .menu-toggle { display: block; }
+    .nav-links { display: flex; flex-direction: column; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; background: #000; position: absolute; top: 100%; left: 0; width: 100%; }
+    .nav-links.show { max-height: 500px; transition: max-height 0.3s ease-in; }
+    .heart { width: 12px; height: 12px; }
+  }
+
+  header { position: relative; background-color: #f8c8dc; padding: 1rem; text-align: center; box-sizing: border-box; margin-top: 60px; z-index: 10; }
+  header h1 { margin: 0.5rem 0; }
+  header p { margin: 0.25rem 0; }
+  header small { color: #555; }
+
+  /* Silly page specific */
+  .animated-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ff69b4;
+    margin: 2rem 0;
+    display: inline-block;
+    overflow: hidden;
+    white-space: normal;
+    word-spacing: 0.5rem;
+    letter-spacing: 0.05rem;
+    line-height: 1.2;
+    max-width: 90%;
+    text-align: center;
+  }
+  .animated-text span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: letterAppear 0.4s forwards;
+  }
+  @keyframes letterAppear { to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 480px) {
+    .animated-text { font-size: 1.8rem; word-spacing: 0.3rem; letter-spacing: 0.03rem; }
+  }
+
+  .silly-image { max-width: 100%; border-radius: 12px; margin: 2rem 0; }
+
+  .guestbook { margin-top: 3rem; text-align: center; }
+  .guestbook-input-container { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+  .guestbook input { padding: 0.5rem; border-radius: 5px; border: 1px solid #ccc; flex: 1 1 200px; }
+  .guestbook button { padding: 0.5rem 1rem; border-radius: 5px; border: none; background: #ffb6c1; color: #333; font-weight: bold; cursor: pointer; transition: 0.3s; }
+  .guestbook button:hover { box-shadow: 0 0 15px #ff69b4; }
+
+  .guestbook-messages { 
+    background: #fff;
+    color: #000;
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 1rem; 
+    min-height: 200px; 
+    padding: 1rem; 
+    border-radius: 12px; 
+    opacity: 0; 
+    transition: opacity 1s ease; 
+  }
+  .guestbook-messages .message { 
+    background: #ff69b4;
+    color: #000;
+    padding: 0.5rem 1rem; 
+    border-radius: 8px; 
+    min-width: 100px; 
+    max-width: 200px; 
+    word-wrap: break-word; 
+  }
+  .guestbook-messages .message small { display: block; margin-top: 4px; font-size: 0.7rem; color: #555; }
+
+  .fade-in { animation: fadeIn 1s forwards; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  footer { background-color: #222; color: #fff; padding: 2rem 1rem; margin-top: 2rem; position: relative; z-index: 10; }
+  footer h3 { margin-bottom: 1rem; }
+  .social-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+  .social-links a { color: #f8c8dc; text-decoration: none; font-weight: bold; }
+  .social-links a:hover { text-decoration: underline; }
+</style>
 </head>
 <body>
-  <nav>
+
+<!-- Floating hearts -->
+<div class="heart" style="left:5%; animation-duration:12s;"></div>
+<div class="heart" style="left:15%; animation-duration:10s;"></div>
+<div class="heart" style="left:25%; animation-duration:14s;"></div>
+<div class="heart" style="left:35%; animation-duration:9s;"></div>
+<div class="heart" style="left:45%; animation-duration:16s;"></div>
+<div class="heart" style="left:55%; animation-duration:12s;"></div>
+<div class="heart" style="left:65%; animation-duration:10s;"></div>
+<div class="heart" style="left:75%; animation-duration:14s;"></div>
+<div class="heart" style="left:85%; animation-duration:9s;"></div>
+<div class="heart" style="left:95%; animation-duration:16s;"></div>
+
+<!-- Navbar -->
+<nav>
+  <button class="menu-toggle" id="menu-toggle">&#9776;</button>
+  <div class="nav-links" id="nav-links">
     <a href="index.html">Home</a>
-    <a href="art.html">Art</a>
-    <a href="music.html">Music</a>
-    <a href="theatre.html">Theatre</a>
-    <a href="resume.html">Resume</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="contact.html">Contact</a>
+    <a href="art.html">Original Visual Art</a>
+    <a href="music.html">Original Music</a>
+    <a href="theatre.html">Miscellania Theatre Co</a>
+    <a href="resume.html">Headshot & Resume</a>
+    <a href="gallery.html">Media Gallery</a>
+    <a href="contact.html">Contact Me</a>
     <a href="something-silly.html">Something Silly</a>
-  </nav>
+  </div>
+</nav>
 
-  <main>
-    <h1>Something Silly</h1>
-    <p>Click a button to reveal a silly message and image!</p>
+<header>
+  <h1>Isabelle Rashkin</h1>
+  <p>Multi-disciplinary artist based in Brooklyn, NYC</p>
+  <p><small>Interlochen Arts Academy 2018 / University of Wisconsin-Milwaukee 2022</small></p>
+</header>
 
-    <!-- Buttons -->
-    <button class="fun-button" onclick="showSilly(1, this)">Summer Fun</button>
-    <button class="fun-button" onclick="showSilly(2, this)">Workin!</button>
-    <button class="fun-button" onclick="showSilly(3, this)">Love is but a Game!</button>
+<!-- Click-to-reveal button -->
+<div id="click-button-container" style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%); z-index:2000;">
+  <button id="click-button" style="background: url('transparent button 5.png') no-repeat center/contain; border:none; width:200px; height:80px; cursor:pointer; color:#fff; font-weight:bold; font-size:1.2rem; text-shadow: 0 0 5px #ff69b4;">Click Me</button>
+</div>
 
-    <!-- Display Area -->
-    <div id="display-area">
-      <img id="display-image" src="" alt="">
-      <p id="display-message"></p>
+<main id="main-content" style="display:none;">
+  <div class="animated-text" id="animated-text"></div>
+  <img src="websitee is live.png" alt="Something Silly" class="silly-image">
+
+  <div class="guestbook">
+    <div class="guestbook-input-container">
+      <input type="text" id="guestbook-input" placeholder="Write a message...">
+      <button id="guestbook-submit">Post</button>
     </div>
-  </main>
+    <div class="guestbook-messages" id="guestbook-messages"></div>
+  </div>
+</main>
 
-  <script>
-    function showSilly(buttonNumber, buttonElement) {
-      const image = document.getElementById("display-image");
-      const message = document.getElementById("display-message");
+<footer>
+  <h3>Connect with me</h3>
+  <div class="social-links">
+    <a href="https://www.instagram.com/tamoottopro/" target="_blank">Instagram (Personal)</a>
+    <a href="https://www.instagram.com/Bee_original_music/" target="_blank">Instagram (Music)</a>
+    <a href="https://x.com/tamoottopro" target="_blank">X (Twitter)</a>
+    <a href="https://www.linkedin.com/in/isabelle-rashkin-82958228/" target="_blank">LinkedIn</a>
+    <a href="mailto:ivrashkin@gmail.com">Email</a>
+    <a href="https://open.spotify.com/artist/2TRjrme5uq3GM8qMF7y0QI" target="_blank">Spotify</a>
+    <a href="https://www.youtube.com/channel/UCa9acPRSIGUmjgn54hz17eA" target="_blank">YouTube Music</a>
+    <a href="https://music.apple.com/ca/artist/isabelle-bee-rashkin/1773658949" target="_blank">Apple Music</a>
+    <a href="https://www.backstage.com/u/isabelle-rashkin/" target="_blank">Backstage</a>
+  </div>
+</footer>
 
-      const buttons = document.querySelectorAll(".fun-button");
-      buttons.forEach(btn => btn.classList.remove("clicked"));
+<script>
+// Navbar mobile toggle
+const menuToggle = document.getElementById("menu-toggle");
+const navLinks = document.getElementById("nav-links");
+if(menuToggle && navLinks){
+  menuToggle.addEventListener("click", () => { navLinks.classList.toggle("show"); });
+  document.querySelectorAll("#nav-links a").forEach(link => { link.addEventListener("click", () => navLinks.classList.remove("show")); });
+}
 
-      buttonElement.classList.add("clicked");
+// Click-to-reveal main content
+const clickButton = document.getElementById("click-button");
+const mainContent = document.getElementById("main-content");
+const animatedTextContainer = document.getElementById("animated-text");
 
-      if (buttonNumber === 1) {
-        image.src = "3B0BBFF6-186A-4E72-8AB3-D23F05194E33_4_5005_c.jpeg";
-        message.textContent = "HAPPY END OF SUMMER! I hope you had a great time - I know I sure did :) I travelled to Philly, Chicago, and a bunch of random suburbs in between! Yay for adventures :)";
-      } else if (buttonNumber === 2) {
-        image.src = "7C6987D9-EC51-4AB1-A4DF-0656C7FD3152.jpeg";
-        message.textContent = "DAMN! I am not doing well at my job right now. Everyday I am lucky to continued to be employed";
-      } else if (buttonNumber === 3) {
-        image.src = "D482C25D-69B6-4566-8029-5044390B91A0_4_5005_c.jpeg";
-        message.textContent = "Love my boyfriend and hamtaro so both of these things are brought together in this image. Obviously I am Bijou. Okwee!";
-      }
+clickButton.addEventListener("click", () => {
+  document.getElementById("click-button-container").style.display = "none";
+  mainContent.style.display = "block";
+  mainContent.classList.add("fade-in");
 
-      image.style.display = "block";
-      image.classList.remove("show");
-      void image.offsetWidth;
-      image.classList.add("show");
-    }
-  </script>
+  // Animate text letter by letter
+  const text = "WELCOMMEE TO MY WEBSITTTEEEE";
+  text.split("").forEach((char, i) => {
+    const span = document.createElement("span");
+    span.textContent = char;
+    span.style.animationDelay = `${i * 0.08}s`;
+    animatedTextContainer.appendChild(span);
+  });
+
+  // Fade in guestbook messages container
+  document.getElementById("guestbook-messages").style.opacity = 1;
+});
+
+// Guestbook logic with timestamps
+const input = document.getElementById("guestbook-input");
+const submit = document.getElementById("guestbook-submit");
+const messagesDiv = document.getElementById("guestbook-messages");
+
+function loadMessages() {
+  const messages = JSON.parse(localStorage.getItem("guestbook") || "[]");
+  messagesDiv.innerHTML = messages.map(msgObj => `
+    <div class="message">
+      <div>${msgObj.text}</div>
+      <small>${msgObj.time}</small>
+    </div>
+  `).join("");
+}
+
+submit.addEventListener("click", () => {
+  const text = input.value.trim();
+  if(text){
+    const messages = JSON.parse(localStorage.getItem("guestbook") || "[]");
+    const now = new Date();
+    const timestamp = now.toLocaleString();
+    messages.push({ text, time: timestamp });
+    localStorage.setItem("guestbook", JSON.stringify(messages));
+    loadMessages();
+    input.value = "";
+  }
+});
+
+loadMessages();
+</script>
+
 </body>
 </html>
+
