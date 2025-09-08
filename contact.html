@@ -156,6 +156,13 @@
   }
   .contact-form button:hover { background: #f5a6c6; }
 
+  .thank-you {
+    display: none;
+    margin-top: 1rem;
+    color: green;
+    font-weight: bold;
+  }
+
   /* Dancing images */
   .tilt-img {
     width: 150px;
@@ -234,12 +241,13 @@
   
   <div class="contact-form">
     <h2>Contact Me</h2>
-    <form action="mailto:ivrashkin@gmail.com" method="post" enctype="text/plain">
+    <form id="contact-form" action="https://formspree.io/f/mjkejaqa" method="POST">
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
       <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
       <button type="submit">Send</button>
     </form>
+    <div class="thank-you">Thank you! Your message has been sent.</div>
   </div>
 
   <img src="flora pre transparent.png" alt="Flora" class="tilt-img right">
@@ -261,7 +269,7 @@
   </div>
 </footer>
 
-<!-- Mobile nav JS -->
+<!-- Mobile nav + Form JS -->
 <script>
 const menuToggle = document.getElementById("menu-toggle");
 const navLinks = document.getElementById("nav-links");
@@ -276,6 +284,35 @@ if(menuToggle && navLinks){
     });
   });
 }
+
+// Handle Formspree submission without redirect
+const form = document.getElementById("contact-form");
+const thankYou = document.querySelector(".thank-you");
+
+if(form){
+  form.addEventListener("submit", async function(event){
+    event.preventDefault();
+    const formData = new FormData(form);
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    });
+    if(response.ok){
+      form.reset();
+      thankYou.style.display = "block";
+    } else {
+      thankYou.style.display = "block";
+      thankYou.style.color = "red";
+      thankYou.textContent = "Oops! Something went wrong. Please try again.";
+    }
+  });
+}
+</script>
+
+</body>
+</html>
+
 </script>
 
 </body>
