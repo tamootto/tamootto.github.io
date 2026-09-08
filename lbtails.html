@@ -1,2285 +1,1604 @@
 ```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Leafborough Tails - Isabelle Rashkin</title>
-
-<link rel="icon" href="/favicon.ico" type="image/x-icon">
-
-<!-- GLightbox CSS -->
-<link
-  href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css"
-  rel="stylesheet"
->
-
-<style>
-
-/* =========================================
-   GENERAL PAGE
-   ========================================= */
-
-body {
-  font-family: "Times New Roman", Times, serif;
-  margin: 0;
-  padding: 0;
-
-  background:
-    linear-gradient(
-      135deg,
-      #ffe6f2,
-      #e6f7ff,
-      #fff0e6
-    );
-
-  color: #333;
-  text-align: center;
-
-  position: relative;
-  overflow-x: hidden;
-}
-
-
-/* =========================================
-   FLOATING HEARTS
-   ========================================= */
-
-.heart {
-  position: fixed;
-
-  width: 20px;
-  height: 20px;
-
-  background: pink;
-
-  transform: rotate(45deg);
-
-  animation: float linear infinite;
-
-  opacity: 0.6;
-
-  border-radius: 4px;
-
-  z-index: 11;
-
-  pointer-events: none;
-}
-
-.heart::before,
-.heart::after {
-  content: "";
-
-  position: absolute;
-
-  background: pink;
-
-  border-radius: 50%;
-}
-
-.heart::before {
-  top: -50%;
-  left: 0;
-
-  width: 100%;
-  height: 100%;
-}
-
-.heart::after {
-  left: -50%;
-  top: 0;
-
-  width: 100%;
-  height: 100%;
-}
-
-@keyframes float {
-
-  0% {
-    transform:
-      translateY(100vh)
-      rotate(45deg);
-
-    opacity: 0.6;
-  }
-
-  100% {
-    transform:
-      translateY(-20vh)
-      rotate(45deg);
-
-    opacity: 0;
-  }
-
-}
-
-
-/* =========================================
-   NAVIGATION
-   ========================================= */
-
-nav {
-  background-color: #000;
-
-  padding: 1rem;
-
-  position: fixed;
-
-  top: 0;
-
-  width: 100%;
-
-  z-index: 1000;
-
-  text-align: center;
-}
-
-.nav-links {
-  display: inline-block;
-}
-
-nav a {
-  color: #fff;
-
-  margin: 0 0.5rem;
-
-  text-decoration: none;
-
-  font-weight: bold;
-
-  display: inline-block;
-
-  width: 120px;
-
-  text-align: center;
-}
-
-nav a:hover {
-  text-decoration: underline;
-}
-
-
-/* Mobile hamburger */
-
-.menu-toggle {
-  display: none;
-
-  font-size: 1.8rem;
-
-  color: #fff;
-
-  cursor: pointer;
-
-  background: none;
-
-  border: none;
-
-  position: absolute;
-
-  right: 1rem;
-
-  top: 0.75rem;
-
-  z-index: 2000;
-}
-
-
-/* =========================================
-   HEADER
-   ========================================= */
-
-header {
-
-  position: relative;
-
-  background-color: #f8c8dc;
-
-  padding: 2rem 1rem;
-
-  text-align: center;
-
-  box-sizing: border-box;
-
-  margin-top: 60px;
-
-  z-index: 10;
-}
-
-header h1 {
-  margin: 0.5rem 0;
-
-  font-size: 2.7rem;
-}
-
-header p {
-  margin: 0.4rem 0;
-
-  font-size: 1.1rem;
-}
-
-header small {
-  color: #555;
-}
-
-
-/* =========================================
-   MAIN
-   ========================================= */
-
-main {
-
-  padding: 2rem;
-
-  max-width: 1200px;
-
-  margin: auto;
-
-  position: relative;
-
-  z-index: 20;
-}
-
-
-/* =========================================
-   SECTIONS
-   ========================================= */
-
-.leafborough-section {
-
-  margin: 3rem auto 5rem;
-
-  padding: 2rem;
-}
-
-.section-heading {
-
-  margin-bottom: 2.5rem;
-}
-
-.section-heading h2 {
-
-  font-size: 2.3rem;
-
-  margin-bottom: 0.75rem;
-}
-
-.section-intro {
-
-  max-width: 750px;
-
-  margin: auto;
-
-  line-height: 1.7;
-
-  font-size: 1.05rem;
-}
-
-
-/* =========================================
-   SECTION 1
-   WHAT IS LEAFBOROUGH?
-   ========================================= */
-
-.about-container {
-
-  display: flex;
-
-  justify-content: center;
-
-  align-items: stretch;
-
-  gap: 2rem;
-
-  margin-top: 2rem;
-
-  text-align: left;
-}
-
-.about-text,
-.leafborough-facts {
-
-  background:
-    rgba(255, 255, 255, 0.82);
-
-  border-radius: 15px;
-
-  padding: 2rem;
-
-  box-shadow:
-    0 4px 15px rgba(0, 0, 0, 0.08);
-}
-
-.about-text {
-
-  flex: 2;
-}
-
-.about-text h3 {
-
-  margin-top: 0;
-
-  font-size: 1.6rem;
-}
-
-.about-text p {
-
-  line-height: 1.8;
-
-  font-size: 1.05rem;
-}
-
-.leafborough-facts {
-
-  flex: 1;
-}
-
-.leafborough-facts h3 {
-
-  margin-top: 0;
-
-  text-align: center;
-}
-
-.fact {
-
-  padding: 0.85rem 0;
-
-  border-bottom:
-    1px solid #eee;
-}
-
-.fact:last-child {
-
-  border-bottom: none;
-}
-
-.fact strong {
-
-  display: block;
-
-  margin-bottom: 0.25rem;
-}
-
-.fact span {
-
-  color: #666;
-
-  line-height: 1.5;
-}
-
-
-/* =========================================
-   FEATURE IMAGE
-   ========================================= */
-
-.feature-image {
-
-  margin: 3rem auto 0;
-
-  max-width: 850px;
-}
-
-.feature-image img {
-
-  width: 100%;
-
-  max-height: 600px;
-
-  object-fit: contain;
-
-  border-radius: 15px;
-
-  display: block;
-
-  margin: auto;
-
-  box-shadow:
-    0 5px 20px rgba(0, 0, 0, 0.12);
-
-  transition:
-    transform 0.3s ease;
-}
-
-.feature-image img:hover {
-
-  transform: scale(1.01);
-}
-
-.image-caption {
-
-  font-style: italic;
-
-  color: #666;
-
-  margin-top: 0.75rem;
-}
-
-
-/* =========================================
-   SECTION DIVIDER
-   ========================================= */
-
-.leafborough-section::before {
-
-  content: "";
-
-  display: block;
-
-  width: 80px;
-
-  height: 4px;
-
-  background: #f8c8dc;
-
-  margin: 0 auto 2rem;
-
-  border-radius: 10px;
-}
-
-
-/* =========================================
-   SECTION 2
-   ARTWORK
-   ========================================= */
-
-.art-grid {
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(3, 1fr);
-
-  gap: 2rem;
-}
-
-.art-card {
-
-  background:
-    rgba(255, 255, 255, 0.85);
-
-  border-radius: 15px;
-
-  overflow: hidden;
-
-  box-shadow:
-    0 4px 15px rgba(0, 0, 0, 0.08);
-
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.art-card:hover {
-
-  transform:
-    translateY(-5px);
-
-  box-shadow:
-    0 8px 22px rgba(0, 0, 0, 0.12);
-}
-
-.art-card > a {
-
-  display: block;
-}
-
-.art-card img {
-
-  width: 100%;
-
-  height: 300px;
-
-  object-fit: cover;
-
-  display: block;
-}
-
-.art-info {
-
-  padding: 1.25rem;
-
-  text-align: left;
-}
-
-.art-info h3 {
-
-  margin-top: 0;
-
-  font-size: 1.4rem;
-}
-
-.art-info p {
-
-  line-height: 1.6;
-}
-
-.art-info small {
-
-  color: #777;
-}
-
-
-/* =========================================
-   SECTION 3
-   COMICS
-   ========================================= */
-
-.comic-list {
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 2rem;
-
-  max-width: 1000px;
-
-  margin: auto;
-}
-
-.comic-card {
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 2rem;
-
-  background:
-    rgba(255, 255, 255, 0.88);
-
-  padding: 1.5rem;
-
-  border-radius: 15px;
-
-  text-align: left;
-
-  box-shadow:
-    0 4px 15px rgba(0, 0, 0, 0.08);
-
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.comic-card:hover {
-
-  transform:
-    translateY(-3px);
-
-  box-shadow:
-    0 8px 22px rgba(0, 0, 0, 0.12);
-}
-
-.comic-image {
-
-  flex: 0 0 280px;
-}
-
-.comic-image img {
-
-  width: 100%;
-
-  height: 350px;
-
-  object-fit: cover;
-
-  border-radius: 10px;
-
-  display: block;
-}
-
-.comic-info {
-
-  flex: 1;
-}
-
-.comic-info h3 {
-
-  margin-top: 0;
-
-  font-size: 1.6rem;
-}
-
-.comic-date {
-
-  color: #888;
-
-  font-style: italic;
-}
-
-.comic-info p {
-
-  line-height: 1.7;
-}
-
-
-/* =========================================
-   BUTTONS
-   ========================================= */
-
-.comic-button {
-
-  display: inline-block;
-
-  background: #f8c8dc;
-
-  color: #333;
-
-  text-decoration: none;
-
-  font-weight: bold;
-
-  padding: 0.7rem 1.2rem;
-
-  border-radius: 8px;
-
-  margin-top: 0.5rem;
-
-  transition:
-    background 0.2s ease,
-    transform 0.2s ease;
-}
-
-.comic-button:hover {
-
-  background: #f3aeca;
-
-  transform:
-    translateY(-2px);
-}
-
-
-/* =========================================
-   FINAL CTA
-   ========================================= */
-
-.leafborough-cta {
-
-  max-width: 800px;
-
-  margin: 4rem auto;
-
-  padding: 3rem 2rem;
-
-  background:
-    rgba(248, 200, 220, 0.75);
-
-  border-radius: 20px;
-}
-
-.leafborough-cta h2 {
-
-  margin-top: 0;
-
-  font-size: 2rem;
-}
-
-.leafborough-cta p {
-
-  line-height: 1.7;
-}
-
-
-/* =========================================
-   FOOTER
-   ========================================= */
-
-footer {
-
-  background-color: #222;
-
-  color: #fff;
-
-  padding: 2rem 1rem;
-
-  margin-top: 2rem;
-
-  position: relative;
-
-  z-index: 10;
-}
-
-footer h3 {
-
-  margin-bottom: 1rem;
-}
-
-.social-links {
-
-  display: flex;
-
-  flex-wrap: wrap;
-
-  justify-content: center;
-
-  gap: 1rem;
-}
-
-.social-links a {
-
-  color: #f8c8dc;
-
-  text-decoration: none;
-
-  font-weight: bold;
-}
-
-.social-links a:hover {
-
-  text-decoration: underline;
-}
-
-
-/* =========================================
-   MOBILE
-   ========================================= */
-
-@media (max-width: 768px) {
-
-  nav {
-
-    padding: 1.5rem 1rem;
-  }
-
-  nav a {
-
-    display: block;
-
-    width: 100%;
-
-    padding: 0.75rem 0;
-
-    margin: 0;
-
-    text-align: center;
-  }
-
-  .menu-toggle {
-
-    display: block;
-  }
-
-  .nav-links {
-
-    display: flex;
-
-    flex-direction: column;
-
-    max-height: 0;
-
-    overflow: hidden;
-
-    transition:
-      max-height 0.3s ease-out;
-
-    background: #000;
-
-    position: absolute;
-
-    top: 100%;
-
-    left: 0;
-
-    width: 100%;
-  }
-
-  .nav-links.show {
-
-    max-height: 600px;
-
-    transition:
-      max-height 0.3s ease-in;
-  }
-
-  .heart {
-
-    width: 12px;
-
-    height: 12px;
-  }
-
-  header {
-
-    margin-top: 65px;
-
-    padding:
-      1.5rem 1rem;
-  }
-
-  header h1 {
-
-    font-size: 2rem;
-  }
-
-  main {
-
-    padding: 1rem;
-  }
-
-  .leafborough-section {
-
-    padding: 1rem;
-
-    margin:
-      2rem auto 4rem;
-  }
-
-  .section-heading h2 {
-
-    font-size: 1.8rem;
-  }
-
-  .about-container {
-
-    flex-direction: column;
-  }
-
-  .art-grid {
-
-    grid-template-columns: 1fr;
-  }
-
-  .art-card img {
-
-    height: auto;
-
-    max-height: 500px;
-
-    object-fit: contain;
-  }
-
-  .comic-card {
-
-    flex-direction: column;
-
-    align-items: stretch;
-  }
-
-  .comic-image {
-
-    flex: none;
-  }
-
-  .comic-image img {
-
-    height: auto;
-
-    max-height: 600px;
-
-    object-fit: contain;
-  }
-
-  .comic-info {
-
-    text-align: center;
-  }
-
-}
-
-
-/* =========================================
-   EXTRA SMALL PHONES
-   ========================================= */
-
-@media (max-width: 450px) {
-
-  header h1 {
-
-    font-size: 1.7rem;
-  }
-
-  .section-heading h2 {
-
-    font-size: 1.6rem;
-  }
-
-  .about-text,
-  .leafborough-facts {
-
-    padding: 1.25rem;
-  }
-
-}
-
-
-/* =========================================
-   REDUCED MOTION ACCESSIBILITY
-   ========================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-  .heart {
-
-    animation: none;
-  }
-
-  .art-card,
-  .comic-card,
-  .comic-button,
-  .feature-image img {
-
-    transition: none;
-  }
-
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Leafborough Tails — Isabelle "Bee" Rashkin</title>
+
+    <!-- GLightbox -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/css/glightbox.min.css"
+    >
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Times New Roman", Times, serif;
+            background: linear-gradient(
+                135deg,
+                #ffe6f2,
+                #e6f7ff,
+                #fff0e6
+            );
+            color: #222;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: #000;
+            padding: 0.8rem 1rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #f8c8dc;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            position: relative;
+            overflow: hidden;
+            background: #f8c8dc;
+            text-align: center;
+            padding: 3rem 1.5rem;
+        }
+
+        header h1 {
+            margin: 0 0 0.5rem;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+        }
+
+        header p {
+            margin: 0.25rem 0;
+            font-size: 1.1rem;
+        }
+
+        header small {
+            font-size: 0.95rem;
+        }
+
+        /* =========================
+           FLOATING HEARTS
+        ========================= */
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            transform: rotate(45deg);
+            opacity: 0.7;
+            animation: floatHeart 7s ease-in-out infinite;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: -10px;
+            top: 0;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(20px) rotate(45deg);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.7;
+            }
+
+            50% {
+                transform: translateY(-30px) rotate(45deg);
+            }
+
+            80% {
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: translateY(20px) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        /* =========================
+           GENERAL LAYOUT
+        ========================= */
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: 5rem;
+        }
+
+        section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        section h3 {
+            font-size: 1.5rem;
+            margin-top: 0;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* =========================
+           WELCOME GRAPHIC
+        ========================= */
+
+        .welcome-section {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .welcome-graphic {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            border-radius: 12px;
+        }
+
+        /* =========================
+           LEAFBOROUGH AT A GLANCE
+        ========================= */
+
+        .glance-layout {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .glance-info,
+        .glance-image {
+            flex: 1;
+        }
+
+        .glance-info {
+            background: rgba(255, 255, 255, 0.75);
+            padding: 2rem;
+            border-radius: 12px;
+        }
+
+        .glance-info dl {
+            margin: 0;
+        }
+
+        .glance-info dt {
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .glance-info dt:first-child {
+            margin-top: 0;
+        }
+
+        .glance-info dd {
+            margin-left: 0;
+        }
+
+        .glance-image img {
+            width: 100%;
+            border-radius: 12px;
+        }
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.75);
+            padding: 2.5rem;
+            border-radius: 12px;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* =========================
+           ARTWORK GRID
+        ========================= */
+
+        .art-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .art-card {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+            overflow: hidden;
+            padding-bottom: 1.5rem;
+        }
+
+        .art-card a {
+            display: block;
+        }
+
+        .art-card img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+        }
+
+        .art-card-content {
+            padding: 1.25rem;
+        }
+
+        .art-card-content h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .art-card-content p {
+            margin: 0.4rem 0;
+        }
+
+        /* =========================
+           COMICS
+        ========================= */
+
+        .comics-container {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .comic-card {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+            overflow: hidden;
+            padding: 1.5rem;
+        }
+
+        .comic-card:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .comic-preview {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .comic-preview > a:first-child {
+            display: block;
+        }
+
+        .comic-preview img {
+            width: 100%;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .comic-info {
+            flex: 1;
+            padding: 1rem;
+        }
+
+        .comic-info h3 {
+            margin-bottom: 0.25rem;
+        }
+
+        .comic-date {
+            font-style: italic;
+            margin-top: 0;
+        }
+
+        .read-comic {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.75rem 1.25rem;
+            background: #f8c8dc;
+            color: #222;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .read-comic:hover {
+            background: #f2a9c8;
+            transform: translateY(-2px);
+        }
+
+        /*
+            These are the additional comic pages.
+
+            They stay hidden on the main page but are still
+            included in the GLightbox gallery.
+
+            You can add as many as you want.
+        */
+
+        .comic-lightbox-page {
+            display: none;
+        }
+
+        /* =========================
+           FINAL CTA
+        ========================= */
+
+        .final-cta {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+            padding: 3rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .final-cta h2 {
+            margin-top: 0;
+        }
+
+        .final-cta a {
+            color: #d94f8b;
+            font-weight: bold;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 3rem 1.5rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            color: #f8c8dc;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .social-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 850px) {
+
+            .nav-container {
+                justify-content: flex-end;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 1rem;
+                gap: 0.8rem;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            nav {
+                padding: 0.7rem 1rem;
+            }
+
+            .glance-layout {
+                flex-direction: column;
+            }
+
+            .glance-info,
+            .glance-image {
+                width: 100%;
+            }
+
+            .art-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comic-card,
+            .comic-card:nth-child(even) {
+                flex-direction: column;
+            }
+
+            .comic-preview,
+            .comic-info {
+                width: 100%;
+            }
+
+            .comic-info {
+                padding: 0.5rem;
+            }
+
+            .read-comic {
+                display: block;
+                text-align: center;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            main {
+                padding: 1rem;
+            }
+
+            header {
+                padding: 2.5rem 1rem;
+            }
+
+            section {
+                margin-bottom: 3.5rem;
+            }
+
+            .about-content,
+            .glance-info {
+                padding: 1.5rem;
+            }
+
+            .comic-card {
+                padding: 1rem;
+            }
+        }
+    </style>
 </head>
-
 
 <body>
 
-
-<!-- =========================================
-     FLOATING HEARTS
-     ========================================= -->
-
-<div class="heart" style="left:5%; animation-duration:12s;"></div>
-<div class="heart" style="left:15%; animation-duration:10s;"></div>
-<div class="heart" style="left:25%; animation-duration:14s;"></div>
-<div class="heart" style="left:35%; animation-duration:9s;"></div>
-<div class="heart" style="left:45%; animation-duration:16s;"></div>
-<div class="heart" style="left:55%; animation-duration:12s;"></div>
-<div class="heart" style="left:65%; animation-duration:10s;"></div>
-<div class="heart" style="left:75%; animation-duration:14s;"></div>
-<div class="heart" style="left:85%; animation-duration:9s;"></div>
-<div class="heart" style="left:95%; animation-duration:16s;"></div>
-
-
-
-<!-- =========================================
-     NAVIGATION
-     ========================================= -->
-
-<nav>
-
-  <button
-    class="menu-toggle"
-    id="menu-toggle"
-    aria-label="Open navigation menu"
-  >
-    &#9776;
-  </button>
-
-  <div
-    class="nav-links"
-    id="nav-links"
-  >
-
-    <a href="index.html">Home</a>
-
-    <a href="art.html">
-      Original Visual Art
-    </a>
-
-    <a href="music.html">
-      Original Music
-    </a>
-
-    <a href="theatre.html">
-      Miscellania Theatre Co
-    </a>
-
-    <a href="resume.html">
-      Headshot & Resume
-    </a>
-
-    <a href="gallery.html">
-      Media Gallery
-    </a>
-
-    <a href="contact.html">
-      Contact Me
-    </a>
-
-    <a href="lbtrails.html">
-      Leafborough Tails
-    </a>
-
-  </div>
-
-</nav>
-
-
-
-<!-- =========================================
-     PAGE HEADER
-     ========================================= -->
-
-<header>
-
-  <h1>
-    Leafborough Tails
-  </h1>
-
-  <!-- ✏️ EDIT HERE -->
-
-  <p>
-    My original comic series
-  </p>
-
-  <p>
-
-    <small>
-      <!-- ✏️ EDIT HERE -->
-
-      A world of characters, stories,
-      adventures, and questionable decisions.
-
-    </small>
-
-  </p>
-
-</header>
-
-
-
-<main>
-
-
-
-<!-- =========================================
-     SECTION 1
-     WHAT IS LEAFBOROUGH?
-     ========================================= -->
-
-<section
-  class="leafborough-section"
-  id="about"
->
-
-
-  <div class="section-heading">
-
-    <h2>
-      🌿 What is Leafborough?
-    </h2>
-
-    <!-- ✏️ EDIT HERE -->
-
-    <p class="section-intro">
-
-      <strong>
-        [WRITE A SHORT ONE-SENTENCE TAGLINE ABOUT LEAFBOROUGH HERE]
-      </strong>
-
-    </p>
-
-  </div>
-
-
-
-  <div class="about-container">
-
-
-    <!-- -------------------------------------
-         ABOUT TEXT
-         ------------------------------------- -->
-
-    <div class="about-text">
-
-      <h3>
-        Welcome to Leafborough
-      </h3>
-
-
-      <!-- ✏️ EDIT HERE -->
-
-      <p>
-
-        [WRITE YOUR FIRST PARAGRAPH HERE.
-        INTRODUCE THE READER TO LEAFBOROUGH.]
-
-      </p>
-
-
-      <!-- ✏️ EDIT HERE -->
-
-      <p>
-
-        [WRITE YOUR SECOND PARAGRAPH HERE.
-        EXPLAIN WHAT LEAFBOROUGH IS,
-        WHERE IT IS, AND WHAT MAKES IT UNIQUE.]
-
-      </p>
-
-
-      <!-- ✏️ EDIT HERE -->
-
-      <p>
-
-        [WRITE YOUR THIRD PARAGRAPH HERE.
-        DESCRIBE THE TONE, THEMES, OR TYPES
-        OF STORIES FOUND IN THE SERIES.]
-
-      </p>
-
-
-      <!-- ✏️ EDIT HERE / OPTIONAL -->
-
-      <p>
-
-        [OPTIONAL FOURTH PARAGRAPH.
-        ADD ANYTHING ELSE YOU WANT NEW READERS TO KNOW.]
-
-      </p>
-
-    </div>
-
-
-
-    <!-- -------------------------------------
-         QUICK FACTS
-         ------------------------------------- -->
-
-    <div class="leafborough-facts">
-
-      <h3>
-        Leafborough at a Glance
-      </h3>
-
-
-      <!-- ✏️ EDIT HERE -->
-
-      <div class="fact">
-
-        <strong>
-          Created by:
-        </strong>
-
-        <span>
-          [YOUR NAME]
-        </span>
-
-      </div>
-
-
-      <!-- ✏️ EDIT HERE -->
-
-      <div class="fact">
-
-        <strong>
-          Genre:
-        </strong>
-
-        <span>
-          [COMEDY / FANTASY / SLICE OF LIFE / ETC.]
-        </span>
-
-      </div>
-
-
-      <!-- ✏️ EDIT HERE -->
-
-      <div class="fact">
-
-        <strong>
-          Started:
-        </strong>
-
-        <span>
-          [YEAR]
-        </span>
-
-      </div>
-
-
-      <!-- ✏️ EDIT HERE -->
-
-      <div class="fact">
-
-        <strong>
-          Setting:
-        </strong>
-
-        <span>
-          [WHERE / WHEN THE STORY TAKES PLACE]
-        </span>
-
-      </div>
-
-
-      <!-- ✏️ EDIT HERE -->
-
-      <div class="fact">
-
-        <strong>
-          Format:
-        </strong>
-
-        <span>
-          [WEBCOMIC / COMIC STRIPS / GRAPHIC NOVEL / ETC.]
-        </span>
-
-      </div>
-
-
-      <!-- ✏️ EDIT HERE -->
-
-      <div class="fact">
-
-        <strong>
-          Status:
-        </strong>
-
-        <span>
-          [ONGOING / COMPLETED / IN DEVELOPMENT]
-        </span>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-
-  <!-- =====================================
-       MAIN LEAFBOROUGH IMAGE
-       ===================================== -->
-
-  <div class="feature-image">
-
-
-    <!-- ✏️ EDIT HERE
-
-         Change BOTH instances of:
-
-         leafborough-map.jpg
-
-         to the filename of your image.
-
-         Example:
-
-         leafborough-world.jpg
-    -->
-
-    <a
-      href="leafborough-map.jpg"
-      class="glightbox"
-      data-gallery="leafborough"
-      data-title="Leafborough"
-    >
-
-      <img
-        src="leafborough-map.jpg"
-        alt="Leafborough"
-      >
-
-    </a>
-
-
-    <!-- ✏️ EDIT HERE -->
-
-    <p class="image-caption">
-
-      [WRITE A CAPTION FOR THIS IMAGE]
-
-    </p>
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================================
-     SECTION 2
-     ARTWORK & CONCEPT ART
-     ========================================= -->
-
-<section
-  class="leafborough-section"
-  id="artwork"
->
-
-
-  <div class="section-heading">
-
-    <h2>
-      🎨 Artwork & Concept Art
-    </h2>
-
-
-    <!-- ✏️ EDIT HERE -->
-
-    <p class="section-intro">
-
-      [WRITE A SHORT INTRODUCTION TO YOUR
-      LEAFBOROUGH ARTWORK AND CONCEPT ART HERE.]
-
-    </p>
-
-  </div>
-
-
-
-  <div class="art-grid">
-
-
-
-    <!-- =====================================
-         ARTWORK #1
-         ===================================== -->
-
-    <div class="art-card">
-
-
-      <!-- ✏️ EDIT IMAGE FILENAME -->
-
-      <a
-        href="leafborough-art-01.jpg"
-        class="glightbox"
-        data-gallery="leafborough-art"
-        data-title="[ARTWORK TITLE]"
-      >
-
-        <img
-          src="leafborough-art-01.jpg"
-          alt="[DESCRIPTION OF IMAGE]"
-        >
-
-      </a>
-
-
-      <div class="art-info">
-
-
-        <!-- ✏️ EDIT HERE -->
-
-        <h3>
-          [ARTWORK TITLE]
-        </h3>
-
-
-        <!-- ✏️ EDIT HERE -->
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <nav>
+        <div class="nav-container">
+
+            <button
+                class="menu-toggle"
+                aria-label="Open navigation menu"
+                onclick="toggleMenu()"
+            >
+                ☰
+            </button>
+
+            <div class="nav-links" id="navLinks">
+
+                <a href="index.html">Home</a>
+
+                <a href="art.html">
+                    Original Visual Art
+                </a>
+
+                <a href="music.html">
+                    Original Music
+                </a>
+
+                <a href="theatre.html">
+                    Miscellania Theatre Co
+                </a>
+
+                <a href="resume.html">
+                    Headshot &amp; Resume
+                </a>
+
+                <a href="gallery.html">
+                    Media Gallery
+                </a>
+
+                <a href="contact.html">
+                    Contact Me
+                </a>
+
+                <a href="something-silly.html">
+                    Something Silly
+                </a>
+
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- =========================
+         ARTIST HEADER
+    ========================= -->
+
+    <header>
+
+        <div
+            class="heart"
+            style="left: 8%; animation-duration: 6s;"
+        ></div>
+
+        <div
+            class="heart"
+            style="left: 18%; animation-duration: 8s;"
+        ></div>
+
+        <div
+            class="heart"
+            style="left: 29%; animation-duration: 7s;"
+        ></div>
+
+        <div
+            class="heart"
+            style="left: 41%; animation-duration: 9s;"
+        ></div>
+
+        <div
+            class="heart"
+            style="left: 52%; animation-duration: 6.5s;"
+        ></div>
+
+        <div
+            class="heart"
+            style="left: 63%; animation-duration: 8.5s;"
+        ></div>
+
+        <div
+            class="heart"
+            style="left: 74%; animation-duration: 7.5s;"
+        ></div>
+
+        <div
+            class="heart"
+            style="left: 84%; animation-duration: 9.5s;"
+        ></div>
+
+        <div
+            class="heart"
+            style="left: 93%; animation-duration: 6.8s;"
+        ></div>
+
+        <h1>
+            Isabelle "Bee" Rashkin
+        </h1>
 
         <p>
-
-          [SHORT DESCRIPTION OF THE ARTWORK.
-          EXPLAIN WHAT WE ARE LOOKING AT.]
-
+            Multi-disciplinary artist based in Brooklyn, NYC
         </p>
-
-
-        <!-- ✏️ EDIT HERE -->
-
-        <small>
-
-          [YEAR / MEDIUM / CHARACTER / OTHER INFORMATION]
-
-        </small>
-
-      </div>
-
-    </div>
-
-
-
-    <!-- =====================================
-         ARTWORK #2
-         ===================================== -->
-
-    <div class="art-card">
-
-
-      <!-- ✏️ EDIT IMAGE FILENAME -->
-
-      <a
-        href="leafborough-art-02.jpg"
-        class="glightbox"
-        data-gallery="leafborough-art"
-        data-title="[ARTWORK TITLE]"
-      >
-
-        <img
-          src="leafborough-art-02.jpg"
-          alt="[DESCRIPTION OF IMAGE]"
-        >
-
-      </a>
-
-
-      <div class="art-info">
-
-
-        <!-- ✏️ EDIT HERE -->
-
-        <h3>
-          [ARTWORK TITLE]
-        </h3>
-
-
-        <!-- ✏️ EDIT HERE -->
 
         <p>
-
-          [SHORT DESCRIPTION OF THE ARTWORK.]
-
+            <small>
+                Interlochen Arts Academy 2018 /
+                University of Wisconsin-Milwaukee 2022
+            </small>
         </p>
 
-
-        <!-- ✏️ EDIT HERE -->
-
-        <small>
-
-          [YEAR / MEDIUM / CHARACTER / OTHER INFORMATION]
-
-        </small>
-
-      </div>
-
-    </div>
+    </header>
 
 
+    <!-- =========================
+         MAIN CONTENT
+    ========================= -->
 
-    <!-- =====================================
-         ARTWORK #3
-         ===================================== -->
-
-    <div class="art-card">
-
-
-      <!-- ✏️ EDIT IMAGE FILENAME -->
-
-      <a
-        href="leafborough-art-03.jpg"
-        class="glightbox"
-        data-gallery="leafborough-art"
-        data-title="[ARTWORK TITLE]"
-      >
-
-        <img
-          src="leafborough-art-03.jpg"
-          alt="[DESCRIPTION OF IMAGE]"
-        >
-
-      </a>
+    <main>
 
 
-      <div class="art-info">
+        <!-- =========================
+             WELCOME GRAPHIC
+        ========================= -->
+
+        <section class="welcome-section">
+
+            <img
+                src="welcome-to-leafborough.png"
+                alt="Welcome to Leafborough"
+                class="welcome-graphic"
+            >
+
+        </section>
 
 
-        <!-- ✏️ EDIT HERE -->
+        <!-- =========================
+             LEAFBOROUGH AT A GLANCE
+        ========================= -->
 
-        <h3>
-          [ARTWORK TITLE]
-        </h3>
+        <section>
+
+            <h2>
+                Leafborough at a Glance
+            </h2>
+
+            <div class="glance-layout">
+
+                <div class="glance-info">
+
+                    <dl>
+
+                        <dt>Created by</dt>
+                        <dd>
+                            Isabelle "Bee" Rashkin
+                        </dd>
+
+                        <dt>Genre</dt>
+                        <dd>
+                            [GENRE / GENRES]
+                        </dd>
+
+                        <dt>Started</dt>
+                        <dd>
+                            [YEAR]
+                        </dd>
+
+                        <dt>Setting</dt>
+                        <dd>
+                            [SETTING]
+                        </dd>
+
+                        <dt>Format</dt>
+                        <dd>
+                            [FORMAT]
+                        </dd>
+
+                        <dt>Status</dt>
+                        <dd>
+                            [STATUS]
+                        </dd>
+
+                    </dl>
+
+                </div>
 
 
-        <!-- ✏️ EDIT HERE -->
+                <div class="glance-image">
+
+                    <a
+                        href="leafborough-map.jpg"
+                        class="glightbox"
+                        data-title="[IMAGE CAPTION]"
+                    >
+
+                        <img
+                            src="leafborough-map.jpg"
+                            alt="[DESCRIPTION OF LEAFBOROUGH IMAGE]"
+                        >
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ABOUT LEAFBOROUGH
+        ========================= -->
+
+        <section>
+
+            <h2>
+                About Leafborough
+            </h2>
+
+            <div class="about-content">
+
+                <p>
+                    [WRITE YOUR OPENING LINE ABOUT LEAFBOROUGH HERE]
+                </p>
+
+                <p>
+                    [EXPLAIN WHAT LEAFBOROUGH IS HERE]
+                </p>
+
+                <p>
+                    [EXPLAIN WHAT LEAFBOROUGH TAILS IS HERE]
+                </p>
+
+                <p>
+                    [INTRODUCE YOUR MAIN CHARACTERS HERE]
+                </p>
+
+                <p>
+                    [DESCRIBE THE THEMES OF THE PROJECT HERE]
+                </p>
+
+                <p>
+                    [WRITE ABOUT THE INSPIRATION BEHIND LEAFBOROUGH HERE]
+                </p>
+
+                <p>
+                    [OPTIONAL FINAL ABOUT PARAGRAPH]
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ARTWORK & CONCEPT ART
+        ========================= -->
+
+        <section>
+
+            <h2>
+                Artwork &amp; Concept Art
+            </h2>
+
+            <div class="art-grid">
+
+
+                <!-- ARTWORK 01 -->
+
+                <article class="art-card">
+
+                    <a
+                        href="leafborough-art-01.jpg"
+                        class="glightbox"
+                        data-gallery="leafborough-art"
+                        data-title="[ARTWORK TITLE]"
+                    >
+
+                        <img
+                            src="leafborough-art-01.jpg"
+                            alt="[ARTWORK 01 TITLE]"
+                        >
+
+                    </a>
+
+                    <div class="art-card-content">
+
+                        <h3>
+                            [ARTWORK TITLE]
+                        </h3>
+
+                        <p>
+                            [ARTWORK DESCRIPTION]
+                        </p>
+
+                        <p>
+                            <small>
+                                [YEAR / MEDIUM / OTHER INFORMATION]
+                            </small>
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ARTWORK 02 -->
+
+                <article class="art-card">
+
+                    <a
+                        href="leafborough-art-02.jpg"
+                        class="glightbox"
+                        data-gallery="leafborough-art"
+                        data-title="[ARTWORK TITLE]"
+                    >
+
+                        <img
+                            src="leafborough-art-02.jpg"
+                            alt="[ARTWORK 02 TITLE]"
+                        >
+
+                    </a>
+
+                    <div class="art-card-content">
+
+                        <h3>
+                            [ARTWORK TITLE]
+                        </h3>
+
+                        <p>
+                            [ARTWORK DESCRIPTION]
+                        </p>
+
+                        <p>
+                            <small>
+                                [YEAR / MEDIUM / OTHER INFORMATION]
+                            </small>
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ARTWORK 03 -->
+
+                <article class="art-card">
+
+                    <a
+                        href="leafborough-art-03.jpg"
+                        class="glightbox"
+                        data-gallery="leafborough-art"
+                        data-title="[ARTWORK TITLE]"
+                    >
+
+                        <img
+                            src="leafborough-art-03.jpg"
+                            alt="[ARTWORK 03 TITLE]"
+                        >
+
+                    </a>
+
+                    <div class="art-card-content">
+
+                        <h3>
+                            [ARTWORK TITLE]
+                        </h3>
+
+                        <p>
+                            [ARTWORK DESCRIPTION]
+                        </p>
+
+                        <p>
+                            <small>
+                                [YEAR / MEDIUM / OTHER INFORMATION]
+                            </small>
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ARTWORK 04 -->
+
+                <article class="art-card">
+
+                    <a
+                        href="leafborough-art-04.jpg"
+                        class="glightbox"
+                        data-gallery="leafborough-art"
+                        data-title="[ARTWORK TITLE]"
+                    >
+
+                        <img
+                            src="leafborough-art-04.jpg"
+                            alt="[ARTWORK 04 TITLE]"
+                        >
+
+                    </a>
+
+                    <div class="art-card-content">
+
+                        <h3>
+                            [ARTWORK TITLE]
+                        </h3>
+
+                        <p>
+                            [ARTWORK DESCRIPTION]
+                        </p>
+
+                        <p>
+                            <small>
+                                [YEAR / MEDIUM / OTHER INFORMATION]
+                            </small>
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ARTWORK 05 -->
+
+                <article class="art-card">
+
+                    <a
+                        href="leafborough-art-05.jpg"
+                        class="glightbox"
+                        data-gallery="leafborough-art"
+                        data-title="[ARTWORK TITLE]"
+                    >
+
+                        <img
+                            src="leafborough-art-05.jpg"
+                            alt="[ARTWORK 05 TITLE]"
+                        >
+
+                    </a>
+
+                    <div class="art-card-content">
+
+                        <h3>
+                            [ARTWORK TITLE]
+                        </h3>
+
+                        <p>
+                            [ARTWORK DESCRIPTION]
+                        </p>
+
+                        <p>
+                            <small>
+                                [YEAR / MEDIUM / OTHER INFORMATION]
+                            </small>
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ARTWORK 06 -->
+
+                <article class="art-card">
+
+                    <a
+                        href="leafborough-art-06.jpg"
+                        class="glightbox"
+                        data-gallery="leafborough-art"
+                        data-title="[ARTWORK TITLE]"
+                    >
+
+                        <img
+                            src="leafborough-art-06.jpg"
+                            alt="[ARTWORK 06 TITLE]"
+                        >
+
+                    </a>
+
+                    <div class="art-card-content">
+
+                        <h3>
+                            [ARTWORK TITLE]
+                        </h3>
+
+                        <p>
+                            [ARTWORK DESCRIPTION]
+                        </p>
+
+                        <p>
+                            <small>
+                                [YEAR / MEDIUM / OTHER INFORMATION]
+                            </small>
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             COMICS
+        ========================= -->
+
+        <section>
+
+            <h2>
+                Comics
+            </h2>
+
+            <div class="comics-container">
+
+
+                <!-- =====================
+                     COMIC 01
+                ====================== -->
+
+                <article class="comic-card">
+
+                    <div class="comic-preview">
+
+                        <!--
+                            This is the visible preview/cover.
+
+                            Clicking this image will open the full
+                            Comic 01 GLightbox gallery.
+                        -->
+
+                        <a
+                            href="comics/comic-01/page-01.jpg"
+                            class="glightbox"
+                            data-gallery="comic-01"
+                            data-title="[COMIC TITLE] — Page 1"
+                        >
+
+                            <img
+                                src="comic-01.jpg"
+                                alt="[COMIC 01 TITLE]"
+                            >
+
+                        </a>
+
+
+                        <!--
+                            ADD AS MANY PAGES AS YOU WANT.
+
+                            Every page must use:
+
+                            data-gallery="comic-01"
+
+                            Example:
+
+                            page-05.jpg
+                            page-06.jpg
+                            page-07.jpg
+
+                            etc.
+
+                            These links are hidden from the
+                            normal page but included in GLightbox.
+                        -->
+
+                        <a
+                            href="comics/comic-01/page-02.jpg"
+                            class="glightbox comic-lightbox-page"
+                            data-gallery="comic-01"
+                            data-title="[COMIC TITLE] — Page 2"
+                        ></a>
+
+                        <a
+                            href="comics/comic-01/page-03.jpg"
+                            class="glightbox comic-lightbox-page"
+                            data-gallery="comic-01"
+                            data-title="[COMIC TITLE] — Page 3"
+                        ></a>
+
+                        <a
+                            href="comics/comic-01/page-04.jpg"
+                            class="glightbox comic-lightbox-page"
+                            data-gallery="comic-01"
+                            data-title="[COMIC TITLE] — Page 4"
+                        ></a>
+
+                        <a
+                            href="comics/comic-01/page-05.jpg"
+                            class="glightbox comic-lightbox-page"
+                            data-gallery="comic-01"
+                            data-title="[COMIC TITLE] — Page 5"
+                        ></a>
+
+                        <!--
+                            COPY THIS BLOCK FOR MORE PAGES:
+
+                            <a
+                                href="comics/comic-01/page-06.jpg"
+                                class="glightbox comic-lightbox-page"
+                                data-gallery="comic-01"
+                                data-title="[COMIC TITLE] — Page 6"
+                            ></a>
+                        -->
+
+                    </div>
+
+
+                    <div class="comic-info">
+
+                        <h3>
+                            [COMIC TITLE]
+                        </h3>
+
+                        <p class="comic-date">
+                            [DATE / YEAR]
+                        </p>
+
+                        <p>
+                            [WRITE A SHORT SYNOPSIS OF THIS COMIC HERE]
+                        </p>
+
+                        <a
+                            href="comics/comic-01/page-01.jpg"
+                            class="glightbox read-comic"
+                            data-gallery="comic-01"
+                            data-title="[COMIC TITLE] — Page 1"
+                        >
+                            Read Comic →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =====================
+                     COMIC 02
+                ====================== -->
+
+                <article class="comic-card">
+
+                    <div class="comic-preview">
+
+                        <a
+                            href="comics/comic-02/page-01.jpg"
+                            class="glightbox"
+                            data-gallery="comic-02"
+                            data-title="[COMIC TITLE] — Page 1"
+                        >
+
+                            <img
+                                src="comic-02.jpg"
+                                alt="[COMIC 02 TITLE]"
+                            >
+
+                        </a>
+
+
+                        <!--
+                            Add as many pages as needed.
+                        -->
+
+                        <a
+                            href="comics/comic-02/page-02.jpg"
+                            class="glightbox comic-lightbox-page"
+                            data-gallery="comic-02"
+                            data-title="[COMIC TITLE] — Page 2"
+                        ></a>
+
+                        <a
+                            href="comics/comic-02/page-03.jpg"
+                            class="glightbox comic-lightbox-page"
+                            data-gallery="comic-02"
+                            data-title="[COMIC TITLE] — Page 3"
+                        ></a>
+
+                        <a
+                            href="comics/comic-02/page-04.jpg"
+                            class="glightbox comic-lightbox-page"
+                            data-gallery="comic-02"
+                            data-title="[COMIC TITLE] — Page 4"
+                        ></a>
+
+                        <a
+                            href="comics/comic-02/page-05.jpg"
+                            class="glightbox comic-lightbox-page"
+                            data-gallery="comic-02"
+                            data-title="[COMIC TITLE] — Page 5"
+                        ></a>
+
+                    </div>
+
+
+                    <div class="comic-info">
+
+                        <h3>
+                            [COMIC TITLE]
+                        </h3>
+
+                        <p class="comic-date">
+                            [DATE / YEAR]
+                        </p>
+
+                        <p>
+                            [WRITE A SHORT SYNOPSIS OF THIS COMIC HERE]
+                        </p>
+
+                        <a
+                            href="comics/comic-02/page-01.jpg"
+                            class="glightbox read-comic"
+                            data-gallery="comic-02"
+                            data-title="[COMIC TITLE] — Page 1"
+                        >
+                            Read Comic →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =====================
+                     COMIC 03
+                ====================== -->
+
+                <article class="comic-card">
+
+                    <div class="comic-preview">
+
+                        <a
+                            href="comics/comic-03/page-01.jpg"
+                            class="glightbox"
+                            data-gallery="comic-03"
+                            data-title="[COMIC TITLE] — Page 1"
+                        >
+
+                            <img
+                                src="comic-03.jpg"
+                                alt="[COMIC 03 TITLE]"
+                            >
+
+                        </a>
+
+
+                        <a
+                            href="comics/comic-03/page-02.jpg"
+                            class="glightbox comic-lightbox-page"
+                            data-gallery="comic-03"
+                            data-title="[COMIC TITLE] — Page 2"
+                        ></a>
+
+                        <a
+                            href="comics/comic-03/page-03.jpg"
+                            class="glightbox comic-lightbox-page"
+                            data-gallery="comic-03"
+                            data-title="[COMIC TITLE] — Page 3"
+                        ></a>
+
+                        <a
+                            href="comics/comic-03/page-04.jpg"
+                            class="glightbox comic-lightbox-page"
+                            data-gallery="comic-03"
+                            data-title="[COMIC TITLE] — Page 4"
+                        ></a>
+
+                        <a
+                            href="comics/comic-03/page-05.jpg"
+                            class="glightbox comic-lightbox-page"
+                            data-gallery="comic-03"
+                            data-title="[COMIC TITLE] — Page 5"
+                        ></a>
+
+                    </div>
+
+
+                    <div class="comic-info">
+
+                        <h3>
+                            [COMIC TITLE]
+                        </h3>
+
+                        <p class="comic-date">
+                            [DATE / YEAR]
+                        </p>
+
+                        <p>
+                            [WRITE A SHORT SYNOPSIS OF THIS COMIC HERE]
+                        </p>
+
+                        <a
+                            href="comics/comic-03/page-01.jpg"
+                            class="glightbox read-comic"
+                            data-gallery="comic-03"
+                            data-title="[COMIC TITLE] — Page 1"
+                        >
+                            Read Comic →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =====================
+                     COMIC 04
+                ====================== -->
+
+                <article class="comic-card">
+
+                    <div class="comic-preview">
+
+                        <a
+                            href="comics/comic-04/page-01.jpg"
+                            class="glightbox"
+                            data-gallery="comic-04"
+                            data-title="[COMIC TITLE] — Page 1"
+                        >
+
+                            <img
+                                src="comic-04.jpg"
+                                alt="[COMIC 04 TITLE]"
+                            >
+
+                        </a>
+
+
+                        <a
+                            href="comics/comic-04/page-02.jpg"
+                            class="glightbox comic-lightbox-page"
+                            data-gallery="comic-04"
+                            data-title="[COMIC TITLE] — Page 2"
+                        ></a>
+
+                        <a
+                            href="comics/comic-04/page-03.jpg"
+                            class="glightbox comic-lightbox-page"
+                            data-gallery="comic-04"
+                            data-title="[COMIC TITLE] — Page 3"
+                        ></a>
+
+                        <a
+                            href="comics/comic-04/page-04.jpg"
+                            class="glightbox comic-lightbox-page"
+                            data-gallery="comic-04"
+                            data-title="[COMIC TITLE] — Page 4"
+                        ></a>
+
+                        <a
+                            href="comics/comic-04/page-05.jpg"
+                            class="glightbox comic-lightbox-page"
+                            data-gallery="comic-04"
+                            data-title="[COMIC TITLE] — Page 5"
+                        ></a>
+
+                    </div>
+
+
+                    <div class="comic-info">
+
+                        <h3>
+                            [COMIC TITLE]
+                        </h3>
+
+                        <p class="comic-date">
+                            [DATE / YEAR]
+                        </p>
+
+                        <p>
+                            [WRITE A SHORT SYNOPSIS OF THIS COMIC HERE]
+                        </p>
+
+                        <a
+                            href="comics/comic-04/page-01.jpg"
+                            class="glightbox read-comic"
+                            data-gallery="comic-04"
+                            data-title="[COMIC TITLE] — Page 1"
+                        >
+                            Read Comic →
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FINAL CTA
+        ========================= -->
+
+        <section>
+
+            <div class="final-cta">
+
+                <h2>
+                    [FINAL SECTION TITLE]
+                </h2>
+
+                <p>
+                    [WRITE YOUR FINAL MESSAGE HERE]
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
 
         <p>
-
-          [SHORT DESCRIPTION OF THE ARTWORK.]
-
+            &copy; Isabelle "Bee" Rashkin
         </p>
-
-
-        <!-- ✏️ EDIT HERE -->
-
-        <small>
-
-          [YEAR / MEDIUM / CHARACTER / OTHER INFORMATION]
-
-        </small>
-
-      </div>
-
-    </div>
-
-
-
-    <!-- =====================================
-         ARTWORK #4
-         ===================================== -->
-
-    <div class="art-card">
-
-
-      <!-- ✏️ EDIT IMAGE FILENAME -->
-
-      <a
-        href="leafborough-art-04.jpg"
-        class="glightbox"
-        data-gallery="leafborough-art"
-        data-title="[ARTWORK TITLE]"
-      >
-
-        <img
-          src="leafborough-art-04.jpg"
-          alt="[DESCRIPTION OF IMAGE]"
-        >
-
-      </a>
-
-
-      <div class="art-info">
-
-
-        <!-- ✏️ EDIT HERE -->
-
-        <h3>
-          [ARTWORK TITLE]
-        </h3>
-
-
-        <!-- ✏️ EDIT HERE -->
 
         <p>
-
-          [SHORT DESCRIPTION OF THE ARTWORK.]
-
+            Multi-disciplinary artist based in Brooklyn, NYC
         </p>
 
 
-        <!-- ✏️ EDIT HERE -->
-
-        <small>
-
-          [YEAR / MEDIUM / CHARACTER / OTHER INFORMATION]
-
-        </small>
-
-      </div>
-
-    </div>
-
-
-
-    <!-- =====================================
-         ARTWORK #5
-         ===================================== -->
-
-    <div class="art-card">
-
-
-      <!-- ✏️ EDIT IMAGE FILENAME -->
-
-      <a
-        href="leafborough-art-05.jpg"
-        class="glightbox"
-        data-gallery="leafborough-art"
-        data-title="[ARTWORK TITLE]"
-      >
-
-        <img
-          src="leafborough-art-05.jpg"
-          alt="[DESCRIPTION OF IMAGE]"
-        >
-
-      </a>
-
-
-      <div class="art-info">
-
-
-        <!-- ✏️ EDIT HERE -->
-
-        <h3>
-          [ARTWORK TITLE]
-        </h3>
-
-
-        <!-- ✏️ EDIT HERE -->
-
-        <p>
-
-          [SHORT DESCRIPTION OF THE ARTWORK.]
-
-        </p>
-
-
-        <!-- ✏️ EDIT HERE -->
-
-        <small>
-
-          [YEAR / MEDIUM / CHARACTER / OTHER INFORMATION]
-
-        </small>
-
-      </div>
-
-    </div>
-
-
-
-    <!-- =====================================
-         ARTWORK #6
-         ===================================== -->
-
-    <div class="art-card">
-
-
-      <!-- ✏️ EDIT IMAGE FILENAME -->
-
-      <a
-        href="leafborough-art-06.jpg"
-        class="glightbox"
-        data-gallery="leafborough-art"
-        data-title="[ARTWORK TITLE]"
-      >
-
-        <img
-          src="leafborough-art-06.jpg"
-          alt="[DESCRIPTION OF IMAGE]"
-        >
-
-      </a>
-
-
-      <div class="art-info">
-
-
-        <!-- ✏️ EDIT HERE -->
-
-        <h3>
-          [ARTWORK TITLE]
-        </h3>
-
-
-        <!-- ✏️ EDIT HERE -->
-
-        <p>
-
-          [SHORT DESCRIPTION OF THE ARTWORK.]
-
-        </p>
-
-
-        <!-- ✏️ EDIT HERE -->
-
-        <small>
-
-          [YEAR / MEDIUM / CHARACTER / OTHER INFORMATION]
-
-        </small>
-
-      </div>
-
-    </div>
-
-
-    <!--
-      ✏️ WANT MORE ART?
-
-      Copy any entire:
-
-      <div class="art-card">
-      ...
-      </div>
-
-      section and paste it here.
-
-      Change the image filename and text.
-    -->
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================================
-     SECTION 3
-     COMICS
-     ========================================= -->
-
-<section
-  class="leafborough-section"
-  id="comics"
->
-
-
-  <div class="section-heading">
-
-    <h2>
-      📖 Comics
-    </h2>
-
-
-    <!-- ✏️ EDIT HERE -->
-
-    <p class="section-intro">
-
-      [WRITE A SHORT INTRODUCTION TO THE
-      LEAFBOROUGH TAILS COMICS HERE.]
-
-    </p>
-
-  </div>
-
-
-
-  <div class="comic-list">
-
-
-
-    <!-- =====================================
-         COMIC #1
-         ===================================== -->
-
-    <article class="comic-card">
-
-
-      <div class="comic-image">
-
-
-        <!-- ✏️ EDIT IMAGE -->
-
-        <a
-          href="comic-01.jpg"
-          class="glightbox"
-          data-gallery="leafborough-comics"
-          data-title="Leafborough Tails - [COMIC TITLE]"
-        >
-
-          <img
-            src="comic-01.jpg"
-            alt="Leafborough Tails - [COMIC TITLE]"
-          >
-
-        </a>
-
-      </div>
-
-
-
-      <div class="comic-info">
-
-
-        <!-- ✏️ EDIT HERE -->
-
-        <h3>
-          Leafborough Tails -
-          [COMIC TITLE]
-        </h3>
-
-
-        <!-- ✏️ EDIT HERE -->
-
-        <p class="comic-date">
-
-          [DATE / YEAR]
-
-        </p>
-
-
-        <!-- ✏️ EDIT HERE -->
-
-        <p>
-
-          [SHORT DESCRIPTION OR SYNOPSIS
-          OF THIS COMIC.]
-
-        </p>
-
-
-        <!-- ✏️ EDIT HERE / OPTIONAL -->
-
-        <p>
-
-          [OPTIONAL ADDITIONAL INFORMATION
-          ABOUT THIS STORY OR ITS CHARACTERS.]
-
-        </p>
-
-
-        <!-- ✏️ EDIT LINK -->
-
-        <a
-          href="comic-01.html"
-          class="comic-button"
-        >
-
-          Read Comic →
-
-        </a>
-
-      </div>
-
-    </article>
-
-
-
-    <!-- =====================================
-         COMIC #2
-         ===================================== -->
-
-    <article class="comic-card">
-
-
-      <div class="comic-image">
-
-
-        <!-- ✏️ EDIT IMAGE -->
-
-        <a
-          href="comic-02.jpg"
-          class="glightbox"
-          data-gallery="leafborough-comics"
-          data-title="Leafborough Tails - [COMIC TITLE]"
-        >
-
-          <img
-            src="comic-02.jpg"
-            alt="Leafborough Tails - [COMIC TITLE]"
-          >
-
-        </a>
-
-      </div>
-
-
-
-      <div class="comic-info">
-
-
-        <!-- ✏️ EDIT HERE -->
-
-        <h3>
-          Leafborough Tails -
-          [COMIC TITLE]
-        </h3>
-
-
-        <!-- ✏️ EDIT HERE -->
-
-        <p class="comic-date">
-
-          [DATE / YEAR]
-
-        </p>
-
-
-        <!-- ✏️ EDIT HERE -->
-
-        <p>
-
-          [SHORT DESCRIPTION OR SYNOPSIS
-          OF THIS COMIC.]
-
-        </p>
-
-
-        <!-- ✏️ EDIT HERE -->
-
-        <a
-          href="comic-02.html"
-          class="comic-button"
-        >
-
-          Read Comic →
-
-        </a>
-
-      </div>
-
-    </article>
-
-
-
-    <!-- =====================================
-         COMIC #3
-         ===================================== -->
-
-    <article class="comic-card">
-
-
-      <div class="comic-image">
-
-
-        <!-- ✏️ EDIT IMAGE -->
-
-        <a
-          href="comic-03.jpg"
-          class="glightbox"
-          data-gallery="leafborough-comics"
-          data-title="Leafborough Tails - [COMIC TITLE]"
-        >
-
-          <img
-            src="comic-03.jpg"
-            alt="Leafborough Tails - [COMIC TITLE]"
-          >
-
-        </a>
-
-      </div>
-
-
-
-      <div class="comic-info">
-
-
-        <!-- ✏️ EDIT HERE -->
-
-        <h3>
-          Leafborough Tails -
-          [COMIC TITLE]
-        </h3>
-
-
-        <!-- ✏️ EDIT HERE -->
-
-        <p class="comic-date">
-
-          [DATE / YEAR]
-
-        </p>
-
-
-        <!-- ✏️ EDIT HERE -->
-
-        <p>
-
-          [SHORT DESCRIPTION OR SYNOPSIS
-          OF THIS COMIC.]
-
-        </p>
-
-
-        <!-- ✏️ EDIT HERE -->
-
-        <a
-          href="comic-03.html"
-          class="comic-button"
-        >
-
-          Read Comic →
-
-        </a>
-
-      </div>
-
-    </article>
-
-
-
-    <!-- =====================================
-         COMIC #4
-         ===================================== -->
-
-    <article class="comic-card">
-
-
-      <div class="comic-image">
-
-
-        <!-- ✏️ EDIT IMAGE -->
-
-        <a
-          href="comic-04.jpg"
-          class="glightbox"
-          data-gallery="leafborough-comics"
-          data-title="Leafborough Tails - [COMIC TITLE]"
-        >
-
-          <img
-            src="comic-04.jpg"
-            alt="Leafborough Tails - [COMIC TITLE]"
-          >
-
-        </a>
-
-      </div>
-
-
-
-      <div class="comic-info">
-
-
-        <!-- ✏️ EDIT HERE -->
-
-        <h3>
-          Leafborough Tails -
-          [COMIC TITLE]
-        </h3>
-
-
-        <!-- ✏️ EDIT HERE -->
-
-        <p class="comic-date">
-
-          [DATE / YEAR]
-
-        </p>
-
-
-        <!-- ✏️ EDIT HERE -->
-
-        <p>
-
-          [SHORT DESCRIPTION OR SYNOPSIS
-          OF THIS COMIC.]
-
-        </p>
-
-
-        <!-- ✏️ EDIT HERE -->
-
-        <a
-          href="comic-04.html"
-          class="comic-button"
-        >
-
-          Read Comic →
-
-        </a>
-
-      </div>
-
-    </article>
-
-
-    <!--
-      ✏️ ADDING MORE COMICS:
-
-      Copy one entire:
-
-      <article class="comic-card">
-      ...
-      </article>
-
-      section.
-
-      Then change:
-
-      comic-04.jpg
-      [COMIC TITLE]
-      [DATE / YEAR]
-      [DESCRIPTION]
-      comic-04.html
-
-      to your new information.
-    -->
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================================
-     FINAL MESSAGE
-     ========================================= -->
-
-<section class="leafborough-cta">
-
-
-  <h2>
-    More from Leafborough
-  </h2>
-
-
-  <!-- ✏️ EDIT HERE -->
-
-  <p>
-
-    [WRITE A SHORT CLOSING MESSAGE HERE.
-    YOU COULD TALK ABOUT FUTURE COMICS,
-    UPCOMING ARTWORK, OR WHERE READERS
-    CAN FOLLOW THE SERIES.]
-
-  </p>
-
-
-  <a
-    href="#comics"
-    class="comic-button"
-  >
-
-    Explore the Comics →
-
-  </a>
-
-</section>
-
-
-
-</main>
-
-
-
-<!-- =========================================
-     FOOTER
-     ========================================= -->
-
-<footer>
-
-  <h3>
-    Connect with me
-  </h3>
-
-
-  <div class="social-links">
-
-
-    <a
-      href="https://www.instagram.com/tamoottopro/"
-      target="_blank"
-      rel="noopener"
-    >
-      Instagram (Personal)
-    </a>
-
-
-    <a
-      href="https://www.instagram.com/Bee_original_music/"
-      target="_blank"
-      rel="noopener"
-    >
-      Instagram (Music)
-    </a>
-
-
-    <a
-      href="https://x.com/tamoottopro"
-      target="_blank"
-      rel="noopener"
-    >
-      X (Twitter)
-    </a>
-
-
-    <a
-      href="https://www.linkedin.com/in/isabelle-rashkin-82958228/"
-      target="_blank"
-      rel="noopener"
-    >
-      LinkedIn
-    </a>
-
-
-    <a
-      href="mailto:ivrashkin@gmail.com"
-    >
-      Email
-    </a>
-
-
-    <a
-      href="https://open.spotify.com/artist/2TRjrme5uq3GM8qMF7y0QI"
-      target="_blank"
-      rel="noopener"
-    >
-      Spotify
-    </a>
-
-
-    <a
-      href="https://www.youtube.com/channel/UCa9acPRSIGUmjgn54hz17eA"
-      target="_blank"
-      rel="noopener"
-    >
-      YouTube Music
-    </a>
-
-
-    <a
-      href="https://music.apple.com/ca/artist/isabelle-bee-rashkin/1773658949"
-      target="_blank"
-      rel="noopener"
-    >
-      Apple Music
-    </a>
-
-
-    <a
-      href="https://www.backstage.com/u/isabelle-rashkin/"
-      target="_blank"
-      rel="noopener"
-    >
-      Backstage
-    </a>
-
-
-  </div>
-
-</footer>
-
-
-
-<!-- =========================================
-     GLIGHTBOX
-     ========================================= -->
-
-<script
-  src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"
-></script>
-
-
-<script>
-
-const lightbox = GLightbox({
-
-  selector: ".glightbox",
-
-  loop: true,
-
-  keyboardNavigation: true,
-
-  closeOnOutsideClick: true,
-
-  touchNavigation: true
-
-});
-
-</script>
-
-
-
-<!-- =========================================
-     MOBILE NAVIGATION
-     ========================================= -->
-
-<script>
-
-const menuToggle =
-  document.getElementById("menu-toggle");
-
-const navLinks =
-  document.getElementById("nav-links");
-
-
-if (menuToggle && navLinks) {
-
-
-  menuToggle.addEventListener(
-    "click",
-    () => {
-
-      navLinks.classList.toggle("show");
-
-    }
-  );
-
-
-  document
-    .querySelectorAll("#nav-links a")
-    .forEach(link => {
-
-      link.addEventListener(
-        "click",
-        () => {
-
-          navLinks.classList.remove("show");
+        <div class="social-links">
+
+            <a
+                href="https://www.instagram.com/tamoottopro/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Instagram Personal
+            </a>
+
+            <a
+                href="https://www.instagram.com/Bee_original_music/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Instagram Music
+            </a>
+
+            <a
+                href="https://x.com/tamoottopro"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                X
+            </a>
+
+            <a
+                href="https://www.linkedin.com/in/isabelle-rashkin-82958228/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                LinkedIn
+            </a>
+
+            <a
+                href="mailto:ivrashkin@gmail.com"
+            >
+                Email
+            </a>
+
+            <a
+                href="https://open.spotify.com/artist/2TRjrme5uq3GM8qMF7y0QI"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Spotify
+            </a>
+
+            <a
+                href="https://www.youtube.com/channel/UCa9acPRSIGUmjgn54hz17eA"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                YouTube Music
+            </a>
+
+            <a
+                href="https://music.apple.com/ca/artist/isabelle-bee-rashkin/1773658949"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Apple Music
+            </a>
+
+            <a
+                href="https://www.backstage.com/u/isabelle-rashkin/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Backstage
+            </a>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         GLIGHTBOX JAVASCRIPT
+    ========================= -->
+
+    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+
+    <script>
+
+        /* =========================
+           MOBILE NAVIGATION
+        ========================= */
+
+        function toggleMenu() {
+
+            const navLinks =
+                document.getElementById("navLinks");
+
+            navLinks.classList.toggle("show");
 
         }
-      );
 
-    });
 
-}
+        /* =========================
+           GLIGHTBOX
+        ========================= */
 
-</script>
+        const lightbox = GLightbox({
 
+            selector: ".glightbox",
+
+            loop: true,
+
+            keyboardNavigation: true,
+
+            closeOnOutsideClick: true,
+
+            touchNavigation: true
+
+        });
+
+    </script>
 
 </body>
-
 </html>
 ```
