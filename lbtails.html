@@ -193,22 +193,20 @@
 
   /* =========================
      LEAFBOROUGH AT A GLANCE
-     
-     TEXT CARD AND IMAGE ARE
-     INTENTIONALLY SEPARATE
      ========================= */
 
   .glance-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     gap: 3rem;
     flex-wrap: wrap;
     text-align: left;
   }
 
   .glance-text {
-    flex: 1 1 400px;
+    flex: 1 1 0;
+    min-width: 0;
     max-width: 550px;
     background: rgba(255, 255, 255, 0.55);
     border-radius: 12px;
@@ -226,15 +224,24 @@
   }
 
   .glance-image {
-    flex: 1 1 400px;
+    flex: 1 1 0;
+    min-width: 0;
     max-width: 550px;
+    display: flex;
+    align-items: stretch;
+  }
+
+  .glance-image a {
+    display: block;
+    width: 100%;
   }
 
   .glance-image img {
     width: 100%;
-    height: auto;
-    display: block;
+    height: 100%;
+    object-fit: contain;
     border-radius: 12px;
+    display: block;
   }
 
   /* =========================
@@ -483,25 +490,49 @@
       width: 100%;
     }
 
-    /* Keep the Glance text card separate
-       from the character-tree image */
+    /* =========================
+       LEAFBOROUGH AT A GLANCE
+       MOBILE
+       ========================= */
 
     .glance-container {
+      flex-direction: column;
+      align-items: stretch;
       gap: 1.5rem;
     }
 
     .glance-text {
+      width: 100%;
+      max-width: 100%;
+      flex: none;
       padding: 1.25rem;
     }
 
-    .glance-text,
     .glance-image {
-      flex-basis: 100%;
+      width: 100%;
       max-width: 100%;
+      flex: none;
+      display: block;
     }
 
-    /* All comics stack in the same order:
-       image first, information second */
+    .glance-image a {
+      width: 100%;
+    }
+
+    .glance-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    /* =========================
+       COMICS
+       MOBILE
+       
+       IMAGE FIRST
+       INFORMATION SECOND
+       ========================= */
 
     .comic-card {
       flex-direction: column;
@@ -518,6 +549,11 @@
     .comic-info {
       text-align: center;
     }
+
+    /* =========================
+       ARTWORK
+       MOBILE
+       ========================= */
 
     .artwork-grid {
       grid-template-columns: 1fr;
@@ -596,8 +632,6 @@
   <section class="glance-container">
 
 ```
-<!-- TEXT HAS ITS OWN SEPARATE RECTANGLE -->
-
 <div class="glance-text">
 
   <h2>Leafborough at a Glance</h2>
@@ -628,9 +662,6 @@
   </p>
 
 </div>
-
-
-<!-- IMAGE IS COMPLETELY SEPARATE FROM THE TEXT CARD -->
 
 <div class="glance-image">
 
@@ -693,22 +724,17 @@
       href="artwork-01.jpg"
       class="glightbox"
       data-gallery="leafborough-art"
-      data-title="[ARTWORK TITLE]"
+      data-title="Artwork 01"
     >
       <img
         src="artwork-01.jpg"
-        alt="[ARTWORK TITLE]"
+        alt="Artwork 01"
       >
     </a>
 
-    <h3>[ARTWORK TITLE]</h3>
-
-    <p>
-      [ARTWORK DESCRIPTION]
-    </p>
+    <h3>Artwork 01</h3>
 
   </div>
-
 
   <!-- =========================
        ORIGINAL ARTWORK 02
@@ -720,22 +746,17 @@
       href="artwork-02.jpg"
       class="glightbox"
       data-gallery="leafborough-art"
-      data-title="[ARTWORK TITLE]"
+      data-title="Artwork 02"
     >
       <img
         src="artwork-02.jpg"
-        alt="[ARTWORK TITLE]"
+        alt="Artwork 02"
       >
     </a>
 
-    <h3>[ARTWORK TITLE]</h3>
-
-    <p>
-      [ARTWORK DESCRIPTION]
-    </p>
+    <h3>Artwork 02</h3>
 
   </div>
-
 
   <!-- =========================
        ORIGINAL ARTWORK 03
@@ -747,22 +768,17 @@
       href="artwork-03.jpg"
       class="glightbox"
       data-gallery="leafborough-art"
-      data-title="[ARTWORK TITLE]"
+      data-title="Artwork 03"
     >
       <img
         src="artwork-03.jpg"
-        alt="[ARTWORK TITLE]"
+        alt="Artwork 03"
       >
     </a>
 
-    <h3>[ARTWORK TITLE]</h3>
-
-    <p>
-      [ARTWORK DESCRIPTION]
-    </p>
+    <h3>Artwork 03</h3>
 
   </div>
-
 
   <!-- =========================
        CONCEPT ART
@@ -785,12 +801,7 @@
 
     <h3>Gossip Circle</h3>
 
-    <p>
-      [ARTWORK DESCRIPTION]
-    </p>
-
   </div>
-
 
   <!-- =========================
        CONCEPT ART
@@ -813,12 +824,7 @@
 
     <h3>Mama Mr. Croaksly</h3>
 
-    <p>
-      [ARTWORK DESCRIPTION]
-    </p>
-
   </div>
-
 
   <!-- =========================
        CONCEPT ART
@@ -841,12 +847,7 @@
 
     <h3>Moments in Leafborough</h3>
 
-    <p>
-      [ARTWORK DESCRIPTION]
-    </p>
-
   </div>
-
 
   <!-- =========================
        CONCEPT ART
@@ -869,10 +870,6 @@
 
     <h3>Meet Lint</h3>
 
-    <p>
-      [ARTWORK DESCRIPTION]
-    </p>
-
   </div>
 
 </div>
@@ -888,7 +885,6 @@
 
 ```
 <h2>Comics</h2>
-
 
 <!-- =========================
      COMIC 01
@@ -959,7 +955,6 @@
 
 </div>
 
-
 <!-- =========================
      COMIC 02
      IMAGE LEFT / TEXT RIGHT
@@ -1028,7 +1023,6 @@
   </div>
 
 </div>
-
 
 <!-- =========================
      COMIC 03
@@ -1142,6 +1136,7 @@
 <a
   href="https://www.instagram.com/tamoottopro/"
   target="_blank"
+  rel="noopener noreferrer"
 >
   Instagram (Personal)
 </a>
@@ -1149,6 +1144,7 @@
 <a
   href="https://www.instagram.com/Bee_original_music/"
   target="_blank"
+  rel="noopener noreferrer"
 >
   Instagram (Music)
 </a>
@@ -1156,6 +1152,7 @@
 <a
   href="https://x.com/tamoottopro"
   target="_blank"
+  rel="noopener noreferrer"
 >
   X (Twitter)
 </a>
@@ -1163,6 +1160,7 @@
 <a
   href="https://www.linkedin.com/in/isabelle-rashkin-82958228/"
   target="_blank"
+  rel="noopener noreferrer"
 >
   LinkedIn
 </a>
@@ -1174,6 +1172,7 @@
 <a
   href="https://open.spotify.com/artist/2TRjrme5uq3GM8qMF7y0QI"
   target="_blank"
+  rel="noopener noreferrer"
 >
   Spotify
 </a>
@@ -1181,6 +1180,7 @@
 <a
   href="https://www.youtube.com/channel/UCa9acPRSIGUmjgn54hz17eA"
   target="_blank"
+  rel="noopener noreferrer"
 >
   YouTube Music
 </a>
@@ -1188,6 +1188,7 @@
 <a
   href="https://music.apple.com/ca/artist/isabelle-bee-rashkin/1773658949"
   target="_blank"
+  rel="noopener noreferrer"
 >
   Apple Music
 </a>
@@ -1195,6 +1196,7 @@
 <a
   href="https://www.backstage.com/u/isabelle-rashkin/"
   target="_blank"
+  rel="noopener noreferrer"
 >
   Backstage
 </a>
