@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -8,7 +7,6 @@
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
 <!-- GLightbox CSS -->
-
 <link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet">
 
 <style>
@@ -303,7 +301,7 @@
 
   /* =========================
      COMICS
-     
+
      ALL THREE COMICS USE:
      IMAGE LEFT
      TEXT RIGHT
@@ -533,7 +531,7 @@
     /* =========================
        COMICS
        MOBILE
-       
+
        IMAGE FIRST
        INFORMATION SECOND
        ========================= */
@@ -584,18 +582,25 @@
     display: flex;
   }
 
+  /* Keep the comic image, caption, and page count
+     stacked vertically so the caption sits beneath
+     the photo instead of overlaying it. */
+
   .comic-modal-content {
     position: relative;
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
+    gap: 10px;
   }
 
   .comic-modal-image {
     max-width: 88vw;
-    max-height: 88vh;
+    max-height: calc(88vh - 100px);
     width: auto;
     height: auto;
     object-fit: contain;
@@ -643,10 +648,8 @@
   }
 
   .comic-modal-caption {
-    position: fixed;
-    left: 50%;
-    bottom: 52px;
-    transform: translateX(-50%);
+    position: static;
+    transform: none;
     z-index: 100001;
     color: #fff;
     background: rgba(0, 0, 0, 0.65);
@@ -661,10 +664,8 @@
   }
 
   .comic-modal-counter {
-    position: fixed;
-    left: 50%;
-    bottom: 15px;
-    transform: translateX(-50%);
+    position: static;
+    transform: none;
     z-index: 100001;
     color: #fff;
     background: rgba(0, 0, 0, 0.55);
@@ -676,15 +677,33 @@
 
   @media (max-width: 768px) {
     .comic-modal { padding: 10px; }
-    .comic-modal-image { max-width: 94vw; max-height: 82vh; }
-    .comic-modal-close { top: 8px; right: 8px; font-size: 36px; }
-    .comic-modal-prev, .comic-modal-next { font-size: 30px; padding: 10px 13px; }
+
+    .comic-modal-image {
+      max-width: 94vw;
+      max-height: calc(82vh - 90px);
+    }
+
+    .comic-modal-close {
+      top: 8px;
+      right: 8px;
+      font-size: 36px;
+    }
+
+    .comic-modal-prev,
+    .comic-modal-next {
+      font-size: 30px;
+      padding: 10px 13px;
+    }
+
     .comic-modal-prev { left: 6px; }
     .comic-modal-next { right: 6px; }
-    .comic-modal-caption { bottom: 50px; font-size: 14px; max-width: 90vw; }
+
+    .comic-modal-caption {
+      font-size: 14px;
+      max-width: 90vw;
+    }
   }
 </style>
-
 </head>
 
 <body>
@@ -754,51 +773,49 @@
        ========================= -->
 
   <section class="glance-container">
-<div class="glance-text">
+    <div class="glance-text">
 
-  <h2>Leafborough at a Glance</h2>
+      <h2>Leafborough at a Glance</h2>
 
-  <p>
-    <strong>What is this?</strong>
-    Coming of Age Fairy Tails
-  </p>
+      <p>
+        <strong>What is this?</strong>
+        Coming of Age Fairy Tails
+      </p>
 
-  <p>
-    <strong>When did you start?</strong>
-    Summer of 2026 
-  </p>
+      <p>
+        <strong>When did you start?</strong>
+        Summer of 2026 
+      </p>
 
-  <p>
-    <strong>Collaborators:</strong>
-    Henry Wagner (editor/author) and Isabelle Rashkin (illustrator) 
-  </p>
+      <p>
+        <strong>Collaborators:</strong>
+        Henry Wagner (editor/author) and Isabelle Rashkin (illustrator) 
+      </p>
 
-  <p>
-  <p> <strong>How do I read it?</strong> <a href="https://isabellerashkin.com" target="_blank" rel="noopener noreferrer"> My site </a> and <a href="https://instagram.com/bee_original_art"target = "_blank" rel="noopener noreferrer"> Instagram </a> and physical zines! </p>
+      <p>
+      <p> <strong>How do I read it?</strong> <a href="https://isabellerashkin.com" target="_blank" rel="noopener noreferrer"> My site </a> and <a href="https://instagram.com/bee_original_art"target = "_blank" rel="noopener noreferrer"> Instagram </a> and physical zines! </p>
 
-  <p>
-   <strong>Where can I get physical zines?</strong> <a href="https://isabellerashkin.com/contact.html" target="_blank" rel="noopener noreferrer"> You can contact me for an order</a> and physical zines are available throughout independent bookshops in NYC! </p
-  </p>
+      <p>
+       <strong>Where can I get physical zines?</strong> <a href="https://isabellerashkin.com/contact.html" target="_blank" rel="noopener noreferrer"> You can contact me for an order</a> and physical zines are available throughout independent bookshops in NYC! </p
+      </p>
 
-</div>
+    </div>
 
-<div class="glance-image">
+    <div class="glance-image">
 
-  <a
-    href="lbcharactertree.jpg"
-    class="glightbox"
-    data-gallery="leafborough-overview"
-    data-title="Leafborough Character Tree"
-  >
-    <img
-      src="lbcharactertree.jpg"
-      alt="Leafborough character tree"
-    >
-  </a>
+      <a
+        href="lbcharactertree.jpg"
+        class="glightbox"
+        data-gallery="leafborough-overview"
+        data-title="Leafborough Character Tree"
+      >
+        <img
+          src="lbcharactertree.jpg"
+          alt="Leafborough character tree"
+        >
+      </a>
 
-</div>
-
-
+    </div>
   </section>
 
   <!-- =========================
@@ -807,21 +824,21 @@
 
   <section class="about-section">
 
-<h2>What is Leafborough?</h2>
+    <h2>What is Leafborough?</h2>
 
-<p>
-  The town and story of Leafborough is inspired by endless whimsical tails of woodland creatures and their coming of age experiences no matter what age they are coming into. The characters, setting, and stories, are all original ideas and materials by Henry Wagner and Isabelle Rashkin.
-</p>
+    <p>
+      The town and story of Leafborough is inspired by endless whimsical tails of woodland creatures and their coming of age experiences no matter what age they are coming into. The characters, setting, and stories, are all original ideas and materials by Henry Wagner and Isabelle Rashkin.
+    </p>
 
-<p>
-  The story follows The Ball Rabbit Family, Susan Duck Family, the Mayor and his wife, the Innkeeper and the Bartender, the landlords of the town, and more! All of them individually navigate their relationships and socio economic status in this quiet turn of the century city. 
-  <p>
-      Leafborough is more obbsessed with the innovation of the world around them than focused on the application and acceleration of any specific technology.
-  </p>
-  
-  </p>
-  <em>"Everyday is a lovely day with ones you love in Leafborough."</em> 
-</p>
+    <p>
+      The story follows The Ball Rabbit Family, Susan Duck Family, the Mayor and his wife, the Innkeeper and the Bartender, the landlords of the town, and more! All of them individually navigate their relationships and socio economic status in this quiet turn of the century city. 
+      <p>
+          Leafborough is more obbsessed with the innovation of the world around them than focused on the application and acceleration of any specific technology.
+      </p>
+
+      </p>
+      <em>"Everyday is a lovely day with ones you love in Leafborough."</em> 
+    </p>
 
   </section>
 
@@ -831,170 +848,169 @@
 
   <section>
 
+    <h2>Artwork &amp; Concept Art</h2>
 
-<h2>Artwork &amp; Concept Art</h2>
+    <div class="artwork-grid">
 
-<div class="artwork-grid">
+      <!-- =========================
+           ORIGINAL ARTWORK 01
+           ========================= -->
 
-  <!-- =========================
-       ORIGINAL ARTWORK 01
-       ========================= -->
+      <div class="artwork-card">
 
-  <div class="artwork-card">
+        <a
+          href="artwork-01.jpg"
+          class="glightbox"
+          data-gallery="leafborough-art"
+          data-title="Artwork 01"
+        >
+          <img
+            src="artwork-01.jpg"
+            alt="Artwork 01"
+          >
+        </a>
 
-    <a
-      href="artwork-01.jpg"
-      class="glightbox"
-      data-gallery="leafborough-art"
-      data-title="Artwork 01"
-    >
-      <img
-        src="artwork-01.jpg"
-        alt="Artwork 01"
-      >
-    </a>
+        <h3>Artwork 01</h3>
 
-    <h3>Artwork 01</h3>
+      </div>
 
-  </div>
+      <!-- =========================
+           ORIGINAL ARTWORK 02
+           ========================= -->
 
-  <!-- =========================
-       ORIGINAL ARTWORK 02
-       ========================= -->
+      <div class="artwork-card">
 
-  <div class="artwork-card">
+        <a
+          href="artwork-02.jpg"
+          class="glightbox"
+          data-gallery="leafborough-art"
+          data-title="Artwork 02"
+        >
+          <img
+            src="artwork-02.jpg"
+            alt="Artwork 02"
+          >
+        </a>
 
-    <a
-      href="artwork-02.jpg"
-      class="glightbox"
-      data-gallery="leafborough-art"
-      data-title="Artwork 02"
-    >
-      <img
-        src="artwork-02.jpg"
-        alt="Artwork 02"
-      >
-    </a>
+        <h3>Artwork 02</h3>
 
-    <h3>Artwork 02</h3>
+      </div>
 
-  </div>
+      <!-- =========================
+           ORIGINAL ARTWORK 03
+           ========================= -->
 
-  <!-- =========================
-       ORIGINAL ARTWORK 03
-       ========================= -->
+      <div class="artwork-card">
 
-  <div class="artwork-card">
+        <a
+          href="artwork-03.jpg"
+          class="glightbox"
+          data-gallery="leafborough-art"
+          data-title="Artwork 03"
+        >
+          <img
+            src="artwork-03.jpg"
+            alt="Artwork 03"
+          >
+        </a>
 
-    <a
-      href="artwork-03.jpg"
-      class="glightbox"
-      data-gallery="leafborough-art"
-      data-title="Artwork 03"
-    >
-      <img
-        src="artwork-03.jpg"
-        alt="Artwork 03"
-      >
-    </a>
+        <h3>Artwork 03</h3>
 
-    <h3>Artwork 03</h3>
+      </div>
 
-  </div>
+      <!-- =========================
+           CONCEPT ART
+           GOSSIP CIRCLE
+           ========================= -->
 
-  <!-- =========================
-       CONCEPT ART
-       GOSSIP CIRCLE
-       ========================= -->
+      <div class="artwork-card">
 
-  <div class="artwork-card">
+        <a
+          href="gossip circle.jpg"
+          class="glightbox"
+          data-gallery="leafborough-art"
+          data-title="Gossip Circle"
+        >
+          <img
+            src="gossip circle.jpg"
+            alt="Gossip Circle concept art"
+          >
+        </a>
 
-    <a
-      href="gossip circle.jpg"
-      class="glightbox"
-      data-gallery="leafborough-art"
-      data-title="Gossip Circle"
-    >
-      <img
-        src="gossip circle.jpg"
-        alt="Gossip Circle concept art"
-      >
-    </a>
+        <h3>Gossip Circle</h3>
 
-    <h3>Gossip Circle</h3>
+      </div>
 
-  </div>
+      <!-- =========================
+           CONCEPT ART
+           MAMA MR CROAKSLY
+           ========================= -->
 
-  <!-- =========================
-       CONCEPT ART
-       MAMA MR CROAKSLY
-       ========================= -->
+      <div class="artwork-card">
 
-  <div class="artwork-card">
+        <a
+          href="mamamrcroaksly.jpg"
+          class="glightbox"
+          data-gallery="leafborough-art"
+          data-title="Mama Mr. Croaksly"
+        >
+          <img
+            src="mamamrcroaksly.jpg"
+            alt="Mama Mr. Croaksly concept art"
+          >
+        </a>
 
-    <a
-      href="mamamrcroaksly.jpg"
-      class="glightbox"
-      data-gallery="leafborough-art"
-      data-title="Mama Mr. Croaksly"
-    >
-      <img
-        src="mamamrcroaksly.jpg"
-        alt="Mama Mr. Croaksly concept art"
-      >
-    </a>
+        <h3>Mama Mr. Croaksly</h3>
 
-    <h3>Mama Mr. Croaksly</h3>
+      </div>
 
-  </div>
+      <!-- =========================
+           CONCEPT ART
+           MOMENTS IN LEAFBOROUGH
+           ========================= -->
 
-  <!-- =========================
-       CONCEPT ART
-       MOMENTS IN LEAFBOROUGH
-       ========================= -->
+      <div class="artwork-card">
 
-  <div class="artwork-card">
+        <a
+          href="momentsinlb.jpg"
+          class="glightbox"
+          data-gallery="leafborough-art"
+          data-title="Moments in Leafborough"
+        >
+          <img
+            src="momentsinlb.jpg"
+            alt="Moments in Leafborough concept art"
+          >
+        </a>
 
-    <a
-      href="momentsinlb.jpg"
-      class="glightbox"
-      data-gallery="leafborough-art"
-      data-title="Moments in Leafborough"
-    >
-      <img
-        src="momentsinlb.jpg"
-        alt="Moments in Leafborough concept art"
-      >
-    </a>
+        <h3>Moments in Leafborough</h3>
 
-    <h3>Moments in Leafborough</h3>
+      </div>
 
-  </div>
+      <!-- =========================
+           CONCEPT ART
+           MEET LINT
+           ========================= -->
 
-  <!-- =========================
-       CONCEPT ART
-       MEET LINT
-       ========================= -->
+      <div class="artwork-card">
 
-  <div class="artwork-card">
+        <a
+          href="meetlint.jpg"
+          class="glightbox"
+          data-gallery="leafborough-art"
+          data-title="Meet Lint"
+        >
+          <img
+            src="meetlint.jpg"
+            alt="Meet Lint concept art"
+          >
+        </a>
 
-    <a
-      href="meetlint.jpg"
-      class="glightbox"
-      data-gallery="leafborough-art"
-      data-title="Meet Lint"
-    >
-      <img
-        src="meetlint.jpg"
-        alt="Meet Lint concept art"
-      >
-    </a>
+        <h3>Meet Lint</h3>
 
-    <h3>Meet Lint</h3>
+      </div>
 
-  </div>
-
-</div>
+    </div>
 
   </section>
 
@@ -1004,192 +1020,191 @@
 
   <section class="comics-section">
 
+    <h2>Comics</h2>
 
-<h2>Comics</h2>
+    <!-- =========================
+         COMIC 01
+         IMAGE LEFT / TEXT RIGHT
+         ========================= -->
 
-<!-- =========================
-     COMIC 01
-     IMAGE LEFT / TEXT RIGHT
-     ========================= -->
+    <div class="comic-card">
 
-<div class="comic-card">
+      <div class="comic-image">
 
-  <div class="comic-image">
+        <!-- COMIC 01 COVER -->
+        <a href="#" id="comic01-cover">
+          <img
+            src="Ed1-leafborough-pg1.jpg"
+            alt="The Ball Rabbit Family and The First T.V. in Leafborough — Edition 1"
+          >
+        </a>
 
-    <!-- COMIC 01 COVER -->
-    <a href="#" id="comic01-cover">
-      <img
-        src="Ed1-leafborough-pg1.jpg"
-        alt="The Ball Rabbit Family and The First T.V. in Leafborough — Edition 1"
-      >
-    </a>
+      </div>
 
-  </div>
+      <div class="comic-info">
 
-  <div class="comic-info">
+        <h3>
+          <em>The Ball Rabbit Family and The First T.V. in Leafborough</em>
+        </h3>
 
-    <h3>
-      <em>The Ball Rabbit Family and The First T.V. in Leafborough</em>
-    </h3>
+        <p>
+          <strong>Edition #1 — 2026</strong>
+        </p>
 
-    <p>
-      <strong>Edition #1 — 2026</strong>
-    </p>
+        <p>
+          [WRITE A SHORT SYNOPSIS OF THIS COMIC HERE]
+        </p>
 
-    <p>
-      [WRITE A SHORT SYNOPSIS OF THIS COMIC HERE]
-    </p>
+        <!-- READ COMIC OPENS PAGE 1 OF THE DEDICATED COMIC 01 GALLERY -->
+        <a
+          href="#"
+          class="read-comic"
+          id="read-comic-01"
+        >
+          Read Comic →
+        </a>
 
-    <!-- READ COMIC OPENS PAGE 1 OF THE DEDICATED COMIC 01 GALLERY -->
-    <a
-      href="#"
-      class="read-comic"
-      id="read-comic-01"
-    >
-      Read Comic →
-    </a>
+      </div>
 
-  </div>
+    </div>
 
-</div>
+    <!-- =========================
+         COMIC 02
+         IMAGE LEFT / TEXT RIGHT
+         ========================= -->
 
-<!-- =========================
-     COMIC 02
-     IMAGE LEFT / TEXT RIGHT
-     ========================= -->
+    <div class="comic-card">
 
-<div class="comic-card">
+      <div class="comic-image">
 
-  <div class="comic-image">
+        <a
+          href="comics/comic-02/page-01.jpg"
+          class="glightbox"
+          data-gallery="comic-02"
+          data-title="[COMIC TITLE] — Page 1"
+        >
+          <img
+            src="comic-02.jpg"
+            alt="[COMIC TITLE]"
+          >
+        </a>
 
-    <a
-      href="comics/comic-02/page-01.jpg"
-      class="glightbox"
-      data-gallery="comic-02"
-      data-title="[COMIC TITLE] — Page 1"
-    >
-      <img
-        src="comic-02.jpg"
-        alt="[COMIC TITLE]"
-      >
-    </a>
+        <a
+          href="comics/comic-02/page-02.jpg"
+          class="glightbox comic-lightbox-page"
+          data-gallery="comic-02"
+          data-title="[COMIC TITLE] — Page 2"
+        ></a>
 
-    <a
-      href="comics/comic-02/page-02.jpg"
-      class="glightbox comic-lightbox-page"
-      data-gallery="comic-02"
-      data-title="[COMIC TITLE] — Page 2"
-    ></a>
+        <a
+          href="comics/comic-02/page-03.jpg"
+          class="glightbox comic-lightbox-page"
+          data-gallery="comic-02"
+          data-title="[COMIC TITLE] — Page 3"
+        ></a>
 
-    <a
-      href="comics/comic-02/page-03.jpg"
-      class="glightbox comic-lightbox-page"
-      data-gallery="comic-02"
-      data-title="[COMIC TITLE] — Page 3"
-    ></a>
+        <a
+          href="comics/comic-02/page-04.jpg"
+          class="glightbox comic-lightbox-page"
+          data-gallery="comic-02"
+          data-title="[COMIC TITLE] — Page 4"
+        ></a>
 
-    <a
-      href="comics/comic-02/page-04.jpg"
-      class="glightbox comic-lightbox-page"
-      data-gallery="comic-02"
-      data-title="[COMIC TITLE] — Page 4"
-    ></a>
+      </div>
 
-  </div>
+      <div class="comic-info">
 
-  <div class="comic-info">
+        <h3>[COMIC TITLE]</h3>
 
-    <h3>[COMIC TITLE]</h3>
+        <p>
+          <strong>[DATE / YEAR]</strong>
+        </p>
 
-    <p>
-      <strong>[DATE / YEAR]</strong>
-    </p>
+        <p>
+          [WRITE A SHORT SYNOPSIS OF THIS COMIC HERE]
+        </p>
 
-    <p>
-      [WRITE A SHORT SYNOPSIS OF THIS COMIC HERE]
-    </p>
+        <a
+          href="comics/comic-02/page-01.jpg"
+          class="glightbox read-comic"
+          data-gallery="comic-02"
+          data-title="[COMIC TITLE] — Page 1"
+        >
+          Read Comic →
+        </a>
 
-    <a
-      href="comics/comic-02/page-01.jpg"
-      class="glightbox read-comic"
-      data-gallery="comic-02"
-      data-title="[COMIC TITLE] — Page 1"
-    >
-      Read Comic →
-    </a>
+      </div>
 
-  </div>
+    </div>
 
-</div>
+    <!-- =========================
+         COMIC 03
+         IMAGE LEFT / TEXT RIGHT
+         ========================= -->
 
-<!-- =========================
-     COMIC 03
-     IMAGE LEFT / TEXT RIGHT
-     ========================= -->
+    <div class="comic-card">
 
-<div class="comic-card">
+      <div class="comic-image">
 
-  <div class="comic-image">
+        <a
+          href="comics/comic-03/page-01.jpg"
+          class="glightbox"
+          data-gallery="comic-03"
+          data-title="[COMIC TITLE] — Page 1"
+        >
+          <img
+            src="comic-03.jpg"
+            alt="[COMIC TITLE]"
+          >
+        </a>
 
-    <a
-      href="comics/comic-03/page-01.jpg"
-      class="glightbox"
-      data-gallery="comic-03"
-      data-title="[COMIC TITLE] — Page 1"
-    >
-      <img
-        src="comic-03.jpg"
-        alt="[COMIC TITLE]"
-      >
-    </a>
+        <a
+          href="comics/comic-03/page-02.jpg"
+          class="glightbox comic-lightbox-page"
+          data-gallery="comic-03"
+          data-title="[COMIC TITLE] — Page 2"
+        ></a>
 
-    <a
-      href="comics/comic-03/page-02.jpg"
-      class="glightbox comic-lightbox-page"
-      data-gallery="comic-03"
-      data-title="[COMIC TITLE] — Page 2"
-    ></a>
+        <a
+          href="comics/comic-03/page-03.jpg"
+          class="glightbox comic-lightbox-page"
+          data-gallery="comic-03"
+          data-title="[COMIC TITLE] — Page 3"
+        ></a>
 
-    <a
-      href="comics/comic-03/page-03.jpg"
-      class="glightbox comic-lightbox-page"
-      data-gallery="comic-03"
-      data-title="[COMIC TITLE] — Page 3"
-    ></a>
+        <a
+          href="comics/comic-03/page-04.jpg"
+          class="glightbox comic-lightbox-page"
+          data-gallery="comic-03"
+          data-title="[COMIC TITLE] — Page 4"
+        ></a>
 
-    <a
-      href="comics/comic-03/page-04.jpg"
-      class="glightbox comic-lightbox-page"
-      data-gallery="comic-03"
-      data-title="[COMIC TITLE] — Page 4"
-    ></a>
+      </div>
 
-  </div>
+      <div class="comic-info">
 
-  <div class="comic-info">
+        <h3>[COMIC TITLE]</h3>
 
-    <h3>[COMIC TITLE]</h3>
+        <p>
+          <strong>[DATE / YEAR]</strong>
+        </p>
 
-    <p>
-      <strong>[DATE / YEAR]</strong>
-    </p>
+        <p>
+          [WRITE A SHORT SYNOPSIS OF THIS COMIC HERE]
+        </p>
 
-    <p>
-      [WRITE A SHORT SYNOPSIS OF THIS COMIC HERE]
-    </p>
+        <a
+          href="comics/comic-03/page-01.jpg"
+          class="glightbox read-comic"
+          data-gallery="comic-03"
+          data-title="[COMIC TITLE] — Page 1"
+        >
+          Read Comic →
+        </a>
 
-    <a
-      href="comics/comic-03/page-01.jpg"
-      class="glightbox read-comic"
-      data-gallery="comic-03"
-      data-title="[COMIC TITLE] — Page 1"
-    >
-      Read Comic →
-    </a>
+      </div>
 
-  </div>
-
-</div>
+    </div>
 
   </section>
 
@@ -1199,20 +1214,18 @@
 
   <section class="cta-section">
 
+    <h2>Interested in Leafborough?</h2>
 
-<h2>Interested in Leafborough?</h2>
+    <p>
+      [WRITE YOUR FINAL LEAFBOROUGH / CONTACT MESSAGE HERE]
+    </p>
 
-<p>
-  [WRITE YOUR FINAL LEAFBOROUGH / CONTACT MESSAGE HERE]
-</p>
-
-<a
-  href="contact.html"
-  class="cta-button"
->
-  Contact Me
-</a>
-
+    <a
+      href="contact.html"
+      class="cta-button"
+    >
+      Contact Me
+    </a>
 
   </section>
 
@@ -1229,83 +1242,82 @@
 
   <div class="social-links">
 
+    <a
+      href="https://www.instagram.com/tamoottopro/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Instagram (Personal)
+    </a>
 
-<a
-  href="https://www.instagram.com/tamoottopro/"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  Instagram (Personal)
-</a>
+    <a
+      href="https://www.instagram.com/Bee_original_music/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Instagram (Music)
+    </a>
 
-<a
-  href="https://www.instagram.com/Bee_original_music/"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  Instagram (Music)
-</a>
+    <a
+      href="https://x.com/tamoottopro"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      X (Twitter)
+    </a>
 
-<a
-  href="https://x.com/tamoottopro"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  X (Twitter)
-</a>
+    <a
+      href="https://www.linkedin.com/in/isabelle-rashkin-82958228/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      LinkedIn
+    </a>
 
-<a
-  href="https://www.linkedin.com/in/isabelle-rashkin-82958228/"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  LinkedIn
-</a>
+    <a href="mailto:ivrashkin@gmail.com">
+      Email
+    </a>
 
-<a href="mailto:ivrashkin@gmail.com">
-  Email
-</a>
+    <a
+      href="https://open.spotify.com/artist/2TRjrme5uq3GM8qMF7y0QI"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Spotify
+    </a>
 
-<a
-  href="https://open.spotify.com/artist/2TRjrme5uq3GM8qMF7y0QI"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  Spotify
-</a>
+    <a
+      href="https://www.youtube.com/channel/UCa9acPRSIGUmjgn54hz17eA"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      YouTube Music
+    </a>
 
-<a
-  href="https://www.youtube.com/channel/UCa9acPRSIGUmjgn54hz17eA"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  YouTube Music
-</a>
+    <a
+      href="https://music.apple.com/ca/artist/isabelle-bee-rashkin/1773658949"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Apple Music
+    </a>
 
-<a
-  href="https://music.apple.com/ca/artist/isabelle-bee-rashkin/1773658949"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  Apple Music
-</a>
-
-<a
-  href="https://www.backstage.com/u/isabelle-rashkin/"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  Backstage
-</a>
+    <a
+      href="https://www.backstage.com/u/isabelle-rashkin/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Backstage
+    </a>
 
   </div>
 
 </footer>
 
-
 <!-- =========================
      NATIVE COMIC #1 LIGHTBOX
      ========================= -->
+
 <div class="comic-modal" id="comic-modal" aria-hidden="true">
   <div class="comic-modal-content">
     <button type="button" class="comic-modal-close" id="comic-modal-close" aria-label="Close comic">&times;</button>
@@ -1328,6 +1340,7 @@
      GLIGHTBOX FOR SITE ARTWORK
      Comic #1 intentionally does NOT use GLightbox.
      ========================= */
+
   if (typeof GLightbox === 'function') {
     GLightbox({
       selector: '.glightbox',
@@ -1341,6 +1354,7 @@
   /* =========================
      NATIVE COMIC #1 LIGHTBOX
      ========================= */
+
   (function () {
     const pages = [
       'Ed1-leafborough-pg1.jpg',
@@ -1379,6 +1393,7 @@
     function showPage(index) {
       if (index < 0) index = pages.length - 1;
       if (index >= pages.length) index = 0;
+
       current = index;
       image.src = pages[current];
       image.alt = captions[current];
@@ -1400,11 +1415,27 @@
       document.body.style.overflow = '';
     }
 
-    if (cover) cover.addEventListener('click', function(e) { e.preventDefault(); openComic(); });
-    if (read) read.addEventListener('click', function(e) { e.preventDefault(); openComic(); });
+    if (cover) cover.addEventListener('click', function(e) {
+      e.preventDefault();
+      openComic();
+    });
+
+    if (read) read.addEventListener('click', function(e) {
+      e.preventDefault();
+      openComic();
+    });
+
     if (close) close.addEventListener('click', closeComic);
-    if (prev) prev.addEventListener('click', function(e) { e.stopPropagation(); showPage(current - 1); });
-    if (next) next.addEventListener('click', function(e) { e.stopPropagation(); showPage(current + 1); });
+
+    if (prev) prev.addEventListener('click', function(e) {
+      e.stopPropagation();
+      showPage(current - 1);
+    });
+
+    if (next) next.addEventListener('click', function(e) {
+      e.stopPropagation();
+      showPage(current + 1);
+    });
 
     if (modal) modal.addEventListener('click', function(e) {
       if (e.target === modal) closeComic();
@@ -1412,6 +1443,7 @@
 
     document.addEventListener('keydown', function(e) {
       if (!modal || !modal.classList.contains('show')) return;
+
       if (e.key === 'Escape') closeComic();
       if (e.key === 'ArrowLeft') showPage(current - 1);
       if (e.key === 'ArrowRight') showPage(current + 1);
