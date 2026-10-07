@@ -77,7 +77,6 @@
 
   /* =========================
      NAVBAR
-     Matches Headshot & Resume
      ========================= */
 
   nav {
@@ -108,7 +107,9 @@
     text-decoration: underline;
   }
 
-  /* Hamburger */
+  /* =========================
+     HAMBURGER
+     ========================= */
 
   .menu-toggle {
     display: none;
@@ -124,8 +125,7 @@
   }
 
   /* =========================
-     HEADER
-     Matches Headshot & Resume
+     SHARED SITE HEADER
      ========================= */
 
   header {
@@ -200,7 +200,7 @@
   .glance-container {
     display: flex;
     justify-content: center;
-    align-items: stretch;
+    align-items: flex-start;
     gap: 3rem;
     flex-wrap: wrap;
     text-align: left;
@@ -215,6 +215,11 @@
     padding: 2rem;
     box-sizing: border-box;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+    /* Important:
+       Keeps the text box only as tall as its content */
+    align-self: flex-start;
+    height: auto;
   }
 
   .glance-text h2 {
@@ -229,8 +234,8 @@
     flex: 1 1 0;
     min-width: 0;
     max-width: 550px;
-    display: flex;
-    align-items: stretch;
+    display: block;
+    align-self: flex-start;
   }
 
   .glance-image a {
@@ -240,7 +245,7 @@
 
   .glance-image img {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: contain;
     border-radius: 12px;
     display: block;
@@ -301,9 +306,7 @@
 
   /* =========================
      COMICS
-
-     IMAGE LEFT
-     TEXT RIGHT
+     IMAGE LEFT / TEXT RIGHT
      ========================= */
 
   .comics-section {
@@ -396,7 +399,6 @@
 
   /* =========================
      FOOTER
-     Matches Headshot & Resume
      ========================= */
 
   footer {
@@ -430,8 +432,7 @@
   }
 
   /* =========================
-     MOBILE
-     Matches Headshot & Resume
+     TABLET
      ========================= */
 
   @media (max-width: 1000px) {
@@ -440,6 +441,10 @@
       grid-template-columns: repeat(2, 1fr);
     }
   }
+
+  /* =========================
+     MOBILE
+     ========================= */
 
   @media (max-width: 768px) {
 
@@ -506,6 +511,8 @@
       max-width: 100%;
       flex: none;
       padding: 1.25rem;
+      height: auto;
+      align-self: auto;
     }
 
     .glance-image {
@@ -560,10 +567,49 @@
     .artwork-card a {
       aspect-ratio: 1 / 1;
     }
+
+    /* =========================
+       NATIVE COMIC LIGHTBOX
+       MOBILE
+       ========================= */
+
+    .comic-modal {
+      padding: 10px;
+    }
+
+    .comic-modal-image {
+      max-width: 94vw;
+      max-height: calc(82vh - 90px);
+    }
+
+    .comic-modal-close {
+      top: 8px;
+      right: 8px;
+      font-size: 36px;
+    }
+
+    .comic-modal-prev,
+    .comic-modal-next {
+      font-size: 30px;
+      padding: 10px 13px;
+    }
+
+    .comic-modal-prev {
+      left: 6px;
+    }
+
+    .comic-modal-next {
+      right: 6px;
+    }
+
+    .comic-modal-caption {
+      font-size: 14px;
+      max-width: 90vw;
+    }
   }
 
   /* =========================
-     NATIVE COMIC #1 LIGHTBOX
+     NATIVE COMIC LIGHTBOX
      ========================= */
 
   .comic-modal {
@@ -675,43 +721,6 @@
     padding: 6px 12px;
     border-radius: 20px;
   }
-
-  @media (max-width: 768px) {
-
-    .comic-modal {
-      padding: 10px;
-    }
-
-    .comic-modal-image {
-      max-width: 94vw;
-      max-height: calc(82vh - 90px);
-    }
-
-    .comic-modal-close {
-      top: 8px;
-      right: 8px;
-      font-size: 36px;
-    }
-
-    .comic-modal-prev,
-    .comic-modal-next {
-      font-size: 30px;
-      padding: 10px 13px;
-    }
-
-    .comic-modal-prev {
-      left: 6px;
-    }
-
-    .comic-modal-next {
-      right: 6px;
-    }
-
-    .comic-modal-caption {
-      font-size: 14px;
-      max-width: 90vw;
-    }
-  }
 </style>
 </head>
 
@@ -753,13 +762,16 @@
 
 <!-- =========================
      ARTIST HEADER
-     EXACT SHARED SITE HEADER
      ========================= -->
 
 <header>
   <h1>Isabelle "Bee" Rashkin</h1>
   <p>Multi-disciplinary artist based in Brooklyn, NYC</p>
-  <p><small>Interlochen Arts Academy 2018 / University of Wisconsin-Milwaukee 2022</small></p>
+  <p>
+    <small>
+      Interlochen Arts Academy 2018 / University of Wisconsin-Milwaukee 2022
+    </small>
+  </p>
 </header>
 
 <main>
@@ -900,8 +912,6 @@
 
     <div class="artwork-grid">
 
-      <!-- GOSSIP CIRCLE -->
-
       <div class="artwork-card">
 
         <a
@@ -919,8 +929,6 @@
         <h3>Gossip Circle</h3>
 
       </div>
-
-      <!-- MAMA MR CROAKSLY -->
 
       <div class="artwork-card">
 
@@ -940,8 +948,6 @@
 
       </div>
 
-      <!-- MOMENTS IN LEAFBOROUGH -->
-
       <div class="artwork-card">
 
         <a
@@ -959,8 +965,6 @@
         <h3>Moments in Leafborough</h3>
 
       </div>
-
-      <!-- MEET LINT -->
 
       <div class="artwork-card">
 
@@ -991,10 +995,6 @@
   <section class="comics-section">
 
     <h2>Comics</h2>
-
-    <!-- =========================
-         COMIC 01
-         ========================= -->
 
     <div class="comic-card">
 
@@ -1069,7 +1069,6 @@
 
 <!-- =========================
      FOOTER
-     EXACT SHARED SITE FOOTER
      ========================= -->
 
 <footer>
@@ -1151,7 +1150,7 @@
 </footer>
 
 <!-- =========================
-     NATIVE COMIC #1 LIGHTBOX
+     NATIVE COMIC LIGHTBOX
      ========================= -->
 
 <div
@@ -1234,7 +1233,7 @@
   }
 
   /* =========================
-     NATIVE COMIC #1 LIGHTBOX
+     NATIVE COMIC LIGHTBOX
      ========================= */
 
   (function () {
@@ -1374,13 +1373,10 @@
     });
 
   })();
-</script>
 
-<!-- =========================
-     MOBILE NAV JS
-     ========================= -->
-
-<script>
+  /* =========================
+     MOBILE NAVIGATION
+     ========================= */
 
   const menuToggle = document.getElementById("menu-toggle");
   const navLinks = document.getElementById("nav-links");
@@ -1400,7 +1396,6 @@
     });
 
   }
-
 </script>
 
 </body>
