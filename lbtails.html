@@ -195,60 +195,119 @@
 
   /* =========================
      LEAFBOROUGH AT A GLANCE
+     =========================
+     
+     STRUCTURE:
+     
+     LEFT COLUMN
+       - Text box
+       - Mama by the Sea image
+     
+     RIGHT COLUMN
+       - Character Tree
+     
+     The text box has NO fixed height.
+     It naturally fits its content.
      ========================= */
 
   .glance-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 3rem;
-    flex-wrap: wrap;
+    align-items: start;
     text-align: left;
   }
 
-  .glance-text {
-    flex: 1 1 0;
+  /* LEFT COLUMN */
+
+  .glance-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
     min-width: 0;
-    max-width: 550px;
+  }
+
+  /* TEXT BOX */
+
+  .glance-text {
+    width: 100%;
     background: rgba(255, 255, 255, 0.55);
     border-radius: 12px;
     padding: 2rem;
     box-sizing: border-box;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 
-    /* Important:
-       Keeps the text box only as tall as its content */
-    align-self: flex-start;
+    /*
+      IMPORTANT:
+      No fixed height.
+      The box is only as tall as the text inside it.
+    */
     height: auto;
   }
 
   .glance-text h2 {
     text-align: center;
+    margin-top: 0;
   }
 
   .glance-text p {
     line-height: 1.6;
+    margin-bottom: 1rem;
   }
 
-  .glance-image {
-    flex: 1 1 0;
-    min-width: 0;
-    max-width: 550px;
-    display: block;
-    align-self: flex-start;
+  .glance-text p:last-child {
+    margin-bottom: 0;
   }
 
-  .glance-image a {
+  /* MAMA BY THE SEA IMAGE */
+
+  .glance-mama {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.55);
+    border-radius: 12px;
+    padding: 1rem;
+    box-sizing: border-box;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .glance-mama a {
     display: block;
     width: 100%;
   }
 
-  .glance-image img {
+  .glance-mama img {
+    display: block;
     width: 100%;
     height: auto;
+    max-height: 450px;
+    object-fit: contain;
+    border-radius: 10px;
+  }
+
+  /* RIGHT COLUMN / CHARACTER TREE */
+
+  .glance-character {
+    min-width: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .glance-character a {
+    display: block;
+    width: 100%;
+  }
+
+  .glance-character img {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    max-height: 700px;
     object-fit: contain;
     border-radius: 12px;
-    display: block;
+    margin: 0 auto;
   }
 
   /* =========================
@@ -440,6 +499,14 @@
     .artwork-grid {
       grid-template-columns: repeat(2, 1fr);
     }
+
+    .glance-container {
+      gap: 2rem;
+    }
+
+    .glance-character img {
+      max-width: 450px;
+    }
   }
 
   /* =========================
@@ -501,41 +568,45 @@
        ========================= */
 
     .glance-container {
+      display: flex;
       flex-direction: column;
+      gap: 1.5rem;
       align-items: stretch;
+    }
+
+    .glance-left {
+      width: 100%;
       gap: 1.5rem;
     }
 
     .glance-text {
       width: 100%;
-      max-width: 100%;
-      flex: none;
       padding: 1.25rem;
       height: auto;
-      align-self: auto;
     }
 
-    .glance-image {
+    .glance-mama {
+      width: 100%;
+      padding: 0.75rem;
+    }
+
+    .glance-mama img {
+      width: 100%;
+      max-height: none;
+    }
+
+    .glance-character {
+      width: 100%;
+    }
+
+    .glance-character img {
       width: 100%;
       max-width: 100%;
-      flex: none;
-      display: block;
-    }
-
-    .glance-image a {
-      width: 100%;
-    }
-
-    .glance-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-      object-fit: contain;
+      max-height: none;
     }
 
     /* =========================
        COMICS
-       MOBILE
        ========================= */
 
     .comic-card {
@@ -556,7 +627,6 @@
 
     /* =========================
        ARTWORK
-       MOBILE
        ========================= */
 
     .artwork-grid {
@@ -570,7 +640,6 @@
 
     /* =========================
        NATIVE COMIC LIGHTBOX
-       MOBILE
        ========================= */
 
     .comic-modal {
@@ -766,7 +835,11 @@
 
 <header>
   <h1>Isabelle "Bee" Rashkin</h1>
-  <p>Multi-disciplinary artist based in Brooklyn, NYC</p>
+
+  <p>
+    Multi-disciplinary artist based in Brooklyn, NYC
+  </p>
+
   <p>
     <small>
       Interlochen Arts Academy 2018 / University of Wisconsin-Milwaukee 2022
@@ -781,12 +854,15 @@
        ========================= -->
 
   <section class="welcome-section">
+
     <img
       src="lbtailsheader.jpg"
       alt="Welcome to Leafborough"
       class="welcome-graphic"
     >
+
   </section>
+
 
   <!-- =========================
        LEAFBOROUGH AT A GLANCE
@@ -794,60 +870,92 @@
 
   <section class="glance-container">
 
-    <div class="glance-text">
+    <!-- LEFT COLUMN -->
 
-      <h2>Leafborough at a Glance</h2>
+    <div class="glance-left">
 
-      <p>
-        <strong>What is this?</strong>
-        Coming of Age Fairy Tails
-      </p>
+      <!-- TEXT BOX -->
 
-      <p>
-        <strong>When did you start?</strong>
-        Summer of 2026
-      </p>
+      <div class="glance-text">
 
-      <p>
-        <strong>Collaborators:</strong>
-        Henry Wagner (editor/author) and Isabelle Rashkin (illustrator)
-      </p>
+        <h2>Leafborough at a Glance</h2>
 
-      <p>
-        <strong>How do I read it?</strong>
+        <p>
+          <strong>What is this?</strong>
+          Coming of Age Fairy Tails
+        </p>
+
+        <p>
+          <strong>When did you start?</strong>
+          Summer of 2026
+        </p>
+
+        <p>
+          <strong>Collaborators:</strong>
+          Henry Wagner (editor/author) and Isabelle Rashkin (illustrator)
+        </p>
+
+        <p>
+          <strong>How do I read it?</strong>
+          <a
+            href="https://isabellerashkin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            My site
+          </a>
+          and
+          <a
+            href="https://instagram.com/bee_original_art"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Instagram
+          </a>
+          and physical zines!
+        </p>
+
+        <p>
+          <strong>Where can I get physical zines?</strong>
+          <a
+            href="https://isabellerashkin.com/contact.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            You can contact me for an order
+          </a>
+          and physical zines are available throughout independent bookshops in NYC!
+        </p>
+
+      </div>
+
+
+      <!-- MAMA BY THE SEA IMAGE -->
+
+      <div class="glance-mama">
+
         <a
-          href="https://isabellerashkin.com"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="mama by the sea comic.jpg"
+          class="glightbox"
+          data-gallery="leafborough-overview"
+          data-title="Mama by the Sea"
         >
-          My site
-        </a>
-        and
-        <a
-          href="https://instagram.com/bee_original_art"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Instagram
-        </a>
-        and physical zines!
-      </p>
 
-      <p>
-        <strong>Where can I get physical zines?</strong>
-        <a
-          href="https://isabellerashkin.com/contact.html"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          You can contact me for an order
+          <img
+            src="mama by the sea comic.jpg"
+            alt="Mama by the Sea comic from Leafborough"
+          >
+
         </a>
-        and physical zines are available throughout independent bookshops in NYC!
-      </p>
+
+      </div>
 
     </div>
 
-    <div class="glance-image">
+
+    <!-- RIGHT COLUMN: CHARACTER TREE -->
+
+    <div class="glance-character">
 
       <a
         href="lbcharactertree.jpg"
@@ -855,15 +963,18 @@
         data-gallery="leafborough-overview"
         data-title="Leafborough Character Tree"
       >
+
         <img
           src="lbcharactertree.jpg"
           alt="Leafborough character tree"
         >
+
       </a>
 
     </div>
 
   </section>
+
 
   <!-- =========================
        ABOUT LEAFBOROUGH
@@ -902,6 +1013,7 @@
 
   </section>
 
+
   <!-- =========================
        ARTWORK & CONCEPT ART
        ========================= -->
@@ -912,6 +1024,8 @@
 
     <div class="artwork-grid">
 
+      <!-- GOSSIP CIRCLE -->
+
       <div class="artwork-card">
 
         <a
@@ -920,15 +1034,20 @@
           data-gallery="leafborough-art"
           data-title="Gossip Circle"
         >
+
           <img
             src="gossip circle.jpg"
             alt="Gossip Circle concept art"
           >
+
         </a>
 
         <h3>Gossip Circle</h3>
 
       </div>
+
+
+      <!-- MAMA MR CROAKSLY -->
 
       <div class="artwork-card">
 
@@ -938,15 +1057,20 @@
           data-gallery="leafborough-art"
           data-title="Mama Mr. Croaksly"
         >
+
           <img
             src="mamamrcroaksly.jpg"
             alt="Mama Mr. Croaksly concept art"
           >
+
         </a>
 
         <h3>Mama Mr. Croaksly</h3>
 
       </div>
+
+
+      <!-- MOMENTS IN LEAFBOROUGH -->
 
       <div class="artwork-card">
 
@@ -956,15 +1080,20 @@
           data-gallery="leafborough-art"
           data-title="Moments in Leafborough"
         >
+
           <img
             src="momentsinlb.jpg"
             alt="Moments in Leafborough concept art"
           >
+
         </a>
 
         <h3>Moments in Leafborough</h3>
 
       </div>
+
+
+      <!-- MEET LINT -->
 
       <div class="artwork-card">
 
@@ -974,10 +1103,12 @@
           data-gallery="leafborough-art"
           data-title="Meet Lint"
         >
+
           <img
             src="meetlint.jpg"
             alt="Meet Lint concept art"
           >
+
         </a>
 
         <h3>Meet Lint</h3>
@@ -987,6 +1118,7 @@
     </div>
 
   </section>
+
 
   <!-- =========================
        COMICS
@@ -1010,6 +1142,7 @@
         </a>
 
       </div>
+
 
       <div class="comic-info">
 
@@ -1043,6 +1176,7 @@
 
   </section>
 
+
   <!-- =========================
        FINAL CTA
        ========================= -->
@@ -1066,6 +1200,7 @@
   </section>
 
 </main>
+
 
 <!-- =========================
      FOOTER
@@ -1149,6 +1284,7 @@
 
 </footer>
 
+
 <!-- =========================
      NATIVE COMIC LIGHTBOX
      ========================= -->
@@ -1211,6 +1347,7 @@
 
 </div>
 
+
 <!-- =========================
      GLIGHTBOX JS
      ========================= -->
@@ -1218,11 +1355,13 @@
 <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
 
 <script>
+
   /* =========================
      GLIGHTBOX FOR SITE ARTWORK
      ========================= */
 
   if (typeof GLightbox === 'function') {
+
     GLightbox({
       selector: '.glightbox',
       loop: true,
@@ -1230,7 +1369,9 @@
       closeOnOutsideClick: true,
       touchNavigation: true
     });
+
   }
+
 
   /* =========================
      NATIVE COMIC LIGHTBOX
@@ -1272,6 +1413,7 @@
 
     let current = 0;
 
+
     function showPage(index) {
 
       if (index < 0) {
@@ -1285,117 +1427,178 @@
       current = index;
 
       image.src = pages[current];
+
       image.alt = captions[current];
+
       caption.textContent = captions[current];
 
       counter.textContent =
         'Page ' + (current + 1) + ' of ' + pages.length;
+
     }
+
 
     function openComic() {
 
       showPage(0);
 
       modal.classList.add('show');
+
       modal.setAttribute('aria-hidden', 'false');
 
       document.body.style.overflow = 'hidden';
+
     }
+
 
     function closeComic() {
 
       modal.classList.remove('show');
+
       modal.setAttribute('aria-hidden', 'true');
 
       image.src = '';
 
       document.body.style.overflow = '';
+
     }
+
 
     if (cover) {
+
       cover.addEventListener('click', function (e) {
+
         e.preventDefault();
+
         openComic();
+
       });
+
     }
+
 
     if (read) {
+
       read.addEventListener('click', function (e) {
+
         e.preventDefault();
+
         openComic();
+
       });
+
     }
+
 
     if (close) {
+
       close.addEventListener('click', closeComic);
+
     }
+
 
     if (prev) {
+
       prev.addEventListener('click', function (e) {
+
         e.stopPropagation();
+
         showPage(current - 1);
+
       });
+
     }
+
 
     if (next) {
+
       next.addEventListener('click', function (e) {
+
         e.stopPropagation();
+
         showPage(current + 1);
+
       });
+
     }
 
+
     if (modal) {
+
       modal.addEventListener('click', function (e) {
+
         if (e.target === modal) {
+
           closeComic();
+
         }
+
       });
+
     }
+
 
     document.addEventListener('keydown', function (e) {
 
       if (!modal || !modal.classList.contains('show')) {
+
         return;
+
       }
 
       if (e.key === 'Escape') {
+
         closeComic();
+
       }
 
       if (e.key === 'ArrowLeft') {
+
         showPage(current - 1);
+
       }
 
       if (e.key === 'ArrowRight') {
+
         showPage(current + 1);
+
       }
 
     });
 
   })();
 
+
   /* =========================
      MOBILE NAVIGATION
      ========================= */
 
   const menuToggle = document.getElementById("menu-toggle");
+
   const navLinks = document.getElementById("nav-links");
+
 
   if (menuToggle && navLinks) {
 
     menuToggle.addEventListener("click", () => {
+
       navLinks.classList.toggle("show");
+
     });
+
 
     document.querySelectorAll("#nav-links a").forEach(link => {
 
       link.addEventListener("click", () => {
+
         navLinks.classList.remove("show");
+
       });
 
     });
 
   }
+
 </script>
 
 </body>
