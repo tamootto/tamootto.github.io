@@ -267,8 +267,8 @@
 
   .artwork-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
     align-items: start;
   }
 
@@ -281,28 +281,27 @@
 
   .artwork-card a {
     display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 12px;
   }
 
   .artwork-card img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: contain;
     display: block;
     border-radius: 12px;
   }
 
   .artwork-card h3 {
-    margin: 1rem 0 0.5rem;
-  }
-
-  .artwork-card p {
-    line-height: 1.5;
-    margin-bottom: 0;
+    margin: 1rem 0 0.25rem;
   }
 
   /* =========================
      COMICS
 
-     ALL THREE COMICS USE:
      IMAGE LEFT
      TEXT RIGHT
      ========================= */
@@ -365,14 +364,6 @@
   .read-comic:hover {
     transform: translateY(-2px);
     opacity: 0.85;
-  }
-
-  /* Hidden additional comic pages.
-     These remain in the GLightbox gallery but do not
-     appear as separate visible images on the page. */
-
-  .comic-lightbox-page {
-    display: none;
   }
 
   /* =========================
@@ -442,6 +433,13 @@
      MOBILE
      Matches Headshot & Resume
      ========================= */
+
+  @media (max-width: 1000px) {
+
+    .artwork-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
 
   @media (max-width: 768px) {
 
@@ -531,9 +529,6 @@
     /* =========================
        COMICS
        MOBILE
-
-       IMAGE FIRST
-       INFORMATION SECOND
        ========================= */
 
     .comic-card {
@@ -559,6 +554,11 @@
 
     .artwork-grid {
       grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .artwork-card a {
+      aspect-ratio: 1 / 1;
     }
   }
 
@@ -581,10 +581,6 @@
   .comic-modal.show {
     display: flex;
   }
-
-  /* Keep the comic image, caption, and page count
-     stacked vertically so the caption sits beneath
-     the photo instead of overlaying it. */
 
   .comic-modal-content {
     position: relative;
@@ -638,8 +634,13 @@
     border-radius: 8px;
   }
 
-  .comic-modal-prev { left: 18px; }
-  .comic-modal-next { right: 18px; }
+  .comic-modal-prev {
+    left: 18px;
+  }
+
+  .comic-modal-next {
+    right: 18px;
+  }
 
   .comic-modal-close:hover,
   .comic-modal-prev:hover,
@@ -676,7 +677,10 @@
   }
 
   @media (max-width: 768px) {
-    .comic-modal { padding: 10px; }
+
+    .comic-modal {
+      padding: 10px;
+    }
 
     .comic-modal-image {
       max-width: 94vw;
@@ -695,8 +699,13 @@
       padding: 10px 13px;
     }
 
-    .comic-modal-prev { left: 6px; }
-    .comic-modal-next { right: 6px; }
+    .comic-modal-prev {
+      left: 6px;
+    }
+
+    .comic-modal-next {
+      right: 6px;
+    }
 
     .comic-modal-caption {
       font-size: 14px;
@@ -757,7 +766,6 @@
 
   <!-- =========================
        WELCOME GRAPHIC
-       IMAGE ONLY
        ========================= -->
 
   <section class="welcome-section">
@@ -773,6 +781,7 @@
        ========================= -->
 
   <section class="glance-container">
+
     <div class="glance-text">
 
       <h2>Leafborough at a Glance</h2>
@@ -784,19 +793,44 @@
 
       <p>
         <strong>When did you start?</strong>
-        Summer of 2026 
+        Summer of 2026
       </p>
 
       <p>
         <strong>Collaborators:</strong>
-        Henry Wagner (editor/author) and Isabelle Rashkin (illustrator) 
+        Henry Wagner (editor/author) and Isabelle Rashkin (illustrator)
       </p>
 
       <p>
-      <p> <strong>How do I read it?</strong> <a href="https://isabellerashkin.com" target="_blank" rel="noopener noreferrer"> My site </a> and <a href="https://instagram.com/bee_original_art"target = "_blank" rel="noopener noreferrer"> Instagram </a> and physical zines! </p>
+        <strong>How do I read it?</strong>
+        <a
+          href="https://isabellerashkin.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          My site
+        </a>
+        and
+        <a
+          href="https://instagram.com/bee_original_art"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Instagram
+        </a>
+        and physical zines!
+      </p>
 
       <p>
-       <strong>Where can I get physical zines?</strong> <a href="https://isabellerashkin.com/contact.html" target="_blank" rel="noopener noreferrer"> You can contact me for an order</a> and physical zines are available throughout independent bookshops in NYC! </p
+        <strong>Where can I get physical zines?</strong>
+        <a
+          href="https://isabellerashkin.com/contact.html"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          You can contact me for an order
+        </a>
+        and physical zines are available throughout independent bookshops in NYC!
       </p>
 
     </div>
@@ -816,6 +850,7 @@
       </a>
 
     </div>
+
   </section>
 
   <!-- =========================
@@ -827,17 +862,30 @@
     <h2>What is Leafborough?</h2>
 
     <p>
-      The town and story of Leafborough is inspired by endless whimsical tails of woodland creatures and their coming of age experiences no matter what age they are coming into. The characters, setting, and stories, are all original ideas and materials by Henry Wagner and Isabelle Rashkin.
+      The town and story of Leafborough is inspired by endless whimsical
+      tails of woodland creatures and their coming of age experiences no
+      matter what age they are coming into. The characters, setting, and
+      stories are all original ideas and materials by Henry Wagner and
+      Isabelle Rashkin.
     </p>
 
     <p>
-      The story follows The Ball Rabbit Family, Susan Duck Family, the Mayor and his wife, the Innkeeper and the Bartender, the landlords of the town, and more! All of them individually navigate their relationships and socio economic status in this quiet turn of the century city. 
-      <p>
-          Leafborough is more obbsessed with the innovation of the world around them than focused on the application and acceleration of any specific technology.
-      </p>
+      The story follows The Ball Rabbit Family, Susan Duck Family, the Mayor
+      and his wife, the Innkeeper and the Bartender, the landlords of the
+      town, and more! All of them individually navigate their relationships
+      and socio economic status in this quiet turn of the century city.
+    </p>
 
-      </p>
-      <em>"Everyday is a lovely day with ones you love in Leafborough."</em> 
+    <p>
+      Leafborough is more obsessed with the innovation of the world around
+      them than focused on the application and acceleration of any specific
+      technology.
+    </p>
+
+    <p>
+      <em>
+        "Everyday is a lovely day with ones you love in Leafborough."
+      </em>
     </p>
 
   </section>
@@ -852,76 +900,7 @@
 
     <div class="artwork-grid">
 
-      <!-- =========================
-           ORIGINAL ARTWORK 01
-           ========================= -->
-
-      <div class="artwork-card">
-
-        <a
-          href="artwork-01.jpg"
-          class="glightbox"
-          data-gallery="leafborough-art"
-          data-title="Artwork 01"
-        >
-          <img
-            src="artwork-01.jpg"
-            alt="Artwork 01"
-          >
-        </a>
-
-        <h3>Artwork 01</h3>
-
-      </div>
-
-      <!-- =========================
-           ORIGINAL ARTWORK 02
-           ========================= -->
-
-      <div class="artwork-card">
-
-        <a
-          href="artwork-02.jpg"
-          class="glightbox"
-          data-gallery="leafborough-art"
-          data-title="Artwork 02"
-        >
-          <img
-            src="artwork-02.jpg"
-            alt="Artwork 02"
-          >
-        </a>
-
-        <h3>Artwork 02</h3>
-
-      </div>
-
-      <!-- =========================
-           ORIGINAL ARTWORK 03
-           ========================= -->
-
-      <div class="artwork-card">
-
-        <a
-          href="artwork-03.jpg"
-          class="glightbox"
-          data-gallery="leafborough-art"
-          data-title="Artwork 03"
-        >
-          <img
-            src="artwork-03.jpg"
-            alt="Artwork 03"
-          >
-        </a>
-
-        <h3>Artwork 03</h3>
-
-      </div>
-
-      <!-- =========================
-           CONCEPT ART
-           GOSSIP CIRCLE
-           ========================= -->
+      <!-- GOSSIP CIRCLE -->
 
       <div class="artwork-card">
 
@@ -941,10 +920,7 @@
 
       </div>
 
-      <!-- =========================
-           CONCEPT ART
-           MAMA MR CROAKSLY
-           ========================= -->
+      <!-- MAMA MR CROAKSLY -->
 
       <div class="artwork-card">
 
@@ -964,10 +940,7 @@
 
       </div>
 
-      <!-- =========================
-           CONCEPT ART
-           MOMENTS IN LEAFBOROUGH
-           ========================= -->
+      <!-- MOMENTS IN LEAFBOROUGH -->
 
       <div class="artwork-card">
 
@@ -987,10 +960,7 @@
 
       </div>
 
-      <!-- =========================
-           CONCEPT ART
-           MEET LINT
-           ========================= -->
+      <!-- MEET LINT -->
 
       <div class="artwork-card">
 
@@ -1024,19 +994,19 @@
 
     <!-- =========================
          COMIC 01
-         IMAGE LEFT / TEXT RIGHT
          ========================= -->
 
     <div class="comic-card">
 
       <div class="comic-image">
 
-        <!-- COMIC 01 COVER -->
         <a href="#" id="comic01-cover">
+
           <img
             src="Ed1-leafborough-pg1.jpg"
             alt="The Ball Rabbit Family and The First T.V. in Leafborough — Edition 1"
           >
+
         </a>
 
       </div>
@@ -1044,7 +1014,9 @@
       <div class="comic-info">
 
         <h3>
-          <em>The Ball Rabbit Family and The First T.V. in Leafborough</em>
+          <em>
+            The Ball Rabbit Family and The First T.V. in Leafborough
+          </em>
         </h3>
 
         <p>
@@ -1052,152 +1024,15 @@
         </p>
 
         <p>
-          [WRITE A SHORT SYNOPSIS OF THIS COMIC HERE]
+          The first Leafborough story follows the Ball Rabbit Family as
+          something new arrives in town and begins to change the way they
+          experience everyday life.
         </p>
 
-        <!-- READ COMIC OPENS PAGE 1 OF THE DEDICATED COMIC 01 GALLERY -->
         <a
           href="#"
           class="read-comic"
           id="read-comic-01"
-        >
-          Read Comic →
-        </a>
-
-      </div>
-
-    </div>
-
-    <!-- =========================
-         COMIC 02
-         IMAGE LEFT / TEXT RIGHT
-         ========================= -->
-
-    <div class="comic-card">
-
-      <div class="comic-image">
-
-        <a
-          href="comics/comic-02/page-01.jpg"
-          class="glightbox"
-          data-gallery="comic-02"
-          data-title="[COMIC TITLE] — Page 1"
-        >
-          <img
-            src="comic-02.jpg"
-            alt="[COMIC TITLE]"
-          >
-        </a>
-
-        <a
-          href="comics/comic-02/page-02.jpg"
-          class="glightbox comic-lightbox-page"
-          data-gallery="comic-02"
-          data-title="[COMIC TITLE] — Page 2"
-        ></a>
-
-        <a
-          href="comics/comic-02/page-03.jpg"
-          class="glightbox comic-lightbox-page"
-          data-gallery="comic-02"
-          data-title="[COMIC TITLE] — Page 3"
-        ></a>
-
-        <a
-          href="comics/comic-02/page-04.jpg"
-          class="glightbox comic-lightbox-page"
-          data-gallery="comic-02"
-          data-title="[COMIC TITLE] — Page 4"
-        ></a>
-
-      </div>
-
-      <div class="comic-info">
-
-        <h3>[COMIC TITLE]</h3>
-
-        <p>
-          <strong>[DATE / YEAR]</strong>
-        </p>
-
-        <p>
-          [WRITE A SHORT SYNOPSIS OF THIS COMIC HERE]
-        </p>
-
-        <a
-          href="comics/comic-02/page-01.jpg"
-          class="glightbox read-comic"
-          data-gallery="comic-02"
-          data-title="[COMIC TITLE] — Page 1"
-        >
-          Read Comic →
-        </a>
-
-      </div>
-
-    </div>
-
-    <!-- =========================
-         COMIC 03
-         IMAGE LEFT / TEXT RIGHT
-         ========================= -->
-
-    <div class="comic-card">
-
-      <div class="comic-image">
-
-        <a
-          href="comics/comic-03/page-01.jpg"
-          class="glightbox"
-          data-gallery="comic-03"
-          data-title="[COMIC TITLE] — Page 1"
-        >
-          <img
-            src="comic-03.jpg"
-            alt="[COMIC TITLE]"
-          >
-        </a>
-
-        <a
-          href="comics/comic-03/page-02.jpg"
-          class="glightbox comic-lightbox-page"
-          data-gallery="comic-03"
-          data-title="[COMIC TITLE] — Page 2"
-        ></a>
-
-        <a
-          href="comics/comic-03/page-03.jpg"
-          class="glightbox comic-lightbox-page"
-          data-gallery="comic-03"
-          data-title="[COMIC TITLE] — Page 3"
-        ></a>
-
-        <a
-          href="comics/comic-03/page-04.jpg"
-          class="glightbox comic-lightbox-page"
-          data-gallery="comic-03"
-          data-title="[COMIC TITLE] — Page 4"
-        ></a>
-
-      </div>
-
-      <div class="comic-info">
-
-        <h3>[COMIC TITLE]</h3>
-
-        <p>
-          <strong>[DATE / YEAR]</strong>
-        </p>
-
-        <p>
-          [WRITE A SHORT SYNOPSIS OF THIS COMIC HERE]
-        </p>
-
-        <a
-          href="comics/comic-03/page-01.jpg"
-          class="glightbox read-comic"
-          data-gallery="comic-03"
-          data-title="[COMIC TITLE] — Page 1"
         >
           Read Comic →
         </a>
@@ -1217,7 +1052,8 @@
     <h2>Interested in Leafborough?</h2>
 
     <p>
-      [WRITE YOUR FINAL LEAFBOROUGH / CONTACT MESSAGE HERE]
+      Want to learn more about Leafborough, get a physical zine, or talk
+      about the project? Feel free to reach out.
     </p>
 
     <a
@@ -1318,15 +1154,62 @@
      NATIVE COMIC #1 LIGHTBOX
      ========================= -->
 
-<div class="comic-modal" id="comic-modal" aria-hidden="true">
+<div
+  class="comic-modal"
+  id="comic-modal"
+  aria-hidden="true"
+>
+
   <div class="comic-modal-content">
-    <button type="button" class="comic-modal-close" id="comic-modal-close" aria-label="Close comic">&times;</button>
-    <button type="button" class="comic-modal-prev" id="comic-modal-prev" aria-label="Previous page">&#10094;</button>
-    <img id="comic-modal-image" class="comic-modal-image" src="" alt="">
-    <button type="button" class="comic-modal-next" id="comic-modal-next" aria-label="Next page">&#10095;</button>
-    <div class="comic-modal-caption" id="comic-modal-caption"></div>
-    <div class="comic-modal-counter" id="comic-modal-counter">Page 1 of 8</div>
+
+    <button
+      type="button"
+      class="comic-modal-close"
+      id="comic-modal-close"
+      aria-label="Close comic"
+    >
+      &times;
+    </button>
+
+    <button
+      type="button"
+      class="comic-modal-prev"
+      id="comic-modal-prev"
+      aria-label="Previous page"
+    >
+      &#10094;
+    </button>
+
+    <img
+      id="comic-modal-image"
+      class="comic-modal-image"
+      src=""
+      alt=""
+    >
+
+    <button
+      type="button"
+      class="comic-modal-next"
+      id="comic-modal-next"
+      aria-label="Next page"
+    >
+      &#10095;
+    </button>
+
+    <div
+      class="comic-modal-caption"
+      id="comic-modal-caption"
+    ></div>
+
+    <div
+      class="comic-modal-counter"
+      id="comic-modal-counter"
+    >
+      Page 1 of 8
+    </div>
+
   </div>
+
 </div>
 
 <!-- =========================
@@ -1338,7 +1221,6 @@
 <script>
   /* =========================
      GLIGHTBOX FOR SITE ARTWORK
-     Comic #1 intentionally does NOT use GLightbox.
      ========================= */
 
   if (typeof GLightbox === 'function') {
@@ -1356,6 +1238,7 @@
      ========================= */
 
   (function () {
+
     const pages = [
       'Ed1-leafborough-pg1.jpg',
       'ed1-leafborough-pg2.jpg',
@@ -1391,63 +1274,105 @@
     let current = 0;
 
     function showPage(index) {
-      if (index < 0) index = pages.length - 1;
-      if (index >= pages.length) index = 0;
+
+      if (index < 0) {
+        index = pages.length - 1;
+      }
+
+      if (index >= pages.length) {
+        index = 0;
+      }
 
       current = index;
+
       image.src = pages[current];
       image.alt = captions[current];
       caption.textContent = captions[current];
-      counter.textContent = 'Page ' + (current + 1) + ' of ' + pages.length;
+
+      counter.textContent =
+        'Page ' + (current + 1) + ' of ' + pages.length;
     }
 
     function openComic() {
+
       showPage(0);
+
       modal.classList.add('show');
       modal.setAttribute('aria-hidden', 'false');
+
       document.body.style.overflow = 'hidden';
     }
 
     function closeComic() {
+
       modal.classList.remove('show');
       modal.setAttribute('aria-hidden', 'true');
+
       image.src = '';
+
       document.body.style.overflow = '';
     }
 
-    if (cover) cover.addEventListener('click', function(e) {
-      e.preventDefault();
-      openComic();
+    if (cover) {
+      cover.addEventListener('click', function (e) {
+        e.preventDefault();
+        openComic();
+      });
+    }
+
+    if (read) {
+      read.addEventListener('click', function (e) {
+        e.preventDefault();
+        openComic();
+      });
+    }
+
+    if (close) {
+      close.addEventListener('click', closeComic);
+    }
+
+    if (prev) {
+      prev.addEventListener('click', function (e) {
+        e.stopPropagation();
+        showPage(current - 1);
+      });
+    }
+
+    if (next) {
+      next.addEventListener('click', function (e) {
+        e.stopPropagation();
+        showPage(current + 1);
+      });
+    }
+
+    if (modal) {
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal) {
+          closeComic();
+        }
+      });
+    }
+
+    document.addEventListener('keydown', function (e) {
+
+      if (!modal || !modal.classList.contains('show')) {
+        return;
+      }
+
+      if (e.key === 'Escape') {
+        closeComic();
+      }
+
+      if (e.key === 'ArrowLeft') {
+        showPage(current - 1);
+      }
+
+      if (e.key === 'ArrowRight') {
+        showPage(current + 1);
+      }
+
     });
 
-    if (read) read.addEventListener('click', function(e) {
-      e.preventDefault();
-      openComic();
-    });
-
-    if (close) close.addEventListener('click', closeComic);
-
-    if (prev) prev.addEventListener('click', function(e) {
-      e.stopPropagation();
-      showPage(current - 1);
-    });
-
-    if (next) next.addEventListener('click', function(e) {
-      e.stopPropagation();
-      showPage(current + 1);
-    });
-
-    if (modal) modal.addEventListener('click', function(e) {
-      if (e.target === modal) closeComic();
-    });
-
-    document.addEventListener('keydown', function(e) {
-      if (!modal || !modal.classList.contains('show')) return;
-
-      if (e.key === 'Escape') closeComic();
-      if (e.key === 'ArrowLeft') showPage(current - 1);
-      if (e.key === 'ArrowRight') showPage(current + 1);
-    });
   })();
 </script>
 
@@ -1456,6 +1381,7 @@
      ========================= -->
 
 <script>
+
   const menuToggle = document.getElementById("menu-toggle");
   const navLinks = document.getElementById("nav-links");
 
@@ -1466,12 +1392,15 @@
     });
 
     document.querySelectorAll("#nav-links a").forEach(link => {
+
       link.addEventListener("click", () => {
         navLinks.classList.remove("show");
       });
+
     });
 
   }
+
 </script>
 
 </body>
